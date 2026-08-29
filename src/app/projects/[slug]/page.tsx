@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { Suspense } from "react";
 import { Approvals } from "@/components/projects/approvals";
 import { PlanExplorer } from "@/components/plan/plan-explorer";
 import { Gallery } from "@/components/projects/gallery";
@@ -112,16 +111,16 @@ export default async function ProjectPage({
             that swap adds spectacle without adding capability (§9). */}
         {scene && (
           <Section eyebrow="What" title={`Choose your ${singularNoun(unitNoun).toLowerCase()}`}>
-            <Suspense fallback={<p className="u-mono text-muted">Loading the plan…</p>}>
-              <PlanExplorer
-                scene={scene}
-                availability={availability}
-                projectName={project.name}
-                projectSlug={project.slug}
-                unitNoun={unitNoun}
-                unitNounSingular={singularNoun(unitNoun)}
-              />
-            </Suspense>
+            {/* No query reading here, so all nine project pages stay
+                statically generated. Deep links belong to /plan. */}
+            <PlanExplorer
+              scene={scene}
+              availability={availability}
+              projectName={project.name}
+              projectSlug={project.slug}
+              unitNoun={unitNoun}
+              unitNounSingular={singularNoun(unitNoun)}
+            />
             <p className="mt-8">
               <Link
                 href={`/projects/${project.slug}/plan`}

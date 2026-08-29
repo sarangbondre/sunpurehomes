@@ -1399,5 +1399,447 @@
     88.3
    ]
   }
+ ],
+ "planting": [
+  {
+   "point": [
+    26,
+    16.8
+   ],
+   "kind": "tree",
+   "matureRadiusM": 3.2
+  },
+  {
+   "point": [
+    35,
+    16.8
+   ],
+   "kind": "tree",
+   "matureRadiusM": 3.2
+  },
+  {
+   "point": [
+    44,
+    16.8
+   ],
+   "kind": "tree",
+   "matureRadiusM": 3.2
+  },
+  {
+   "point": [
+    53,
+    16.8
+   ],
+   "kind": "tree",
+   "matureRadiusM": 3.2
+  },
+  {
+   "point": [
+    62,
+    16.8
+   ],
+   "kind": "tree",
+   "matureRadiusM": 3.2
+  },
+  {
+   "point": [
+    71,
+    16.8
+   ],
+   "kind": "tree",
+   "matureRadiusM": 3.2
+  },
+  {
+   "point": [
+    80,
+    16.8
+   ],
+   "kind": "tree",
+   "matureRadiusM": 3.2
+  },
+  {
+   "point": [
+    89,
+    16.8
+   ],
+   "kind": "tree",
+   "matureRadiusM": 3.2
+  },
+  {
+   "point": [
+    98,
+    16.8
+   ],
+   "kind": "tree",
+   "matureRadiusM": 3.2
+  },
+  {
+   "point": [
+    107,
+    16.8
+   ],
+   "kind": "tree",
+   "matureRadiusM": 3.2
+  },
+  {
+   "point": [
+    116,
+    16.8
+   ],
+   "kind": "tree",
+   "matureRadiusM": 3.2
+  },
+  {
+   "point": [
+    26,
+    20.2
+   ],
+   "kind": "tree",
+   "matureRadiusM": 3.2
+  },
+  {
+   "point": [
+    35,
+    20.2
+   ],
+   "kind": "tree",
+   "matureRadiusM": 3.2
+  },
+  {
+   "point": [
+    44,
+    20.2
+   ],
+   "kind": "tree",
+   "matureRadiusM": 3.2
+  },
+  {
+   "point": [
+    53,
+    20.2
+   ],
+   "kind": "tree",
+   "matureRadiusM": 3.2
+  },
+  {
+   "point": [
+    62,
+    20.2
+   ],
+   "kind": "tree",
+   "matureRadiusM": 3.2
+  },
+  {
+   "point": [
+    71,
+    20.2
+   ],
+   "kind": "tree",
+   "matureRadiusM": 3.2
+  },
+  {
+   "point": [
+    80,
+    20.2
+   ],
+   "kind": "tree",
+   "matureRadiusM": 3.2
+  },
+  {
+   "point": [
+    89,
+    20.2
+   ],
+   "kind": "tree",
+   "matureRadiusM": 3.2
+  },
+  {
+   "point": [
+    98,
+    20.2
+   ],
+   "kind": "tree",
+   "matureRadiusM": 3.2
+  },
+  {
+   "point": [
+    107,
+    20.2
+   ],
+   "kind": "tree",
+   "matureRadiusM": 3.2
+  },
+  {
+   "point": [
+    116,
+    20.2
+   ],
+   "kind": "tree",
+   "matureRadiusM": 3.2
+  },
+  {
+   "point": [
+    18.5,
+    53.3
+   ],
+   "kind": "tree",
+   "matureRadiusM": 3.2
+  },
+  {
+   "point": [
+    29,
+    53.3
+   ],
+   "kind": "tree",
+   "matureRadiusM": 3.2
+  },
+  {
+   "point": [
+    39.5,
+    53.3
+   ],
+   "kind": "tree",
+   "matureRadiusM": 3.2
+  },
+  {
+   "point": [
+    50,
+    53.3
+   ],
+   "kind": "tree",
+   "matureRadiusM": 3.2
+  },
+  {
+   "point": [
+    60.5,
+    53.3
+   ],
+   "kind": "tree",
+   "matureRadiusM": 3.2
+  },
+  {
+   "point": [
+    71,
+    53.3
+   ],
+   "kind": "tree",
+   "matureRadiusM": 3.2
+  },
+  {
+   "point": [
+    81.5,
+    53.3
+   ],
+   "kind": "tree",
+   "matureRadiusM": 3.2
+  },
+  {
+   "point": [
+    92,
+    53.3
+   ],
+   "kind": "tree",
+   "matureRadiusM": 3.2
+  },
+  {
+   "point": [
+    102.5,
+    53.3
+   ],
+   "kind": "tree",
+   "matureRadiusM": 3.2
+  },
+  {
+   "point": [
+    113,
+    53.3
+   ],
+   "kind": "tree",
+   "matureRadiusM": 3.2
+  },
+  {
+   "point": [
+    123.5,
+    53.3
+   ],
+   "kind": "tree",
+   "matureRadiusM": 3.2
+  },
+  {
+   "point": [
+    17,
+    60.85
+   ],
+   "kind": "tree",
+   "matureRadiusM": 3.2
+  },
+  {
+   "point": [
+    29,
+    60.85
+   ],
+   "kind": "tree",
+   "matureRadiusM": 3.2
+  },
+  {
+   "point": [
+    41,
+    60.85
+   ],
+   "kind": "tree",
+   "matureRadiusM": 3.2
+  },
+  {
+   "point": [
+    53,
+    60.85
+   ],
+   "kind": "tree",
+   "matureRadiusM": 3.2
+  },
+  {
+   "point": [
+    65,
+    60.85
+   ],
+   "kind": "tree",
+   "matureRadiusM": 3.2
+  },
+  {
+   "point": [
+    77,
+    60.85
+   ],
+   "kind": "tree",
+   "matureRadiusM": 3.2
+  },
+  {
+   "point": [
+    89,
+    60.85
+   ],
+   "kind": "tree",
+   "matureRadiusM": 3.2
+  },
+  {
+   "point": [
+    101,
+    60.85
+   ],
+   "kind": "tree",
+   "matureRadiusM": 3.2
+  },
+  {
+   "point": [
+    113,
+    60.85
+   ],
+   "kind": "tree",
+   "matureRadiusM": 3.2
+  },
+  {
+   "point": [
+    125,
+    60.85
+   ],
+   "kind": "tree",
+   "matureRadiusM": 3.2
+  },
+  {
+   "point": [
+    20,
+    1.5
+   ],
+   "kind": "shrub",
+   "matureRadiusM": 1.6
+  },
+  {
+   "point": [
+    42,
+    1.5
+   ],
+   "kind": "shrub",
+   "matureRadiusM": 1.6
+  },
+  {
+   "point": [
+    64,
+    1.5
+   ],
+   "kind": "shrub",
+   "matureRadiusM": 1.6
+  },
+  {
+   "point": [
+    86,
+    1.5
+   ],
+   "kind": "shrub",
+   "matureRadiusM": 1.6
+  },
+  {
+   "point": [
+    108,
+    1.5
+   ],
+   "kind": "shrub",
+   "matureRadiusM": 1.6
+  },
+  {
+   "point": [
+    130,
+    1.5
+   ],
+   "kind": "shrub",
+   "matureRadiusM": 1.6
+  },
+  {
+   "point": [
+    20,
+    36.5
+   ],
+   "kind": "shrub",
+   "matureRadiusM": 1.6
+  },
+  {
+   "point": [
+    42,
+    36.5
+   ],
+   "kind": "shrub",
+   "matureRadiusM": 1.6
+  },
+  {
+   "point": [
+    64,
+    36.5
+   ],
+   "kind": "shrub",
+   "matureRadiusM": 1.6
+  },
+  {
+   "point": [
+    86,
+    36.5
+   ],
+   "kind": "shrub",
+   "matureRadiusM": 1.6
+  },
+  {
+   "point": [
+    108,
+    36.5
+   ],
+   "kind": "shrub",
+   "matureRadiusM": 1.6
+  },
+  {
+   "point": [
+    130,
+    36.5
+   ],
+   "kind": "shrub",
+   "matureRadiusM": 1.6
+  }
  ]
 }

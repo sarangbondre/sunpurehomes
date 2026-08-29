@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { Suspense } from "react";
 import { PlanExplorer } from "@/components/plan/plan-explorer";
 import { getProject, getProjectSlugs } from "@/lib/content";
 import { getAvailability, getScene, hasPlan } from "@/lib/scenes";
@@ -28,8 +27,10 @@ export async function generateMetadata({
 
 export default async function PlanPage({
   params,
+  searchParams,
 }: {
   params: Promise<{ slug: string }>;
+  searchParams: Promise<Record<string, string | string[] | undefined>>;
 }) {
   const { slug } = await params;
   const project = getProject(slug);
@@ -40,6 +41,13 @@ export default async function PlanPage({
 
   const availability = getAvailability(slug);
   const noun = project.scale.unitNoun;
+
+  // Resolved here, on the server, so a shared ?unit= link arrives with the
+  // plan and the unit's details already in the HTML.
+  const requested = (await searchParams).unit;
+  const unitParam = Array.isArray(requested) ? requested[0] : requested;
+  const initialUnitId =
+    unitParam && scene.units.some((u) => u.id === unitParam) ? unitParam : null;
 
   return (
     <main className="mx-auto max-w-[86rem] px-6 py-12 sm:px-10 sm:py-16 lg:px-16">
@@ -67,22 +75,16 @@ export default async function PlanPage({
       </header>
 
       <div className="mt-12">
-        {/* useSearchParams needs a Suspense boundary so the rest of the page
-            can still be prerendered as static HTML. */}
-        <Suspense
-          fallback={
-            <p className="u-mono text-muted">Loading the plan…</p>
-          }
-        >
-          <PlanExplorer
-            scene={scene}
-            availability={availability}
-            projectName={project.name}
-            projectSlug={slug}
-            unitNoun={noun}
-            unitNounSingular={singularNoun(noun)}
-          />
-        </Suspense>
+        <PlanExplorer
+          scene={scene}
+          availability={availability}
+          projectName={project.name}
+          projectSlug={slug}
+          unitNoun={noun}
+          unitNounSingular={singularNoun(noun)}
+          initialUnitId={initialUnitId}
+          syncUrl
+        />
       </div>
     </main>
   );

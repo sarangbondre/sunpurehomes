@@ -74,6 +74,24 @@ export const sceneSchema = z
     amenityPoints: z
       .array(z.object({ id: z.string(), name: z.string(), point }))
       .default([]),
+
+    /**
+     * Planting positions. Kept in the data, not generated in a component, so
+     * the 3D scene and any future 2D overlay draw the same trees, and a real
+     * landscape drawing can replace them without a code change.
+     *
+     * `matureRadiusM` drives the canopy-growth toggle (§9.2): handover shows
+     * a young tree, year five shows the mature radius.
+     */
+    planting: z
+      .array(
+        z.object({
+          point,
+          kind: z.enum(["tree", "shrub"]),
+          matureRadiusM: z.number().positive(),
+        }),
+      )
+      .default([]),
   })
   .strict();
 

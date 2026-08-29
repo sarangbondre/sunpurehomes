@@ -1,8 +1,9 @@
 "use client";
 
-import { usePathname, useRouter, useSearchParams } from "next/navigation";
+import { usePathname } from "next/navigation";
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { PlotPlan, type StatusFilter } from "@/components/plan/plot-plan";
+import { SceneView } from "@/components/scene/scene-view";
 import { UnitDrawer } from "@/components/plan/unit-drawer";
 import { ShortlistTray } from "@/components/plan/shortlist-tray";
 import type { Availability, Scene } from "@/lib/scene-schema";
@@ -28,6 +29,8 @@ export function PlanExplorer({
   projectSlug,
   unitNoun,
   unitNounSingular,
+  initialUnitId = null,
+  syncUrl = false,
 }: {
   scene: Scene;
   availability?: Availability;
@@ -35,10 +38,17 @@ export function PlanExplorer({
   projectSlug: string;
   unitNoun: string;
   unitNounSingular: string;
+  /**
+   * Resolved on the server from ?unit=, so the selected unit and its drawer
+   * are in the HTML. Reading the query with useSearchParams instead would
+   * push this whole subtree to client-side rendering on a prerendered page,
+   * and the plan would be absent from the served markup entirely.
+   */
+  initialUnitId?: string | null;
+  /** Only the dedicated /plan route owns the query string. */
+  syncUrl?: boolean;
 }) {
-  const router = useRouter();
   const pathname = usePathname();
-  const params = useSearchParams();
   const hydrate = useShortlist((s) => s.hydrate);
 
   useEffect(() => {
@@ -47,24 +57,40 @@ export function PlanExplorer({
 
   const [filter, setFilter] = useState<StatusFilter>("all");
 
+  /**
+   * View mode. The 2D plan is the default and the permanent fallback (§9):
+   * it carries identical data and identical actions, so switching to 3D adds
+   * spectacle and takes nothing away. If the device cannot run WebGL the
+   * scene reports back and we drop to the plan without the user acting.
+   */
+  const [view, setView] = useState<"plan" | "scene">("plan");
+  const dropToPlan = useCallback(() => setView("plan"), []);
+
   const byId = useMemo(
     () => new Map(scene.units.map((u) => [u.id, u])),
     [scene.units],
   );
 
-  const requested = params.get("unit");
-  const selectedId = requested && byId.has(requested) ? requested : null;
+  const [selectedId, setSelectedId] = useState<string | null>(
+    initialUnitId && byId.has(initialUnitId) ? initialUnitId : null,
+  );
+
+  // Follow the server when the user navigates back or forward.
+  useEffect(() => {
+    setSelectedId(initialUnitId && byId.has(initialUnitId) ? initialUnitId : null);
+  }, [initialUnitId, byId]);
+
   const selected = selectedId ? byId.get(selectedId) : undefined;
 
   const select = useCallback(
     (unitId: string | null) => {
-      const next = new URLSearchParams(params.toString());
-      if (unitId) next.set("unit", unitId);
-      else next.delete("unit");
-      const qs = next.toString();
-      router.replace(qs ? `${pathname}?${qs}` : pathname, { scroll: false });
+      setSelectedId(unitId);
+      if (!syncUrl) return;
+      // Keeps the address bar shareable without re-fetching the page.
+      const qs = unitId ? `?unit=${encodeURIComponent(unitId)}` : "";
+      window.history.replaceState(null, "", `${pathname}${qs}`);
     },
-    [params, pathname, router],
+    [pathname, syncUrl],
   );
 
   const counts = useMemo(() => {
@@ -103,6 +129,27 @@ export function PlanExplorer({
           comes from the sales team.
         </p>
       )}
+
+      {/* View toggle */}
+      <div className="flex flex-wrap items-center gap-3">
+        <h3 className="u-mono w-20 shrink-0 text-muted">View</h3>
+        {(["plan", "scene"] as const).map((mode) => (
+          <button
+            key={mode}
+            type="button"
+            onClick={() => setView(mode)}
+            aria-pressed={view === mode}
+            className={[
+              "u-mono rounded-full border px-4 py-2 transition-colors duration-hover ease-hover",
+              view === mode
+                ? "border-ink bg-ink text-paper"
+                : "border-line bg-paper text-ink hover:border-ink",
+            ].join(" ")}
+          >
+            {mode === "plan" ? "Plan" : "3D model"}
+          </button>
+        ))}
+      </div>
 
       {/* Filters */}
       <div className="flex flex-wrap items-center gap-3">
@@ -159,14 +206,25 @@ export function PlanExplorer({
 
       <div className="grid gap-8 lg:grid-cols-[1.6fr_1fr] lg:items-start">
         <div>
-          <PlotPlan
-            scene={scene}
-            availability={availability}
-            selectedId={selectedId}
-            onSelect={select}
-            filter={filter}
-            unitNoun={unitNoun}
-          />
+          {view === "scene" ? (
+            <SceneView
+              scene={scene}
+              availability={availability}
+              selectedId={selectedId}
+              onSelect={select}
+              filter={filter}
+              onUnsupported={dropToPlan}
+            />
+          ) : (
+            <PlotPlan
+              scene={scene}
+              availability={availability}
+              selectedId={selectedId}
+              onSelect={select}
+              filter={filter}
+              unitNoun={unitNoun}
+            />
+          )}
 
           {/*
             The screen-reader and no-pointer path to the same data and the

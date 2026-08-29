@@ -125,6 +125,26 @@ function layout(opts: {
     if (isRearRow) y += roadWidth; // road after each back-to-back pair
   }
 
+  // Planting. One tree to each plot frontage — a published Fadal amenity —
+  // plus an avenue along each access road. Deterministic, like everything else.
+  const planting: Scene["planting"] = [];
+  for (const unit of units) {
+    const front = unit.facing === "North" ? -1 : 1;
+    planting.push({
+      point: [unit.centroid[0], r2(unit.centroid[1] + front * (rows[0].depthM / 2 - 1.2))],
+      kind: "tree",
+      matureRadiusM: 3.2,
+    });
+  }
+  for (const road of roads) {
+    if (!road.id.startsWith("access")) continue;
+    const start = road.centreline[0];
+    const end = road.centreline[road.centreline.length - 1];
+    for (let x = start[0] + 14; x < end[0]; x += 22) {
+      planting.push({ point: [r2(x), r2(start[1])], kind: "shrub", matureRadiusM: 1.6 });
+    }
+  }
+
   // Whatever is left at the top of the site is amenity land.
   const amenityDepth = r2(site.depth - setback - y);
   if (amenityDepth > 6) {
@@ -168,6 +188,7 @@ function layout(opts: {
     openSpaces,
     units,
     amenityPoints,
+    planting,
   };
 }
 
