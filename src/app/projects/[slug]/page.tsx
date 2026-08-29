@@ -1,7 +1,10 @@
 import type { Metadata } from "next";
 import Image from "next/image";
+import Link from "next/link";
 import { notFound } from "next/navigation";
+import { Suspense } from "react";
 import { Approvals } from "@/components/projects/approvals";
+import { PlanExplorer } from "@/components/plan/plan-explorer";
 import { Gallery } from "@/components/projects/gallery";
 import { StatusChip } from "@/components/projects/status-chip";
 import { DataPoint, Section } from "@/components/ui/section";
@@ -12,6 +15,8 @@ import {
   getProjectSlugs,
 } from "@/lib/content";
 import { mailtoHref, projectEnquiryMessage, telHref, whatsappHref } from "@/lib/links";
+import { singularNoun } from "@/lib/nouns";
+import { getAvailability, getScene } from "@/lib/scenes";
 import { site } from "@/lib/site";
 
 export function generateStaticParams() {
@@ -51,6 +56,8 @@ export default async function ProjectPage({
   const rest = project.gallery.slice(1);
   const enquiry = projectEnquiryMessage(project.name);
   const { acres, unitCount, unitNoun } = project.scale;
+  const scene = getScene(project.slug);
+  const availability = scene ? getAvailability(project.slug) : undefined;
 
   return (
     <main>
@@ -98,11 +105,33 @@ export default async function ProjectPage({
           </dl>
         </div>
 
-        {/* ─────────────────────────────── 2. What */}
-        {/* The 3D plan and its unit drawer land in Phases 2–4 and belong here,
-            above the fold of this section. Until then the page carries the
-            same information in prose and tables — the commercial capability
-            never depends on the 3D (§9). */}
+        {/* ─────────────────────────────── 2. What
+            §11 puts the plan at the centre of the page, high, not buried.
+            The 3D scene replaces the SVG here in Phase 4; the drawer, the
+            shortlist and the actions are already the ones it will use, so
+            that swap adds spectacle without adding capability (§9). */}
+        {scene && (
+          <Section eyebrow="What" title={`Choose your ${singularNoun(unitNoun).toLowerCase()}`}>
+            <Suspense fallback={<p className="u-mono text-muted">Loading the plan…</p>}>
+              <PlanExplorer
+                scene={scene}
+                availability={availability}
+                projectName={project.name}
+                projectSlug={project.slug}
+                unitNoun={unitNoun}
+                unitNounSingular={singularNoun(unitNoun)}
+              />
+            </Suspense>
+            <p className="mt-8">
+              <Link
+                href={`/projects/${project.slug}/plan`}
+                className="u-mono text-canopy underline underline-offset-4"
+              >
+                Open the full plan
+              </Link>
+            </p>
+          </Section>
+        )}
 
         {/* ─────────────────────────────── 3. How much */}
         {project.configurations.length > 0 && (

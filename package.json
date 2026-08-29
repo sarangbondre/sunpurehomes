@@ -8,7 +8,8 @@
     "start": "next start",
     "lint": "eslint",
     "content:audit": "tsx scripts/content-audit.ts",
-    "crawl": "node scripts/crawl.mjs"
+    "crawl": "node scripts/crawl.mjs",
+    "scenes:generate": "tsx scripts/generate-scene.ts"
   },
   "dependencies": {
     "next": "15.5.24",
