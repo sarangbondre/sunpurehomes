@@ -24,7 +24,9 @@
     }
   ],
   "compliance": {
-    "reraAuthorityUrl": "https://rera.karnataka.gov.in"
+    "reraAuthorityUrl": "https://rera.karnataka.gov.in",
+    "reraNumber": "PRM/KA/RERA/1268/378/PR/040719/003288",
+    "reraProvenance": "placeholder"
   },
   "amenities": [
     {
@@ -111,10 +113,10 @@
     }
   ],
   "contentWarnings": [
+    "RERA number is a PLACEHOLDER for development. It is not a real registration and has not been checked against the Karnataka register. The page labels it unverified and the project stays out of the sitemap until reraProvenance is set to \"verified\".",
     "Every gallery image is an interior. There is no exterior view of the building.",
     "The live site spells the location 'Yadavgiri' in the address and 'Yadavagiri' elsewhere. Standardised to Yadavagiri here.",
     "Connectivity omitted — see the note on the shared connectivity list across seven projects.",
-    "No RERA number published for this project.",
     "Gallery images are renders. This project is marked completed, so photography should exist and should replace them."
   ]
 }

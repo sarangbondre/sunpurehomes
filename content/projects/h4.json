@@ -23,7 +23,9 @@
     }
   ],
   "compliance": {
-    "reraAuthorityUrl": "https://rera.karnataka.gov.in"
+    "reraAuthorityUrl": "https://rera.karnataka.gov.in",
+    "reraNumber": "PRM/KA/RERA/1268/378/PR/090124/006102",
+    "reraProvenance": "placeholder"
   },
   "amenities": [
     {
@@ -110,11 +112,11 @@
     }
   ],
   "contentWarnings": [
+    "RERA number is a PLACEHOLDER for development. It is not a real registration and has not been checked against the Karnataka register. The page labels it unverified and the project stays out of the sitemap until reraProvenance is set to \"verified\".",
     "Type conflict. The live site heads this project '3BHK Apartments' while its own body copy calls it a villa community. Recorded here as villas, per the brief. Client to confirm.",
     "Status conflict. The brief records H4 as ongoing; the live site calls it 'an upcoming project'. Recorded as ongoing. Client to confirm.",
     "Location was recorded as unstated in the brief, but the live project page gives Vijayanagar 4th Stage, Basavanahalli 570032. Carried over from the live site and needs confirmation.",
     "Specifications are word-for-word identical to Rare Earth's, a plotted development. Plausible for a villa but likely copied. Client to confirm.",
-    "Connectivity omitted — see the note on the shared connectivity list across seven projects.",
-    "No RERA number published for this project."
+    "Connectivity omitted — see the note on the shared connectivity list across seven projects."
   ]
 }

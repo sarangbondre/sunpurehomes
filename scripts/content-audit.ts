@@ -11,7 +11,11 @@ import {
 } from "../src/lib/content";
 
 const projects = getAllProjects();
-const missingRera = projects.filter((p) => !isPublishable(p));
+const missingRera = projects.filter((p) => !p.compliance.reraNumber);
+const placeholderRera = projects.filter(
+  (p) => p.compliance.reraNumber && p.compliance.reraProvenance !== "verified",
+);
+const publishable = projects.filter(isPublishable);
 const missingCoords = projects.filter((p) => !p.location.coordinates);
 const missingAddress = projects.filter((p) => p.location.addressLines.length === 0);
 const noSpecs = projects.filter((p) => p.specifications.length === 0);
@@ -25,8 +29,10 @@ const rule = () => line("─".repeat(74));
 line();
 line(`CONTENT AUDIT — ${projects.length} projects, schema and integrity checks passed`);
 rule();
-line(`RERA number missing         ${missingRera.length}/${projects.length}   ${missingRera.map((p) => p.slug).join(", ")}`);
-line(`  └─ these render "Registration details on request" and are kept out of the sitemap.`);
+line(`RERA verified               ${publishable.length}/${projects.length}   ${publishable.map((p) => p.slug).join(", ") || "—"}`);
+line(`RERA placeholder            ${placeholderRera.length}/${projects.length}   ${placeholderRera.map((p) => p.slug).join(", ") || "—"}`);
+line(`  └─ shown with a "Not yet verified" notice and kept out of the sitemap.`);
+line(`RERA absent                 ${missingRera.length}/${projects.length}   ${missingRera.map((p) => p.slug).join(", ") || "—"}`);
 line(`Coordinates missing         ${missingCoords.length}/${projects.length}   required before Phase 3 (the city scene)`);
 line(`Address withheld            ${missingAddress.length}/${projects.length}   ${missingAddress.map((p) => p.slug).join(", ") || "—"}`);
 line(`Specifications empty        ${noSpecs.length}/${projects.length}   ${noSpecs.map((p) => p.slug).join(", ") || "—"}`);

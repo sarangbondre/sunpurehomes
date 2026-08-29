@@ -27,7 +27,9 @@
     }
   ],
   "compliance": {
-    "reraAuthorityUrl": "https://rera.karnataka.gov.in"
+    "reraAuthorityUrl": "https://rera.karnataka.gov.in",
+    "reraNumber": "PRM/KA/RERA/1268/378/PR/110920/003914",
+    "reraProvenance": "placeholder"
   },
   "amenities": [
     {
@@ -139,10 +141,10 @@
     }
   ],
   "contentWarnings": [
+    "RERA number is a PLACEHOLDER for development. It is not a real registration and has not been checked against the Karnataka register. The page labels it unverified and the project stays out of the sitemap until reraProvenance is set to \"verified\".",
     "Type conflict. The live site tags Blessed 'Premium Independent Villa' while describing apartments. Recorded as apartments, per the brief. Client to confirm.",
     "Configuration conflict. The brief records 2 BHK only; the live project page says '2BHK & 3BHK Apartments'. Both are carried here. Client to confirm.",
     "Connectivity omitted — see the note on the shared connectivity list across seven projects.",
-    "No RERA number published for this project.",
     "Gallery images are renders. This project is marked completed, so photography should exist and should replace them."
   ]
 }

@@ -9,8 +9,15 @@ import { site } from "@/lib/site";
  * here (§2, defect 12), which is worse than saying nothing.
  */
 export function Approvals({ project }: { project: Project }) {
-  const { reraNumber, reraAuthorityUrl, planSanction, khataConversion, approvedBanks } =
-    project.compliance;
+  const {
+    reraNumber,
+    reraProvenance,
+    reraAuthorityUrl,
+    planSanction,
+    khataConversion,
+    approvedBanks,
+  } = project.compliance;
+  const unverified = Boolean(reraNumber) && reraProvenance !== "verified";
 
   return (
     <div className="grid gap-12 lg:grid-cols-2">
@@ -21,13 +28,30 @@ export function Approvals({ project }: { project: Project }) {
             <p className="mt-3 break-all font-mono text-lg text-ink">
               {reraNumber}
             </p>
+
+            {/*
+              A registration number is a statutory disclosure. While it is a
+              stand-in, the page says so in as many words — an unlabelled
+              fake registration is a worse failure than the live site's
+              "NUMBER GOES HERE", because it looks true.
+            */}
+            {unverified && (
+              <p className="mt-3 rounded-sm border border-laterite/40 bg-laterite/8 px-4 py-3 text-sm leading-relaxed text-ink">
+                <strong className="font-semibold">Not yet verified.</strong>{" "}
+                This number is a placeholder pending confirmation against the
+                Karnataka RERA register. Do not rely on it.
+              </p>
+            )}
+
             <a
               className="u-mono mt-4 inline-block text-canopy underline underline-offset-4"
               href={reraAuthorityUrl}
               target="_blank"
               rel="noopener noreferrer"
             >
-              Verify at rera.karnataka.gov.in
+              {unverified
+                ? "Search the Karnataka RERA register"
+                : "Verify at rera.karnataka.gov.in"}
             </a>
           </>
         ) : (

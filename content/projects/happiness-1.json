@@ -23,7 +23,9 @@
     }
   ],
   "compliance": {
-    "reraAuthorityUrl": "https://rera.karnataka.gov.in"
+    "reraAuthorityUrl": "https://rera.karnataka.gov.in",
+    "reraNumber": "PRM/KA/RERA/1268/378/PR/120321/004411",
+    "reraProvenance": "placeholder"
   },
   "amenities": [
     {
@@ -130,10 +132,10 @@
     }
   ],
   "contentWarnings": [
+    "RERA number is a PLACEHOLDER for development. It is not a real registration and has not been checked against the Karnataka register. The page labels it unverified and the project stays out of the sitemap until reraProvenance is set to \"verified\".",
     "Unit count omitted. The live site states 34 units for Happiness 1 and also 34 units for Happiness 2 — one of the two is likely copied. Confirm before publishing a figure.",
     "Address incomplete. The live site's address block merges the project address into the M.K. Infra Holding corporate address at Srirangapatna (571438), so the project's own postcode is not recoverable. Only the verified lines are carried here.",
     "Connectivity omitted. The live site shows one identical connectivity list on seven different projects in different neighbourhoods; the figures cannot all be true. Needs real per-project distances.",
-    "Live-site location copy for this project describes 'V4 homes' — another project's text. Not carried over.",
-    "No RERA number published for this project."
+    "Live-site location copy for this project describes 'V4 homes' — another project's text. Not carried over."
   ]
 }

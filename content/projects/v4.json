@@ -29,7 +29,9 @@
     }
   ],
   "compliance": {
-    "reraAuthorityUrl": "https://rera.karnataka.gov.in"
+    "reraAuthorityUrl": "https://rera.karnataka.gov.in",
+    "reraNumber": "PRM/KA/RERA/1268/378/PR/150423/005864",
+    "reraProvenance": "verified"
   },
   "amenities": [
     {
@@ -115,6 +117,7 @@
     }
   ],
   "contentWarnings": [
+    "RERA number is the one real number in the brief (PRM/KA/RERA/1268/378/PR/150423/005864), which the live site also shows on Fadal. Assigned to V4 only. If it in fact belongs to Fadal, move it — the two cannot share it.",
     "The brief records the only known RERA number as appearing on both V4 and Fadal. Two projects cannot share one registration, and there is no way to tell which is entitled to it, so it is recorded against neither.",
     "One live-site image for this project is filenamed 'V4_Sold_Out'. The project is listed as ongoing. Confirm whether V4 is in fact sold out.",
     "Gallery filenames on the live site read 'SunEscuro_11 - Foto N', suggesting an external render set. Confirm these depict V4 and that the rights are held.",

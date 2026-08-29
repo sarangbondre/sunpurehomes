@@ -24,7 +24,9 @@
     }
   ],
   "compliance": {
-    "reraAuthorityUrl": "https://rera.karnataka.gov.in"
+    "reraAuthorityUrl": "https://rera.karnataka.gov.in",
+    "reraNumber": "PRM/KA/RERA/1268/378/PR/260224/006045",
+    "reraProvenance": "placeholder"
   },
   "amenities": [
     {
@@ -144,6 +146,7 @@
     }
   ],
   "contentWarnings": [
+    "RERA number is a PLACEHOLDER for development. It is not a real registration and has not been checked against the Karnataka register. The page labels it unverified and the project stays out of the sitemap until reraProvenance is set to \"verified\".",
     "Address withheld. The live project page gives 'Lalitadripura Rd, Chamundi Hill, Mysuru 570028' while the copy on the same page places Fadal on KRS Main Road. Those are on opposite sides of Mysuru. No address is shown until the client confirms which is correct.",
     "Specifications omitted. The live page lists interior finishes — imported marble, wooden flooring to bedrooms, engineered wooden doors, floor-to-ceiling glass — on a development that sells bare land. It also refers to 'partial villas'. This is another project's content and is not carried over.",
     "The live page duplicates its 'Electrical' specification group.",

@@ -21,7 +21,9 @@
   },
   "configurations": [],
   "compliance": {
-    "reraAuthorityUrl": "https://rera.karnataka.gov.in"
+    "reraAuthorityUrl": "https://rera.karnataka.gov.in",
+    "reraNumber": "PRM/KA/RERA/1268/378/PR/120524/006230",
+    "reraProvenance": "placeholder"
   },
   "amenities": [
     {
@@ -123,6 +125,7 @@
     }
   ],
   "contentWarnings": [
+    "RERA number is a PLACEHOLDER for development. It is not a real registration and has not been checked against the Karnataka register. The page labels it unverified and the project stays out of the sitemap until reraProvenance is set to \"verified\".",
     "RERA field on the live page renders the literal string 'NUMBER GOES HERE'.",
     "Specifications omitted. The live page lists interior finishes — engineered marble, wood laminate, Jaquar or Kohler sanitary fittings, premium paints — on a development that sells bare land. Not carried over.",
     "A gallery image shows a swimming pool, which does not appear in the eight published amenities. Confirm whether a pool is part of the offering.",

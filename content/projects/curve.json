@@ -23,7 +23,9 @@
     }
   ],
   "compliance": {
-    "reraAuthorityUrl": "https://rera.karnataka.gov.in"
+    "reraAuthorityUrl": "https://rera.karnataka.gov.in",
+    "reraNumber": "PRM/KA/RERA/1268/378/PR/220823/005733",
+    "reraProvenance": "placeholder"
   },
   "amenities": [
     {
@@ -141,7 +143,7 @@
     }
   ],
   "contentWarnings": [
-    "Connectivity omitted — see the note on the shared connectivity list across seven projects.",
-    "No RERA number published for this project."
+    "RERA number is a PLACEHOLDER for development. It is not a real registration and has not been checked against the Karnataka register. The page labels it unverified and the project stays out of the sitemap until reraProvenance is set to \"verified\".",
+    "Connectivity omitted — see the note on the shared connectivity list across seven projects."
   ]
 }

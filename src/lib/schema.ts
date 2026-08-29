@@ -86,9 +86,18 @@ export const projectSchema = z
       /**
        * Required to publish (§4). Absent → the page renders a "Registration
        * details on request" state and the project is left out of the sitemap.
-       * Never render a placeholder in its place.
        */
       reraNumber: realString("reraNumber").optional(),
+      /**
+       * A RERA number is a statutory disclosure. "placeholder" means the
+       * number is a stand-in for development and has NOT been checked
+       * against the Karnataka register — the page labels it as unverified,
+       * and `isPublishable` keeps the project out of the sitemap.
+       *
+       * Only "verified" numbers may be presented as registrations. Flipping
+       * this field is the single action that turns the label off.
+       */
+      reraProvenance: z.enum(["placeholder", "verified"]).optional(),
       reraAuthorityUrl: z.string().url(),
       planSanction: z.boolean().optional(),
       khataConversion: z.boolean().optional(),

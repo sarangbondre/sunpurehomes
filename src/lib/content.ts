@@ -111,7 +111,15 @@ export function getProject(slug: string): Project | undefined {
  * not offered up to search engines as a registered development.
  */
 export function isPublishable(project: Project): boolean {
-  return Boolean(project.compliance.reraNumber);
+  return (
+    Boolean(project.compliance.reraNumber) &&
+    project.compliance.reraProvenance === "verified"
+  );
+}
+
+/** True while a project is showing a stand-in registration number. */
+export function hasPlaceholderRera(project: Project): boolean {
+  return project.compliance.reraProvenance === "placeholder";
 }
 
 /* ---------------------------------------------------------------- filters */
