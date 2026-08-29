@@ -1,0 +1,133 @@
+{
+  "slug": "rare-earth",
+  "name": "Rare Earth",
+  "type": "plot",
+  "status": "ongoing",
+  "tagline": "Two hundred and seventy-nine plots across eighteen acres.",
+  "description": "Rare Earth is a low-density plotted development on the Mysuru–Ooty road, at the tenth kilometre stone near Kadakola. Two hundred and seventy-nine plots sit across eighteen acres, 280 metres from NH 766 and about two kilometres from Mysore airport.",
+  "location": {
+    "label": "Mysuru–Ooty Road, near Kadakola",
+    "addressLines": [
+      "Toll, Sy. No. 35, 34/1",
+      "10th km stone, Mysuru–Ooty Road",
+      "Near Kadakola",
+      "Karnataka 571311"
+    ]
+  },
+  "scale": {
+    "acres": 18,
+    "unitCount": 279,
+    "unitNoun": "plots"
+  },
+  "configurations": [],
+  "compliance": {
+    "reraAuthorityUrl": "https://rera.karnataka.gov.in"
+  },
+  "amenities": [
+    {
+      "name": "Multi-purpose court"
+    },
+    {
+      "name": "Yoga deck"
+    },
+    {
+      "name": "Amphitheatre"
+    },
+    {
+      "name": "Fitness zones"
+    },
+    {
+      "name": "Kids play area"
+    },
+    {
+      "name": "Walk park"
+    },
+    {
+      "name": "Reflexology path"
+    },
+    {
+      "name": "Reading zones"
+    }
+  ],
+  "specifications": [],
+  "connectivity": [
+    {
+      "name": "Seshadripuram Institute of Technology",
+      "category": "education",
+      "travelMinutes": 10
+    },
+    {
+      "name": "JSS Public School",
+      "category": "education",
+      "travelMinutes": 13
+    },
+    {
+      "name": "Christ College",
+      "category": "education",
+      "travelMinutes": 15
+    },
+    {
+      "name": "Mall of Mysore",
+      "category": "retail",
+      "travelMinutes": 15
+    },
+    {
+      "name": "Nexus City Centre Mall",
+      "category": "retail",
+      "travelMinutes": 25
+    },
+    {
+      "name": "JSS Multispecialty Hospital",
+      "category": "health",
+      "travelMinutes": 15
+    },
+    {
+      "name": "Apollo BGS Hospital",
+      "category": "health",
+      "travelMinutes": 25
+    },
+    {
+      "name": "GC Sports Medicine Centre",
+      "category": "health",
+      "travelMinutes": 15
+    }
+  ],
+  "gallery": [
+    {
+      "src": "/images/projects/rare-earth/hero.avif",
+      "alt": "The Rare Earth entrance gateway — a tiled canopy on timber beams, carried on stone piers hung with creepers."
+    },
+    {
+      "src": "/images/projects/rare-earth/gallery-1.avif",
+      "alt": "The Rare Earth gateway seen from the approach road, planting either side."
+    },
+    {
+      "src": "/images/projects/rare-earth/gallery-2.avif",
+      "alt": "An internal road at Rare Earth running between planted verges."
+    },
+    {
+      "src": "/images/projects/rare-earth/gallery-3.avif",
+      "alt": "A landscaped walkway at Rare Earth, benches set along the path."
+    },
+    {
+      "src": "/images/projects/rare-earth/gallery-4.avif",
+      "alt": "Lawn and young trees beside a Rare Earth walkway."
+    },
+    {
+      "src": "/images/projects/rare-earth/gallery-5.avif",
+      "alt": "A swimming pool in the Rare Earth grounds, seen from above."
+    },
+    {
+      "src": "/images/projects/rare-earth/gallery-6.avif",
+      "alt": "A curving footpath through planting at Rare Earth."
+    }
+  ],
+  "contentWarnings": [
+    "RERA field on the live page renders the literal string 'NUMBER GOES HERE'.",
+    "Specifications omitted. The live page lists interior finishes — engineered marble, wood laminate, Jaquar or Kohler sanitary fittings, premium paints — on a development that sells bare land. Not carried over.",
+    "A gallery image shows a swimming pool, which does not appear in the eight published amenities. Confirm whether a pool is part of the offering.",
+    "No plot size range is published for Rare Earth, so the configuration table is empty.",
+    "Connectivity is published in travel minutes rather than distances. Carried over as given.",
+    "All eight amenities and all six gallery images are dead links on the live page."
+  ]
+}

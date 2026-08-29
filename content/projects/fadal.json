@@ -1,0 +1,155 @@
+{
+  "slug": "fadal",
+  "name": "Fadal",
+  "type": "plot",
+  "status": "ongoing",
+  "tagline": "Forty-three plots across three acres.",
+  "description": "Fadal is a plotted development where buyers build their own homes. Forty-three plots of 1,164 to 2,498 sq ft sit across three acres, served by concrete roads, underground drainage and street lighting, with a tree to every plot. The layout is Vaastu and Feng Shui compliant.",
+  "location": {
+    "label": "KRS Main Road",
+    "addressLines": []
+  },
+  "scale": {
+    "acres": 3,
+    "unitCount": 43,
+    "unitNoun": "plots"
+  },
+  "configurations": [
+    {
+      "label": "Plot",
+      "areaSqft": [
+        1164,
+        2498
+      ]
+    }
+  ],
+  "compliance": {
+    "reraAuthorityUrl": "https://rera.karnataka.gov.in"
+  },
+  "amenities": [
+    {
+      "name": "Landscaped garden"
+    },
+    {
+      "name": "Green walkways"
+    },
+    {
+      "name": "One tree to every plot"
+    },
+    {
+      "name": "Concrete roads"
+    },
+    {
+      "name": "Underground drainage"
+    },
+    {
+      "name": "Street lighting"
+    },
+    {
+      "name": "Sewage treatment plant"
+    }
+  ],
+  "specifications": [],
+  "connectivity": [
+    {
+      "name": "JK Tyres",
+      "category": "work",
+      "distanceKm": 1.1
+    },
+    {
+      "name": "Reserve Bank of India",
+      "category": "work",
+      "distanceKm": 2.8
+    },
+    {
+      "name": "L&T",
+      "category": "work",
+      "distanceKm": 5
+    },
+    {
+      "name": "Infosys",
+      "category": "work",
+      "distanceKm": 5
+    },
+    {
+      "name": "Wipro",
+      "category": "work",
+      "distanceKm": 5.5
+    },
+    {
+      "name": "GSSS",
+      "category": "education",
+      "distanceKm": 2
+    },
+    {
+      "name": "Pooja Bhagavat Mahajana College",
+      "category": "education",
+      "distanceKm": 2
+    },
+    {
+      "name": "Vision Cinemas",
+      "category": "retail",
+      "distanceKm": 2.6
+    },
+    {
+      "name": "GRS Fantasy Park",
+      "category": "retail",
+      "distanceKm": 3.5
+    },
+    {
+      "name": "Excel Public School, Hootagalli",
+      "category": "education",
+      "distanceKm": 6.5
+    },
+    {
+      "name": "Reliance Smart",
+      "category": "retail",
+      "distanceKm": 7
+    },
+    {
+      "name": "BM Habitat Mall",
+      "category": "retail",
+      "distanceKm": 7
+    },
+    {
+      "name": "Excel Public School, Koorgalli",
+      "category": "education",
+      "distanceKm": 7.7
+    }
+  ],
+  "gallery": [
+    {
+      "src": "/images/projects/fadal/hero.avif",
+      "alt": "The Fadal entrance sign, cut into a low stone wall at the edge of the site."
+    },
+    {
+      "src": "/images/projects/fadal/gallery-1.avif",
+      "alt": "A tree-lined path running through the Fadal layout."
+    },
+    {
+      "src": "/images/projects/fadal/gallery-2.avif",
+      "alt": "A house under construction on a plot at Fadal, trees along the road behind."
+    },
+    {
+      "src": "/images/projects/fadal/gallery-3.avif",
+      "alt": "The Fadal entrance marker seen across open ground."
+    },
+    {
+      "src": "/images/projects/fadal/gallery-4.avif",
+      "alt": "A paved walkway curving between planted verges at Fadal."
+    },
+    {
+      "src": "/images/projects/fadal/gallery-5.avif",
+      "alt": "Mown lawn and young trees along a Fadal walkway."
+    }
+  ],
+  "contentWarnings": [
+    "Address withheld. The live project page gives 'Lalitadripura Rd, Chamundi Hill, Mysuru 570028' while the copy on the same page places Fadal on KRS Main Road. Those are on opposite sides of Mysuru. No address is shown until the client confirms which is correct.",
+    "Specifications omitted. The live page lists interior finishes — imported marble, wooden flooring to bedrooms, engineered wooden doors, floor-to-ceiling glass — on a development that sells bare land. It also refers to 'partial villas'. This is another project's content and is not carried over.",
+    "The live page duplicates its 'Electrical' specification group.",
+    "The live page shows an empty Amenities section. The amenities here are taken from the brief, sourced from the old WordPress page.",
+    "Connectivity distances are from the old WordPress page. The current page publishes a different set, in travel minutes. The two disagree — for example Infosys at 5 km versus 15 minutes. Confirm which is current.",
+    "The brief records the only known RERA number as appearing on both Fadal and V4. Two projects cannot share one registration, so it is recorded against neither.",
+    "Fadal ranks in search on the old WordPress URL. That page carries Happiness 2's villa floor plans under a 'Master Plan' heading. The redirect matters (§13)."
+  ]
+}

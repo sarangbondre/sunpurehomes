@@ -1,0 +1,148 @@
+{
+  "slug": "blessed",
+  "name": "Blessed",
+  "type": "apartment",
+  "status": "completed",
+  "tagline": "Twenty apartments planned for the room of a villa.",
+  "description": "Blessed is a completed apartment development in Vijayanagar 4th Stage. Its twenty homes are 2 and 3 BHK, planned around light and cross-ventilation to feel villa-like in their expansiveness.",
+  "location": {
+    "label": "Vijayanagar 4th Stage",
+    "addressLines": [
+      "Blessed",
+      "Vijayanagar 4th Stage",
+      "Basavanahalli",
+      "Mysuru, Karnataka 570032"
+    ]
+  },
+  "scale": {
+    "unitCount": 20,
+    "unitNoun": "apartments"
+  },
+  "configurations": [
+    {
+      "label": "2 BHK"
+    },
+    {
+      "label": "3 BHK"
+    }
+  ],
+  "compliance": {
+    "reraAuthorityUrl": "https://rera.karnataka.gov.in"
+  },
+  "amenities": [
+    {
+      "name": "Landscaped garden"
+    },
+    {
+      "name": "Jogging track"
+    },
+    {
+      "name": "Children's play area"
+    },
+    {
+      "name": "Basketball hoop"
+    },
+    {
+      "name": "Cricket practice area"
+    },
+    {
+      "name": "Reflexology path"
+    },
+    {
+      "name": "Visitor car parking"
+    },
+    {
+      "name": "Senior citizen areas"
+    },
+    {
+      "name": "Rainwater harvesting"
+    },
+    {
+      "name": "CCTV surveillance"
+    },
+    {
+      "name": "Gymnasium"
+    },
+    {
+      "name": "Indoor games"
+    },
+    {
+      "name": "Community hall"
+    },
+    {
+      "name": "Visitor lounge"
+    }
+  ],
+  "specifications": [
+    {
+      "group": "Structure",
+      "items": [
+        "RCC framed structure",
+        "Anti-termite treated",
+        "Gypsum plaster internally",
+        "Waterproof cement plaster externally"
+      ]
+    },
+    {
+      "group": "Flooring",
+      "items": [
+        "1200 × 1200 mm premium vitrified tiles to living and common areas",
+        "Anti-skid vitrified tiles to toilets",
+        "Glazed tiles to bathroom walls, full height"
+      ]
+    },
+    {
+      "group": "Doors & windows",
+      "items": [
+        "Main door in teak wood frame with veneer finish",
+        "Internal doors in wood frame with laminate finish",
+        "WPC frames and shutters to toilets",
+        "UPVC sliding windows"
+      ]
+    },
+    {
+      "group": "Electrical",
+      "items": [
+        "Fire-resistant copper wiring"
+      ]
+    }
+  ],
+  "connectivity": [],
+  "gallery": [
+    {
+      "src": "/images/projects/blessed/hero.avif",
+      "alt": "The Blessed apartment block in white render, seen from the entrance road."
+    },
+    {
+      "src": "/images/projects/blessed/gallery-1.avif",
+      "alt": "Blessed from the forecourt, its balconies stepping back above a planted base."
+    },
+    {
+      "src": "/images/projects/blessed/gallery-2.avif",
+      "alt": "The Blessed elevation behind a screen of young trees."
+    },
+    {
+      "src": "/images/projects/blessed/gallery-3.avif",
+      "alt": "A timber pergola over a seating area in the Blessed grounds."
+    },
+    {
+      "src": "/images/projects/blessed/gallery-4.avif",
+      "alt": "Planted courtyards between the Blessed blocks."
+    },
+    {
+      "src": "/images/projects/blessed/gallery-5.avif",
+      "alt": "A landscaped walkway running through the Blessed grounds at dusk."
+    },
+    {
+      "src": "/images/projects/blessed/gallery-6.avif",
+      "alt": "Paved paths and planting beds in the Blessed courtyard."
+    }
+  ],
+  "contentWarnings": [
+    "Type conflict. The live site tags Blessed 'Premium Independent Villa' while describing apartments. Recorded as apartments, per the brief. Client to confirm.",
+    "Configuration conflict. The brief records 2 BHK only; the live project page says '2BHK & 3BHK Apartments'. Both are carried here. Client to confirm.",
+    "Connectivity omitted — see the note on the shared connectivity list across seven projects.",
+    "No RERA number published for this project.",
+    "Gallery images are renders. This project is marked completed, so photography should exist and should replace them."
+  ]
+}

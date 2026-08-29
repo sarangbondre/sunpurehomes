@@ -1,0 +1,120 @@
+{
+  "slug": "meraki",
+  "name": "Meraki",
+  "type": "apartment",
+  "status": "completed",
+  "tagline": "Nine 3 BHK apartments in Yadavagiri.",
+  "description": "Meraki is a completed apartment development in Yadavagiri. Nine 3 BHK homes are laid out for generous shared space and daylight, with premium fittings throughout.",
+  "location": {
+    "label": "Yadavagiri",
+    "addressLines": [
+      "Meraki Apartment",
+      "81/B, 2nd Main Road",
+      "Yadavagiri, Devaraja Mohalla",
+      "Mysuru, Karnataka 570020"
+    ]
+  },
+  "scale": {
+    "unitCount": 9,
+    "unitNoun": "apartments"
+  },
+  "configurations": [
+    {
+      "label": "3 BHK"
+    }
+  ],
+  "compliance": {
+    "reraAuthorityUrl": "https://rera.karnataka.gov.in"
+  },
+  "amenities": [
+    {
+      "name": "Landscaped surroundings"
+    },
+    {
+      "name": "Parking facilities"
+    },
+    {
+      "name": "Sit-out spaces"
+    }
+  ],
+  "specifications": [
+    {
+      "group": "Structure",
+      "items": [
+        "RCC framed structure"
+      ]
+    },
+    {
+      "group": "Flooring",
+      "items": [
+        "Premium vitrified tiles to living areas and bedrooms",
+        "Anti-skid tiles to bathrooms and balconies"
+      ]
+    },
+    {
+      "group": "Doors & windows",
+      "items": [
+        "Engineered doors with premium finish",
+        "Large windows for ventilation and light"
+      ]
+    },
+    {
+      "group": "Electrical",
+      "items": [
+        "Concealed wiring",
+        "Modular switches"
+      ]
+    },
+    {
+      "group": "Plumbing & water",
+      "items": [
+        "Standard concealed plumbing systems"
+      ]
+    },
+    {
+      "group": "Other",
+      "items": [
+        "Contemporary elevation design",
+        "Modern kitchen and bathroom fittings"
+      ]
+    }
+  ],
+  "connectivity": [],
+  "gallery": [
+    {
+      "src": "/images/projects/meraki/hero.avif",
+      "alt": "The entrance doors to Meraki, in ribbed timber with vertical metal pulls."
+    },
+    {
+      "src": "/images/projects/meraki/gallery-1.avif",
+      "alt": "A living room in a Meraki apartment, seating arranged toward a full-height window."
+    },
+    {
+      "src": "/images/projects/meraki/gallery-2.avif",
+      "alt": "A dining area in a Meraki apartment under a sculptural pendant light."
+    },
+    {
+      "src": "/images/projects/meraki/gallery-3.avif",
+      "alt": "A Meraki living space at dusk, glazing opening to a balcony."
+    },
+    {
+      "src": "/images/projects/meraki/gallery-4.avif",
+      "alt": "A seating area in a Meraki apartment beside a display niche."
+    },
+    {
+      "src": "/images/projects/meraki/gallery-5.avif",
+      "alt": "An internal corridor in Meraki, lined in timber panelling."
+    },
+    {
+      "src": "/images/projects/meraki/gallery-6.avif",
+      "alt": "A Meraki living and dining space seen from the entrance."
+    }
+  ],
+  "contentWarnings": [
+    "Every gallery image is an interior. There is no exterior view of the building.",
+    "The live site spells the location 'Yadavgiri' in the address and 'Yadavagiri' elsewhere. Standardised to Yadavagiri here.",
+    "Connectivity omitted — see the note on the shared connectivity list across seven projects.",
+    "No RERA number published for this project.",
+    "Gallery images are renders. This project is marked completed, so photography should exist and should replace them."
+  ]
+}

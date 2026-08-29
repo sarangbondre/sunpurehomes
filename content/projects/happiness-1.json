@@ -1,0 +1,139 @@
+{
+  "slug": "happiness-1",
+  "name": "Happiness 1",
+  "type": "villa",
+  "status": "completed",
+  "tagline": "Premium 3 BHK villas in Vijayanagar 4th Stage.",
+  "description": "Happiness 1 is a completed villa development in Vijayanagar 4th Stage, Mysuru. The homes are 3 BHK villas on a planned layout with landscaped green space between them.",
+  "location": {
+    "label": "Vijayanagar 4th Stage",
+    "addressLines": [
+      "Sunpure Happiness I",
+      "Near SVEI School",
+      "Vijayanagar 4th Stage",
+      "Mysuru, Karnataka"
+    ]
+  },
+  "scale": {
+    "unitNoun": "villas"
+  },
+  "configurations": [
+    {
+      "label": "3 BHK"
+    }
+  ],
+  "compliance": {
+    "reraAuthorityUrl": "https://rera.karnataka.gov.in"
+  },
+  "amenities": [
+    {
+      "name": "Yoga space"
+    },
+    {
+      "name": "Gym"
+    },
+    {
+      "name": "Indoor kids play area"
+    },
+    {
+      "name": "Senior citizen recreational area"
+    },
+    {
+      "name": "CCTV surveillance"
+    },
+    {
+      "name": "RO treatment plant"
+    },
+    {
+      "name": "100% power backup"
+    },
+    {
+      "name": "Stormwater drainage system"
+    },
+    {
+      "name": "EV charging provision, on demand"
+    }
+  ],
+  "specifications": [
+    {
+      "group": "Structure",
+      "items": [
+        "RCC framed structure, Seismic Zone II compliant",
+        "Anti-termite treated"
+      ]
+    },
+    {
+      "group": "Flooring",
+      "items": [
+        "Vitrified tiles in living, dining, kitchen and bedrooms",
+        "Granite stairs",
+        "Anti-skid tiles in bathrooms and balconies"
+      ]
+    },
+    {
+      "group": "Doors & windows",
+      "items": [
+        "Main door in teak wood frame and shutter",
+        "Internal doors in solid wood frame with PU finish",
+        "Waterproof flush doors to bathrooms",
+        "Solid wood window frames and shutters"
+      ]
+    },
+    {
+      "group": "Electrical",
+      "items": [
+        "Underground electrical system",
+        "100% power backup"
+      ]
+    },
+    {
+      "group": "Plumbing & water",
+      "items": [
+        "RO plant",
+        "Stormwater drainage system",
+        "Rainwater harvesting system"
+      ]
+    },
+    {
+      "group": "Other",
+      "items": [
+        "EV charging provision",
+        "CCTV"
+      ]
+    }
+  ],
+  "connectivity": [],
+  "gallery": [
+    {
+      "src": "/images/projects/happiness-1/gallery-1.avif",
+      "alt": "A white villa at Happiness 1, its upper floor cantilevered over a covered car porch."
+    },
+    {
+      "src": "/images/projects/happiness-1/gallery-2.avif",
+      "alt": "The street frontage of a Happiness 1 villa, with a mature tree at the boundary wall."
+    },
+    {
+      "src": "/images/projects/happiness-1/gallery-3.avif",
+      "alt": "A row of Happiness 1 villas running along an internal road."
+    },
+    {
+      "src": "/images/projects/happiness-1/gallery-4.avif",
+      "alt": "Stepped white terraces of the Happiness 1 villas seen along the street."
+    },
+    {
+      "src": "/images/projects/happiness-1/gallery-5.avif",
+      "alt": "Planting and garden beds in the open space between the Happiness 1 villas."
+    },
+    {
+      "src": "/images/projects/happiness-1/gallery-6.avif",
+      "alt": "Happiness 1 villas seen across a landscaped courtyard."
+    }
+  ],
+  "contentWarnings": [
+    "Unit count omitted. The live site states 34 units for Happiness 1 and also 34 units for Happiness 2 — one of the two is likely copied. Confirm before publishing a figure.",
+    "Address incomplete. The live site's address block merges the project address into the M.K. Infra Holding corporate address at Srirangapatna (571438), so the project's own postcode is not recoverable. Only the verified lines are carried here.",
+    "Connectivity omitted. The live site shows one identical connectivity list on seven different projects in different neighbourhoods; the figures cannot all be true. Needs real per-project distances.",
+    "Live-site location copy for this project describes 'V4 homes' — another project's text. Not carried over.",
+    "No RERA number published for this project."
+  ]
+}
