@@ -6,6 +6,7 @@ import {
   type ProjectStatus,
   type ProjectType,
 } from "@/lib/schema";
+import { formatIndianNumber } from "@/lib/format";
 
 /**
  * The only path by which project content is read (BRIEF.md §5).
@@ -187,7 +188,7 @@ export const TYPE_SWATCH: Record<ProjectType, string> = {
 
 export function formatArea(area: number | [number, number] | undefined): string | null {
   if (area === undefined) return null;
-  const n = (v: number) => v.toLocaleString("en-IN");
+  const n = formatIndianNumber;
   return Array.isArray(area)
     ? `${n(area[0])}–${n(area[1])} sq ft`
     : `${n(area)} sq ft`;

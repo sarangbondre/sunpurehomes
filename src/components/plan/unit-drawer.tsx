@@ -5,6 +5,7 @@ import { STATUS_LABELS, UNKNOWN_LABEL } from "@/lib/scene-display";
 import type { UnitStatus } from "@/lib/unit-status";
 import { isShortlisted, SHORTLIST_LIMIT, useShortlist } from "@/lib/shortlist";
 import { whatsappHref } from "@/lib/links";
+import { formatIndianNumber } from "@/lib/format";
 
 function nearestAmenity(scene: Scene, unit: SceneUnit) {
   let best: { name: string; metres: number } | undefined;
@@ -78,7 +79,7 @@ export function UnitDrawer({
         />
         <Row
           label="Area"
-          value={`${unit.areaSqft.toLocaleString("en-IN")} sq ft`}
+          value={`${formatIndianNumber(unit.areaSqft)} sq ft`}
         />
         <Row label="Facing" value={unit.facing} />
         {unit.roadWidthM !== undefined && (
@@ -116,7 +117,7 @@ export function UnitDrawer({
 
         <a
           href={whatsappHref(
-            `Hello Sunpure Homes — I'd like to know more about ${projectName}, ${unitNounSingular.toLowerCase()} ${unit.id} (${unit.areaSqft.toLocaleString("en-IN")} sq ft, ${unit.facing} facing).`,
+            `Hello Sunpure Homes — I'd like to know more about ${projectName}, ${unitNounSingular.toLowerCase()} ${unit.id} (${formatIndianNumber(unit.areaSqft)} sq ft, ${unit.facing} facing).`,
           )}
           target="_blank"
           rel="noopener noreferrer"

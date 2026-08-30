@@ -16,6 +16,7 @@ import {
 } from "@/lib/scene-display";
 import { useShortlist } from "@/lib/shortlist";
 import { withArticle } from "@/lib/nouns";
+import { formatIndianNumber } from "@/lib/format";
 
 /**
  * Orchestrates the plan: filters, selection, the drawer, the shortlist, and
@@ -76,7 +77,17 @@ export function PlanExplorer({
 
   // Apartment storeys overlap in plan, so one is shown at a time.
   const stacked = (scene.levels ?? 1) > 1;
-  const [floor, setFloor] = useState<number>(0);
+
+  /**
+   * Seeded from the incoming unit rather than defaulting to the ground
+   * floor. Deriving it in an effect instead meant the server rendered storey
+   * zero and the client then flipped to the unit's own storey — a shared
+   * ?unit= link arrived showing the wrong floor, and showed it permanently
+   * with JavaScript off.
+   */
+  const initialFloor =
+    scene.units.find((u) => u.id === initialUnitId)?.floor ?? 0;
+  const [floor, setFloor] = useState<number>(initialFloor);
   const visibleFloor = stacked ? floor : null;
 
   const byId = useMemo(
@@ -96,9 +107,9 @@ export function PlanExplorer({
   const selected = selectedId ? byId.get(selectedId) : undefined;
 
   /**
-   * Selecting in 3D, or arriving on a shared link, can land on a unit that is
-   * not on the storey the plan is showing. Follow the selection rather than
-   * leave the plan and the drawer disagreeing about what is on screen.
+   * Selecting in 3D can land on a unit that is not on the storey the plan is
+   * showing, so the plan follows the selection. The initial state is seeded
+   * above, so this only ever fires on a real user action.
    */
   useEffect(() => {
     if (selected?.floor !== undefined) setFloor(selected.floor);
@@ -312,7 +323,7 @@ export function PlanExplorer({
                         {unitNounSingular} {u.id}
                       </span>
                       <span className="u-mono">
-                        {u.areaSqft.toLocaleString("en-IN")} sq ft ·{" "}
+                        {formatIndianNumber(u.areaSqft)} sq ft ·{" "}
                         {status ? STATUS_LABELS[status] : UNKNOWN_LABEL}
                       </span>
                     </button>

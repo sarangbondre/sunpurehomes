@@ -14,6 +14,7 @@ import {
   getProjectSlugs,
 } from "@/lib/content";
 import { mailtoHref, projectEnquiryMessage, telHref, whatsappHref } from "@/lib/links";
+import { formatIndianNumber } from "@/lib/format";
 import { singularNoun } from "@/lib/nouns";
 import { getAvailability, getScene } from "@/lib/scenes";
 import { site } from "@/lib/site";
@@ -97,7 +98,7 @@ export default async function ProjectPage({
             {unitCount !== undefined && (
               <DataPoint
                 label={unitNoun}
-                value={unitCount.toLocaleString("en-IN")}
+                value={formatIndianNumber(unitCount)}
               />
             )}
             {acres !== undefined && <DataPoint label="Acres" value={acres} />}
