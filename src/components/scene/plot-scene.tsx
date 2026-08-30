@@ -7,9 +7,11 @@ import * as THREE from "three";
 import type { Availability, Scene } from "@/lib/scene-schema";
 import type { UnitStatus } from "@/lib/unit-status";
 import {
+  fitDistance,
   ringGeometry,
   roadGeometry,
   sceneCentre,
+  siteCorners,
   sunDirection,
   toWorld,
 } from "@/components/scene/geometry";
@@ -308,6 +310,65 @@ function Amenities({ scene }: { scene: Scene }) {
 
 /* ---------------------------------------------------------------- camera */
 
+/** The default view direction: raised and turned off-axis, near-isometric. */
+const VIEW_DIRECTION = new THREE.Vector3(0.42, 0.72, 0.55);
+
+/**
+ * Frames the whole site, correctly, at whatever size the canvas happens to
+ * be. Runs on mount and on resize, and stops once the user takes control so
+ * it never fights them.
+ */
+function FitOnMount({
+  scene,
+  controls,
+}: {
+  scene: Scene;
+  controls: React.RefObject<React.ComponentRef<typeof OrbitControls> | null>;
+}) {
+  const { camera, size } = useThree();
+  const userHasMoved = useRef(false);
+
+  useEffect(() => {
+    const node = controls.current;
+    if (!node) return;
+    const onStart = () => {
+      userHasMoved.current = true;
+    };
+    node.addEventListener("start", onStart);
+    return () => node.removeEventListener("start", onStart);
+  }, [controls]);
+
+  useEffect(() => {
+    if (userHasMoved.current) return;
+    const perspective = camera as THREE.PerspectiveCamera;
+    const target = new THREE.Vector3(0, 0, 0);
+    const corners = siteCorners(scene.extent.width, scene.extent.depth);
+    const distance = fitDistance(
+      corners,
+      target,
+      VIEW_DIRECTION,
+      (perspective.fov * Math.PI) / 180,
+      size.width / Math.max(size.height, 1),
+    );
+
+    // 0.74 rather than a margin above 1: fitDistance contains the whole site
+    // box including its far corners, which for a ground plane viewed from
+    // above leaves a lot of empty sky. Letting the nearest corner sit just
+    // outside the frame fills the canvas with the plots, which are what the
+    // buyer is here for.
+    camera.position
+      .copy(VIEW_DIRECTION)
+      .normalize()
+      .multiplyScalar(distance * 0.74)
+      .add(target);
+    camera.lookAt(target);
+    controls.current?.target.copy(target);
+    controls.current?.update();
+  }, [camera, scene.extent.width, scene.extent.depth, size, controls]);
+
+  return null;
+}
+
 /** Settles the camera on the selected plot rather than jumping (§8 motion). */
 function CameraRig({
   scene,
@@ -376,7 +437,7 @@ function SceneContents(props: Props) {
       <color attach="background" args={["#F8F9F6"]} />
       {/* Fog only softens the far edge. It must begin beyond the model, or
           the whole site washes out to the background colour. */}
-      <fog attach="fog" args={["#F8F9F6", radius * 1.7, radius * 3.4]} />
+      <fog attach="fog" args={["#F8F9F6", radius * 3, radius * 7]} />
 
       {/* One soft sun with real shadows; no reflections (§10 fallback). */}
       <hemisphereLight args={["#DCE6DE", "#B6BDB2", 1.15]} />
@@ -400,6 +461,8 @@ function SceneContents(props: Props) {
         <Amenities scene={scene} />
       </group>
 
+      <FitOnMount scene={scene} controls={controls} />
+
       <CameraRig
         scene={scene}
         selectedId={selectedId}
@@ -413,8 +476,8 @@ function SceneContents(props: Props) {
         enablePan
         enableDamping
         dampingFactor={0.08}
-        minDistance={radius * 0.16}
-        maxDistance={radius * 1.5}
+        minDistance={radius * 0.12}
+        maxDistance={radius * 4}
         minPolarAngle={0.18}
         maxPolarAngle={Math.PI / 2.35}
         makeDefault
@@ -429,9 +492,9 @@ export default function PlotScene(props: Props) {
     <Canvas
       shadows
       dpr={[1, 2]}
-      // Framed to sit the whole site in view at a raised, near-isometric
-      // angle — the §10 fallback look — rather than a low oblique.
-      camera={{ position: [radius * 0.38, radius * 0.62, radius * 0.5], fov: 38 }}
+      // A rough starting point only; FitOnMount reframes to the real canvas
+      // size on mount and on every resize.
+      camera={{ position: [radius, radius, radius], fov: 38, near: 0.5, far: radius * 12 }}
       gl={{ antialias: true, powerPreference: "high-performance" }}
       style={{ touchAction: "none" }}
     >

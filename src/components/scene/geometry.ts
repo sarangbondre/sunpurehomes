@@ -74,6 +74,59 @@ export function roadGeometry(
 }
 
 /**
+ * Distance at which a set of points fits inside the frustum, given a view
+ * direction and the camera's real aspect ratio.
+ *
+ * Hand-picked camera distances only frame correctly at one canvas size. This
+ * projects every corner of the site onto the camera's own axes and solves for
+ * the distance that contains all of them, so the model fits on a phone, on a
+ * laptop, and in the narrow column on a project page alike.
+ */
+export function fitDistance(
+  corners: readonly THREE.Vector3[],
+  target: THREE.Vector3,
+  direction: THREE.Vector3,
+  verticalFovRadians: number,
+  aspect: number,
+): number {
+  const forward = direction.clone().normalize();
+  const right = new THREE.Vector3()
+    .crossVectors(new THREE.Vector3(0, 1, 0), forward)
+    .normalize();
+  const up = new THREE.Vector3().crossVectors(forward, right).normalize();
+
+  const tanV = Math.tan(verticalFovRadians / 2);
+  const tanH = tanV * aspect;
+
+  let distance = 0;
+  const offset = new THREE.Vector3();
+  for (const corner of corners) {
+    offset.copy(corner).sub(target);
+    const along = offset.dot(forward);
+    const across = Math.abs(offset.dot(right));
+    const vertical = Math.abs(offset.dot(up));
+    distance = Math.max(distance, across / tanH + along, vertical / tanV + along);
+  }
+  return distance;
+}
+
+/** The eight corners of the site box, in world space, centred on the origin. */
+export function siteCorners(
+  width: number,
+  depth: number,
+  height = 6,
+): THREE.Vector3[] {
+  const hw = width / 2;
+  const hd = depth / 2;
+  return [0, height].flatMap((y) => [
+    new THREE.Vector3(-hw, y, -hd),
+    new THREE.Vector3(hw, y, -hd),
+    new THREE.Vector3(hw, y, hd),
+    new THREE.Vector3(-hw, y, hd),
+  ]);
+}
+
+/**
  * Sun direction for a time of day, as a unit vector.
  *
  * A real solar position needs latitude, date and true site orientation. Not
