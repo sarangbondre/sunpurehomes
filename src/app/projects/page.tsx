@@ -70,9 +70,10 @@ export default async function ProjectsPage({
 
       {results.length > 0 ? (
         <ul className="mt-14 grid gap-x-8 gap-y-14 sm:grid-cols-2 lg:grid-cols-3">
-          {results.map((project) => (
+          {results.map((project, i) => (
             <li key={project.slug}>
-              <ProjectCard project={project} />
+              {/* The first row is above the fold on every breakpoint. */}
+              <ProjectCard project={project} priority={i < 3} />
             </li>
           ))}
         </ul>

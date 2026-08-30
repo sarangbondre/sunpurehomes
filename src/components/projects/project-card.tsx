@@ -11,7 +11,14 @@ import type { Project } from "@/lib/schema";
  * that does not exist (§2, defects 3 and 4). Keeping the card to exactly the
  * four things above is what stops that class of bug recurring.
  */
-export function ProjectCard({ project }: { project: Project }) {
+export function ProjectCard({
+  project,
+  priority = false,
+}: {
+  project: Project;
+  /** Set on the first row so the LCP image is not lazy-loaded (§9.4). */
+  priority?: boolean;
+}) {
   const cover = getCoverImage(project);
 
   return (
@@ -23,6 +30,7 @@ export function ProjectCard({ project }: { project: Project }) {
               src={cover.src}
               alt={cover.alt}
               fill
+              priority={priority}
               sizes="(min-width: 1024px) 30vw, (min-width: 640px) 45vw, 92vw"
               className="object-cover transition-transform duration-[600ms] ease-enter group-hover:scale-[1.03]"
             />

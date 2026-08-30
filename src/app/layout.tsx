@@ -21,8 +21,21 @@ export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en-IN" className={fontVariables}>
-      <body className="flex min-h-dvh flex-col bg-paper text-ink antialiased">
+    /*
+      suppressHydrationWarning here covers ONLY the attributes of <html> and
+      <body> themselves — React still checks every descendant, so a genuine
+      mismatch inside the app still reports.
+      Extensions (password managers, Grammarly, dark-mode and translation
+      tools) commonly stamp attributes onto these two elements before React
+      hydrates: cz-shortcut-listen, data-gr-ext-installed, data-darkreader-*.
+      That produces "some attributes of the server rendered HTML didn't match"
+      with no diff anywhere in the application's own markup.
+    */
+    <html lang="en-IN" className={fontVariables} suppressHydrationWarning>
+      <body
+        className="flex min-h-dvh flex-col bg-paper text-ink antialiased"
+        suppressHydrationWarning
+      >
         <a
           href="#main"
           className="u-mono sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-[60] focus:rounded-full focus:bg-ink focus:px-4 focus:py-2 focus:text-paper"
