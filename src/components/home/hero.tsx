@@ -17,10 +17,26 @@ export type HeroMedia =
 
 export function Hero({ media }: { media?: HeroMedia }) {
   return (
-    <section className="relative isolate flex min-h-[calc(100svh-4rem)] flex-col sm:min-h-[calc(100svh-5rem)]">
+    <section // A floor as well as a ceiling: sized purely to the viewport, the hero
+    // collapsed on a phone held sideways until the scrims met in the middle
+    // and swallowed the photograph.
+    className="relative isolate flex min-h-[max(30rem,calc(100svh-4rem))] flex-col sm:min-h-[max(32rem,calc(100svh-5rem))]">
       <HeroBackdrop media={media} />
 
       <div className="relative z-10 mt-auto px-6 pb-16 sm:px-10 sm:pb-20 lg:px-16 lg:pb-24">
+        {/*
+          The reading scrim is tied to the text block, not to the viewport.
+          Sized as a share of the hero it could not guarantee anything: on a
+          tall phone the eyebrow landed high enough to sit over the palace
+          facade at half opacity and became unreadable. Anchored here it
+          always covers the text with the same fade above it, whatever the
+          photograph or the screen.
+        */}
+        <div
+          aria-hidden
+          className="pointer-events-none absolute inset-x-0 -top-32 bottom-0 -z-10 bg-gradient-to-t from-paper via-paper/96 via-78% to-transparent"
+        />
+
         <p className="u-mono text-canopy">
           {site.city} · {site.region}
         </p>
@@ -56,8 +72,13 @@ function HeroBackdrop({ media }: { media?: HeroMedia }) {
         {/* Pulls the photo's warmth toward the cool palette (§8) without
             draining it, and keeps the mark and the headline legible. */}
         <div className="absolute inset-0 bg-mist/15 mix-blend-color" />
-        <div className="absolute inset-x-0 top-0 h-24 bg-gradient-to-b from-paper/80 to-transparent" />
-        <div className="absolute inset-0 bg-gradient-to-t from-paper via-paper/80 via-46% to-transparent to-78%" />
+        {/*
+          Both scrims are capped in absolute units as well as percentages.
+          Sized purely as a percentage of the hero, they overlapped on a short
+          viewport — a phone held sideways, or a small laptop window — and
+          between them erased the photograph completely.
+        */}
+        <div className="absolute inset-x-0 top-0 h-[min(18%,6rem)] bg-gradient-to-b from-paper/70 to-transparent" />
       </div>
     );
   }
