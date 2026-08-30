@@ -1,0 +1,149 @@
+{
+  "slug": "curve",
+  "name": "Curve",
+  "type": "apartment",
+  "status": "ongoing",
+  "tagline": "3 BHK apartments proportioned to the golden ratio.",
+  "description": "Curve is an apartment development under way in Vijayanagar 4th Stage. Its thirty-two 3 BHK homes are laid out on golden-ratio proportions, with landscaped ground-level gardens and a terrace pavilion.",
+  "location": {
+    "label": "Vijayanagar 4th Stage",
+    "addressLines": [
+      "Vijayanagar 4th Stage",
+      "Basavanahalli",
+      "Mysuru, Karnataka 570032"
+    ]
+  },
+  "scale": {
+    "unitCount": 32,
+    "unitNoun": "apartments"
+  },
+  "configurations": [
+    {
+      "label": "3 BHK"
+    }
+  ],
+  "compliance": {
+    "reraAuthorityUrl": "https://rera.karnataka.gov.in",
+    "reraNumber": "PRM/KA/RERA/1268/378/PR/220823/005733",
+    "reraProvenance": "placeholder"
+  },
+  "amenities": [
+    {
+      "name": "Landscaped gardens"
+    },
+    {
+      "name": "Walking and jogging pathways"
+    },
+    {
+      "name": "Outdoor fitness zone"
+    },
+    {
+      "name": "Amphitheatre"
+    },
+    {
+      "name": "Kids play area"
+    },
+    {
+      "name": "Open green zones"
+    },
+    {
+      "name": "Gymnasium"
+    },
+    {
+      "name": "Yoga pavilion"
+    },
+    {
+      "name": "Terrace pavilion"
+    },
+    {
+      "name": "100% power backup to each apartment"
+    },
+    {
+      "name": "Centralised gas piping"
+    },
+    {
+      "name": "RO treatment plant"
+    },
+    {
+      "name": "EV charging provision, on demand"
+    },
+    {
+      "name": "Rainwater harvesting"
+    },
+    {
+      "name": "CCTV and 24-hour security"
+    }
+  ],
+  "specifications": [
+    {
+      "group": "Structure",
+      "items": [
+        "RCC framed structure",
+        "AAC block walls",
+        "Gypsum plaster internally",
+        "Waterproof cement plaster externally"
+      ]
+    },
+    {
+      "group": "Flooring",
+      "items": [
+        "1200 × 1200 mm premium vitrified tiles to living and common areas",
+        "Anti-skid vitrified tiles to toilets",
+        "Glazed tiles to bathroom walls, full height"
+      ]
+    },
+    {
+      "group": "Doors & windows",
+      "items": [
+        "Main door in teak wood frame with veneer finish",
+        "Internal doors in wood frame with laminate finish",
+        "WPC frames and shutters to toilets",
+        "UPVC sliding windows"
+      ]
+    },
+    {
+      "group": "Electrical",
+      "items": [
+        "Fire-resistant copper wiring",
+        "Modular switches",
+        "Power backup to common areas and lift",
+        "1 kVA backup to each apartment"
+      ]
+    }
+  ],
+  "connectivity": [],
+  "gallery": [
+    {
+      "src": "/images/projects/curve/hero.avif",
+      "alt": "The Curve apartment block, its white balcony bands curving around the corner."
+    },
+    {
+      "src": "/images/projects/curve/gallery-1.avif",
+      "alt": "Curve seen from the garden, curved balconies stacked above mature planting."
+    },
+    {
+      "src": "/images/projects/curve/gallery-2.avif",
+      "alt": "A close view of Curve's rounded balcony edges and the stair core behind."
+    },
+    {
+      "src": "/images/projects/curve/gallery-3.avif",
+      "alt": "The long elevation of Curve, each floor stepping behind a curved balcony."
+    },
+    {
+      "src": "/images/projects/curve/gallery-4.avif",
+      "alt": "Curve from the approach road, palms in the foreground."
+    },
+    {
+      "src": "/images/projects/curve/gallery-5.avif",
+      "alt": "Looking up at Curve's curved balconies against the sky."
+    },
+    {
+      "src": "/images/projects/curve/gallery-6.avif",
+      "alt": "The Curve block and its landscaped forecourt."
+    }
+  ],
+  "contentWarnings": [
+    "RERA number is a PLACEHOLDER for development. It is not a real registration and has not been checked against the Karnataka register. The page labels it unverified and the project stays out of the sitemap until reraProvenance is set to \"verified\".",
+    "Connectivity omitted — see the note on the shared connectivity list across seven projects."
+  ]
+}

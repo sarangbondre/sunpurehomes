@@ -1,0 +1,126 @@
+{
+  "slug": "v4",
+  "name": "V4",
+  "type": "apartment",
+  "status": "ongoing",
+  "tagline": "Twenty-four 3 BHK apartments in Vijayanagar.",
+  "description": "V4 is an apartment building under way in Vijayanagar 4th Stage. Twenty-four 3 BHK homes range from 1,678 to 1,870 sq ft, each with a deep balcony.",
+  "location": {
+    "label": "Vijayanagar 4th Stage",
+    "addressLines": [
+      "V4 by Sunpure Homes",
+      "Vijayanagar 4th Stage",
+      "Basavanahalli",
+      "Mysuru, Karnataka 570032"
+    ]
+  },
+  "scale": {
+    "unitCount": 24,
+    "unitNoun": "apartments"
+  },
+  "configurations": [
+    {
+      "label": "3 BHK",
+      "areaSqft": [
+        1678,
+        1870
+      ],
+      "count": 24
+    }
+  ],
+  "compliance": {
+    "reraAuthorityUrl": "https://rera.karnataka.gov.in",
+    "reraNumber": "PRM/KA/RERA/1268/378/PR/150423/005864",
+    "reraProvenance": "verified"
+  },
+  "amenities": [
+    {
+      "name": "Stormwater drainage system"
+    },
+    {
+      "name": "EV charging provision, on demand"
+    },
+    {
+      "name": "Yoga space"
+    },
+    {
+      "name": "Gym"
+    },
+    {
+      "name": "Indoor kids play area"
+    },
+    {
+      "name": "Senior citizen recreational area"
+    },
+    {
+      "name": "CCTV surveillance"
+    },
+    {
+      "name": "RO treatment plant"
+    },
+    {
+      "name": "100% power backup"
+    }
+  ],
+  "specifications": [
+    {
+      "group": "Electrical",
+      "items": [
+        "Underground electrical system",
+        "100% power backup"
+      ]
+    },
+    {
+      "group": "Plumbing & water",
+      "items": [
+        "RO plant",
+        "Stormwater drainage system"
+      ]
+    },
+    {
+      "group": "Other",
+      "items": [
+        "EV charging provision",
+        "CCTV"
+      ]
+    }
+  ],
+  "connectivity": [],
+  "gallery": [
+    {
+      "src": "/images/projects/v4/hero.avif",
+      "alt": "The V4 apartment block at dusk, angular balconies stepping across a dark elevation with the interiors lit."
+    },
+    {
+      "src": "/images/projects/v4/gallery-1.avif",
+      "alt": "A kitchen inside a V4 apartment, with pale cabinetry and a run of wall units."
+    },
+    {
+      "src": "/images/projects/v4/gallery-2.avif",
+      "alt": "The V4 block seen from the corner, balconies running the length of the elevation."
+    },
+    {
+      "src": "/images/projects/v4/gallery-3.avif",
+      "alt": "The V4 elevation in white render, each floor set back behind a deep balcony."
+    },
+    {
+      "src": "/images/projects/v4/gallery-4.avif",
+      "alt": "A bathroom inside a V4 apartment, finished in veined stone."
+    },
+    {
+      "src": "/images/projects/v4/gallery-5.avif",
+      "alt": "The V4 block along its street frontage, lit at dusk."
+    },
+    {
+      "src": "/images/projects/v4/gallery-6.avif",
+      "alt": "An evening view of V4, warm light behind the balcony line."
+    }
+  ],
+  "contentWarnings": [
+    "RERA number is the one real number in the brief (PRM/KA/RERA/1268/378/PR/150423/005864), which the live site also shows on Fadal. Assigned to V4 only. If it in fact belongs to Fadal, move it — the two cannot share it.",
+    "One live-site image for this project is filenamed 'V4_Sold_Out'. The project is listed as ongoing. Confirm whether V4 is in fact sold out.",
+    "Gallery filenames on the live site read 'SunEscuro_11 - Foto N', suggesting an external render set. Confirm these depict V4 and that the rights are held.",
+    "Connectivity omitted — see the note on the shared connectivity list across seven projects.",
+    "Tagline on the live site is shared verbatim with Happiness 1, Happiness 2 and Blessed. Replaced with a project-specific line."
+  ]
+}

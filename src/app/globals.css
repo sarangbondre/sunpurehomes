@@ -1,26 +1,117 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+/* ---------------------------------------------------------------------------
+   Sunpure Homes — design tokens (BRIEF.md §8)
+
+   The palette is cool green-grey, never warm beige. Do not introduce
+   cream/sand neutrals (#E8DCC6 family) — they read pink against the greens.
+
+   Colour carries meaning and must stay consistent across map pins, cards
+   and 3D:
+     product      laterite = villas · stone = apartments · canopy = plots
+     availability canopy = available · laterite = held · stone = sold
+                  ink = the user's current selection
+   Never rely on colour alone — always pair it with a text label.
+--------------------------------------------------------------------------- */
+
+@theme {
+  /* Surface + text */
+  --color-ink: #101614;
+  --color-paper: #f8f9f6;
+  --color-paper-2: #ebeee8;
+  --color-line: #d7dbd3;
+  /*
+    ACCESSIBILITY: --muted on --paper is 3.77:1. That clears WCAG AA for
+    large text (3:1) and non-text, but NOT for body copy (4.5:1).
+    Use --ink-soft for small secondary text instead.
+  */
+  --color-muted: #78827c;
+  /* Derived, not in the §8 list: secondary body copy at 8.66:1 on --paper. */
+  --color-ink-soft: #414a46;
+
+  /* Meaning-bearing */
+  --color-canopy: #5f7355;
+  --color-laterite: #b0722c;
+  --color-stone: #c7ccc2;
+  --color-mist: #bfd0c6;
+
+  /* Type */
+  --font-display: var(--font-instrument-serif), Iowan Old Style, Palatino,
+    Georgia, serif;
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, -apple-system,
+    Segoe UI, sans-serif;
+  --font-mono: var(--font-jetbrains-mono), ui-monospace, SFMono-Regular,
+    Menlo, monospace;
+
+  /* Motion — long, eased, unhurried. Never decorative. */
+  --ease-enter: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-camera: cubic-bezier(0.33, 1, 0.68, 1);
+  --ease-hover: cubic-bezier(0.4, 0, 0.2, 1);
+
+  --duration-enter: 600ms;
+  --duration-camera: 900ms;
+  --duration-hover: 180ms;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+@layer base {
+  html {
+    -webkit-text-size-adjust: 100%;
+  }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+  body {
+    background-color: var(--color-paper);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    font-synthesis-weight: none;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* Headlines are large and set tight. Nothing shouts. */
+  h1,
+  h2,
+  h3 {
+    font-family: var(--font-display);
+    font-weight: 400;
+    line-height: 1.02;
+    letter-spacing: -0.014em;
+  }
+
+  ::selection {
+    background-color: var(--color-mist);
+    color: var(--color-ink);
+  }
+
+  /* Visible, on-brand focus for the full keyboard path (WCAG 2.2 AA). */
+  :focus-visible {
+    outline: 2px solid var(--color-ink);
+    outline-offset: 3px;
+    border-radius: 2px;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@layer components {
+  /* Eyebrows, status labels, RERA numbers, coordinates. */
+  .u-mono {
+    font-family: var(--font-mono);
+    font-size: 0.6875rem;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+}
+
+/*
+  prefers-reduced-motion must disable camera flights, autoplay and parallax
+  entirely and replace them with instant state changes (BRIEF.md §8).
+*/
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 1ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 1ms !important;
+    scroll-behavior: auto !important;
+  }
 }

@@ -1,0 +1,144 @@
+{
+  "slug": "happiness-2",
+  "name": "Happiness 2",
+  "type": "villa",
+  "status": "completed",
+  "tagline": "Thirty-four homes across four acres in Vijayanagar.",
+  "description": "Happiness 2 is a completed villa community in Vijayanagar 4th Stage. Thirty-four homes sit on four acres — thirty-two 3 BHK villas of 2,543 sq ft, plus two apartments.",
+  "location": {
+    "label": "Vijayanagar 4th Stage",
+    "addressLines": [
+      "Sunpure Happiness II",
+      "Vijayanagar 4th Stage",
+      "Ilavala Hobli",
+      "Mysuru, Karnataka 570032"
+    ]
+  },
+  "scale": {
+    "acres": 4,
+    "unitCount": 34,
+    "unitNoun": "homes"
+  },
+  "configurations": [
+    {
+      "label": "3 BHK villa",
+      "areaSqft": 2543,
+      "count": 32
+    }
+  ],
+  "compliance": {
+    "reraAuthorityUrl": "https://rera.karnataka.gov.in",
+    "reraNumber": "PRM/KA/RERA/1268/378/PR/180622/004987",
+    "reraProvenance": "placeholder"
+  },
+  "amenities": [
+    {
+      "name": "Internal roads"
+    },
+    {
+      "name": "Landscaped surroundings"
+    },
+    {
+      "name": "Private outdoor spaces and terraces"
+    },
+    {
+      "name": "Parking spaces"
+    },
+    {
+      "name": "Garden and play area"
+    },
+    {
+      "name": "Indoor green courts"
+    },
+    {
+      "name": "CCTV surveillance"
+    },
+    {
+      "name": "RO treatment plant"
+    },
+    {
+      "name": "100% power backup"
+    }
+  ],
+  "specifications": [
+    {
+      "group": "Structure",
+      "items": [
+        "RCC framed structure, Seismic Zone II compliant",
+        "Anti-termite treated"
+      ]
+    },
+    {
+      "group": "Flooring",
+      "items": [
+        "Premium flooring"
+      ]
+    },
+    {
+      "group": "Doors & windows",
+      "items": [
+        "Modern designed doors",
+        "Large windows for light and ventilation"
+      ]
+    },
+    {
+      "group": "Electrical",
+      "items": [
+        "Underground electrical system",
+        "100% power backup"
+      ]
+    },
+    {
+      "group": "Plumbing & water",
+      "items": [
+        "Standard concealed plumbing systems"
+      ]
+    },
+    {
+      "group": "Other",
+      "items": [
+        "Contemporary façade design",
+        "High-quality finishes",
+        "Functional layouts across floors",
+        "Terrace and open space to each villa"
+      ]
+    }
+  ],
+  "connectivity": [],
+  "gallery": [
+    {
+      "src": "/images/projects/happiness-2/hero.avif",
+      "alt": "The Happiness 2 villas at dusk, a paved lane running between two facing rows."
+    },
+    {
+      "src": "/images/projects/happiness-2/gallery-1.avif",
+      "alt": "A Happiness 2 villa elevation in dark stone and white render, lit from within."
+    },
+    {
+      "src": "/images/projects/happiness-2/gallery-2.avif",
+      "alt": "The entrance court of a Happiness 2 villa behind a slatted screen."
+    },
+    {
+      "src": "/images/projects/happiness-2/gallery-3.avif",
+      "alt": "A Happiness 2 villa frontage with vertical timber screening to the upper floor."
+    },
+    {
+      "src": "/images/projects/happiness-2/gallery-4.avif",
+      "alt": "Evening view of a Happiness 2 villa, its ground floor glazing lit."
+    },
+    {
+      "src": "/images/projects/happiness-2/gallery-5.avif",
+      "alt": "The boundary wall and gated entrance to a Happiness 2 villa."
+    },
+    {
+      "src": "/images/projects/happiness-2/gallery-6.avif",
+      "alt": "A Happiness 2 villa seen at night from the internal road."
+    }
+  ],
+  "contentWarnings": [
+    "RERA number is a PLACEHOLDER for development. It is not a real registration and has not been checked against the Karnataka register. The page labels it unverified and the project stays out of the sitemap until reraProvenance is set to \"verified\".",
+    "The two apartments within the 34 homes have no published configuration, area or availability. Only the 32 villas are described.",
+    "Connectivity omitted — see the note on the shared connectivity list across seven projects.",
+    "Gallery images are renders, not photographs of the completed community. This project is marked completed, so photography should exist and should replace them."
+  ]
+}

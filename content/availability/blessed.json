@@ -1,0 +1,26 @@
+{
+ "slug": "blessed",
+ "provenance": "placeholder",
+ "units": {
+  "101": "available",
+  "102": "held",
+  "103": "available",
+  "104": "available",
+  "201": "sold",
+  "202": "available",
+  "203": "available",
+  "204": "sold",
+  "301": "held",
+  "302": "available",
+  "303": "available",
+  "304": "held",
+  "401": "available",
+  "402": "available",
+  "403": "sold",
+  "404": "available",
+  "501": "available",
+  "502": "sold",
+  "503": "held",
+  "504": "available"
+ }
+}

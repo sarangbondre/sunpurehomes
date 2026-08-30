@@ -1,0 +1,1845 @@
+{
+ "slug": "fadal",
+ "kind": "plot-layout",
+ "provenance": "generated",
+ "extent": {
+  "width": 142,
+  "depth": 86
+ },
+ "boundary": [
+  [
+   0,
+   0
+  ],
+  [
+   142,
+   0
+  ],
+  [
+   142,
+   86
+  ],
+  [
+   0,
+   86
+  ]
+ ],
+ "roads": [
+  {
+   "id": "perimeter",
+   "name": "Perimeter road",
+   "centreline": [
+    [
+     3,
+     3
+    ],
+    [
+     139,
+     3
+    ],
+    [
+     139,
+     83
+    ],
+    [
+     3,
+     83
+    ],
+    [
+     3,
+     3
+    ]
+   ],
+   "widthM": 9
+  },
+  {
+   "id": "access-0",
+   "centreline": [
+    [
+     6,
+     1.5
+    ],
+    [
+     136,
+     1.5
+    ]
+   ],
+   "widthM": 9
+  },
+  {
+   "id": "access-2",
+   "centreline": [
+    [
+     6,
+     36.5
+    ],
+    [
+     136,
+     36.5
+    ]
+   ],
+   "widthM": 9
+  }
+ ],
+ "openSpaces": [],
+ "units": [
+  {
+   "id": "1",
+   "ring": [
+    [
+     21.5,
+     6
+    ],
+    [
+     30.5,
+     6
+    ],
+    [
+     30.5,
+     18
+    ],
+    [
+     21.5,
+     18
+    ]
+   ],
+   "centroid": [
+    26,
+    12
+   ],
+   "areaSqft": 1163,
+   "widthM": 9,
+   "depthM": 12,
+   "facing": "South",
+   "roadWidthM": 9
+  },
+  {
+   "id": "2",
+   "ring": [
+    [
+     30.5,
+     6
+    ],
+    [
+     39.5,
+     6
+    ],
+    [
+     39.5,
+     18
+    ],
+    [
+     30.5,
+     18
+    ]
+   ],
+   "centroid": [
+    35,
+    12
+   ],
+   "areaSqft": 1163,
+   "widthM": 9,
+   "depthM": 12,
+   "facing": "South",
+   "roadWidthM": 9
+  },
+  {
+   "id": "3",
+   "ring": [
+    [
+     39.5,
+     6
+    ],
+    [
+     48.5,
+     6
+    ],
+    [
+     48.5,
+     18
+    ],
+    [
+     39.5,
+     18
+    ]
+   ],
+   "centroid": [
+    44,
+    12
+   ],
+   "areaSqft": 1163,
+   "widthM": 9,
+   "depthM": 12,
+   "facing": "South",
+   "roadWidthM": 9
+  },
+  {
+   "id": "4",
+   "ring": [
+    [
+     48.5,
+     6
+    ],
+    [
+     57.5,
+     6
+    ],
+    [
+     57.5,
+     18
+    ],
+    [
+     48.5,
+     18
+    ]
+   ],
+   "centroid": [
+    53,
+    12
+   ],
+   "areaSqft": 1163,
+   "widthM": 9,
+   "depthM": 12,
+   "facing": "South",
+   "roadWidthM": 9
+  },
+  {
+   "id": "5",
+   "ring": [
+    [
+     57.5,
+     6
+    ],
+    [
+     66.5,
+     6
+    ],
+    [
+     66.5,
+     18
+    ],
+    [
+     57.5,
+     18
+    ]
+   ],
+   "centroid": [
+    62,
+    12
+   ],
+   "areaSqft": 1163,
+   "widthM": 9,
+   "depthM": 12,
+   "facing": "South",
+   "roadWidthM": 9
+  },
+  {
+   "id": "6",
+   "ring": [
+    [
+     66.5,
+     6
+    ],
+    [
+     75.5,
+     6
+    ],
+    [
+     75.5,
+     18
+    ],
+    [
+     66.5,
+     18
+    ]
+   ],
+   "centroid": [
+    71,
+    12
+   ],
+   "areaSqft": 1163,
+   "widthM": 9,
+   "depthM": 12,
+   "facing": "South",
+   "roadWidthM": 9
+  },
+  {
+   "id": "7",
+   "ring": [
+    [
+     75.5,
+     6
+    ],
+    [
+     84.5,
+     6
+    ],
+    [
+     84.5,
+     18
+    ],
+    [
+     75.5,
+     18
+    ]
+   ],
+   "centroid": [
+    80,
+    12
+   ],
+   "areaSqft": 1163,
+   "widthM": 9,
+   "depthM": 12,
+   "facing": "South",
+   "roadWidthM": 9
+  },
+  {
+   "id": "8",
+   "ring": [
+    [
+     84.5,
+     6
+    ],
+    [
+     93.5,
+     6
+    ],
+    [
+     93.5,
+     18
+    ],
+    [
+     84.5,
+     18
+    ]
+   ],
+   "centroid": [
+    89,
+    12
+   ],
+   "areaSqft": 1163,
+   "widthM": 9,
+   "depthM": 12,
+   "facing": "South",
+   "roadWidthM": 9
+  },
+  {
+   "id": "9",
+   "ring": [
+    [
+     93.5,
+     6
+    ],
+    [
+     102.5,
+     6
+    ],
+    [
+     102.5,
+     18
+    ],
+    [
+     93.5,
+     18
+    ]
+   ],
+   "centroid": [
+    98,
+    12
+   ],
+   "areaSqft": 1163,
+   "widthM": 9,
+   "depthM": 12,
+   "facing": "South",
+   "roadWidthM": 9
+  },
+  {
+   "id": "10",
+   "ring": [
+    [
+     102.5,
+     6
+    ],
+    [
+     111.5,
+     6
+    ],
+    [
+     111.5,
+     18
+    ],
+    [
+     102.5,
+     18
+    ]
+   ],
+   "centroid": [
+    107,
+    12
+   ],
+   "areaSqft": 1163,
+   "widthM": 9,
+   "depthM": 12,
+   "facing": "South",
+   "roadWidthM": 9
+  },
+  {
+   "id": "11",
+   "ring": [
+    [
+     111.5,
+     6
+    ],
+    [
+     120.5,
+     6
+    ],
+    [
+     120.5,
+     18
+    ],
+    [
+     111.5,
+     18
+    ]
+   ],
+   "centroid": [
+    116,
+    12
+   ],
+   "areaSqft": 1163,
+   "widthM": 9,
+   "depthM": 12,
+   "facing": "South",
+   "roadWidthM": 9
+  },
+  {
+   "id": "12",
+   "ring": [
+    [
+     21.5,
+     18
+    ],
+    [
+     30.5,
+     18
+    ],
+    [
+     30.5,
+     32
+    ],
+    [
+     21.5,
+     32
+    ]
+   ],
+   "centroid": [
+    26,
+    25
+   ],
+   "areaSqft": 1356,
+   "widthM": 9,
+   "depthM": 14,
+   "facing": "North",
+   "roadWidthM": 9
+  },
+  {
+   "id": "13",
+   "ring": [
+    [
+     30.5,
+     18
+    ],
+    [
+     39.5,
+     18
+    ],
+    [
+     39.5,
+     32
+    ],
+    [
+     30.5,
+     32
+    ]
+   ],
+   "centroid": [
+    35,
+    25
+   ],
+   "areaSqft": 1356,
+   "widthM": 9,
+   "depthM": 14,
+   "facing": "North",
+   "roadWidthM": 9
+  },
+  {
+   "id": "14",
+   "ring": [
+    [
+     39.5,
+     18
+    ],
+    [
+     48.5,
+     18
+    ],
+    [
+     48.5,
+     32
+    ],
+    [
+     39.5,
+     32
+    ]
+   ],
+   "centroid": [
+    44,
+    25
+   ],
+   "areaSqft": 1356,
+   "widthM": 9,
+   "depthM": 14,
+   "facing": "North",
+   "roadWidthM": 9
+  },
+  {
+   "id": "15",
+   "ring": [
+    [
+     48.5,
+     18
+    ],
+    [
+     57.5,
+     18
+    ],
+    [
+     57.5,
+     32
+    ],
+    [
+     48.5,
+     32
+    ]
+   ],
+   "centroid": [
+    53,
+    25
+   ],
+   "areaSqft": 1356,
+   "widthM": 9,
+   "depthM": 14,
+   "facing": "North",
+   "roadWidthM": 9
+  },
+  {
+   "id": "16",
+   "ring": [
+    [
+     57.5,
+     18
+    ],
+    [
+     66.5,
+     18
+    ],
+    [
+     66.5,
+     32
+    ],
+    [
+     57.5,
+     32
+    ]
+   ],
+   "centroid": [
+    62,
+    25
+   ],
+   "areaSqft": 1356,
+   "widthM": 9,
+   "depthM": 14,
+   "facing": "North",
+   "roadWidthM": 9
+  },
+  {
+   "id": "17",
+   "ring": [
+    [
+     66.5,
+     18
+    ],
+    [
+     75.5,
+     18
+    ],
+    [
+     75.5,
+     32
+    ],
+    [
+     66.5,
+     32
+    ]
+   ],
+   "centroid": [
+    71,
+    25
+   ],
+   "areaSqft": 1356,
+   "widthM": 9,
+   "depthM": 14,
+   "facing": "North",
+   "roadWidthM": 9
+  },
+  {
+   "id": "18",
+   "ring": [
+    [
+     75.5,
+     18
+    ],
+    [
+     84.5,
+     18
+    ],
+    [
+     84.5,
+     32
+    ],
+    [
+     75.5,
+     32
+    ]
+   ],
+   "centroid": [
+    80,
+    25
+   ],
+   "areaSqft": 1356,
+   "widthM": 9,
+   "depthM": 14,
+   "facing": "North",
+   "roadWidthM": 9
+  },
+  {
+   "id": "19",
+   "ring": [
+    [
+     84.5,
+     18
+    ],
+    [
+     93.5,
+     18
+    ],
+    [
+     93.5,
+     32
+    ],
+    [
+     84.5,
+     32
+    ]
+   ],
+   "centroid": [
+    89,
+    25
+   ],
+   "areaSqft": 1356,
+   "widthM": 9,
+   "depthM": 14,
+   "facing": "North",
+   "roadWidthM": 9
+  },
+  {
+   "id": "20",
+   "ring": [
+    [
+     93.5,
+     18
+    ],
+    [
+     102.5,
+     18
+    ],
+    [
+     102.5,
+     32
+    ],
+    [
+     93.5,
+     32
+    ]
+   ],
+   "centroid": [
+    98,
+    25
+   ],
+   "areaSqft": 1356,
+   "widthM": 9,
+   "depthM": 14,
+   "facing": "North",
+   "roadWidthM": 9
+  },
+  {
+   "id": "21",
+   "ring": [
+    [
+     102.5,
+     18
+    ],
+    [
+     111.5,
+     18
+    ],
+    [
+     111.5,
+     32
+    ],
+    [
+     102.5,
+     32
+    ]
+   ],
+   "centroid": [
+    107,
+    25
+   ],
+   "areaSqft": 1356,
+   "widthM": 9,
+   "depthM": 14,
+   "facing": "North",
+   "roadWidthM": 9
+  },
+  {
+   "id": "22",
+   "ring": [
+    [
+     111.5,
+     18
+    ],
+    [
+     120.5,
+     18
+    ],
+    [
+     120.5,
+     32
+    ],
+    [
+     111.5,
+     32
+    ]
+   ],
+   "centroid": [
+    116,
+    25
+   ],
+   "areaSqft": 1356,
+   "widthM": 9,
+   "depthM": 14,
+   "facing": "North",
+   "roadWidthM": 9
+  },
+  {
+   "id": "23",
+   "ring": [
+    [
+     13.25,
+     41
+    ],
+    [
+     23.75,
+     41
+    ],
+    [
+     23.75,
+     56
+    ],
+    [
+     13.25,
+     56
+    ]
+   ],
+   "centroid": [
+    18.5,
+    48.5
+   ],
+   "areaSqft": 1695,
+   "widthM": 10.5,
+   "depthM": 15,
+   "facing": "South",
+   "roadWidthM": 9
+  },
+  {
+   "id": "24",
+   "ring": [
+    [
+     23.75,
+     41
+    ],
+    [
+     34.25,
+     41
+    ],
+    [
+     34.25,
+     56
+    ],
+    [
+     23.75,
+     56
+    ]
+   ],
+   "centroid": [
+    29,
+    48.5
+   ],
+   "areaSqft": 1695,
+   "widthM": 10.5,
+   "depthM": 15,
+   "facing": "South",
+   "roadWidthM": 9
+  },
+  {
+   "id": "25",
+   "ring": [
+    [
+     34.25,
+     41
+    ],
+    [
+     44.75,
+     41
+    ],
+    [
+     44.75,
+     56
+    ],
+    [
+     34.25,
+     56
+    ]
+   ],
+   "centroid": [
+    39.5,
+    48.5
+   ],
+   "areaSqft": 1695,
+   "widthM": 10.5,
+   "depthM": 15,
+   "facing": "South",
+   "roadWidthM": 9
+  },
+  {
+   "id": "26",
+   "ring": [
+    [
+     44.75,
+     41
+    ],
+    [
+     55.25,
+     41
+    ],
+    [
+     55.25,
+     56
+    ],
+    [
+     44.75,
+     56
+    ]
+   ],
+   "centroid": [
+    50,
+    48.5
+   ],
+   "areaSqft": 1695,
+   "widthM": 10.5,
+   "depthM": 15,
+   "facing": "South",
+   "roadWidthM": 9
+  },
+  {
+   "id": "27",
+   "ring": [
+    [
+     55.25,
+     41
+    ],
+    [
+     65.75,
+     41
+    ],
+    [
+     65.75,
+     56
+    ],
+    [
+     55.25,
+     56
+    ]
+   ],
+   "centroid": [
+    60.5,
+    48.5
+   ],
+   "areaSqft": 1695,
+   "widthM": 10.5,
+   "depthM": 15,
+   "facing": "South",
+   "roadWidthM": 9
+  },
+  {
+   "id": "28",
+   "ring": [
+    [
+     65.75,
+     41
+    ],
+    [
+     76.25,
+     41
+    ],
+    [
+     76.25,
+     56
+    ],
+    [
+     65.75,
+     56
+    ]
+   ],
+   "centroid": [
+    71,
+    48.5
+   ],
+   "areaSqft": 1695,
+   "widthM": 10.5,
+   "depthM": 15,
+   "facing": "South",
+   "roadWidthM": 9
+  },
+  {
+   "id": "29",
+   "ring": [
+    [
+     76.25,
+     41
+    ],
+    [
+     86.75,
+     41
+    ],
+    [
+     86.75,
+     56
+    ],
+    [
+     76.25,
+     56
+    ]
+   ],
+   "centroid": [
+    81.5,
+    48.5
+   ],
+   "areaSqft": 1695,
+   "widthM": 10.5,
+   "depthM": 15,
+   "facing": "South",
+   "roadWidthM": 9
+  },
+  {
+   "id": "30",
+   "ring": [
+    [
+     86.75,
+     41
+    ],
+    [
+     97.25,
+     41
+    ],
+    [
+     97.25,
+     56
+    ],
+    [
+     86.75,
+     56
+    ]
+   ],
+   "centroid": [
+    92,
+    48.5
+   ],
+   "areaSqft": 1695,
+   "widthM": 10.5,
+   "depthM": 15,
+   "facing": "South",
+   "roadWidthM": 9
+  },
+  {
+   "id": "31",
+   "ring": [
+    [
+     97.25,
+     41
+    ],
+    [
+     107.75,
+     41
+    ],
+    [
+     107.75,
+     56
+    ],
+    [
+     97.25,
+     56
+    ]
+   ],
+   "centroid": [
+    102.5,
+    48.5
+   ],
+   "areaSqft": 1695,
+   "widthM": 10.5,
+   "depthM": 15,
+   "facing": "South",
+   "roadWidthM": 9
+  },
+  {
+   "id": "32",
+   "ring": [
+    [
+     107.75,
+     41
+    ],
+    [
+     118.25,
+     41
+    ],
+    [
+     118.25,
+     56
+    ],
+    [
+     107.75,
+     56
+    ]
+   ],
+   "centroid": [
+    113,
+    48.5
+   ],
+   "areaSqft": 1695,
+   "widthM": 10.5,
+   "depthM": 15,
+   "facing": "South",
+   "roadWidthM": 9
+  },
+  {
+   "id": "33",
+   "ring": [
+    [
+     118.25,
+     41
+    ],
+    [
+     128.75,
+     41
+    ],
+    [
+     128.75,
+     56
+    ],
+    [
+     118.25,
+     56
+    ]
+   ],
+   "centroid": [
+    123.5,
+    48.5
+   ],
+   "areaSqft": 1695,
+   "widthM": 10.5,
+   "depthM": 15,
+   "facing": "South",
+   "roadWidthM": 9
+  },
+  {
+   "id": "34",
+   "ring": [
+    [
+     11,
+     56
+    ],
+    [
+     23,
+     56
+    ],
+    [
+     23,
+     75.3
+    ],
+    [
+     11,
+     75.3
+    ]
+   ],
+   "centroid": [
+    17,
+    65.65
+   ],
+   "areaSqft": 2493,
+   "widthM": 12,
+   "depthM": 19.3,
+   "facing": "North",
+   "roadWidthM": 9
+  },
+  {
+   "id": "35",
+   "ring": [
+    [
+     23,
+     56
+    ],
+    [
+     35,
+     56
+    ],
+    [
+     35,
+     75.3
+    ],
+    [
+     23,
+     75.3
+    ]
+   ],
+   "centroid": [
+    29,
+    65.65
+   ],
+   "areaSqft": 2493,
+   "widthM": 12,
+   "depthM": 19.3,
+   "facing": "North",
+   "roadWidthM": 9
+  },
+  {
+   "id": "36",
+   "ring": [
+    [
+     35,
+     56
+    ],
+    [
+     47,
+     56
+    ],
+    [
+     47,
+     75.3
+    ],
+    [
+     35,
+     75.3
+    ]
+   ],
+   "centroid": [
+    41,
+    65.65
+   ],
+   "areaSqft": 2493,
+   "widthM": 12,
+   "depthM": 19.3,
+   "facing": "North",
+   "roadWidthM": 9
+  },
+  {
+   "id": "37",
+   "ring": [
+    [
+     47,
+     56
+    ],
+    [
+     59,
+     56
+    ],
+    [
+     59,
+     75.3
+    ],
+    [
+     47,
+     75.3
+    ]
+   ],
+   "centroid": [
+    53,
+    65.65
+   ],
+   "areaSqft": 2493,
+   "widthM": 12,
+   "depthM": 19.3,
+   "facing": "North",
+   "roadWidthM": 9
+  },
+  {
+   "id": "38",
+   "ring": [
+    [
+     59,
+     56
+    ],
+    [
+     71,
+     56
+    ],
+    [
+     71,
+     75.3
+    ],
+    [
+     59,
+     75.3
+    ]
+   ],
+   "centroid": [
+    65,
+    65.65
+   ],
+   "areaSqft": 2493,
+   "widthM": 12,
+   "depthM": 19.3,
+   "facing": "North",
+   "roadWidthM": 9
+  },
+  {
+   "id": "39",
+   "ring": [
+    [
+     71,
+     56
+    ],
+    [
+     83,
+     56
+    ],
+    [
+     83,
+     75.3
+    ],
+    [
+     71,
+     75.3
+    ]
+   ],
+   "centroid": [
+    77,
+    65.65
+   ],
+   "areaSqft": 2493,
+   "widthM": 12,
+   "depthM": 19.3,
+   "facing": "North",
+   "roadWidthM": 9
+  },
+  {
+   "id": "40",
+   "ring": [
+    [
+     83,
+     56
+    ],
+    [
+     95,
+     56
+    ],
+    [
+     95,
+     75.3
+    ],
+    [
+     83,
+     75.3
+    ]
+   ],
+   "centroid": [
+    89,
+    65.65
+   ],
+   "areaSqft": 2493,
+   "widthM": 12,
+   "depthM": 19.3,
+   "facing": "North",
+   "roadWidthM": 9
+  },
+  {
+   "id": "41",
+   "ring": [
+    [
+     95,
+     56
+    ],
+    [
+     107,
+     56
+    ],
+    [
+     107,
+     75.3
+    ],
+    [
+     95,
+     75.3
+    ]
+   ],
+   "centroid": [
+    101,
+    65.65
+   ],
+   "areaSqft": 2493,
+   "widthM": 12,
+   "depthM": 19.3,
+   "facing": "North",
+   "roadWidthM": 9
+  },
+  {
+   "id": "42",
+   "ring": [
+    [
+     107,
+     56
+    ],
+    [
+     119,
+     56
+    ],
+    [
+     119,
+     75.3
+    ],
+    [
+     107,
+     75.3
+    ]
+   ],
+   "centroid": [
+    113,
+    65.65
+   ],
+   "areaSqft": 2493,
+   "widthM": 12,
+   "depthM": 19.3,
+   "facing": "North",
+   "roadWidthM": 9
+  },
+  {
+   "id": "43",
+   "ring": [
+    [
+     119,
+     56
+    ],
+    [
+     131,
+     56
+    ],
+    [
+     131,
+     75.3
+    ],
+    [
+     119,
+     75.3
+    ]
+   ],
+   "centroid": [
+    125,
+    65.65
+   ],
+   "areaSqft": 2493,
+   "widthM": 12,
+   "depthM": 19.3,
+   "facing": "North",
+   "roadWidthM": 9
+  }
+ ],
+ "amenityPoints": [
+  {
+   "id": "landscaped-garden",
+   "name": "Landscaped garden",
+   "point": [
+    38.5,
+    88.3
+   ]
+  },
+  {
+   "id": "green-walkways",
+   "name": "Green walkways",
+   "point": [
+    71,
+    88.3
+   ]
+  },
+  {
+   "id": "sewage-treatment-plant",
+   "name": "Sewage treatment plant",
+   "point": [
+    103.5,
+    88.3
+   ]
+  }
+ ],
+ "planting": [
+  {
+   "point": [
+    26,
+    16.8
+   ],
+   "kind": "tree",
+   "matureRadiusM": 3.2
+  },
+  {
+   "point": [
+    35,
+    16.8
+   ],
+   "kind": "tree",
+   "matureRadiusM": 3.2
+  },
+  {
+   "point": [
+    44,
+    16.8
+   ],
+   "kind": "tree",
+   "matureRadiusM": 3.2
+  },
+  {
+   "point": [
+    53,
+    16.8
+   ],
+   "kind": "tree",
+   "matureRadiusM": 3.2
+  },
+  {
+   "point": [
+    62,
+    16.8
+   ],
+   "kind": "tree",
+   "matureRadiusM": 3.2
+  },
+  {
+   "point": [
+    71,
+    16.8
+   ],
+   "kind": "tree",
+   "matureRadiusM": 3.2
+  },
+  {
+   "point": [
+    80,
+    16.8
+   ],
+   "kind": "tree",
+   "matureRadiusM": 3.2
+  },
+  {
+   "point": [
+    89,
+    16.8
+   ],
+   "kind": "tree",
+   "matureRadiusM": 3.2
+  },
+  {
+   "point": [
+    98,
+    16.8
+   ],
+   "kind": "tree",
+   "matureRadiusM": 3.2
+  },
+  {
+   "point": [
+    107,
+    16.8
+   ],
+   "kind": "tree",
+   "matureRadiusM": 3.2
+  },
+  {
+   "point": [
+    116,
+    16.8
+   ],
+   "kind": "tree",
+   "matureRadiusM": 3.2
+  },
+  {
+   "point": [
+    26,
+    20.2
+   ],
+   "kind": "tree",
+   "matureRadiusM": 3.2
+  },
+  {
+   "point": [
+    35,
+    20.2
+   ],
+   "kind": "tree",
+   "matureRadiusM": 3.2
+  },
+  {
+   "point": [
+    44,
+    20.2
+   ],
+   "kind": "tree",
+   "matureRadiusM": 3.2
+  },
+  {
+   "point": [
+    53,
+    20.2
+   ],
+   "kind": "tree",
+   "matureRadiusM": 3.2
+  },
+  {
+   "point": [
+    62,
+    20.2
+   ],
+   "kind": "tree",
+   "matureRadiusM": 3.2
+  },
+  {
+   "point": [
+    71,
+    20.2
+   ],
+   "kind": "tree",
+   "matureRadiusM": 3.2
+  },
+  {
+   "point": [
+    80,
+    20.2
+   ],
+   "kind": "tree",
+   "matureRadiusM": 3.2
+  },
+  {
+   "point": [
+    89,
+    20.2
+   ],
+   "kind": "tree",
+   "matureRadiusM": 3.2
+  },
+  {
+   "point": [
+    98,
+    20.2
+   ],
+   "kind": "tree",
+   "matureRadiusM": 3.2
+  },
+  {
+   "point": [
+    107,
+    20.2
+   ],
+   "kind": "tree",
+   "matureRadiusM": 3.2
+  },
+  {
+   "point": [
+    116,
+    20.2
+   ],
+   "kind": "tree",
+   "matureRadiusM": 3.2
+  },
+  {
+   "point": [
+    18.5,
+    53.3
+   ],
+   "kind": "tree",
+   "matureRadiusM": 3.2
+  },
+  {
+   "point": [
+    29,
+    53.3
+   ],
+   "kind": "tree",
+   "matureRadiusM": 3.2
+  },
+  {
+   "point": [
+    39.5,
+    53.3
+   ],
+   "kind": "tree",
+   "matureRadiusM": 3.2
+  },
+  {
+   "point": [
+    50,
+    53.3
+   ],
+   "kind": "tree",
+   "matureRadiusM": 3.2
+  },
+  {
+   "point": [
+    60.5,
+    53.3
+   ],
+   "kind": "tree",
+   "matureRadiusM": 3.2
+  },
+  {
+   "point": [
+    71,
+    53.3
+   ],
+   "kind": "tree",
+   "matureRadiusM": 3.2
+  },
+  {
+   "point": [
+    81.5,
+    53.3
+   ],
+   "kind": "tree",
+   "matureRadiusM": 3.2
+  },
+  {
+   "point": [
+    92,
+    53.3
+   ],
+   "kind": "tree",
+   "matureRadiusM": 3.2
+  },
+  {
+   "point": [
+    102.5,
+    53.3
+   ],
+   "kind": "tree",
+   "matureRadiusM": 3.2
+  },
+  {
+   "point": [
+    113,
+    53.3
+   ],
+   "kind": "tree",
+   "matureRadiusM": 3.2
+  },
+  {
+   "point": [
+    123.5,
+    53.3
+   ],
+   "kind": "tree",
+   "matureRadiusM": 3.2
+  },
+  {
+   "point": [
+    17,
+    60.85
+   ],
+   "kind": "tree",
+   "matureRadiusM": 3.2
+  },
+  {
+   "point": [
+    29,
+    60.85
+   ],
+   "kind": "tree",
+   "matureRadiusM": 3.2
+  },
+  {
+   "point": [
+    41,
+    60.85
+   ],
+   "kind": "tree",
+   "matureRadiusM": 3.2
+  },
+  {
+   "point": [
+    53,
+    60.85
+   ],
+   "kind": "tree",
+   "matureRadiusM": 3.2
+  },
+  {
+   "point": [
+    65,
+    60.85
+   ],
+   "kind": "tree",
+   "matureRadiusM": 3.2
+  },
+  {
+   "point": [
+    77,
+    60.85
+   ],
+   "kind": "tree",
+   "matureRadiusM": 3.2
+  },
+  {
+   "point": [
+    89,
+    60.85
+   ],
+   "kind": "tree",
+   "matureRadiusM": 3.2
+  },
+  {
+   "point": [
+    101,
+    60.85
+   ],
+   "kind": "tree",
+   "matureRadiusM": 3.2
+  },
+  {
+   "point": [
+    113,
+    60.85
+   ],
+   "kind": "tree",
+   "matureRadiusM": 3.2
+  },
+  {
+   "point": [
+    125,
+    60.85
+   ],
+   "kind": "tree",
+   "matureRadiusM": 3.2
+  },
+  {
+   "point": [
+    20,
+    1.5
+   ],
+   "kind": "shrub",
+   "matureRadiusM": 1.6
+  },
+  {
+   "point": [
+    42,
+    1.5
+   ],
+   "kind": "shrub",
+   "matureRadiusM": 1.6
+  },
+  {
+   "point": [
+    64,
+    1.5
+   ],
+   "kind": "shrub",
+   "matureRadiusM": 1.6
+  },
+  {
+   "point": [
+    86,
+    1.5
+   ],
+   "kind": "shrub",
+   "matureRadiusM": 1.6
+  },
+  {
+   "point": [
+    108,
+    1.5
+   ],
+   "kind": "shrub",
+   "matureRadiusM": 1.6
+  },
+  {
+   "point": [
+    130,
+    1.5
+   ],
+   "kind": "shrub",
+   "matureRadiusM": 1.6
+  },
+  {
+   "point": [
+    20,
+    36.5
+   ],
+   "kind": "shrub",
+   "matureRadiusM": 1.6
+  },
+  {
+   "point": [
+    42,
+    36.5
+   ],
+   "kind": "shrub",
+   "matureRadiusM": 1.6
+  },
+  {
+   "point": [
+    64,
+    36.5
+   ],
+   "kind": "shrub",
+   "matureRadiusM": 1.6
+  },
+  {
+   "point": [
+    86,
+    36.5
+   ],
+   "kind": "shrub",
+   "matureRadiusM": 1.6
+  },
+  {
+   "point": [
+    108,
+    36.5
+   ],
+   "kind": "shrub",
+   "matureRadiusM": 1.6
+  },
+  {
+   "point": [
+    130,
+    36.5
+   ],
+   "kind": "shrub",
+   "matureRadiusM": 1.6
+  }
+ ]
+}

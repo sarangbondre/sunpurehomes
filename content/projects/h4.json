@@ -1,0 +1,122 @@
+{
+  "slug": "h4",
+  "name": "H4",
+  "type": "villa",
+  "status": "ongoing",
+  "tagline": "A villa community planned around its planting.",
+  "description": "H4 is a villa development in Vijayanagar 4th Stage, currently under way. It is planned as a low-density community with more than five thousand plants, rainwater harvesting, and homes laid out for cross-ventilation and daylight.",
+  "location": {
+    "label": "Vijayanagar 4th Stage",
+    "addressLines": [
+      "Vijayanagar 4th Stage",
+      "Basavanahalli",
+      "Mysuru, Karnataka 570032"
+    ]
+  },
+  "scale": {
+    "unitCount": 51,
+    "unitNoun": "villas"
+  },
+  "configurations": [
+    {
+      "label": "3 BHK"
+    }
+  ],
+  "compliance": {
+    "reraAuthorityUrl": "https://rera.karnataka.gov.in",
+    "reraNumber": "PRM/KA/RERA/1268/378/PR/090124/006102",
+    "reraProvenance": "placeholder"
+  },
+  "amenities": [
+    {
+      "name": "Over 5,000 plants across a landscaped setting"
+    },
+    {
+      "name": "Rainwater harvesting"
+    },
+    {
+      "name": "Naturally lit, cross-ventilated homes"
+    },
+    {
+      "name": "Private villa outdoor space"
+    },
+    {
+      "name": "Units with and without a lift"
+    },
+    {
+      "name": "Sustainable site planning"
+    }
+  ],
+  "specifications": [
+    {
+      "group": "Flooring",
+      "items": [
+        "Engineered marble or vitrified tiles"
+      ]
+    },
+    {
+      "group": "Doors & windows",
+      "items": [
+        "Natural wood laminate finish"
+      ]
+    },
+    {
+      "group": "Electrical",
+      "items": [
+        "ISI-approved materials"
+      ]
+    },
+    {
+      "group": "Plumbing & sanitary",
+      "items": [
+        "Jaquar, Kohler or equivalent fittings"
+      ]
+    },
+    {
+      "group": "Other",
+      "items": [
+        "Asian Paints, Berger, JSW or equivalent premium paints",
+        "Customisable upgrades available"
+      ]
+    }
+  ],
+  "connectivity": [],
+  "gallery": [
+    {
+      "src": "/images/projects/h4/hero.avif",
+      "alt": "An H4 villa in pale stone and glass, planting spilling from its upper terraces."
+    },
+    {
+      "src": "/images/projects/h4/gallery-1.avif",
+      "alt": "A corner H4 villa with deep balconies and a planted roof terrace."
+    },
+    {
+      "src": "/images/projects/h4/gallery-2.avif",
+      "alt": "An H4 villa seen through surrounding trees, greenery on every level."
+    },
+    {
+      "src": "/images/projects/h4/gallery-3.avif",
+      "alt": "Two H4 villas side by side, linked by a planted walkway."
+    },
+    {
+      "src": "/images/projects/h4/gallery-4.avif",
+      "alt": "A living room inside an H4 villa, opening to a covered terrace."
+    },
+    {
+      "src": "/images/projects/h4/gallery-5.avif",
+      "alt": "A shaded pathway running between the H4 villas."
+    },
+    {
+      "src": "/images/projects/h4/gallery-6.avif",
+      "alt": "An H4 villa frontage with timber screening and mature planting."
+    }
+  ],
+  "contentWarnings": [
+    "RERA number is a PLACEHOLDER for development. It is not a real registration and has not been checked against the Karnataka register. The page labels it unverified and the project stays out of the sitemap until reraProvenance is set to \"verified\".",
+    "Type conflict. The live site heads this project '3BHK Apartments' while its own body copy calls it a villa community. Recorded here as villas, per the brief. Client to confirm.",
+    "Status conflict. The brief records H4 as ongoing; the live site calls it 'an upcoming project'. Recorded as ongoing. Client to confirm.",
+    "Location was recorded as unstated in the brief, but the live project page gives Vijayanagar 4th Stage, Basavanahalli 570032. Carried over from the live site and needs confirmation.",
+    "Specifications are word-for-word identical to Rare Earth's, a plotted development. Plausible for a villa but likely copied. Client to confirm.",
+    "Connectivity omitted — see the note on the shared connectivity list across seven projects."
+  ]
+}
