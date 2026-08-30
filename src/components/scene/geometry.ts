@@ -141,3 +141,28 @@ export function sunDirection(hour: number): [number, number, number] {
   const altitude = Math.sin(Math.PI * t) * 1.15; // peak near noon
   return [Math.cos(azimuth), Math.max(Math.sin(altitude), 0.06), -0.35];
 }
+
+/**
+ * A gable roof as a unit prism: 1×1 footprint, ridge at y=1 running along z.
+ * Built once and instanced, so a cluster of villas is one draw call.
+ */
+export function gableRoofGeometry() {
+  const a = [-0.5, 0, -0.5], b = [0.5, 0, -0.5];
+  const c = [0.5, 0, 0.5], d = [-0.5, 0, 0.5];
+  const r0 = [0, 1, -0.5], r1 = [0, 1, 0.5];
+
+  const tri = (...pts: number[][]) => pts.flat();
+  const positions = new Float32Array([
+    // west slope
+    ...tri(a, d, r1), ...tri(a, r1, r0),
+    // east slope
+    ...tri(b, r0, r1), ...tri(b, r1, c),
+    // gable ends
+    ...tri(a, r0, b), ...tri(d, c, r1),
+  ]);
+
+  const geometry = new THREE.BufferGeometry();
+  geometry.setAttribute("position", new THREE.BufferAttribute(positions, 3));
+  geometry.computeVertexNormals();
+  return geometry;
+}

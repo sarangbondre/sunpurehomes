@@ -120,6 +120,7 @@ export default async function ProjectPage({
               projectSlug={project.slug}
               unitNoun={unitNoun}
               unitNounSingular={singularNoun(unitNoun)}
+              publishedAcres={project.scale.acres}
             />
             <p className="mt-8">
               <Link

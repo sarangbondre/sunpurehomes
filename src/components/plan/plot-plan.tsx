@@ -39,6 +39,7 @@ export function PlotPlan({
   onSelect,
   filter,
   unitNoun,
+  visibleFloor,
 }: {
   scene: Scene;
   availability?: Availability;
@@ -46,6 +47,11 @@ export function PlotPlan({
   onSelect: (unitId: string | null) => void;
   filter: StatusFilter;
   unitNoun: string;
+  /**
+   * Apartment storeys share a plan footprint, so the 2D plan can only show
+   * one at a time. Null for plots and villas, which are laid side by side.
+   */
+  visibleFloor?: number | null;
 }) {
   const { width, depth } = scene.extent;
   const [focusId, setFocusId] = useState<string>(
@@ -67,6 +73,17 @@ export function PlotPlan({
     [filter, statusFor],
   );
 
+  const onThisFloor = useCallback(
+    (unit: SceneUnit) =>
+      visibleFloor === null || visibleFloor === undefined || unit.floor === visibleFloor,
+    [visibleFloor],
+  );
+
+  const drawn = useMemo(
+    () => scene.units.filter(onThisFloor),
+    [scene.units, onThisFloor],
+  );
+
   const byId = useMemo(
     () => new Map(scene.units.map((u) => [u.id, u])),
     [scene.units],
@@ -80,7 +97,7 @@ export function PlotPlan({
     (from: SceneUnit, dx: number, dy: number): SceneUnit | undefined => {
       let best: SceneUnit | undefined;
       let bestScore = Infinity;
-      for (const unit of scene.units) {
+      for (const unit of drawn) {
         if (unit.id === from.id) continue;
         const ox = unit.centroid[0] - from.centroid[0];
         const oy = unit.centroid[1] - from.centroid[1];
@@ -95,7 +112,7 @@ export function PlotPlan({
       }
       return best;
     },
-    [scene.units],
+    [drawn],
   );
 
   const onKeyDown = (e: React.KeyboardEvent<SVGSVGElement>) => {
@@ -174,7 +191,7 @@ export function PlotPlan({
           />
         ))}
 
-        {scene.units.map((unit) => {
+        {drawn.map((unit) => {
           const status = statusFor(unit.id);
           const dim = !matches(unit);
           const isSelected = unit.id === selectedId;

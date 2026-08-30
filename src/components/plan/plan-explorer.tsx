@@ -15,6 +15,7 @@ import {
   UNKNOWN_LABEL,
 } from "@/lib/scene-display";
 import { useShortlist } from "@/lib/shortlist";
+import { withArticle } from "@/lib/nouns";
 
 /**
  * Orchestrates the plan: filters, selection, the drawer, the shortlist, and
@@ -31,6 +32,7 @@ export function PlanExplorer({
   unitNounSingular,
   initialUnitId = null,
   syncUrl = false,
+  publishedAcres,
 }: {
   scene: Scene;
   availability?: Availability;
@@ -47,6 +49,12 @@ export function PlanExplorer({
   initialUnitId?: string | null;
   /** Only the dedicated /plan route owns the query string. */
   syncUrl?: boolean;
+  /**
+   * Only what the project actually publishes. The site extent is generated,
+   * so deriving an acreage from it would state a figure for projects that
+   * have never published one.
+   */
+  publishedAcres?: number;
 }) {
   const pathname = usePathname();
   const hydrate = useShortlist((s) => s.hydrate);
@@ -66,6 +74,11 @@ export function PlanExplorer({
   const [view, setView] = useState<"plan" | "scene">("plan");
   const dropToPlan = useCallback(() => setView("plan"), []);
 
+  // Apartment storeys overlap in plan, so one is shown at a time.
+  const stacked = (scene.levels ?? 1) > 1;
+  const [floor, setFloor] = useState<number>(0);
+  const visibleFloor = stacked ? floor : null;
+
   const byId = useMemo(
     () => new Map(scene.units.map((u) => [u.id, u])),
     [scene.units],
@@ -81,6 +94,15 @@ export function PlanExplorer({
   }, [initialUnitId, byId]);
 
   const selected = selectedId ? byId.get(selectedId) : undefined;
+
+  /**
+   * Selecting in 3D, or arriving on a shared link, can land on a unit that is
+   * not on the storey the plan is showing. Follow the selection rather than
+   * leave the plan and the drawer disagreeing about what is on screen.
+   */
+  useEffect(() => {
+    if (selected?.floor !== undefined) setFloor(selected.floor);
+  }, [selected]);
 
   const select = useCallback(
     (unitId: string | null) => {
@@ -116,11 +138,11 @@ export function PlanExplorer({
           <strong className="font-semibold">Indicative layout.</strong>{" "}
           {unitNounSingular} positions, sizes and orientations on this plan are
           generated to match the published totals — {scene.units.length}{" "}
-          {unitNoun} on{" "}
-          {((scene.extent.width * scene.extent.depth) / 4046.86).toFixed(1)}{" "}
-          acres — and are not a surveyed drawing. Confirm any{" "}
-          {unitNounSingular.toLowerCase()} with the sales team before relying
-          on it.
+          {unitNoun}
+          {publishedAcres ? ` on ${publishedAcres} acres` : ""}
+          {stacked ? ` across ${scene.levels} floors` : ""} — and are not a
+          surveyed drawing. Confirm any {unitNounSingular.toLowerCase()} with
+          the sales team before relying on it.
         </p>
       )}
       {availability?.provenance === "placeholder" && (
@@ -150,6 +172,36 @@ export function PlanExplorer({
           </button>
         ))}
       </div>
+
+      {stacked && (
+        <div className="flex flex-wrap items-center gap-3">
+          <h3 className="u-mono w-20 shrink-0 text-muted">Floor</h3>
+          {Array.from({ length: scene.levels ?? 1 }, (_, i) => i).map((f) => {
+            const active = floor === f;
+            const count = scene.units.filter((u) => u.floor === f).length;
+            return (
+              <button
+                key={f}
+                type="button"
+                onClick={() => setFloor(f)}
+                aria-pressed={active}
+                className={[
+                  "u-mono inline-flex items-center gap-2 rounded-full border px-4 py-2",
+                  "transition-colors duration-hover ease-hover",
+                  active
+                    ? "border-ink bg-ink text-paper"
+                    : "border-line bg-paper text-ink hover:border-ink",
+                ].join(" ")}
+              >
+                {f === 0 ? "Ground" : `Floor ${f}`}
+                <span className={active ? "text-paper/60" : "text-muted"}>
+                  {count}
+                </span>
+              </button>
+            );
+          })}
+        </div>
+      )}
 
       {/* Filters */}
       <div className="flex flex-wrap items-center gap-3">
@@ -213,6 +265,8 @@ export function PlanExplorer({
               selectedId={selectedId}
               onSelect={select}
               filter={filter}
+              visibleFloor={visibleFloor}
+              unitNounSingular={unitNounSingular}
               onUnsupported={dropToPlan}
             />
           ) : (
@@ -223,6 +277,7 @@ export function PlanExplorer({
               onSelect={select}
               filter={filter}
               unitNoun={unitNoun}
+              visibleFloor={visibleFloor}
             />
           )}
 
@@ -233,10 +288,14 @@ export function PlanExplorer({
           */}
           <details className="mt-4 rounded-sm border border-line">
             <summary className="u-mono cursor-pointer px-5 py-4 text-ink">
-              All {scene.units.length} {unitNoun} as a list
+              {stacked
+                ? `${unitNounSingular}s on this floor as a list`
+                : `All ${scene.units.length} ${unitNoun} as a list`}
             </summary>
             <ul className="max-h-96 overflow-y-auto border-t border-line p-3">
-              {scene.units.map((u) => {
+              {scene.units
+                .filter((u) => visibleFloor === null || u.floor === visibleFloor)
+                .map((u) => {
                 const status = availability?.units[u.id];
                 return (
                   <li key={u.id}>
@@ -277,8 +336,8 @@ export function PlanExplorer({
             />
           ) : (
             <p className="rounded-sm border border-dashed border-line p-6 text-ink-soft">
-              Select a {unitNounSingular.toLowerCase()} on the plan to see its
-              dimensions, orientation and status.
+              Select {withArticle(unitNounSingular.toLowerCase())} on the plan
+              to see its dimensions, orientation and status.
             </p>
           )}
 

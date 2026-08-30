@@ -4,7 +4,7 @@ import { notFound } from "next/navigation";
 import { PlanExplorer } from "@/components/plan/plan-explorer";
 import { getProject, getProjectSlugs } from "@/lib/content";
 import { getAvailability, getScene, hasPlan } from "@/lib/scenes";
-import { singularNoun } from "@/lib/nouns";
+import { singularNoun, withArticle } from "@/lib/nouns";
 
 export function generateStaticParams() {
   return getProjectSlugs()
@@ -70,7 +70,7 @@ export default async function PlanPage({
         <p className="mt-5 text-lg leading-relaxed text-ink-soft">
           {scene.units.length} {noun}
           {project.scale.acres ? ` across ${project.scale.acres} acres` : ""}.
-          Select one to see its dimensions, orientation and status.
+          Select {withArticle(singularNoun(noun).toLowerCase())} to see its dimensions, orientation and status.
         </p>
       </header>
 
@@ -82,6 +82,7 @@ export default async function PlanPage({
           projectSlug={slug}
           unitNoun={noun}
           unitNounSingular={singularNoun(noun)}
+          publishedAcres={project.scale.acres}
           initialUnitId={initialUnitId}
           syncUrl
         />

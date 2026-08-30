@@ -1,0 +1,868 @@
+{
+ "slug": "blessed",
+ "kind": "apartment-block",
+ "provenance": "generated",
+ "extent": {
+  "width": 81.4,
+  "depth": 79.8
+ },
+ "boundary": [
+  [
+   0,
+   0
+  ],
+  [
+   81.4,
+   0
+  ],
+  [
+   81.4,
+   79.8
+  ],
+  [
+   0,
+   79.8
+  ]
+ ],
+ "levels": 5,
+ "levelHeightM": 3.1,
+ "roads": [
+  {
+   "id": "approach",
+   "name": "Approach",
+   "centreline": [
+    [
+     40.7,
+     0
+    ],
+    [
+     40.7,
+     22
+    ]
+   ],
+   "widthM": 7
+  }
+ ],
+ "openSpaces": [
+  {
+   "id": "podium",
+   "name": "Podium landscape",
+   "ring": [
+    [
+     15,
+     15
+    ],
+    [
+     66.4,
+     15
+    ],
+    [
+     66.4,
+     64.8
+    ],
+    [
+     15,
+     64.8
+    ]
+   ]
+  }
+ ],
+ "units": [
+  {
+   "id": "101",
+   "ring": [
+    [
+     26,
+     26
+    ],
+    [
+     38.2,
+     26
+    ],
+    [
+     38.2,
+     37.4
+    ],
+    [
+     26,
+     37.4
+    ]
+   ],
+   "centroid": [
+    32.1,
+    31.7
+   ],
+   "areaSqft": 1497,
+   "widthM": 12.2,
+   "depthM": 11.4,
+   "facing": "North",
+   "floor": 0
+  },
+  {
+   "id": "102",
+   "ring": [
+    [
+     43.2,
+     26
+    ],
+    [
+     55.4,
+     26
+    ],
+    [
+     55.4,
+     37.4
+    ],
+    [
+     43.2,
+     37.4
+    ]
+   ],
+   "centroid": [
+    49.3,
+    31.7
+   ],
+   "areaSqft": 1497,
+   "widthM": 12.2,
+   "depthM": 11.4,
+   "facing": "East",
+   "floor": 0
+  },
+  {
+   "id": "103",
+   "ring": [
+    [
+     26,
+     42.4
+    ],
+    [
+     38.2,
+     42.4
+    ],
+    [
+     38.2,
+     53.8
+    ],
+    [
+     26,
+     53.8
+    ]
+   ],
+   "centroid": [
+    32.1,
+    48.1
+   ],
+   "areaSqft": 1497,
+   "widthM": 12.2,
+   "depthM": 11.4,
+   "facing": "South",
+   "floor": 0
+  },
+  {
+   "id": "104",
+   "ring": [
+    [
+     43.2,
+     42.4
+    ],
+    [
+     55.4,
+     42.4
+    ],
+    [
+     55.4,
+     53.8
+    ],
+    [
+     43.2,
+     53.8
+    ]
+   ],
+   "centroid": [
+    49.3,
+    48.1
+   ],
+   "areaSqft": 1497,
+   "widthM": 12.2,
+   "depthM": 11.4,
+   "facing": "West",
+   "floor": 0
+  },
+  {
+   "id": "201",
+   "ring": [
+    [
+     26,
+     26
+    ],
+    [
+     38.2,
+     26
+    ],
+    [
+     38.2,
+     37.4
+    ],
+    [
+     26,
+     37.4
+    ]
+   ],
+   "centroid": [
+    32.1,
+    31.7
+   ],
+   "areaSqft": 1497,
+   "widthM": 12.2,
+   "depthM": 11.4,
+   "facing": "North",
+   "floor": 1
+  },
+  {
+   "id": "202",
+   "ring": [
+    [
+     43.2,
+     26
+    ],
+    [
+     55.4,
+     26
+    ],
+    [
+     55.4,
+     37.4
+    ],
+    [
+     43.2,
+     37.4
+    ]
+   ],
+   "centroid": [
+    49.3,
+    31.7
+   ],
+   "areaSqft": 1497,
+   "widthM": 12.2,
+   "depthM": 11.4,
+   "facing": "East",
+   "floor": 1
+  },
+  {
+   "id": "203",
+   "ring": [
+    [
+     26,
+     42.4
+    ],
+    [
+     38.2,
+     42.4
+    ],
+    [
+     38.2,
+     53.8
+    ],
+    [
+     26,
+     53.8
+    ]
+   ],
+   "centroid": [
+    32.1,
+    48.1
+   ],
+   "areaSqft": 1497,
+   "widthM": 12.2,
+   "depthM": 11.4,
+   "facing": "South",
+   "floor": 1
+  },
+  {
+   "id": "204",
+   "ring": [
+    [
+     43.2,
+     42.4
+    ],
+    [
+     55.4,
+     42.4
+    ],
+    [
+     55.4,
+     53.8
+    ],
+    [
+     43.2,
+     53.8
+    ]
+   ],
+   "centroid": [
+    49.3,
+    48.1
+   ],
+   "areaSqft": 1497,
+   "widthM": 12.2,
+   "depthM": 11.4,
+   "facing": "West",
+   "floor": 1
+  },
+  {
+   "id": "301",
+   "ring": [
+    [
+     26,
+     26
+    ],
+    [
+     38.2,
+     26
+    ],
+    [
+     38.2,
+     37.4
+    ],
+    [
+     26,
+     37.4
+    ]
+   ],
+   "centroid": [
+    32.1,
+    31.7
+   ],
+   "areaSqft": 1497,
+   "widthM": 12.2,
+   "depthM": 11.4,
+   "facing": "North",
+   "floor": 2
+  },
+  {
+   "id": "302",
+   "ring": [
+    [
+     43.2,
+     26
+    ],
+    [
+     55.4,
+     26
+    ],
+    [
+     55.4,
+     37.4
+    ],
+    [
+     43.2,
+     37.4
+    ]
+   ],
+   "centroid": [
+    49.3,
+    31.7
+   ],
+   "areaSqft": 1497,
+   "widthM": 12.2,
+   "depthM": 11.4,
+   "facing": "East",
+   "floor": 2
+  },
+  {
+   "id": "303",
+   "ring": [
+    [
+     26,
+     42.4
+    ],
+    [
+     38.2,
+     42.4
+    ],
+    [
+     38.2,
+     53.8
+    ],
+    [
+     26,
+     53.8
+    ]
+   ],
+   "centroid": [
+    32.1,
+    48.1
+   ],
+   "areaSqft": 1497,
+   "widthM": 12.2,
+   "depthM": 11.4,
+   "facing": "South",
+   "floor": 2
+  },
+  {
+   "id": "304",
+   "ring": [
+    [
+     43.2,
+     42.4
+    ],
+    [
+     55.4,
+     42.4
+    ],
+    [
+     55.4,
+     53.8
+    ],
+    [
+     43.2,
+     53.8
+    ]
+   ],
+   "centroid": [
+    49.3,
+    48.1
+   ],
+   "areaSqft": 1497,
+   "widthM": 12.2,
+   "depthM": 11.4,
+   "facing": "West",
+   "floor": 2
+  },
+  {
+   "id": "401",
+   "ring": [
+    [
+     26,
+     26
+    ],
+    [
+     38.2,
+     26
+    ],
+    [
+     38.2,
+     37.4
+    ],
+    [
+     26,
+     37.4
+    ]
+   ],
+   "centroid": [
+    32.1,
+    31.7
+   ],
+   "areaSqft": 1497,
+   "widthM": 12.2,
+   "depthM": 11.4,
+   "facing": "North",
+   "floor": 3
+  },
+  {
+   "id": "402",
+   "ring": [
+    [
+     43.2,
+     26
+    ],
+    [
+     55.4,
+     26
+    ],
+    [
+     55.4,
+     37.4
+    ],
+    [
+     43.2,
+     37.4
+    ]
+   ],
+   "centroid": [
+    49.3,
+    31.7
+   ],
+   "areaSqft": 1497,
+   "widthM": 12.2,
+   "depthM": 11.4,
+   "facing": "East",
+   "floor": 3
+  },
+  {
+   "id": "403",
+   "ring": [
+    [
+     26,
+     42.4
+    ],
+    [
+     38.2,
+     42.4
+    ],
+    [
+     38.2,
+     53.8
+    ],
+    [
+     26,
+     53.8
+    ]
+   ],
+   "centroid": [
+    32.1,
+    48.1
+   ],
+   "areaSqft": 1497,
+   "widthM": 12.2,
+   "depthM": 11.4,
+   "facing": "South",
+   "floor": 3
+  },
+  {
+   "id": "404",
+   "ring": [
+    [
+     43.2,
+     42.4
+    ],
+    [
+     55.4,
+     42.4
+    ],
+    [
+     55.4,
+     53.8
+    ],
+    [
+     43.2,
+     53.8
+    ]
+   ],
+   "centroid": [
+    49.3,
+    48.1
+   ],
+   "areaSqft": 1497,
+   "widthM": 12.2,
+   "depthM": 11.4,
+   "facing": "West",
+   "floor": 3
+  },
+  {
+   "id": "501",
+   "ring": [
+    [
+     26,
+     26
+    ],
+    [
+     38.2,
+     26
+    ],
+    [
+     38.2,
+     37.4
+    ],
+    [
+     26,
+     37.4
+    ]
+   ],
+   "centroid": [
+    32.1,
+    31.7
+   ],
+   "areaSqft": 1497,
+   "widthM": 12.2,
+   "depthM": 11.4,
+   "facing": "North",
+   "floor": 4
+  },
+  {
+   "id": "502",
+   "ring": [
+    [
+     43.2,
+     26
+    ],
+    [
+     55.4,
+     26
+    ],
+    [
+     55.4,
+     37.4
+    ],
+    [
+     43.2,
+     37.4
+    ]
+   ],
+   "centroid": [
+    49.3,
+    31.7
+   ],
+   "areaSqft": 1497,
+   "widthM": 12.2,
+   "depthM": 11.4,
+   "facing": "East",
+   "floor": 4
+  },
+  {
+   "id": "503",
+   "ring": [
+    [
+     26,
+     42.4
+    ],
+    [
+     38.2,
+     42.4
+    ],
+    [
+     38.2,
+     53.8
+    ],
+    [
+     26,
+     53.8
+    ]
+   ],
+   "centroid": [
+    32.1,
+    48.1
+   ],
+   "areaSqft": 1497,
+   "widthM": 12.2,
+   "depthM": 11.4,
+   "facing": "South",
+   "floor": 4
+  },
+  {
+   "id": "504",
+   "ring": [
+    [
+     43.2,
+     42.4
+    ],
+    [
+     55.4,
+     42.4
+    ],
+    [
+     55.4,
+     53.8
+    ],
+    [
+     43.2,
+     53.8
+    ]
+   ],
+   "centroid": [
+    49.3,
+    48.1
+   ],
+   "areaSqft": 1497,
+   "widthM": 12.2,
+   "depthM": 11.4,
+   "facing": "West",
+   "floor": 4
+  }
+ ],
+ "amenityPoints": [
+  {
+   "id": "gymnasium",
+   "name": "Gymnasium",
+   "point": [
+    68.4,
+    39.9
+   ]
+  },
+  {
+   "id": "community-hall",
+   "name": "Community hall",
+   "point": [
+    40.7,
+    66.8
+   ]
+  },
+  {
+   "id": "jogging-track",
+   "name": "Jogging track",
+   "point": [
+    13,
+    39.9
+   ]
+  },
+  {
+   "id": "children-s-play-area",
+   "name": "Children's play area",
+   "point": [
+    40.7,
+    13
+   ]
+  }
+ ],
+ "planting": [
+  {
+   "point": [
+    64.4,
+    39.9
+   ],
+   "kind": "tree",
+   "matureRadiusM": 3
+  },
+  {
+   "point": [
+    63.24,
+    46.98
+   ],
+   "kind": "shrub",
+   "matureRadiusM": 1.5
+  },
+  {
+   "point": [
+    59.87,
+    53.36
+   ],
+   "kind": "shrub",
+   "matureRadiusM": 1.5
+  },
+  {
+   "point": [
+    54.63,
+    58.43
+   ],
+   "kind": "tree",
+   "matureRadiusM": 3
+  },
+  {
+   "point": [
+    48.02,
+    61.68
+   ],
+   "kind": "shrub",
+   "matureRadiusM": 1.5
+  },
+  {
+   "point": [
+    40.7,
+    62.8
+   ],
+   "kind": "shrub",
+   "matureRadiusM": 1.5
+  },
+  {
+   "point": [
+    33.38,
+    61.68
+   ],
+   "kind": "tree",
+   "matureRadiusM": 3
+  },
+  {
+   "point": [
+    26.77,
+    58.43
+   ],
+   "kind": "shrub",
+   "matureRadiusM": 1.5
+  },
+  {
+   "point": [
+    21.53,
+    53.36
+   ],
+   "kind": "shrub",
+   "matureRadiusM": 1.5
+  },
+  {
+   "point": [
+    18.16,
+    46.98
+   ],
+   "kind": "tree",
+   "matureRadiusM": 3
+  },
+  {
+   "point": [
+    17,
+    39.9
+   ],
+   "kind": "shrub",
+   "matureRadiusM": 1.5
+  },
+  {
+   "point": [
+    18.16,
+    32.82
+   ],
+   "kind": "shrub",
+   "matureRadiusM": 1.5
+  },
+  {
+   "point": [
+    21.53,
+    26.44
+   ],
+   "kind": "tree",
+   "matureRadiusM": 3
+  },
+  {
+   "point": [
+    26.77,
+    21.37
+   ],
+   "kind": "shrub",
+   "matureRadiusM": 1.5
+  },
+  {
+   "point": [
+    33.38,
+    18.12
+   ],
+   "kind": "shrub",
+   "matureRadiusM": 1.5
+  },
+  {
+   "point": [
+    40.7,
+    17
+   ],
+   "kind": "tree",
+   "matureRadiusM": 3
+  },
+  {
+   "point": [
+    48.02,
+    18.12
+   ],
+   "kind": "shrub",
+   "matureRadiusM": 1.5
+  },
+  {
+   "point": [
+    54.63,
+    21.37
+   ],
+   "kind": "shrub",
+   "matureRadiusM": 1.5
+  },
+  {
+   "point": [
+    59.87,
+    26.44
+   ],
+   "kind": "tree",
+   "matureRadiusM": 3
+  },
+  {
+   "point": [
+    63.24,
+    32.82
+   ],
+   "kind": "shrub",
+   "matureRadiusM": 1.5
+  }
+ ]
+}

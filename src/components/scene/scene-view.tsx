@@ -9,6 +9,7 @@ import {
 } from "@/lib/webgl";
 import type { Availability, Scene } from "@/lib/scene-schema";
 import type { UnitStatus } from "@/lib/unit-status";
+import { withArticle } from "@/lib/nouns";
 
 /**
  * §9.3 — one Canvas per route, lazy-loaded, ssr:false, and it must never
@@ -16,7 +17,7 @@ import type { UnitStatus } from "@/lib/unit-status";
  * has asked for the 3D view, so a phone that cannot run it never downloads
  * three.js at all.
  */
-const PlotScene = dynamic(() => import("@/components/scene/plot-scene"), {
+const SiteScene = dynamic(() => import("@/components/scene/site-scene"), {
   ssr: false,
   loading: () => (
     <div className="flex aspect-4/3 w-full items-center justify-center rounded-sm bg-paper-2">
@@ -31,6 +32,8 @@ export function SceneView({
   selectedId,
   onSelect,
   filter,
+  visibleFloor,
+  unitNounSingular,
   onUnsupported,
 }: {
   scene: Scene;
@@ -38,6 +41,8 @@ export function SceneView({
   selectedId: string | null;
   onSelect: (unitId: string | null) => void;
   filter: UnitStatus | "all";
+  visibleFloor?: number | null;
+  unitNounSingular: string;
   onUnsupported: () => void;
 }) {
   const [capability, setCapability] = useState<Capability | null>(null);
@@ -79,12 +84,13 @@ export function SceneView({
   return (
     <div className="space-y-4">
       <div className="aspect-4/3 w-full overflow-hidden rounded-sm bg-paper-2 sm:aspect-16/9">
-        <PlotScene
+        <SiteScene
           scene={scene}
           availability={availability}
           selectedId={selectedId}
           onSelect={onSelect}
           filter={filter}
+          visibleFloor={visibleFloor}
           hour={hour}
           matureCanopy={matureCanopy}
           reducedMotion={reducedMotion}
@@ -129,7 +135,7 @@ export function SceneView({
       </div>
 
       <p className="u-mono text-muted">
-        Drag to orbit · scroll to zoom · click a plot to select it
+        Drag to orbit · scroll to zoom · click {withArticle(unitNounSingular.toLowerCase())} to select it
       </p>
     </div>
   );

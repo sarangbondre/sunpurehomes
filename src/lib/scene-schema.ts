@@ -41,6 +41,10 @@ export const sceneSchema = z
 
     boundary: ring,
 
+    /** Number of storeys, for apartment blocks. Drives the floor selector. */
+    levels: z.number().int().positive().optional(),
+    levelHeightM: z.number().positive().optional(),
+
     roads: z.array(
       z.object({
         id: z.string(),
@@ -68,6 +72,14 @@ export const sceneSchema = z
         facing: z.enum(["North", "South", "East", "West"]),
         /** Width of the road this unit fronts. */
         roadWidthM: z.number().positive().optional(),
+        /**
+         * Storey this unit sits on, counting from 0 at ground. Set for
+         * apartment blocks, where units stack and their plan footprints
+         * overlap; absent for plots and villas, which are laid side by side.
+         */
+        floor: z.number().int().nonnegative().optional(),
+        /** Ridge height above ground, for villa massing. */
+        heightM: z.number().positive().optional(),
       }),
     ),
 

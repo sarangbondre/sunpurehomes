@@ -8,6 +8,7 @@ import type { Availability, Scene } from "@/lib/scene-schema";
 import type { UnitStatus } from "@/lib/unit-status";
 import {
   fitDistance,
+  gableRoofGeometry,
   ringGeometry,
   roadGeometry,
   sceneCentre,
@@ -48,6 +49,8 @@ type Props = {
   hour: number;
   matureCanopy: boolean;
   reducedMotion: boolean;
+  /** Apartment blocks only: show one storey, or the whole stack. */
+  visibleFloor?: number | null;
 };
 
 /* ------------------------------------------------------------------ plots */
@@ -172,6 +175,253 @@ function HoverRing({ unit }: { unit: Scene["units"][number] }) {
       <planeGeometry args={[unit.widthM + 0.6, unit.depthM + 0.6]} />
       <meshBasicMaterial color="#101614" transparent opacity={0.18} />
     </mesh>
+  );
+}
+
+
+/* ----------------------------------------------------------- villa units */
+
+/**
+ * Villas: the plot is the selectable unit, and the house sits inside it with
+ * its setbacks. Three instanced meshes — pad, body, roof — so a cluster of
+ * fifty-one villas is three draw calls rather than a hundred and fifty.
+ */
+function VillaUnits({
+  scene,
+  availability,
+  selectedId,
+  onSelect,
+  filter,
+}: Pick<Props, "scene" | "availability" | "selectedId" | "onSelect" | "filter">) {
+  const pads = useRef<THREE.InstancedMesh>(null);
+  const bodies = useRef<THREE.InstancedMesh>(null);
+  const roofs = useRef<THREE.InstancedMesh>(null);
+  const collider = useRef<THREE.InstancedMesh>(null);
+  const { units } = scene;
+
+  const roofGeometry = useMemo(() => gableRoofGeometry(), []);
+
+  useLayoutEffect(() => {
+    const pad = pads.current;
+    const body = bodies.current;
+    const roof = roofs.current;
+    const pick = collider.current;
+    if (!pad || !body || !roof || !pick) return;
+
+    const m = new THREE.Matrix4();
+    const q = new THREE.Quaternion();
+    const p = new THREE.Vector3();
+    const sc = new THREE.Vector3();
+
+    units.forEach((unit, i) => {
+      const [x, , z] = toWorld(unit.centroid, 0);
+      const status = availability?.units[unit.id];
+      const selected = unit.id === selectedId;
+      const dimmed = filter !== "all" && status !== filter;
+
+      const plotW = Math.abs(unit.ring[1][0] - unit.ring[0][0]);
+      const plotD = Math.abs(unit.ring[2][1] - unit.ring[1][1]);
+      const wallH = (unit.heightM ?? 7) * 0.72;
+      const roofH = (unit.heightM ?? 7) - wallH;
+
+      // Plot pad, carrying the availability colour.
+      p.set(x, 0.12, z);
+      sc.set(plotW - 0.6, 0.24, plotD - 0.6);
+      m.compose(p, q, sc);
+      pad.setMatrixAt(i, m);
+
+      const base = selected
+        ? PALETTE.selected
+        : status
+          ? PALETTE[status]
+          : PALETTE.unknown;
+      pad.setColorAt(
+        i,
+        dimmed ? base.clone().lerp(PALETTE.unknown, 1 - DIM) : base,
+      );
+
+      // House body.
+      p.set(x, wallH / 2 + 0.24, z);
+      sc.set(unit.widthM, wallH, unit.depthM);
+      m.compose(p, q, sc);
+      body.setMatrixAt(i, m);
+      body.setColorAt(
+        i,
+        selected ? PALETTE.selected : new THREE.Color("#EEF0EA"),
+      );
+
+      // Gable roof above it.
+      p.set(x, wallH + 0.24, z);
+      sc.set(unit.widthM * 1.08, roofH, unit.depthM * 1.06);
+      m.compose(p, q, sc);
+      roof.setMatrixAt(i, m);
+
+      // Pick target covers the whole plot.
+      p.set(x, 4, z);
+      sc.set(plotW, 8, plotD);
+      m.compose(p, q, sc);
+      pick.setMatrixAt(i, m);
+    });
+
+    for (const mesh of [pad, body, roof, pick]) {
+      mesh.instanceMatrix.needsUpdate = true;
+      if (mesh.instanceColor) mesh.instanceColor.needsUpdate = true;
+      mesh.computeBoundingSphere();
+    }
+  }, [units, availability, selectedId, filter]);
+
+  return (
+    <>
+      <instancedMesh ref={pads} args={[undefined, undefined, units.length]} receiveShadow>
+        <boxGeometry args={[1, 1, 1]} />
+        <meshLambertMaterial />
+      </instancedMesh>
+
+      <instancedMesh ref={bodies} args={[undefined, undefined, units.length]} castShadow receiveShadow>
+        <boxGeometry args={[1, 1, 1]} />
+        <meshLambertMaterial />
+      </instancedMesh>
+
+      <instancedMesh
+        ref={roofs}
+        args={[roofGeometry, undefined, units.length]}
+        castShadow
+      >
+        <meshLambertMaterial color="#8C9487" flatShading />
+      </instancedMesh>
+
+      <instancedMesh
+        ref={collider}
+        args={[undefined, undefined, units.length]}
+        onClick={(e) => {
+          e.stopPropagation();
+          const i = e.instanceId;
+          if (i === undefined) return;
+          const id = units[i].id;
+          onSelect(id === selectedId ? null : id);
+        }}
+      >
+        <boxGeometry args={[1, 1, 1]} />
+        <meshBasicMaterial colorWrite={false} depthWrite={false} />
+      </instancedMesh>
+    </>
+  );
+}
+
+/* ------------------------------------------------------- apartment units */
+
+/**
+ * A stacked block. Units on different storeys share a plan footprint, so the
+ * 3D is where the whole building can actually be read at once. When a storey
+ * is chosen in the plan, the others drop to a ghost so the selected floor
+ * stays legible without losing the massing around it.
+ */
+function ApartmentUnits({
+  scene,
+  availability,
+  selectedId,
+  onSelect,
+  filter,
+  visibleFloor,
+}: Pick<
+  Props,
+  "scene" | "availability" | "selectedId" | "onSelect" | "filter" | "visibleFloor"
+>) {
+  const solid = useRef<THREE.InstancedMesh>(null);
+  const collider = useRef<THREE.InstancedMesh>(null);
+  const { units } = scene;
+  const levelHeight = scene.levelHeightM ?? 3.2;
+
+  useLayoutEffect(() => {
+    const mesh = solid.current;
+    const pick = collider.current;
+    if (!mesh || !pick) return;
+
+    const m = new THREE.Matrix4();
+    const q = new THREE.Quaternion();
+    const p = new THREE.Vector3();
+    const sc = new THREE.Vector3();
+
+    units.forEach((unit, i) => {
+      const [x, , z] = toWorld(unit.centroid, 0);
+      const floor = unit.floor ?? 0;
+      const y = floor * levelHeight + levelHeight / 2 + 1.2;
+      const status = availability?.units[unit.id];
+      const selected = unit.id === selectedId;
+
+      const offFloor = visibleFloor !== null && visibleFloor !== undefined && floor !== visibleFloor;
+      const offFilter = filter !== "all" && status !== filter;
+      const dimmed = offFloor || offFilter;
+
+      // A slim gap between storeys reads as floor bands from a distance.
+      p.set(x, y, z);
+      sc.set(unit.widthM - 0.4, levelHeight - 0.45, unit.depthM - 0.4);
+      m.compose(p, q, sc);
+      mesh.setMatrixAt(i, m);
+
+      const base = selected
+        ? PALETTE.selected
+        : status
+          ? PALETTE[status]
+          : PALETTE.unknown;
+      mesh.setColorAt(
+        i,
+        dimmed ? base.clone().lerp(new THREE.Color("#E4E7E1"), 0.82) : base,
+      );
+
+      p.set(x, y, z);
+      sc.set(unit.widthM, levelHeight, unit.depthM);
+      m.compose(p, q, sc);
+      pick.setMatrixAt(i, m);
+    });
+
+    mesh.instanceMatrix.needsUpdate = true;
+    if (mesh.instanceColor) mesh.instanceColor.needsUpdate = true;
+    pick.instanceMatrix.needsUpdate = true;
+    mesh.computeBoundingSphere();
+    pick.computeBoundingSphere();
+  }, [units, availability, selectedId, filter, visibleFloor, levelHeight]);
+
+  return (
+    <>
+      {/*
+        Positioned in scene coordinates like everything else. The enclosing
+        group is translated so the site centres on the origin, so a podium at
+        local [0,0,0] would sit at the site's corner, not under the block.
+      */}
+      <mesh
+        position={[scene.extent.width / 2, 0.6, -scene.extent.depth / 2]}
+        receiveShadow
+      >
+        <boxGeometry args={[scene.extent.width * 0.52, 1.2, scene.extent.depth * 0.52]} />
+        <meshLambertMaterial color="#DDE2DA" />
+      </mesh>
+
+      <instancedMesh
+        ref={solid}
+        args={[undefined, undefined, units.length]}
+        castShadow
+        receiveShadow
+      >
+        <boxGeometry args={[1, 1, 1]} />
+        <meshLambertMaterial />
+      </instancedMesh>
+
+      <instancedMesh
+        ref={collider}
+        args={[undefined, undefined, units.length]}
+        onClick={(e) => {
+          e.stopPropagation();
+          const i = e.instanceId;
+          if (i === undefined) return;
+          const id = units[i].id;
+          onSelect(id === selectedId ? null : id);
+        }}
+      >
+        <boxGeometry args={[1, 1, 1]} />
+        <meshBasicMaterial colorWrite={false} depthWrite={false} />
+      </instancedMesh>
+    </>
   );
 }
 
@@ -456,7 +706,13 @@ function SceneContents(props: Props) {
 
       <group position={[-centre[0], 0, -centre[2]]}>
         <Ground scene={scene} />
-        <Plots {...props} />
+        {scene.kind === "villa-cluster" ? (
+          <VillaUnits {...props} />
+        ) : scene.kind === "apartment-block" ? (
+          <ApartmentUnits {...props} />
+        ) : (
+          <Plots {...props} />
+        )}
         <Planting scene={scene} mature={props.matureCanopy} />
         <Amenities scene={scene} />
       </group>
@@ -486,7 +742,7 @@ function SceneContents(props: Props) {
   );
 }
 
-export default function PlotScene(props: Props) {
+export default function SiteScene(props: Props) {
   const radius = Math.max(props.scene.extent.width, props.scene.extent.depth);
   return (
     <Canvas

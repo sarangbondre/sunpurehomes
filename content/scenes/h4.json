@@ -1,0 +1,2106 @@
+{
+ "slug": "h4",
+ "kind": "villa-cluster",
+ "provenance": "generated",
+ "extent": {
+  "width": 119.5,
+  "depth": 167
+ },
+ "boundary": [
+  [
+   0,
+   0
+  ],
+  [
+   119.5,
+   0
+  ],
+  [
+   119.5,
+   167
+  ],
+  [
+   0,
+   167
+  ]
+ ],
+ "roads": [
+  {
+   "id": "access-0",
+   "centreline": [
+    [
+     8,
+     3.5
+    ],
+    [
+     111.5,
+     3.5
+    ]
+   ],
+   "widthM": 9
+  },
+  {
+   "id": "access-2",
+   "centreline": [
+    [
+     8,
+     46.5
+    ],
+    [
+     111.5,
+     46.5
+    ]
+   ],
+   "widthM": 9
+  },
+  {
+   "id": "access-4",
+   "centreline": [
+    [
+     8,
+     89.5
+    ],
+    [
+     111.5,
+     89.5
+    ]
+   ],
+   "widthM": 9
+  }
+ ],
+ "openSpaces": [
+  {
+   "id": "commons",
+   "name": "Landscaped commons",
+   "ring": [
+    [
+     8,
+     137
+    ],
+    [
+     111.5,
+     137
+    ],
+    [
+     111.5,
+     159
+    ],
+    [
+     8,
+     159
+    ]
+   ]
+  }
+ ],
+ "units": [
+  {
+   "id": "1",
+   "ring": [
+    [
+     8,
+     8
+    ],
+    [
+     19.5,
+     8
+    ],
+    [
+     19.5,
+     25
+    ],
+    [
+     8,
+     25
+    ]
+   ],
+   "centroid": [
+    13.75,
+    16.5
+   ],
+   "areaSqft": 2025,
+   "widthM": 8.4,
+   "depthM": 11.2,
+   "facing": "South",
+   "roadWidthM": 9,
+   "heightM": 7.8
+  },
+  {
+   "id": "2",
+   "ring": [
+    [
+     19.5,
+     8
+    ],
+    [
+     31,
+     8
+    ],
+    [
+     31,
+     25
+    ],
+    [
+     19.5,
+     25
+    ]
+   ],
+   "centroid": [
+    25.25,
+    16.5
+   ],
+   "areaSqft": 2025,
+   "widthM": 8.4,
+   "depthM": 11.2,
+   "facing": "South",
+   "roadWidthM": 9,
+   "heightM": 7.8
+  },
+  {
+   "id": "3",
+   "ring": [
+    [
+     31,
+     8
+    ],
+    [
+     42.5,
+     8
+    ],
+    [
+     42.5,
+     25
+    ],
+    [
+     31,
+     25
+    ]
+   ],
+   "centroid": [
+    36.75,
+    16.5
+   ],
+   "areaSqft": 2025,
+   "widthM": 8.4,
+   "depthM": 11.2,
+   "facing": "South",
+   "roadWidthM": 9,
+   "heightM": 7.8
+  },
+  {
+   "id": "4",
+   "ring": [
+    [
+     42.5,
+     8
+    ],
+    [
+     54,
+     8
+    ],
+    [
+     54,
+     25
+    ],
+    [
+     42.5,
+     25
+    ]
+   ],
+   "centroid": [
+    48.25,
+    16.5
+   ],
+   "areaSqft": 2025,
+   "widthM": 8.4,
+   "depthM": 11.2,
+   "facing": "South",
+   "roadWidthM": 9,
+   "heightM": 7.8
+  },
+  {
+   "id": "5",
+   "ring": [
+    [
+     54,
+     8
+    ],
+    [
+     65.5,
+     8
+    ],
+    [
+     65.5,
+     25
+    ],
+    [
+     54,
+     25
+    ]
+   ],
+   "centroid": [
+    59.75,
+    16.5
+   ],
+   "areaSqft": 2025,
+   "widthM": 8.4,
+   "depthM": 11.2,
+   "facing": "South",
+   "roadWidthM": 9,
+   "heightM": 7.8
+  },
+  {
+   "id": "6",
+   "ring": [
+    [
+     65.5,
+     8
+    ],
+    [
+     77,
+     8
+    ],
+    [
+     77,
+     25
+    ],
+    [
+     65.5,
+     25
+    ]
+   ],
+   "centroid": [
+    71.25,
+    16.5
+   ],
+   "areaSqft": 2025,
+   "widthM": 8.4,
+   "depthM": 11.2,
+   "facing": "South",
+   "roadWidthM": 9,
+   "heightM": 7.8
+  },
+  {
+   "id": "7",
+   "ring": [
+    [
+     77,
+     8
+    ],
+    [
+     88.5,
+     8
+    ],
+    [
+     88.5,
+     25
+    ],
+    [
+     77,
+     25
+    ]
+   ],
+   "centroid": [
+    82.75,
+    16.5
+   ],
+   "areaSqft": 2025,
+   "widthM": 8.4,
+   "depthM": 11.2,
+   "facing": "South",
+   "roadWidthM": 9,
+   "heightM": 7.8
+  },
+  {
+   "id": "8",
+   "ring": [
+    [
+     88.5,
+     8
+    ],
+    [
+     100,
+     8
+    ],
+    [
+     100,
+     25
+    ],
+    [
+     88.5,
+     25
+    ]
+   ],
+   "centroid": [
+    94.25,
+    16.5
+   ],
+   "areaSqft": 2025,
+   "widthM": 8.4,
+   "depthM": 11.2,
+   "facing": "South",
+   "roadWidthM": 9,
+   "heightM": 7.8
+  },
+  {
+   "id": "9",
+   "ring": [
+    [
+     100,
+     8
+    ],
+    [
+     111.5,
+     8
+    ],
+    [
+     111.5,
+     25
+    ],
+    [
+     100,
+     25
+    ]
+   ],
+   "centroid": [
+    105.75,
+    16.5
+   ],
+   "areaSqft": 2025,
+   "widthM": 8.4,
+   "depthM": 11.2,
+   "facing": "South",
+   "roadWidthM": 9,
+   "heightM": 7.8
+  },
+  {
+   "id": "10",
+   "ring": [
+    [
+     8,
+     25
+    ],
+    [
+     19.5,
+     25
+    ],
+    [
+     19.5,
+     42
+    ],
+    [
+     8,
+     42
+    ]
+   ],
+   "centroid": [
+    13.75,
+    33.5
+   ],
+   "areaSqft": 2025,
+   "widthM": 8.4,
+   "depthM": 11.2,
+   "facing": "North",
+   "roadWidthM": 9,
+   "heightM": 7.8
+  },
+  {
+   "id": "11",
+   "ring": [
+    [
+     19.5,
+     25
+    ],
+    [
+     31,
+     25
+    ],
+    [
+     31,
+     42
+    ],
+    [
+     19.5,
+     42
+    ]
+   ],
+   "centroid": [
+    25.25,
+    33.5
+   ],
+   "areaSqft": 2025,
+   "widthM": 8.4,
+   "depthM": 11.2,
+   "facing": "North",
+   "roadWidthM": 9,
+   "heightM": 7.8
+  },
+  {
+   "id": "12",
+   "ring": [
+    [
+     31,
+     25
+    ],
+    [
+     42.5,
+     25
+    ],
+    [
+     42.5,
+     42
+    ],
+    [
+     31,
+     42
+    ]
+   ],
+   "centroid": [
+    36.75,
+    33.5
+   ],
+   "areaSqft": 2025,
+   "widthM": 8.4,
+   "depthM": 11.2,
+   "facing": "North",
+   "roadWidthM": 9,
+   "heightM": 7.8
+  },
+  {
+   "id": "13",
+   "ring": [
+    [
+     42.5,
+     25
+    ],
+    [
+     54,
+     25
+    ],
+    [
+     54,
+     42
+    ],
+    [
+     42.5,
+     42
+    ]
+   ],
+   "centroid": [
+    48.25,
+    33.5
+   ],
+   "areaSqft": 2025,
+   "widthM": 8.4,
+   "depthM": 11.2,
+   "facing": "North",
+   "roadWidthM": 9,
+   "heightM": 7.8
+  },
+  {
+   "id": "14",
+   "ring": [
+    [
+     54,
+     25
+    ],
+    [
+     65.5,
+     25
+    ],
+    [
+     65.5,
+     42
+    ],
+    [
+     54,
+     42
+    ]
+   ],
+   "centroid": [
+    59.75,
+    33.5
+   ],
+   "areaSqft": 2025,
+   "widthM": 8.4,
+   "depthM": 11.2,
+   "facing": "North",
+   "roadWidthM": 9,
+   "heightM": 7.8
+  },
+  {
+   "id": "15",
+   "ring": [
+    [
+     65.5,
+     25
+    ],
+    [
+     77,
+     25
+    ],
+    [
+     77,
+     42
+    ],
+    [
+     65.5,
+     42
+    ]
+   ],
+   "centroid": [
+    71.25,
+    33.5
+   ],
+   "areaSqft": 2025,
+   "widthM": 8.4,
+   "depthM": 11.2,
+   "facing": "North",
+   "roadWidthM": 9,
+   "heightM": 7.8
+  },
+  {
+   "id": "16",
+   "ring": [
+    [
+     77,
+     25
+    ],
+    [
+     88.5,
+     25
+    ],
+    [
+     88.5,
+     42
+    ],
+    [
+     77,
+     42
+    ]
+   ],
+   "centroid": [
+    82.75,
+    33.5
+   ],
+   "areaSqft": 2025,
+   "widthM": 8.4,
+   "depthM": 11.2,
+   "facing": "North",
+   "roadWidthM": 9,
+   "heightM": 7.8
+  },
+  {
+   "id": "17",
+   "ring": [
+    [
+     88.5,
+     25
+    ],
+    [
+     100,
+     25
+    ],
+    [
+     100,
+     42
+    ],
+    [
+     88.5,
+     42
+    ]
+   ],
+   "centroid": [
+    94.25,
+    33.5
+   ],
+   "areaSqft": 2025,
+   "widthM": 8.4,
+   "depthM": 11.2,
+   "facing": "North",
+   "roadWidthM": 9,
+   "heightM": 7.8
+  },
+  {
+   "id": "18",
+   "ring": [
+    [
+     100,
+     25
+    ],
+    [
+     111.5,
+     25
+    ],
+    [
+     111.5,
+     42
+    ],
+    [
+     100,
+     42
+    ]
+   ],
+   "centroid": [
+    105.75,
+    33.5
+   ],
+   "areaSqft": 2025,
+   "widthM": 8.4,
+   "depthM": 11.2,
+   "facing": "North",
+   "roadWidthM": 9,
+   "heightM": 7.8
+  },
+  {
+   "id": "19",
+   "ring": [
+    [
+     8,
+     51
+    ],
+    [
+     19.5,
+     51
+    ],
+    [
+     19.5,
+     68
+    ],
+    [
+     8,
+     68
+    ]
+   ],
+   "centroid": [
+    13.75,
+    59.5
+   ],
+   "areaSqft": 2025,
+   "widthM": 8.4,
+   "depthM": 11.2,
+   "facing": "South",
+   "roadWidthM": 9,
+   "heightM": 7.8
+  },
+  {
+   "id": "20",
+   "ring": [
+    [
+     19.5,
+     51
+    ],
+    [
+     31,
+     51
+    ],
+    [
+     31,
+     68
+    ],
+    [
+     19.5,
+     68
+    ]
+   ],
+   "centroid": [
+    25.25,
+    59.5
+   ],
+   "areaSqft": 2025,
+   "widthM": 8.4,
+   "depthM": 11.2,
+   "facing": "South",
+   "roadWidthM": 9,
+   "heightM": 7.8
+  },
+  {
+   "id": "21",
+   "ring": [
+    [
+     31,
+     51
+    ],
+    [
+     42.5,
+     51
+    ],
+    [
+     42.5,
+     68
+    ],
+    [
+     31,
+     68
+    ]
+   ],
+   "centroid": [
+    36.75,
+    59.5
+   ],
+   "areaSqft": 2025,
+   "widthM": 8.4,
+   "depthM": 11.2,
+   "facing": "South",
+   "roadWidthM": 9,
+   "heightM": 7.8
+  },
+  {
+   "id": "22",
+   "ring": [
+    [
+     42.5,
+     51
+    ],
+    [
+     54,
+     51
+    ],
+    [
+     54,
+     68
+    ],
+    [
+     42.5,
+     68
+    ]
+   ],
+   "centroid": [
+    48.25,
+    59.5
+   ],
+   "areaSqft": 2025,
+   "widthM": 8.4,
+   "depthM": 11.2,
+   "facing": "South",
+   "roadWidthM": 9,
+   "heightM": 7.8
+  },
+  {
+   "id": "23",
+   "ring": [
+    [
+     54,
+     51
+    ],
+    [
+     65.5,
+     51
+    ],
+    [
+     65.5,
+     68
+    ],
+    [
+     54,
+     68
+    ]
+   ],
+   "centroid": [
+    59.75,
+    59.5
+   ],
+   "areaSqft": 2025,
+   "widthM": 8.4,
+   "depthM": 11.2,
+   "facing": "South",
+   "roadWidthM": 9,
+   "heightM": 7.8
+  },
+  {
+   "id": "24",
+   "ring": [
+    [
+     65.5,
+     51
+    ],
+    [
+     77,
+     51
+    ],
+    [
+     77,
+     68
+    ],
+    [
+     65.5,
+     68
+    ]
+   ],
+   "centroid": [
+    71.25,
+    59.5
+   ],
+   "areaSqft": 2025,
+   "widthM": 8.4,
+   "depthM": 11.2,
+   "facing": "South",
+   "roadWidthM": 9,
+   "heightM": 7.8
+  },
+  {
+   "id": "25",
+   "ring": [
+    [
+     77,
+     51
+    ],
+    [
+     88.5,
+     51
+    ],
+    [
+     88.5,
+     68
+    ],
+    [
+     77,
+     68
+    ]
+   ],
+   "centroid": [
+    82.75,
+    59.5
+   ],
+   "areaSqft": 2025,
+   "widthM": 8.4,
+   "depthM": 11.2,
+   "facing": "South",
+   "roadWidthM": 9,
+   "heightM": 7.8
+  },
+  {
+   "id": "26",
+   "ring": [
+    [
+     88.5,
+     51
+    ],
+    [
+     100,
+     51
+    ],
+    [
+     100,
+     68
+    ],
+    [
+     88.5,
+     68
+    ]
+   ],
+   "centroid": [
+    94.25,
+    59.5
+   ],
+   "areaSqft": 2025,
+   "widthM": 8.4,
+   "depthM": 11.2,
+   "facing": "South",
+   "roadWidthM": 9,
+   "heightM": 7.8
+  },
+  {
+   "id": "27",
+   "ring": [
+    [
+     100,
+     51
+    ],
+    [
+     111.5,
+     51
+    ],
+    [
+     111.5,
+     68
+    ],
+    [
+     100,
+     68
+    ]
+   ],
+   "centroid": [
+    105.75,
+    59.5
+   ],
+   "areaSqft": 2025,
+   "widthM": 8.4,
+   "depthM": 11.2,
+   "facing": "South",
+   "roadWidthM": 9,
+   "heightM": 7.8
+  },
+  {
+   "id": "28",
+   "ring": [
+    [
+     8,
+     68
+    ],
+    [
+     19.5,
+     68
+    ],
+    [
+     19.5,
+     85
+    ],
+    [
+     8,
+     85
+    ]
+   ],
+   "centroid": [
+    13.75,
+    76.5
+   ],
+   "areaSqft": 2025,
+   "widthM": 8.4,
+   "depthM": 11.2,
+   "facing": "North",
+   "roadWidthM": 9,
+   "heightM": 7.8
+  },
+  {
+   "id": "29",
+   "ring": [
+    [
+     19.5,
+     68
+    ],
+    [
+     31,
+     68
+    ],
+    [
+     31,
+     85
+    ],
+    [
+     19.5,
+     85
+    ]
+   ],
+   "centroid": [
+    25.25,
+    76.5
+   ],
+   "areaSqft": 2025,
+   "widthM": 8.4,
+   "depthM": 11.2,
+   "facing": "North",
+   "roadWidthM": 9,
+   "heightM": 7.8
+  },
+  {
+   "id": "30",
+   "ring": [
+    [
+     31,
+     68
+    ],
+    [
+     42.5,
+     68
+    ],
+    [
+     42.5,
+     85
+    ],
+    [
+     31,
+     85
+    ]
+   ],
+   "centroid": [
+    36.75,
+    76.5
+   ],
+   "areaSqft": 2025,
+   "widthM": 8.4,
+   "depthM": 11.2,
+   "facing": "North",
+   "roadWidthM": 9,
+   "heightM": 7.8
+  },
+  {
+   "id": "31",
+   "ring": [
+    [
+     42.5,
+     68
+    ],
+    [
+     54,
+     68
+    ],
+    [
+     54,
+     85
+    ],
+    [
+     42.5,
+     85
+    ]
+   ],
+   "centroid": [
+    48.25,
+    76.5
+   ],
+   "areaSqft": 2025,
+   "widthM": 8.4,
+   "depthM": 11.2,
+   "facing": "North",
+   "roadWidthM": 9,
+   "heightM": 7.8
+  },
+  {
+   "id": "32",
+   "ring": [
+    [
+     54,
+     68
+    ],
+    [
+     65.5,
+     68
+    ],
+    [
+     65.5,
+     85
+    ],
+    [
+     54,
+     85
+    ]
+   ],
+   "centroid": [
+    59.75,
+    76.5
+   ],
+   "areaSqft": 2025,
+   "widthM": 8.4,
+   "depthM": 11.2,
+   "facing": "North",
+   "roadWidthM": 9,
+   "heightM": 7.8
+  },
+  {
+   "id": "33",
+   "ring": [
+    [
+     65.5,
+     68
+    ],
+    [
+     77,
+     68
+    ],
+    [
+     77,
+     85
+    ],
+    [
+     65.5,
+     85
+    ]
+   ],
+   "centroid": [
+    71.25,
+    76.5
+   ],
+   "areaSqft": 2025,
+   "widthM": 8.4,
+   "depthM": 11.2,
+   "facing": "North",
+   "roadWidthM": 9,
+   "heightM": 7.8
+  },
+  {
+   "id": "34",
+   "ring": [
+    [
+     77,
+     68
+    ],
+    [
+     88.5,
+     68
+    ],
+    [
+     88.5,
+     85
+    ],
+    [
+     77,
+     85
+    ]
+   ],
+   "centroid": [
+    82.75,
+    76.5
+   ],
+   "areaSqft": 2025,
+   "widthM": 8.4,
+   "depthM": 11.2,
+   "facing": "North",
+   "roadWidthM": 9,
+   "heightM": 7.8
+  },
+  {
+   "id": "35",
+   "ring": [
+    [
+     88.5,
+     68
+    ],
+    [
+     100,
+     68
+    ],
+    [
+     100,
+     85
+    ],
+    [
+     88.5,
+     85
+    ]
+   ],
+   "centroid": [
+    94.25,
+    76.5
+   ],
+   "areaSqft": 2025,
+   "widthM": 8.4,
+   "depthM": 11.2,
+   "facing": "North",
+   "roadWidthM": 9,
+   "heightM": 7.8
+  },
+  {
+   "id": "36",
+   "ring": [
+    [
+     100,
+     68
+    ],
+    [
+     111.5,
+     68
+    ],
+    [
+     111.5,
+     85
+    ],
+    [
+     100,
+     85
+    ]
+   ],
+   "centroid": [
+    105.75,
+    76.5
+   ],
+   "areaSqft": 2025,
+   "widthM": 8.4,
+   "depthM": 11.2,
+   "facing": "North",
+   "roadWidthM": 9,
+   "heightM": 7.8
+  },
+  {
+   "id": "37",
+   "ring": [
+    [
+     8,
+     94
+    ],
+    [
+     19.5,
+     94
+    ],
+    [
+     19.5,
+     111
+    ],
+    [
+     8,
+     111
+    ]
+   ],
+   "centroid": [
+    13.75,
+    102.5
+   ],
+   "areaSqft": 2025,
+   "widthM": 8.4,
+   "depthM": 11.2,
+   "facing": "South",
+   "roadWidthM": 9,
+   "heightM": 7.8
+  },
+  {
+   "id": "38",
+   "ring": [
+    [
+     19.5,
+     94
+    ],
+    [
+     31,
+     94
+    ],
+    [
+     31,
+     111
+    ],
+    [
+     19.5,
+     111
+    ]
+   ],
+   "centroid": [
+    25.25,
+    102.5
+   ],
+   "areaSqft": 2025,
+   "widthM": 8.4,
+   "depthM": 11.2,
+   "facing": "South",
+   "roadWidthM": 9,
+   "heightM": 7.8
+  },
+  {
+   "id": "39",
+   "ring": [
+    [
+     31,
+     94
+    ],
+    [
+     42.5,
+     94
+    ],
+    [
+     42.5,
+     111
+    ],
+    [
+     31,
+     111
+    ]
+   ],
+   "centroid": [
+    36.75,
+    102.5
+   ],
+   "areaSqft": 2025,
+   "widthM": 8.4,
+   "depthM": 11.2,
+   "facing": "South",
+   "roadWidthM": 9,
+   "heightM": 7.8
+  },
+  {
+   "id": "40",
+   "ring": [
+    [
+     42.5,
+     94
+    ],
+    [
+     54,
+     94
+    ],
+    [
+     54,
+     111
+    ],
+    [
+     42.5,
+     111
+    ]
+   ],
+   "centroid": [
+    48.25,
+    102.5
+   ],
+   "areaSqft": 2025,
+   "widthM": 8.4,
+   "depthM": 11.2,
+   "facing": "South",
+   "roadWidthM": 9,
+   "heightM": 7.8
+  },
+  {
+   "id": "41",
+   "ring": [
+    [
+     54,
+     94
+    ],
+    [
+     65.5,
+     94
+    ],
+    [
+     65.5,
+     111
+    ],
+    [
+     54,
+     111
+    ]
+   ],
+   "centroid": [
+    59.75,
+    102.5
+   ],
+   "areaSqft": 2025,
+   "widthM": 8.4,
+   "depthM": 11.2,
+   "facing": "South",
+   "roadWidthM": 9,
+   "heightM": 7.8
+  },
+  {
+   "id": "42",
+   "ring": [
+    [
+     65.5,
+     94
+    ],
+    [
+     77,
+     94
+    ],
+    [
+     77,
+     111
+    ],
+    [
+     65.5,
+     111
+    ]
+   ],
+   "centroid": [
+    71.25,
+    102.5
+   ],
+   "areaSqft": 2025,
+   "widthM": 8.4,
+   "depthM": 11.2,
+   "facing": "South",
+   "roadWidthM": 9,
+   "heightM": 7.8
+  },
+  {
+   "id": "43",
+   "ring": [
+    [
+     77,
+     94
+    ],
+    [
+     88.5,
+     94
+    ],
+    [
+     88.5,
+     111
+    ],
+    [
+     77,
+     111
+    ]
+   ],
+   "centroid": [
+    82.75,
+    102.5
+   ],
+   "areaSqft": 2025,
+   "widthM": 8.4,
+   "depthM": 11.2,
+   "facing": "South",
+   "roadWidthM": 9,
+   "heightM": 7.8
+  },
+  {
+   "id": "44",
+   "ring": [
+    [
+     88.5,
+     94
+    ],
+    [
+     100,
+     94
+    ],
+    [
+     100,
+     111
+    ],
+    [
+     88.5,
+     111
+    ]
+   ],
+   "centroid": [
+    94.25,
+    102.5
+   ],
+   "areaSqft": 2025,
+   "widthM": 8.4,
+   "depthM": 11.2,
+   "facing": "South",
+   "roadWidthM": 9,
+   "heightM": 7.8
+  },
+  {
+   "id": "45",
+   "ring": [
+    [
+     100,
+     94
+    ],
+    [
+     111.5,
+     94
+    ],
+    [
+     111.5,
+     111
+    ],
+    [
+     100,
+     111
+    ]
+   ],
+   "centroid": [
+    105.75,
+    102.5
+   ],
+   "areaSqft": 2025,
+   "widthM": 8.4,
+   "depthM": 11.2,
+   "facing": "South",
+   "roadWidthM": 9,
+   "heightM": 7.8
+  },
+  {
+   "id": "46",
+   "ring": [
+    [
+     8,
+     111
+    ],
+    [
+     19.5,
+     111
+    ],
+    [
+     19.5,
+     128
+    ],
+    [
+     8,
+     128
+    ]
+   ],
+   "centroid": [
+    13.75,
+    119.5
+   ],
+   "areaSqft": 2025,
+   "widthM": 8.4,
+   "depthM": 11.2,
+   "facing": "North",
+   "roadWidthM": 9,
+   "heightM": 7.8
+  },
+  {
+   "id": "47",
+   "ring": [
+    [
+     19.5,
+     111
+    ],
+    [
+     31,
+     111
+    ],
+    [
+     31,
+     128
+    ],
+    [
+     19.5,
+     128
+    ]
+   ],
+   "centroid": [
+    25.25,
+    119.5
+   ],
+   "areaSqft": 2025,
+   "widthM": 8.4,
+   "depthM": 11.2,
+   "facing": "North",
+   "roadWidthM": 9,
+   "heightM": 7.8
+  },
+  {
+   "id": "48",
+   "ring": [
+    [
+     31,
+     111
+    ],
+    [
+     42.5,
+     111
+    ],
+    [
+     42.5,
+     128
+    ],
+    [
+     31,
+     128
+    ]
+   ],
+   "centroid": [
+    36.75,
+    119.5
+   ],
+   "areaSqft": 2025,
+   "widthM": 8.4,
+   "depthM": 11.2,
+   "facing": "North",
+   "roadWidthM": 9,
+   "heightM": 7.8
+  },
+  {
+   "id": "49",
+   "ring": [
+    [
+     42.5,
+     111
+    ],
+    [
+     54,
+     111
+    ],
+    [
+     54,
+     128
+    ],
+    [
+     42.5,
+     128
+    ]
+   ],
+   "centroid": [
+    48.25,
+    119.5
+   ],
+   "areaSqft": 2025,
+   "widthM": 8.4,
+   "depthM": 11.2,
+   "facing": "North",
+   "roadWidthM": 9,
+   "heightM": 7.8
+  },
+  {
+   "id": "50",
+   "ring": [
+    [
+     54,
+     111
+    ],
+    [
+     65.5,
+     111
+    ],
+    [
+     65.5,
+     128
+    ],
+    [
+     54,
+     128
+    ]
+   ],
+   "centroid": [
+    59.75,
+    119.5
+   ],
+   "areaSqft": 2025,
+   "widthM": 8.4,
+   "depthM": 11.2,
+   "facing": "North",
+   "roadWidthM": 9,
+   "heightM": 7.8
+  },
+  {
+   "id": "51",
+   "ring": [
+    [
+     65.5,
+     111
+    ],
+    [
+     77,
+     111
+    ],
+    [
+     77,
+     128
+    ],
+    [
+     65.5,
+     128
+    ]
+   ],
+   "centroid": [
+    71.25,
+    119.5
+   ],
+   "areaSqft": 2025,
+   "widthM": 8.4,
+   "depthM": 11.2,
+   "facing": "North",
+   "roadWidthM": 9,
+   "heightM": 7.8
+  }
+ ],
+ "amenityPoints": [
+  {
+   "id": "landscaped-green-environment",
+   "name": "Landscaped green environment",
+   "point": [
+    42.5,
+    146
+   ]
+  },
+  {
+   "id": "rainwater-harvesting",
+   "name": "Rainwater harvesting",
+   "point": [
+    77,
+    146
+   ]
+  }
+ ],
+ "planting": [
+  {
+   "point": [
+    13.75,
+    9.6
+   ],
+   "kind": "tree",
+   "matureRadiusM": 2.8
+  },
+  {
+   "point": [
+    25.25,
+    9.6
+   ],
+   "kind": "tree",
+   "matureRadiusM": 2.8
+  },
+  {
+   "point": [
+    36.75,
+    9.6
+   ],
+   "kind": "tree",
+   "matureRadiusM": 2.8
+  },
+  {
+   "point": [
+    48.25,
+    9.6
+   ],
+   "kind": "tree",
+   "matureRadiusM": 2.8
+  },
+  {
+   "point": [
+    59.75,
+    9.6
+   ],
+   "kind": "tree",
+   "matureRadiusM": 2.8
+  },
+  {
+   "point": [
+    71.25,
+    9.6
+   ],
+   "kind": "tree",
+   "matureRadiusM": 2.8
+  },
+  {
+   "point": [
+    82.75,
+    9.6
+   ],
+   "kind": "tree",
+   "matureRadiusM": 2.8
+  },
+  {
+   "point": [
+    94.25,
+    9.6
+   ],
+   "kind": "tree",
+   "matureRadiusM": 2.8
+  },
+  {
+   "point": [
+    105.75,
+    9.6
+   ],
+   "kind": "tree",
+   "matureRadiusM": 2.8
+  },
+  {
+   "point": [
+    13.75,
+    40.4
+   ],
+   "kind": "tree",
+   "matureRadiusM": 2.8
+  },
+  {
+   "point": [
+    25.25,
+    40.4
+   ],
+   "kind": "tree",
+   "matureRadiusM": 2.8
+  },
+  {
+   "point": [
+    36.75,
+    40.4
+   ],
+   "kind": "tree",
+   "matureRadiusM": 2.8
+  },
+  {
+   "point": [
+    48.25,
+    40.4
+   ],
+   "kind": "tree",
+   "matureRadiusM": 2.8
+  },
+  {
+   "point": [
+    59.75,
+    40.4
+   ],
+   "kind": "tree",
+   "matureRadiusM": 2.8
+  },
+  {
+   "point": [
+    71.25,
+    40.4
+   ],
+   "kind": "tree",
+   "matureRadiusM": 2.8
+  },
+  {
+   "point": [
+    82.75,
+    40.4
+   ],
+   "kind": "tree",
+   "matureRadiusM": 2.8
+  },
+  {
+   "point": [
+    94.25,
+    40.4
+   ],
+   "kind": "tree",
+   "matureRadiusM": 2.8
+  },
+  {
+   "point": [
+    105.75,
+    40.4
+   ],
+   "kind": "tree",
+   "matureRadiusM": 2.8
+  },
+  {
+   "point": [
+    13.75,
+    52.6
+   ],
+   "kind": "tree",
+   "matureRadiusM": 2.8
+  },
+  {
+   "point": [
+    25.25,
+    52.6
+   ],
+   "kind": "tree",
+   "matureRadiusM": 2.8
+  },
+  {
+   "point": [
+    36.75,
+    52.6
+   ],
+   "kind": "tree",
+   "matureRadiusM": 2.8
+  },
+  {
+   "point": [
+    48.25,
+    52.6
+   ],
+   "kind": "tree",
+   "matureRadiusM": 2.8
+  },
+  {
+   "point": [
+    59.75,
+    52.6
+   ],
+   "kind": "tree",
+   "matureRadiusM": 2.8
+  },
+  {
+   "point": [
+    71.25,
+    52.6
+   ],
+   "kind": "tree",
+   "matureRadiusM": 2.8
+  },
+  {
+   "point": [
+    82.75,
+    52.6
+   ],
+   "kind": "tree",
+   "matureRadiusM": 2.8
+  },
+  {
+   "point": [
+    94.25,
+    52.6
+   ],
+   "kind": "tree",
+   "matureRadiusM": 2.8
+  },
+  {
+   "point": [
+    105.75,
+    52.6
+   ],
+   "kind": "tree",
+   "matureRadiusM": 2.8
+  },
+  {
+   "point": [
+    13.75,
+    83.4
+   ],
+   "kind": "tree",
+   "matureRadiusM": 2.8
+  },
+  {
+   "point": [
+    25.25,
+    83.4
+   ],
+   "kind": "tree",
+   "matureRadiusM": 2.8
+  },
+  {
+   "point": [
+    36.75,
+    83.4
+   ],
+   "kind": "tree",
+   "matureRadiusM": 2.8
+  },
+  {
+   "point": [
+    48.25,
+    83.4
+   ],
+   "kind": "tree",
+   "matureRadiusM": 2.8
+  },
+  {
+   "point": [
+    59.75,
+    83.4
+   ],
+   "kind": "tree",
+   "matureRadiusM": 2.8
+  },
+  {
+   "point": [
+    71.25,
+    83.4
+   ],
+   "kind": "tree",
+   "matureRadiusM": 2.8
+  },
+  {
+   "point": [
+    82.75,
+    83.4
+   ],
+   "kind": "tree",
+   "matureRadiusM": 2.8
+  },
+  {
+   "point": [
+    94.25,
+    83.4
+   ],
+   "kind": "tree",
+   "matureRadiusM": 2.8
+  },
+  {
+   "point": [
+    105.75,
+    83.4
+   ],
+   "kind": "tree",
+   "matureRadiusM": 2.8
+  },
+  {
+   "point": [
+    13.75,
+    95.6
+   ],
+   "kind": "tree",
+   "matureRadiusM": 2.8
+  },
+  {
+   "point": [
+    25.25,
+    95.6
+   ],
+   "kind": "tree",
+   "matureRadiusM": 2.8
+  },
+  {
+   "point": [
+    36.75,
+    95.6
+   ],
+   "kind": "tree",
+   "matureRadiusM": 2.8
+  },
+  {
+   "point": [
+    48.25,
+    95.6
+   ],
+   "kind": "tree",
+   "matureRadiusM": 2.8
+  },
+  {
+   "point": [
+    59.75,
+    95.6
+   ],
+   "kind": "tree",
+   "matureRadiusM": 2.8
+  },
+  {
+   "point": [
+    71.25,
+    95.6
+   ],
+   "kind": "tree",
+   "matureRadiusM": 2.8
+  },
+  {
+   "point": [
+    82.75,
+    95.6
+   ],
+   "kind": "tree",
+   "matureRadiusM": 2.8
+  },
+  {
+   "point": [
+    94.25,
+    95.6
+   ],
+   "kind": "tree",
+   "matureRadiusM": 2.8
+  },
+  {
+   "point": [
+    105.75,
+    95.6
+   ],
+   "kind": "tree",
+   "matureRadiusM": 2.8
+  },
+  {
+   "point": [
+    13.75,
+    126.4
+   ],
+   "kind": "tree",
+   "matureRadiusM": 2.8
+  },
+  {
+   "point": [
+    25.25,
+    126.4
+   ],
+   "kind": "tree",
+   "matureRadiusM": 2.8
+  },
+  {
+   "point": [
+    36.75,
+    126.4
+   ],
+   "kind": "tree",
+   "matureRadiusM": 2.8
+  },
+  {
+   "point": [
+    48.25,
+    126.4
+   ],
+   "kind": "tree",
+   "matureRadiusM": 2.8
+  },
+  {
+   "point": [
+    59.75,
+    126.4
+   ],
+   "kind": "tree",
+   "matureRadiusM": 2.8
+  },
+  {
+   "point": [
+    71.25,
+    126.4
+   ],
+   "kind": "tree",
+   "matureRadiusM": 2.8
+  }
+ ]
+}

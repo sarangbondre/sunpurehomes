@@ -10,3 +10,8 @@ export function singularNoun(plural: string): string {
       : plural;
   return singular.charAt(0).toUpperCase() + singular.slice(1);
 }
+
+/** "apartment" -> "an apartment", "plot" -> "a plot". */
+export function withArticle(noun: string): string {
+  return `${/^[aeiou]/i.test(noun) ? "an" : "a"} ${noun}`;
+}
