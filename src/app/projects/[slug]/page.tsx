@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Approvals } from "@/components/projects/approvals";
+import { CinematicSequence } from "@/components/projects/cinematic-sequence";
 import { PlanExplorer } from "@/components/plan/plan-explorer";
 import { Gallery } from "@/components/projects/gallery";
 import { StatusChip } from "@/components/projects/status-chip";
@@ -75,17 +76,26 @@ export default async function ProjectPage({
         </div>
       </header>
 
-      {cover && (
-        <div className="relative mt-12 aspect-16/9 w-full overflow-hidden bg-paper-2 sm:mt-16">
-          <Image
-            src={cover.src}
-            alt={cover.alt}
-            fill
-            priority
-            sizes="100vw"
-            className="object-cover"
-          />
-        </div>
+      {/*
+        Three or more photographs earn the scroll sequence; below that it
+        would be a transition looking for something to transition between,
+        and the still is the better answer.
+      */}
+      {project.gallery.length >= 3 ? (
+        <CinematicSequence shots={project.gallery} />
+      ) : (
+        cover && (
+          <div className="relative mt-12 aspect-16/9 w-full overflow-hidden bg-paper-2 sm:mt-16">
+            <Image
+              src={cover.src}
+              alt={cover.alt}
+              fill
+              priority
+              sizes="100vw"
+              className="object-cover"
+            />
+          </div>
+        )
       )}
 
       <div className="mx-auto max-w-[86rem] px-6 sm:px-10 lg:px-16">
