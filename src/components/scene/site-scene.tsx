@@ -6,6 +6,7 @@ import { useEffect, useLayoutEffect, useMemo, useRef, useState } from "react";
 import * as THREE from "three";
 import type { Availability, Scene } from "@/lib/scene-schema";
 import type { UnitStatus } from "@/lib/unit-status";
+import { readScenePalette } from "@/lib/scene-palette";
 import {
   fitDistance,
   gableRoofGeometry,
@@ -29,13 +30,12 @@ import {
  * materials, one soft sun, restrained cool-green palette, damped camera.
  */
 
-const PALETTE = {
-  available: new THREE.Color("#5F7355"),
-  held: new THREE.Color("#B0722C"),
-  sold: new THREE.Color("#C7CCC2"),
-  unknown: new THREE.Color("#EBEEE8"),
-  selected: new THREE.Color("#101614"),
-} as const;
+/*
+  Read once from the CSS tokens so the model and the page can never disagree
+  about what a colour means (§8). Module scope is fine: the palette is fixed
+  for the life of the document.
+*/
+const PALETTE = readScenePalette();
 
 const PLOT_HEIGHT = 0.45;
 const DIM = 0.22;
@@ -139,7 +139,7 @@ function Plots({
         frustumCulled
       >
         <boxGeometry args={[1, 1, 1]} />
-        <meshLambertMaterial />
+        <meshStandardMaterial roughness={0.86} metalness={0} />
       </instancedMesh>
 
       <instancedMesh
@@ -173,7 +173,7 @@ function HoverRing({ unit }: { unit: Scene["units"][number] }) {
   return (
     <mesh position={[x, PLOT_HEIGHT + 0.05, z]} rotation={[-Math.PI / 2, 0, 0]}>
       <planeGeometry args={[unit.widthM + 0.6, unit.depthM + 0.6]} />
-      <meshBasicMaterial color="#101614" transparent opacity={0.18} />
+      <meshBasicMaterial color={PALETTE.selected} transparent opacity={0.16} />
     </mesh>
   );
 }
@@ -247,7 +247,7 @@ function VillaUnits({
       body.setMatrixAt(i, m);
       body.setColorAt(
         i,
-        selected ? PALETTE.selected : new THREE.Color("#EEF0EA"),
+        selected ? PALETTE.selected : PALETTE.wall,
       );
 
       // Gable roof above it.
@@ -274,12 +274,12 @@ function VillaUnits({
     <>
       <instancedMesh ref={pads} args={[undefined, undefined, units.length]} receiveShadow>
         <boxGeometry args={[1, 1, 1]} />
-        <meshLambertMaterial />
+        <meshStandardMaterial roughness={0.86} metalness={0} />
       </instancedMesh>
 
       <instancedMesh ref={bodies} args={[undefined, undefined, units.length]} castShadow receiveShadow>
         <boxGeometry args={[1, 1, 1]} />
-        <meshLambertMaterial />
+        <meshStandardMaterial roughness={0.86} metalness={0} />
       </instancedMesh>
 
       <instancedMesh
@@ -287,7 +287,7 @@ function VillaUnits({
         args={[roofGeometry, undefined, units.length]}
         castShadow
       >
-        <meshLambertMaterial color="#8C9487" flatShading />
+        <meshStandardMaterial color={PALETTE.roof} roughness={0.9} metalness={0} flatShading />
       </instancedMesh>
 
       <instancedMesh
@@ -366,7 +366,7 @@ function ApartmentUnits({
           : PALETTE.unknown;
       mesh.setColorAt(
         i,
-        dimmed ? base.clone().lerp(new THREE.Color("#E4E7E1"), 0.82) : base,
+        dimmed ? base.clone().lerp(PALETTE.unknown, 0.82) : base,
       );
 
       p.set(x, y, z);
@@ -394,7 +394,7 @@ function ApartmentUnits({
         receiveShadow
       >
         <boxGeometry args={[scene.extent.width * 0.52, 1.2, scene.extent.depth * 0.52]} />
-        <meshLambertMaterial color="#DDE2DA" />
+        <meshStandardMaterial color={PALETTE.podium} roughness={0.92} metalness={0} />
       </mesh>
 
       <instancedMesh
@@ -404,7 +404,7 @@ function ApartmentUnits({
         receiveShadow
       >
         <boxGeometry args={[1, 1, 1]} />
-        <meshLambertMaterial />
+        <meshStandardMaterial roughness={0.86} metalness={0} />
       </instancedMesh>
 
       <instancedMesh
@@ -445,16 +445,16 @@ function Ground({ scene }: { scene: Scene }) {
   return (
     <group>
       <mesh geometry={boundary} receiveShadow position={[0, 0, 0]}>
-        <meshLambertMaterial color="#E4E8E0" />
+        <meshStandardMaterial color={PALETTE.ground} roughness={0.95} metalness={0} />
       </mesh>
       {open.map((s) => (
         <mesh key={s.id} geometry={s.geo} position={[0, 0.02, 0]} receiveShadow>
-          <meshLambertMaterial color="#BFD0C6" />
+          <meshStandardMaterial color={PALETTE.open} roughness={0.95} metalness={0} />
         </mesh>
       ))}
       {roads.map((r) => (
         <mesh key={r.id} geometry={r.geo} position={[0, 0.05, 0]} receiveShadow>
-          <meshLambertMaterial color="#C7CCC2" />
+          <meshStandardMaterial color={PALETTE.road} roughness={0.98} metalness={0} />
         </mesh>
       ))}
     </group>
@@ -518,11 +518,11 @@ function Planting({
     <group>
       <instancedMesh ref={trunks} args={[undefined, undefined, plants.length]} castShadow>
         <cylinderGeometry args={[1, 1, 1, 5]} />
-        <meshLambertMaterial color="#7A6A55" />
+        <meshStandardMaterial color={PALETTE.trunk} roughness={0.95} metalness={0} />
       </instancedMesh>
       <instancedMesh ref={canopies} args={[undefined, undefined, plants.length]} castShadow>
         <icosahedronGeometry args={[1, 0]} />
-        <meshLambertMaterial flatShading />
+        <meshStandardMaterial roughness={0.82} metalness={0} flatShading />
       </instancedMesh>
     </group>
   );
@@ -545,11 +545,11 @@ function Amenities({ scene }: { scene: Scene }) {
           <group key={a.id} position={[x, 0, z]}>
             <mesh position={[0, 1.4, 0]} castShadow>
               <cylinderGeometry args={[0.12, 0.12, 2.8, 6]} />
-              <meshLambertMaterial color="#101614" />
+              <meshStandardMaterial color={PALETTE.selected} roughness={0.7} metalness={0} />
             </mesh>
             <mesh position={[0, 3, 0]} castShadow>
               <sphereGeometry args={[0.75, 12, 10]} />
-              <meshLambertMaterial color="#B0722C" />
+              <meshStandardMaterial color={PALETTE.held} roughness={0.55} metalness={0} />
             </mesh>
           </group>
         );
@@ -684,16 +684,18 @@ function SceneContents(props: Props) {
 
   return (
     <>
-      <color attach="background" args={["#F8F9F6"]} />
+      <color attach="background" args={[`#${PALETTE.sky.getHexString()}`]} />
       {/* Fog only softens the far edge. It must begin beyond the model, or
           the whole site washes out to the background colour. */}
-      <fog attach="fog" args={["#F8F9F6", radius * 3, radius * 7]} />
+      <fog attach="fog" args={[`#${PALETTE.sky.getHexString()}`, radius * 3, radius * 7]} />
 
       {/* One soft sun with real shadows; no reflections (§10 fallback). */}
-      <hemisphereLight args={["#DCE6DE", "#B6BDB2", 1.15]} />
+      {/* Warm sky, warm bounce off the ground: matte stone, not plastic. */}
+      <hemisphereLight args={["#F6EFE2", "#C3B7A4", 1.05]} />
       <directionalLight
         position={[sun[0] * radius, sun[1] * radius, sun[2] * radius]}
-        intensity={1.5}
+        intensity={2.1}
+        color="#FFF4E2"
         castShadow
         shadow-mapSize={[2048, 2048]}
         shadow-camera-left={-radius * 0.62}

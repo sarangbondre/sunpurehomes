@@ -1,15 +1,19 @@
 import Image from "next/image";
+import Link from "next/link";
 import { site } from "@/lib/site";
 
 /**
- * BRIEF.md §11 — Hero: full-bleed film or still, one line of tagline, one
- * supporting sentence about the legacy. No carousel. No badge stack.
- * Nothing else competes.
+ * The split hero from the client's reference: a warm panel carrying the
+ * brand line on the left, a full-bleed photograph bleeding off the right
+ * edge, and the seam between them labelled.
  *
- * The film/still does not exist yet. Rather than ship stock imagery that
- * pretends to be a Sunpure project, the media is a typed optional field:
- * absent, the hero renders a tonal field built from the palette; present,
- * it drops straight in. Swapping it is a data change, not a rebuild.
+ * The reference sets the headline in two tones — the first line in ink, the
+ * second in terracotta. The wording here stays "Thoughtfully Built. Deeply
+ * Lived." because §14 requires one tagline site-wide and that is the one the
+ * client approved; the reference's "Built on thought. Lived deeply." is a
+ * rewording of a line that was retired.
+ *
+ * The photograph is a typed field, so swapping it is a data change (§15).
  */
 export type HeroMedia =
   | { kind: "image"; src: string; alt: string }
@@ -17,113 +21,90 @@ export type HeroMedia =
 
 export function Hero({ media }: { media?: HeroMedia }) {
   return (
-    <section // A floor as well as a ceiling: sized purely to the viewport, the hero
-    // collapsed on a phone held sideways until the scrims met in the middle
-    // and swallowed the photograph.
-    className="relative isolate flex min-h-[max(30rem,calc(100svh-4rem))] flex-col sm:min-h-[max(32rem,calc(100svh-5rem))]">
-      <HeroBackdrop media={media} />
-
-      <div className="relative z-10 mt-auto px-6 pb-16 sm:px-10 sm:pb-20 lg:px-16 lg:pb-24">
-        {/*
-          The reading scrim is tied to the text block, not to the viewport.
-          Sized as a share of the hero it could not guarantee anything: on a
-          tall phone the eyebrow landed high enough to sit over the palace
-          facade at half opacity and became unreadable. Anchored here it
-          always covers the text with the same fade above it, whatever the
-          photograph or the screen.
-        */}
-        <div
-          aria-hidden
-          className="pointer-events-none absolute inset-x-0 -top-32 bottom-0 -z-10 bg-gradient-to-t from-paper via-paper/96 via-78% to-transparent"
-        />
-
-        <p className="u-mono text-canopy">
-          {site.city} · {site.region}
-        </p>
-
-        <h1 className="mt-6 max-w-[16ch] text-[clamp(3rem,10vw,7.5rem)]">
-          Thoughtfully Built.{" "}
-          <em className="italic">Deeply&nbsp;Lived.</em>
+    <section className="relative bg-paper lg:grid lg:min-h-[calc(100svh-5rem)] lg:grid-cols-[42fr_58fr]">
+      {/* ── Left: the brand panel */}
+      <div className="relative flex flex-col justify-center px-6 py-16 sm:px-10 sm:py-24 lg:py-0 lg:pl-16 lg:pr-14">
+        <h1 className="text-[clamp(2.75rem,6.2vw,4.6rem)]">
+          Thoughtfully&nbsp;Built.
+          <span className="mt-1 block text-laterite">Deeply&nbsp;Lived.</span>
         </h1>
 
-        <p className="mt-8 max-w-[46ch] text-lg leading-relaxed text-ink-soft sm:text-xl">
+        <p className="mt-7 max-w-[34ch] text-lg leading-relaxed text-ink-soft sm:text-xl">
           A residential venture of the {site.group.name} — the family behind{" "}
           {site.group.consumerBrand}, refining in {site.city} for more than{" "}
           {site.legacyYears} years.
         </p>
+
+        <span aria-hidden className="mt-10 block h-px w-32 bg-laterite/45" />
+
+        <div className="mt-10">
+          <Link href="/projects" className="u-cta">
+            Discover our projects
+            <svg
+              aria-hidden
+              viewBox="0 0 24 12"
+              className="h-2.5 w-6"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="1.4"
+            >
+              <path d="M0 6h22M17 1l5 5-5 5" />
+            </svg>
+          </Link>
+        </div>
+
+        {/* The seam label from the reference. Decorative, and only where
+            there is a seam to label. */}
+        <span
+          aria-hidden
+          className="u-mono absolute right-5 top-1/2 hidden -translate-y-1/2 rotate-90 whitespace-nowrap text-muted lg:block"
+        >
+          01 &mdash; Featured home
+        </span>
+      </div>
+
+      {/* ── Right: the photograph */}
+      <div className="relative aspect-4/3 w-full overflow-hidden bg-paper-2 sm:aspect-16/10 lg:aspect-auto lg:h-full">
+        <HeroMediaLayer media={media} />
       </div>
     </section>
   );
 }
 
-function HeroBackdrop({ media }: { media?: HeroMedia }) {
+function HeroMediaLayer({ media }: { media?: HeroMedia }) {
   if (media?.kind === "image") {
     return (
-      <div className="absolute inset-0 -z-10">
-        <Image
-          src={media.src}
-          alt={media.alt}
-          fill
-          priority
-          fetchPriority="high"
-          sizes="100vw"
-          className="object-cover object-[center_34%] [filter:saturate(0.8)_contrast(1.02)]"
-        />
-        {/* Pulls the photo's warmth toward the cool palette (§8) without
-            draining it, and keeps the mark and the headline legible. */}
-        <div className="absolute inset-0 bg-mist/15 mix-blend-color" />
-        {/*
-          Both scrims are capped in absolute units as well as percentages.
-          Sized purely as a percentage of the hero, they overlapped on a short
-          viewport — a phone held sideways, or a small laptop window — and
-          between them erased the photograph completely.
-        */}
-        <div className="absolute inset-x-0 top-0 h-[min(18%,6rem)] bg-gradient-to-b from-paper/70 to-transparent" />
-      </div>
+      <Image
+        src={media.src}
+        alt={media.alt}
+        fill
+        priority
+        fetchPriority="high"
+        sizes="(min-width: 1024px) 58vw, 100vw"
+        className="object-cover"
+      />
     );
   }
 
   if (media?.kind === "video") {
     return (
-      <div className="absolute inset-0 -z-10">
-        <video
-          className="size-full object-cover"
-          src={media.src}
-          poster={media.poster}
-          aria-label={media.alt}
-          autoPlay
-          muted
-          loop
-          playsInline
-        />
-        <div className="absolute inset-0 bg-gradient-to-t from-paper via-paper/55 to-paper/10" />
-      </div>
+      <video
+        className="size-full object-cover"
+        src={media.src}
+        poster={media.poster}
+        aria-label={media.alt}
+        autoPlay
+        muted
+        loop
+        playsInline
+      />
     );
   }
 
-  return <HeroField />;
-}
-
-/**
- * The stand-in until the client supplies footage: a still, tonal field in the
- * §8 palette. Decorative, so it is hidden from assistive technology. No
- * motion — motion here would be decoration, and §8 forbids that.
- */
-function HeroField() {
+  // No photograph supplied: a quiet tonal field rather than stock imagery.
   return (
-    <div aria-hidden className="absolute inset-0 -z-10 overflow-hidden">
-      <div className="absolute inset-0 bg-paper" />
-      <div className="absolute inset-x-0 bottom-0 h-[62%] bg-gradient-to-b from-transparent via-mist/35 to-mist/60" />
-      <div
-        className="absolute inset-x-0 bottom-0 h-[38%]"
-        style={{
-          backgroundImage:
-            "repeating-linear-gradient(to top, transparent 0 46px, var(--color-line) 46px 47px)",
-          maskImage: "linear-gradient(to top, black, transparent)",
-          WebkitMaskImage: "linear-gradient(to top, black, transparent)",
-        }}
-      />
-      <div className="absolute inset-x-0 bottom-0 h-px bg-line" />
+    <div aria-hidden className="absolute inset-0 bg-paper-2">
+      <div className="absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-mist/70 to-transparent" />
     </div>
   );
 }

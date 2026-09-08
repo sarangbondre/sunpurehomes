@@ -1,15 +1,14 @@
 import { Hero, type HeroMedia } from "@/components/home/hero";
 
 /**
- * Carried over from the live site at the client's direction (2026-08-29).
- * It is Mysore Palace — a public landmark, not a Sunpure property — so the
- * alt text says exactly that rather than implying it is one of the projects.
- * Swap `heroMedia` for project footage when it exists; nothing else changes.
+ * The reference the client supplied shows a residential property, not a
+ * landmark, so the hero now carries a Sunpure villa rather than the Mysore
+ * Palace photograph chosen earlier. Both are one line to change.
  */
 const heroMedia: HeroMedia = {
   kind: "image",
-  src: "/images/hero-mysore-palace.avif",
-  alt: "Mysore Palace at dusk, its domed towers lit against a clouded sky.",
+  src: "/images/projects/rare-earth/hero.avif",
+  alt: "The Rare Earth entrance gateway — a tiled canopy on timber beams, carried on stone piers hung with creepers.",
 };
 
 export default function HomePage() {

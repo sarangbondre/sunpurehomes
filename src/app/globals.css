@@ -15,25 +15,37 @@
 --------------------------------------------------------------------------- */
 
 @theme {
-  /* Surface + text */
-  --color-ink: #101614;
-  --color-paper: #f8f9f6;
-  --color-paper-2: #ebeee8;
-  --color-line: #d7dbd3;
   /*
-    ACCESSIBILITY: --muted on --paper is 3.77:1. That clears WCAG AA for
-    large text (3:1) and non-text, but NOT for body copy (4.5:1).
-    Use --ink-soft for small secondary text instead.
+    Surface + text — warm travertine.
+
+    §8 of the brief specifies a cool green-grey palette and warns off
+    cream/sand explicitly. The client supplied a reference in exactly that
+    warm register and asked for it, so this is a deliberate, recorded
+    departure from §8, not a drift back into it.
+
+    The meaning contract §8 sets is preserved intact: laterite still reads
+    villas and "held", stone still reads apartments and "sold", canopy still
+    reads plots and "available". Only their hues moved, so every card, pin,
+    plan and 3D scene follows without touching a component.
   */
-  --color-muted: #78827c;
-  /* Derived, not in the §8 list: secondary body copy at 8.66:1 on --paper. */
-  --color-ink-soft: #414a46;
+  --color-ink: #1c1a18;
+  --color-paper: #f4f0e7;
+  --color-paper-2: #eae3d5;
+  --color-line: #ded5c4;
+  /*
+    ACCESSIBILITY: 4.92:1 on --paper, so the mono eyebrows clear WCAG AA for
+    body text. The cooler #7a7268 that matched the reference more closely
+    only reached 4.16:1.
+  */
+  --color-muted: #6e675c;
+  /* Secondary body copy at 8.36:1 on --paper. */
+  --color-ink-soft: #4a453d;
 
   /* Meaning-bearing */
-  --color-canopy: #5f7355;
-  --color-laterite: #b0722c;
-  --color-stone: #c7ccc2;
-  --color-mist: #bfd0c6;
+  --color-canopy: #6f7b5a;
+  --color-laterite: #b0634a;
+  --color-stone: #c4bcac;
+  --color-mist: #ded6c6;
 
   /* Type */
   --font-display: var(--font-instrument-serif), Iowan Old Style, Palatino,
@@ -52,6 +64,7 @@
   --duration-camera: 900ms;
   --duration-hover: 180ms;
 }
+
 
 @layer base {
   html {
@@ -91,6 +104,35 @@
 }
 
 @layer components {
+  /*
+    The outlined call to action from the client's reference: terracotta rule,
+    ink label, wide tracking. The border carries the accent colour and the
+    text stays ink, because terracotta on paper is 3.89:1 — fine for the
+    large display line, short of AA for a control's label.
+  */
+  .u-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.9rem;
+    border: 1px solid var(--color-laterite);
+    padding: 1rem 1.6rem;
+    font-family: var(--font-sans);
+    font-size: 0.78rem;
+    font-weight: 500;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--color-ink);
+    background: transparent;
+    transition:
+      background-color var(--duration-hover) var(--ease-hover),
+      color var(--duration-hover) var(--ease-hover);
+  }
+
+  .u-cta:hover {
+    background: var(--color-laterite);
+    color: var(--color-paper);
+  }
+
   /* Eyebrows, status labels, RERA numbers, coordinates. */
   .u-mono {
     font-family: var(--font-mono);

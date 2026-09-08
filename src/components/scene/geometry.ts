@@ -29,9 +29,17 @@ export function ringGeometry(ring: readonly (readonly [number, number])[]) {
   });
   shape.closePath();
   const geometry = new THREE.ShapeGeometry(shape);
-  // Shapes are built in XY; lay them onto the ground and flip north to -z.
-  geometry.rotateX(Math.PI / 2);
-  geometry.scale(1, 1, -1);
+  /*
+    Shapes are built in XY. A single -90° turn about X lays them on the ground
+    AND sends north to -z in one step: (x, y, 0) becomes (x, 0, -y).
+
+    The earlier version turned +90° and then mirrored with scale(1, 1, -1).
+    That reached the same positions but the mirror reversed the winding, so
+    every ground face ended up with its normal pointing down and rendered
+    unlit — the open spaces came out near-black under the sun.
+  */
+  geometry.rotateX(-Math.PI / 2);
+  geometry.computeVertexNormals();
   return geometry;
 }
 
