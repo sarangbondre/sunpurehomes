@@ -43,7 +43,18 @@
 
   /* Meaning-bearing */
   --color-canopy: #6f7b5a;
-  --color-laterite: #b0634a;
+  /*
+    The brand orange from the existing site, now the primary accent.
+    It still carries the §8 meaning of laterite — villas, and "held" — so
+    cards, chips, pins and the 3D scenes all follow.
+
+    On the beige ground it measures 2.95:1, which is under the 3:1 floor even
+    for large text. So it is used for fills, borders, rules and display type,
+    and --accent-ink below stands in wherever orange has to be small text.
+  */
+  --color-laterite: #f15b22;
+  /* The same orange, deepened to 4.50:1 — AA for body text on --paper. */
+  --color-accent-ink: #c0450f;
   --color-stone: #c4bcac;
   --color-mist: #ded6c6;
 
@@ -121,7 +132,7 @@
     font-weight: 500;
     letter-spacing: 0.16em;
     text-transform: uppercase;
-    color: var(--color-ink);
+    color: var(--color-accent-ink);
     background: transparent;
     transition:
       background-color var(--duration-hover) var(--ease-hover),

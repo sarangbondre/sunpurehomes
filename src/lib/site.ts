@@ -18,6 +18,12 @@ export const site = {
   /** The one legacy figure. Change it here or nowhere. */
   legacyYears: 40,
 
+  /*
+    Retained, not rendered. The client asked for every reference to the group
+    and to Sunpure Oil to come off the site, so nothing reads these today.
+    They stay because the facts are verified and §6 still plans a /legacy
+    route; delete them if that route is dropped.
+  */
   group: {
     name: "Masoom Group",
     legalName: "M.K. Agrotech Pvt. Ltd.",

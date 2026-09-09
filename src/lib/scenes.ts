@@ -33,3 +33,20 @@ export function getAvailability(slug: string): Availability | undefined {
 export function hasPlan(slug: string): boolean {
   return existsSync(join(SCENES, `${slug}.json`));
 }
+
+/**
+ * A project counts as fully sold when it has availability on record and every
+ * unit in it is marked sold.
+ *
+ * Driven from content/availability/[slug].json so the sales team turns it on
+ * by editing the file they already own — no developer, no deploy (§7).
+ * Placeholder availability is ignored: a demonstration file must never make a
+ * live project look sold out.
+ */
+export function isFullySold(slug: string): boolean {
+  const availability = getAvailability(slug);
+  if (!availability || availability.provenance !== "sales") return false;
+
+  const statuses = Object.values(availability.units);
+  return statuses.length > 0 && statuses.every((s) => s === "sold");
+}

@@ -4,12 +4,16 @@ import { whatsappHref } from "@/lib/links";
 import { site } from "@/lib/site";
 
 /**
- * Every link here resolves. Routes that do not exist yet — /about, /legacy,
- * /contact, /journal — are deliberately absent rather than stubbed, because
- * a menu of dead links is the defect this rebuild exists to remove (§2).
- * Add each entry in the phase that builds its route.
+ * Three items, at the client's instruction: About, Projects, WhatsApp, with
+ * no Home link — the wordmark carries that, as it does on most sites.
+ *
+ * Every one of them resolves. /about was built for this menu rather than
+ * pointed at a placeholder.
  */
-const NAV = [{ href: "/projects", label: "Projects" }] as const;
+const NAV = [
+  { href: "/about", label: "About" },
+  { href: "/projects", label: "Projects" },
+] as const;
 
 export function SiteHeader() {
   return (
@@ -19,12 +23,6 @@ export function SiteHeader() {
           <Logo decorative className="h-8 w-auto text-laterite sm:h-9" />
         </Link>
 
-        {/*
-          The reference shows Projects, Philosophy, Journal and Contact. Only
-          the routes that exist are linked — a menu of dead links is the
-          defect this rebuild removes. Philosophy and Journal join here in the
-          phase that builds them.
-        */}
         <nav aria-label="Main" className="ml-auto flex items-center gap-8">
           {NAV.map((item) => (
             <Link
@@ -42,9 +40,9 @@ export function SiteHeader() {
             )}
             target="_blank"
             rel="noopener noreferrer"
-            className="text-[0.95rem] text-laterite transition-opacity duration-hover ease-hover hover:opacity-70"
+            className="text-[0.95rem] text-accent-ink transition-opacity duration-hover ease-hover hover:opacity-70"
           >
-            Contact
+            WhatsApp
           </a>
         </nav>
       </div>

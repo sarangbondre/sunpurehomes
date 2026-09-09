@@ -108,11 +108,11 @@ export function Approvals({ project }: { project: Project }) {
             </li>
           ))}
         </ul>
-        <p className="mt-6 max-w-[52ch] text-sm leading-relaxed text-ink-soft">
-          {site.name} is a residential venture of the {site.group.name},{" "}
-          {site.group.legalName} — the family behind {site.group.consumerBrand},
-          refining in {site.city} for more than {site.legacyYears} years.
-        </p>
+        {/*
+          The group and edible-oil lineage were removed from every page at the
+          client's instruction. The material partners above carry the trust
+          signal on their own.
+        */}
       </div>
     </div>
   );

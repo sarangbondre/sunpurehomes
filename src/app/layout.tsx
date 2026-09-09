@@ -10,7 +10,7 @@ export const metadata: Metadata = {
     default: `${site.name} — ${site.tagline}`,
     template: `%s — ${site.name}`,
   },
-  description: `${site.name} builds villas, apartments and plotted developments in ${site.city}. A residential venture of the ${site.group.name}, the family behind ${site.group.consumerBrand}.`,
+  description: `${site.name} builds villas, apartments and plotted developments in ${site.city}. Nine projects, thoughtfully built.`,
 };
 
 export const viewport: Viewport = {

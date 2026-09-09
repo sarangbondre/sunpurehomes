@@ -27,12 +27,12 @@ export function SiteFooter() {
             <h2 className="u-mono text-muted">Contact</h2>
             <ul className="mt-4 space-y-2 text-ink-soft">
               <li>
-                <a className="hover:text-canopy" href={mailtoHref}>
+                <a className="hover:text-accent-ink" href={mailtoHref}>
                   {site.contact.email}
                 </a>
               </li>
               <li>
-                <a className="hover:text-canopy" href={telHref}>
+                <a className="hover:text-accent-ink" href={telHref}>
                   {site.contact.phoneDisplay}
                 </a>
               </li>
@@ -43,7 +43,7 @@ export function SiteFooter() {
               {SOCIAL.map((s) => (
                 <li key={s.label}>
                   <a
-                    className="hover:text-canopy"
+                    className="hover:text-accent-ink"
                     href={s.href}
                     target="_blank"
                     rel="noopener noreferrer"
@@ -59,12 +59,12 @@ export function SiteFooter() {
             <h2 className="u-mono text-muted">Explore</h2>
             <ul className="mt-4 space-y-2 text-ink-soft">
               <li>
-                <Link className="hover:text-canopy" href="/">
-                  Home
+                <Link className="hover:text-accent-ink" href="/about">
+                  About
                 </Link>
               </li>
               <li>
-                <Link className="hover:text-canopy" href="/projects">
+                <Link className="hover:text-accent-ink" href="/projects">
                   Projects
                 </Link>
               </li>
@@ -81,7 +81,7 @@ export function SiteFooter() {
         </p>
 
         <p className="u-mono mt-8 text-muted">
-          © {site.group.legalName}
+          © {site.name}
         </p>
       </div>
     </footer>

@@ -17,7 +17,7 @@ import {
 import { mailtoHref, projectEnquiryMessage, telHref, whatsappHref } from "@/lib/links";
 import { formatIndianNumber } from "@/lib/format";
 import { singularNoun } from "@/lib/nouns";
-import { getAvailability, getScene } from "@/lib/scenes";
+import { getAvailability, getScene, isFullySold } from "@/lib/scenes";
 import { site } from "@/lib/site";
 
 export function generateStaticParams() {
@@ -59,6 +59,12 @@ export default async function ProjectPage({
   const { acres, unitCount, unitNoun } = project.scale;
   const scene = getScene(project.slug);
   const availability = scene ? getAvailability(project.slug) : undefined;
+  /*
+    §"Sold-out Developments": once everything is sold, the unit-by-unit plan
+    is noise on the page. The project stays fully browsable — description,
+    amenities, specifications, gallery and approvals all remain.
+  */
+  const soldOut = isFullySold(project.slug);
 
   return (
     <main>
@@ -120,7 +126,7 @@ export default async function ProjectPage({
             The 3D scene replaces the SVG here in Phase 4; the drawer, the
             shortlist and the actions are already the ones it will use, so
             that swap adds spectacle without adding capability (§9). */}
-        {scene && (
+        {scene && !soldOut && (
           <Section eyebrow="What" title={`Choose your ${singularNoun(unitNoun).toLowerCase()}`}>
             {/* No query reading here, so all nine project pages stay
                 statically generated. Deep links belong to /plan. */}
@@ -140,6 +146,16 @@ export default async function ProjectPage({
               >
                 Open the full plan
               </Link>
+            </p>
+          </Section>
+        )}
+
+        {scene && soldOut && (
+          <Section eyebrow="What" title="Fully sold">
+            <p className="max-w-[52ch] text-lg leading-relaxed text-ink-soft">
+              Every {unitNoun.replace(/s$/, "")} at {project.name} has been
+              sold. The specifications, amenities and approvals below describe
+              what was built.
             </p>
           </Section>
         )}

@@ -3,12 +3,12 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { PlanExplorer } from "@/components/plan/plan-explorer";
 import { getProject, getProjectSlugs } from "@/lib/content";
-import { getAvailability, getScene, hasPlan } from "@/lib/scenes";
+import { getAvailability, getScene, hasPlan, isFullySold } from "@/lib/scenes";
 import { singularNoun, withArticle } from "@/lib/nouns";
 
 export function generateStaticParams() {
   return getProjectSlugs()
-    .filter(hasPlan)
+    .filter((slug) => hasPlan(slug) && !isFullySold(slug))
     .map((slug) => ({ slug }));
 }
 
@@ -38,6 +38,8 @@ export default async function PlanPage({
 
   const scene = getScene(slug);
   if (!scene) notFound();
+  // No unit-level plan for a development with nothing left to sell.
+  if (isFullySold(slug)) notFound();
 
   const availability = getAvailability(slug);
   const noun = project.scale.unitNoun;

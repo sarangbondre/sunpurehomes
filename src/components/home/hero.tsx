@@ -1,6 +1,5 @@
 import Image from "next/image";
 import Link from "next/link";
-import { site } from "@/lib/site";
 
 /**
  * The split hero from the client's reference: a warm panel carrying the
@@ -29,15 +28,14 @@ export function Hero({ media }: { media?: HeroMedia }) {
           <span className="mt-1 block text-laterite">Deeply&nbsp;Lived.</span>
         </h1>
 
-        <p className="mt-7 max-w-[34ch] text-lg leading-relaxed text-ink-soft sm:text-xl">
-          A residential venture of the {site.group.name} — the family behind{" "}
-          {site.group.consumerBrand}, refining in {site.city} for more than{" "}
-          {site.legacyYears} years.
-        </p>
+        {/*
+          One tagline and nothing else. The brief's supporting sentence about
+          the group's forty years was removed at the client's instruction —
+          the hero is to read as a homebuilder, not a corporate portal.
+        */}
+        <span aria-hidden className="mt-10 block h-px w-32 bg-laterite/50" />
 
-        <span aria-hidden className="mt-10 block h-px w-32 bg-laterite/45" />
-
-        <div className="mt-10">
+        <div className="mt-9">
           <Link href="/projects" className="u-cta">
             Discover our projects
             <svg
