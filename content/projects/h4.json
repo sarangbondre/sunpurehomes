@@ -61,7 +61,8 @@
     {
       "group": "Doors & windows",
       "items": [
-        "Natural wood laminate finish"
+        "Natural wood laminate finish",
+        "Saint Gobain or equivalent glazing"
       ]
     },
     {
@@ -84,7 +85,98 @@
       ]
     }
   ],
-  "connectivity": [],
+  "connectivity": [
+    {
+      "name": "SVEI School",
+      "category": "education",
+      "travelMinutes": 5
+    },
+    {
+      "name": "NPS International School",
+      "category": "education",
+      "travelMinutes": 7
+    },
+    {
+      "name": "Reliance Mart",
+      "category": "retail",
+      "travelMinutes": 9
+    },
+    {
+      "name": "Theorem",
+      "category": "work",
+      "travelMinutes": 14
+    },
+    {
+      "name": "Clear Medi Radiant Hospital",
+      "category": "health",
+      "travelMinutes": 15
+    },
+    {
+      "name": "L&T",
+      "category": "work",
+      "travelMinutes": 16
+    },
+    {
+      "name": "SJCE College",
+      "category": "education",
+      "travelMinutes": 16
+    },
+    {
+      "name": "Raghulal & Co Medical Centre",
+      "category": "health",
+      "travelMinutes": 16
+    },
+    {
+      "name": "Infosys Campus",
+      "category": "work",
+      "travelMinutes": 17
+    },
+    {
+      "name": "Pandits The Orchids PU College and CBSE School",
+      "category": "education",
+      "travelMinutes": 17
+    },
+    {
+      "name": "Jayadeva Multispeciality Hospital",
+      "category": "health",
+      "travelMinutes": 19
+    },
+    {
+      "name": "GRS Fantasy Park",
+      "category": "leisure",
+      "travelMinutes": 20
+    },
+    {
+      "name": "Government Women's First Grade College",
+      "category": "education",
+      "travelMinutes": 20
+    },
+    {
+      "name": "Wipro",
+      "category": "work",
+      "travelMinutes": 26
+    },
+    {
+      "name": "Nexus City Centre",
+      "category": "retail",
+      "travelMinutes": 28
+    },
+    {
+      "name": "Mysore Palace",
+      "category": "leisure",
+      "travelMinutes": 30
+    },
+    {
+      "name": "Mall of Mysore",
+      "category": "retail",
+      "travelMinutes": 30
+    },
+    {
+      "name": "Narayana Multispeciality Hospital",
+      "category": "health",
+      "travelMinutes": 30
+    }
+  ],
   "gallery": [
     {
       "src": "/images/projects/h4/hero.avif",
@@ -116,8 +208,8 @@
     }
   ],
   "contentWarnings": [
-    "Connectivity omitted — see the note on the shared connectivity list across seven projects.",
-    "Specifications are word-for-word identical to Rare Earth's. Still unconfirmed.",
-    "The client's aerial banner labels this development HAPPINESS-IV, not H4. The site still calls it H4, which is the name used everywhere else including the brief and the live site. Confirm which name buyers should see."
+    "The client's aerial banner labels this development HAPPINESS-IV, not H4. The site still calls it H4, which is the name used everywhere else including the brief and the live site. Confirm which name buyers should see.",
+    "Specifications are the brochure's own — engineered marble or vitrified tiles, natural wood laminate, ISI-approved electricals, Jaquar/Kohler, Asian/Berger/JSW, Saint Gobain glass. The brochure states they are subject to change on upgrade or availability.",
+    "The brochure shows two villa types, with lift and without. The configuration table lists 3 BHK only and does not distinguish them. Get the plan-by-plan schedule from sales."
   ]
 }

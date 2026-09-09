@@ -43,6 +43,19 @@ const CATEGORY_LABELS = {
   retail: "Retail",
   health: "Health",
   transport: "Transport",
+  leisure: "Leisure",
+} as const;
+
+/**
+ * The column heading carries the basis, so a buyer reading "1,946 sq ft"
+ * knows what was measured. Only used when every configuration on the page
+ * agrees; a mixed table falls back to a bare "Area".
+ */
+const AREA_BASIS_LABELS = {
+  plot: "Plot area",
+  "super-built-up": "Super built-up",
+  "built-up": "Built-up area",
+  carpet: "Carpet area",
 } as const;
 
 export default async function ProjectPage({
@@ -65,6 +78,19 @@ export default async function ProjectPage({
     amenities, specifications, gallery and approvals all remain.
   */
   const soldOut = isFullySold(project.slug);
+
+  const areaBases = new Set(
+    project.configurations
+      .map((c) => c.areaBasis)
+      .filter((b): b is NonNullable<typeof b> => b !== undefined),
+  );
+  const areaHeading =
+    areaBases.size === 1
+      ? AREA_BASIS_LABELS[[...areaBases][0]]
+      : "Area";
+  const showsCarpetArea = project.configurations.some(
+    (c) => c.carpetAreaSqft !== undefined,
+  );
 
   return (
     <main>
@@ -164,15 +190,22 @@ export default async function ProjectPage({
         {project.configurations.length > 0 && (
           <Section eyebrow="How much" title="Configurations">
             <div className="overflow-x-auto">
-              <table className="w-full min-w-[32rem] border-collapse text-left">
+              <table
+                className={`w-full border-collapse text-left ${showsCarpetArea ? "min-w-[40rem]" : "min-w-[32rem]"}`}
+              >
                 <thead>
                   <tr className="border-b border-line">
                     <th scope="col" className="u-mono py-3 text-muted">
                       Configuration
                     </th>
                     <th scope="col" className="u-mono py-3 text-muted">
-                      Area
+                      {areaHeading}
                     </th>
+                    {showsCarpetArea && (
+                      <th scope="col" className="u-mono py-3 text-muted">
+                        Carpet area
+                      </th>
+                    )}
                     <th scope="col" className="u-mono py-3 text-muted">
                       Facing
                     </th>
@@ -188,6 +221,11 @@ export default async function ProjectPage({
                       <td className="py-4 text-ink-soft">
                         {formatArea(c.areaSqft) ?? "—"}
                       </td>
+                      {showsCarpetArea && (
+                        <td className="py-4 text-ink-soft">
+                          {formatArea(c.carpetAreaSqft) ?? "—"}
+                        </td>
+                      )}
                       <td className="py-4 text-ink-soft">{c.facing ?? "—"}</td>
                       <td className="py-4 text-right text-ink-soft">
                         {c.count ?? "—"}
@@ -278,9 +316,14 @@ export default async function ProjectPage({
                     </span>
                   </span>
                   <span className="u-mono shrink-0 text-ink">
-                    {c.distanceKm !== undefined
-                      ? `${c.distanceKm} km`
-                      : `${c.travelMinutes} min`}
+                    {[
+                      c.distanceKm !== undefined ? `${c.distanceKm} km` : null,
+                      c.travelMinutes !== undefined
+                        ? `${c.travelMinutes} min`
+                        : null,
+                    ]
+                      .filter(Boolean)
+                      .join(" · ")}
                   </span>
                 </li>
               ))}

@@ -15,7 +15,7 @@ import { z } from "zod";
  *        REQUIRED BEFORE PHASE 3 — the city scene cannot be built without them.
  *
  *   configurations[].areaSqft    → optional
- *        Published for Happiness 2, V4 and Fadal only.
+ *        Published for Happiness 2, V4, Fadal, Rare Earth and Curve.
  *
  *   connectivity[].distanceKm    → optional, joined by `travelMinutes`
  *        The old WordPress site published kilometres; the current site
@@ -75,6 +75,25 @@ export const projectSchema = z
       z.object({
         label: realString("configuration label"),
         areaSqft: z
+          .union([z.number().positive(), z.tuple([z.number(), z.number()])])
+          .optional(),
+        /**
+         * Which measurement `areaSqft` is. For a plot the figure is the plot
+         * itself and needs no qualifier; for a built home "1,946 sq ft" means
+         * nothing until you know whether it is super built-up or carpet, and
+         * the two differ by a third. Absent → the column renders as a bare
+         * "Area", which is what every project published before the
+         * brochures arrived.
+         */
+        areaBasis: z
+          .enum(["plot", "super-built-up", "built-up", "carpet"])
+          .optional(),
+        /**
+         * Carpet area is the figure RERA requires a promoter to disclose, so
+         * it is carried separately rather than replacing `areaSqft` — buyers
+         * are quoted the super built-up figure and need both to compare.
+         */
+        carpetAreaSqft: z
           .union([z.number().positive(), z.tuple([z.number(), z.number()])])
           .optional(),
         facing: realString("facing").optional(),
@@ -138,6 +157,13 @@ export const projectSchema = z
             "retail",
             "health",
             "transport",
+            /**
+             * The brochures lead on landmarks — the Palace, KRS, Chamundi
+             * Hill, the zoo. None of them is retail or transport, and
+             * dropping them to fit the original five would have thrown away
+             * the distances the client actually publishes.
+             */
+            "leisure",
           ]),
           distanceKm: z.number().positive().optional(),
           travelMinutes: z.number().int().positive().optional(),

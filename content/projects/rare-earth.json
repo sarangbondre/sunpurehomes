@@ -25,35 +25,42 @@
   },
   "configurations": [
     {
-      "label": "9.0 × 12.0 m",
+      "label": "9.0 × 12.0 m (30 × 40 ft)",
       "areaSqft": 1163,
+      "areaBasis": "plot",
       "count": 102
     },
     {
       "label": "9.0 × 13.44 m",
       "areaSqft": 1302,
+      "areaBasis": "plot",
       "count": 10
     },
     {
-      "label": "9.0 × 15.0 m",
+      "label": "9.0 × 15.0 m (30 × 50 ft)",
       "areaSqft": 1453,
+      "areaBasis": "plot",
       "count": 53
     },
     {
-      "label": "12.0 × 18.0 m",
+      "label": "12.0 × 18.0 m (40 × 60 ft)",
       "areaSqft": 2325,
+      "areaBasis": "plot",
       "count": 31
     },
     {
       "label": "9.0 m × irregular",
+      "areaBasis": "plot",
       "count": 52
     },
     {
       "label": "12.0 m × irregular",
+      "areaBasis": "plot",
       "count": 30
     },
     {
       "label": "Irregular",
+      "areaBasis": "plot",
       "count": 1
     }
   ],
@@ -86,49 +93,113 @@
     },
     {
       "name": "Reading zones"
+    },
+    {
+      "name": "Six landscaped parks"
+    },
+    {
+      "name": "Two civic amenity blocks"
+    },
+    {
+      "name": "Grand archway entrance"
+    },
+    {
+      "name": "Blacktopped internal roads"
+    },
+    {
+      "name": "Street lighting throughout"
+    },
+    {
+      "name": "Underground utilities and drainage"
+    },
+    {
+      "name": "Rainwater management"
+    },
+    {
+      "name": "24-hour security"
     }
   ],
   "specifications": [],
   "connectivity": [
     {
+      "name": "Mysore Airport",
+      "category": "transport",
+      "distanceKm": 2
+    },
+    {
+      "name": "MIT College",
+      "category": "education",
+      "distanceKm": 4
+    },
+    {
       "name": "Seshadripuram Institute of Technology",
       "category": "education",
-      "travelMinutes": 10
+      "distanceKm": 5
     },
     {
       "name": "JSS Public School",
       "category": "education",
-      "travelMinutes": 13
-    },
-    {
-      "name": "Christ College",
-      "category": "education",
-      "travelMinutes": 15
-    },
-    {
-      "name": "Mall of Mysore",
-      "category": "retail",
-      "travelMinutes": 15
-    },
-    {
-      "name": "Nexus City Centre Mall",
-      "category": "retail",
-      "travelMinutes": 25
-    },
-    {
-      "name": "JSS Multispecialty Hospital",
-      "category": "health",
-      "travelMinutes": 15
-    },
-    {
-      "name": "Apollo BGS Hospital",
-      "category": "health",
-      "travelMinutes": 25
+      "distanceKm": 8
     },
     {
       "name": "GC Sports Medicine Centre",
       "category": "health",
-      "travelMinutes": 15
+      "distanceKm": 9
+    },
+    {
+      "name": "Christ College",
+      "category": "education",
+      "distanceKm": 10
+    },
+    {
+      "name": "JSS Multispecialty Hospital",
+      "category": "health",
+      "distanceKm": 11
+    },
+    {
+      "name": "Mysore Palace",
+      "category": "leisure",
+      "distanceKm": 11
+    },
+    {
+      "name": "Mall of Mysore",
+      "category": "retail",
+      "distanceKm": 11
+    },
+    {
+      "name": "Government General Hospital",
+      "category": "health",
+      "distanceKm": 12
+    },
+    {
+      "name": "Apollo BGS Hospital",
+      "category": "health",
+      "distanceKm": 13
+    },
+    {
+      "name": "Mysore Bus Stand",
+      "category": "transport",
+      "distanceKm": 14
+    },
+    {
+      "name": "Mysore Railway Station",
+      "category": "transport",
+      "distanceKm": 15
+    },
+    {
+      "name": "Nexus City Centre Mall",
+      "category": "retail",
+      "distanceKm": 15
+    },
+    {
+      "name": "Manipal Hospital",
+      "category": "health",
+      "distanceKm": 17
+    },
+    {
+      "name": "Narayana Multispecialty Hospital",
+      "category": "health",
+      "distanceKm": 20
     }
   ],
   "gallery": [
@@ -160,10 +231,11 @@
   "contentWarnings": [
     "RERA field on the live page renders the literal string 'NUMBER GOES HERE'.",
     "Specifications omitted. The live page lists interior finishes — engineered marble, wood laminate, Jaquar or Kohler sanitary fittings, premium paints — on a development that sells bare land. Not carried over.",
-    "Connectivity is published in travel minutes rather than distances. Carried over as given.",
     "All eight amenities and all six gallery images are dead links on the live page.",
     "Plot sizes and counts taken from the approved MUDA layout (Authority Resolution 14, 08-08-2024), which answers question (i) of the information request. Net extent 18A-07G, 73,551.61 sq m; land use 54.79% residential, 29.45% roads, 10.18% park, 5.13% civic amenities, 0.45% public utility.",
     "The approved drawing is titled \"1st Phase (40%) Site Release\". The 279 sites are the full layout; confirm how many are released for sale today before the plan implies all of them are.",
-    "Eighty-three plots are irregular (\"Odd\") on the approved drawing and have no single stated dimension. They are counted but not sized."
+    "Eighty-three plots are irregular (\"Odd\") on the approved drawing and have no single stated dimension. They are counted but not sized.",
+    "Connectivity is the project brochure's own kilometre figures. The live site published a different set as travel times (JSS Multispecialty 15 min, Seshadripuram 10 min, Christ College 15 min, Mall of Mysore 15 min, Nexus 25 min, Apollo 25 min, GC Sports Medicine 15 min, JSS Public School 13 min). The two sets name different places and cannot be reconciled; the brochure is the newer client document and wins. Confirm before print.",
+    "The brochure master plan legend marks the entrance 'Toll Plaza' alongside 'Grand Archway'. Recorded here as the archway only — confirm what the gatehouse should be called for buyers."
   ]
 }

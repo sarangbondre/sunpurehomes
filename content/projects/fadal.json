@@ -27,21 +27,25 @@
     {
       "label": "9.0 × 12.0 m",
       "areaSqft": 1163,
-      "count": 12
+      "count": 12,
+      "areaBasis": "plot"
     },
     {
       "label": "9.0 × 13.0 m",
       "areaSqft": 1259,
-      "count": 6
+      "count": 6,
+      "areaBasis": "plot"
     },
     {
       "label": "9.0 × 15.0 m",
       "areaSqft": 1453,
-      "count": 14
+      "count": 14,
+      "areaBasis": "plot"
     },
     {
       "label": "9.0 m × irregular",
-      "count": 11
+      "count": 11,
+      "areaBasis": "plot"
     }
   ],
   "compliance": {
@@ -70,6 +74,18 @@
     },
     {
       "name": "Sewage treatment plant"
+    },
+    {
+      "name": "Children's play area"
+    },
+    {
+      "name": "Walking and jogging track"
+    },
+    {
+      "name": "Underground cabling"
+    },
+    {
+      "name": "Civic amenity block"
     }
   ],
   "specifications": [],
@@ -138,6 +154,46 @@
       "name": "Excel Public School, Koorgalli",
       "category": "education",
       "distanceKm": 7.7
+    },
+    {
+      "name": "District Hospital",
+      "category": "health",
+      "travelMinutes": 7
+    },
+    {
+      "name": "Jayadeva Hospital",
+      "category": "health",
+      "travelMinutes": 8
+    },
+    {
+      "name": "New Priyadarshini Hospital",
+      "category": "health",
+      "travelMinutes": 9
+    },
+    {
+      "name": "Bharath Cancer Hospital",
+      "category": "health",
+      "travelMinutes": 10
+    },
+    {
+      "name": "Manipal Hospital (Columbia Asia)",
+      "category": "health",
+      "travelMinutes": 11
+    },
+    {
+      "name": "ICAN",
+      "category": "education",
+      "travelMinutes": 12
+    },
+    {
+      "name": "St Joseph's Central School",
+      "category": "education",
+      "travelMinutes": 14
+    },
+    {
+      "name": "KRS Dam",
+      "category": "leisure",
+      "travelMinutes": 22
     }
   ],
   "gallery": [
@@ -173,6 +229,10 @@
     "Fadal ranks in search on the old WordPress URL. That page carries Happiness 2's villa floor plans under a 'Master Plan' heading. The redirect matters (§13).",
     "Figures taken from the FINAL approved layout and 100% release order, which supersedes the provisional drawing. The provisional sheet showed 44 sites; the final approval records 43 — matching the published figure. Land use: 54.06% residential, 30.36% roads, 10.03% park, 5.01% civic amenities, 0.54% not in enjoyment.",
     "Eleven plots are irregular (\"9.0 × odd\") on the approved drawing and have no single stated dimension. They are counted but not sized.",
-    "All sites released: the 100% release order is on file. The approach is marked \"From KRS Main Road\" on the drawing, which is why the filter keeps that label while the address gives Shyadanahalli."
+    "All sites released: the 100% release order is on file. The approach is marked \"From KRS Main Road\" on the drawing, which is why the filter keeps that label while the address gives Shyadanahalli.",
+    "The sales brochure says 3 acres and 44 plots. The final MUDA approval and 100% release order say 2 acres 36 guntas and 43. The approval wins here; the brochure needs correcting.",
+    "Health and leisure entries are the brochure's travel times. Its kilometre column could not be used: the PDF's text layer drops the decimal point, so it reads \"Infosys-49 km 12 mins\". Re-key those from the printed brochure rather than trusting a reconstruction.",
+    "The brochure gives the address as Survey no 129/2, Shyadanahally, KRS Main Road, behind Chamundeswari Railway Layout, near Vikrant Tyres, Mysore 570003. The site says Survey No. 129 and 570016. Confirm the survey subdivision and the PIN.",
+    "The brochure master plan sizes the park at 1,270.83 sq m and civic amenities at 634.93 sq m."
   ]
 }

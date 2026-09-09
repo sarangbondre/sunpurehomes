@@ -3,8 +3,8 @@
   "name": "Curve",
   "type": "apartment",
   "status": "ongoing",
-  "tagline": "3 BHK apartments proportioned to the golden ratio.",
-  "description": "Curve is an apartment development under way in Vijayanagar 4th Stage. Its thirty-two 3 BHK homes are laid out on golden-ratio proportions, with landscaped ground-level gardens and a terrace pavilion.",
+  "tagline": "2 and 3 BHK apartments proportioned to the golden ratio.",
+  "description": "Curve is an apartment development under way in Vijayanagar 4th Stage. Its homes are laid out on golden-ratio proportions, with 2 and 3 BHK plans, landscaped ground-level gardens and a terrace pavilion.",
   "location": {
     "label": "Vijayanagar 4th Stage",
     "addressLines": [
@@ -23,7 +23,22 @@
   },
   "configurations": [
     {
-      "label": "3 BHK"
+      "label": "2 BHK",
+      "areaSqft": [
+        1397.77,
+        1588.97
+      ],
+      "areaBasis": "super-built-up",
+      "carpetAreaSqft": [
+        923.22,
+        951.02
+      ]
+    },
+    {
+      "label": "3 BHK",
+      "areaSqft": 1945.74,
+      "areaBasis": "super-built-up",
+      "carpetAreaSqft": 1289.59
     }
   ],
   "compliance": {
@@ -76,6 +91,18 @@
     },
     {
       "name": "CCTV and 24-hour security"
+    },
+    {
+      "name": "Football court"
+    },
+    {
+      "name": "Indoor games area"
+    },
+    {
+      "name": "Centralised heat pump and hot water"
+    },
+    {
+      "name": "Over 5,000 plants across the Sunpure campus"
     }
   ],
   "specifications": [
@@ -102,7 +129,7 @@
         "Main door in teak wood frame with veneer finish",
         "Internal doors in wood frame with laminate finish",
         "WPC frames and shutters to toilets",
-        "UPVC sliding windows"
+        "UPVC windows"
       ]
     },
     {
@@ -115,7 +142,68 @@
       ]
     }
   ],
-  "connectivity": [],
+  "connectivity": [
+    {
+      "name": "Mysore Railway Museum",
+      "category": "leisure",
+      "distanceKm": 9.0
+    },
+    {
+      "name": "GRS Fantasy Park",
+      "category": "leisure",
+      "distanceKm": 9.5
+    },
+    {
+      "name": "Jaganmohan Palace",
+      "category": "leisure",
+      "distanceKm": 9.8
+    },
+    {
+      "name": "St. Philomena's Cathedral",
+      "category": "leisure",
+      "distanceKm": 11.0
+    },
+    {
+      "name": "Snow Palace Mysuru",
+      "category": "leisure",
+      "distanceKm": 11.2
+    },
+    {
+      "name": "Mysore Palace",
+      "category": "leisure",
+      "distanceKm": 11.3
+    },
+    {
+      "name": "JSS Medical College",
+      "category": "education",
+      "distanceKm": 11.9
+    },
+    {
+      "name": "Mysore Zoo",
+      "category": "leisure",
+      "distanceKm": 12.5
+    },
+    {
+      "name": "Lalitha Mahal Palace",
+      "category": "leisure",
+      "distanceKm": 15.1
+    },
+    {
+      "name": "Brindavan Gardens",
+      "category": "leisure",
+      "distanceKm": 15.3
+    },
+    {
+      "name": "KRS Dam",
+      "category": "leisure",
+      "distanceKm": 16.8
+    },
+    {
+      "name": "Chamundi Hill",
+      "category": "leisure",
+      "distanceKm": 25.8
+    }
+  ],
   "gallery": [
     {
       "src": "/images/projects/curve/hero.avif",
@@ -147,6 +235,8 @@
     }
   ],
   "contentWarnings": [
-    "Connectivity omitted — see the note on the shared connectivity list across seven projects."
+    "Areas are from the brochure's detailed plans for flats 05–08. Flats 01–04 are drawn but not dimensioned, and flat 05 (2,207 sq ft super built-up, 1,351 sq ft carpet) has its configuration label unreadable in the file — it is not represented in the table. Get the full unit schedule from sales.",
+    "Connectivity is the brochure's landmark distance chart — mostly leisure destinations. It carries no schools, hospitals or workplaces beyond JSS Medical College. Ask for a proper connectivity list.",
+    "scale.unitCount is 32, which predates the brochure. The brochure shows eight flats per floor across stilt, first, second, third and terrace plans. Confirm the real total."
   ]
 }
