@@ -12,7 +12,11 @@
       "81/B, 2nd Main Road",
       "Yadavagiri, Devaraja Mohalla",
       "Mysuru, Karnataka 570020"
-    ]
+    ],
+    "coordinates": {
+      "lat": 12.3250274,
+      "lng": 76.6417931
+    }
   },
   "scale": {
     "unitCount": 9,
@@ -25,8 +29,8 @@
   ],
   "compliance": {
     "reraAuthorityUrl": "https://rera.karnataka.gov.in",
-    "reraNumber": "PRM/KA/RERA/1268/378/PR/040719/003288",
-    "reraProvenance": "placeholder"
+    "reraNumber": "PRM/KA/RERA/1268/378/PR/210401/004089",
+    "reraProvenance": "verified"
   },
   "amenities": [
     {
@@ -113,9 +117,7 @@
     }
   ],
   "contentWarnings": [
-    "RERA number is a PLACEHOLDER for development. It is not a real registration and has not been checked against the Karnataka register. The page labels it unverified and the project stays out of the sitemap until reraProvenance is set to \"verified\".",
     "Every gallery image is an interior. There is no exterior view of the building.",
-    "The live site spells the location 'Yadavgiri' in the address and 'Yadavagiri' elsewhere. Standardised to Yadavagiri here.",
     "Connectivity omitted — see the note on the shared connectivity list across seven projects.",
     "Gallery images are renders. This project is marked completed, so photography should exist and should replace them."
   ]

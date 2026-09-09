@@ -11,6 +11,7 @@ import { site } from "@/lib/site";
 export function Approvals({ project }: { project: Project }) {
   const {
     reraNumber,
+    reraAdditionalNumbers,
     reraProvenance,
     reraAuthorityUrl,
     planSanction,
@@ -28,6 +29,19 @@ export function Approvals({ project }: { project: Project }) {
             <p className="mt-3 break-all font-mono text-lg text-ink">
               {reraNumber}
             </p>
+
+            {/* Further registrations on the same project, an extension for
+                instance. Shown because a buyer checking the register will
+                otherwise find a number the page does not mention. */}
+            {reraAdditionalNumbers?.length ? (
+              <ul className="mt-2 space-y-1">
+                {reraAdditionalNumbers.map((extra) => (
+                  <li key={extra} className="break-all font-mono text-sm text-ink-soft">
+                    {extra}
+                  </li>
+                ))}
+              </ul>
+            ) : null}
 
             {/*
               A registration number is a statutory disclosure. While it is a

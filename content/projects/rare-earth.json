@@ -12,7 +12,11 @@
       "10th km stone, Mysuru–Ooty Road",
       "Near Kadakola",
       "Karnataka 571311"
-    ]
+    ],
+    "coordinates": {
+      "lat": 12.2107096,
+      "lng": 76.660994
+    }
   },
   "scale": {
     "acres": 18,
@@ -22,8 +26,8 @@
   "configurations": [],
   "compliance": {
     "reraAuthorityUrl": "https://rera.karnataka.gov.in",
-    "reraNumber": "PRM/KA/RERA/1268/378/PR/120524/006230",
-    "reraProvenance": "placeholder"
+    "reraNumber": "PRM/KA/RERA/1268/378/PR/210126/008419",
+    "reraProvenance": "verified"
   },
   "amenities": [
     {
@@ -116,19 +120,13 @@
       "alt": "Lawn and young trees beside a Rare Earth walkway."
     },
     {
-      "src": "/images/projects/rare-earth/gallery-5.avif",
-      "alt": "A swimming pool in the Rare Earth grounds, seen from above."
-    },
-    {
       "src": "/images/projects/rare-earth/gallery-6.avif",
       "alt": "A curving footpath through planting at Rare Earth."
     }
   ],
   "contentWarnings": [
-    "RERA number is a PLACEHOLDER for development. It is not a real registration and has not been checked against the Karnataka register. The page labels it unverified and the project stays out of the sitemap until reraProvenance is set to \"verified\".",
     "RERA field on the live page renders the literal string 'NUMBER GOES HERE'.",
     "Specifications omitted. The live page lists interior finishes — engineered marble, wood laminate, Jaquar or Kohler sanitary fittings, premium paints — on a development that sells bare land. Not carried over.",
-    "A gallery image shows a swimming pool, which does not appear in the eight published amenities. Confirm whether a pool is part of the offering.",
     "No plot size range is published for Rare Earth, so the configuration table is empty.",
     "Connectivity is published in travel minutes rather than distances. Carried over as given.",
     "All eight amenities and all six gallery images are dead links on the live page."

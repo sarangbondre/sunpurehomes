@@ -89,6 +89,13 @@ export const projectSchema = z
        */
       reraNumber: realString("reraNumber").optional(),
       /**
+       * Further registrations on the same project — an extension, for
+       * instance, which carries an EX/ prefix. Additive, so the primary
+       * number keeps its meaning and the uniqueness check still applies
+       * to it alone.
+       */
+      reraAdditionalNumbers: z.array(realString("reraNumber")).optional(),
+      /**
        * A RERA number is a statutory disclosure. "placeholder" means the
        * number is a stand-in for development and has NOT been checked
        * against the Karnataka register — the page labels it as unverified,

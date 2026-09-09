@@ -7,7 +7,16 @@
   "description": "Fadal is a plotted development where buyers build their own homes. Forty-three plots of 1,164 to 2,498 sq ft sit across three acres, served by concrete roads, underground drainage and street lighting, with a tree to every plot. The layout is Vaastu and Feng Shui compliant.",
   "location": {
     "label": "KRS Main Road",
-    "addressLines": []
+    "addressLines": [
+      "Fadal Enclave by Sunpure Homes",
+      "Survey No. 129, Shyadanahalli",
+      "Chamundeshwari Badavane, beside Railway Layout",
+      "Mysuru, Karnataka 570016"
+    ],
+    "coordinates": {
+      "lat": 12.3670027,
+      "lng": 76.6298489
+    }
   },
   "scale": {
     "acres": 3,
@@ -25,8 +34,8 @@
   ],
   "compliance": {
     "reraAuthorityUrl": "https://rera.karnataka.gov.in",
-    "reraNumber": "PRM/KA/RERA/1268/378/PR/260224/006045",
-    "reraProvenance": "placeholder"
+    "reraNumber": "PRM/KA/RERA/1268/378/PR/040524/006846",
+    "reraProvenance": "verified"
   },
   "amenities": [
     {
@@ -146,13 +155,10 @@
     }
   ],
   "contentWarnings": [
-    "RERA number is a PLACEHOLDER for development. It is not a real registration and has not been checked against the Karnataka register. The page labels it unverified and the project stays out of the sitemap until reraProvenance is set to \"verified\".",
-    "Address withheld. The live project page gives 'Lalitadripura Rd, Chamundi Hill, Mysuru 570028' while the copy on the same page places Fadal on KRS Main Road. Those are on opposite sides of Mysuru. No address is shown until the client confirms which is correct.",
+    "Address confirmed by the client. It is a third address, differing from both the KRS Main Road copy and the Lalitadripura Road block on the live site; the filter still groups Fadal under KRS Main Road, which the client's own copy also uses. Confirm the label if that is wrong.",
     "Specifications omitted. The live page lists interior finishes — imported marble, wooden flooring to bedrooms, engineered wooden doors, floor-to-ceiling glass — on a development that sells bare land. It also refers to 'partial villas'. This is another project's content and is not carried over.",
     "The live page duplicates its 'Electrical' specification group.",
     "The live page shows an empty Amenities section. The amenities here are taken from the brief, sourced from the old WordPress page.",
-    "Connectivity distances are from the old WordPress page. The current page publishes a different set, in travel minutes. The two disagree — for example Infosys at 5 km versus 15 minutes. Confirm which is current.",
-    "The brief records the only known RERA number as appearing on both Fadal and V4. Two projects cannot share one registration, so it is recorded against neither.",
     "Fadal ranks in search on the old WordPress URL. That page carries Happiness 2's villa floor plans under a 'Master Plan' heading. The redirect matters (§13)."
   ]
 }

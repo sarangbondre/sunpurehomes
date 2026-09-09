@@ -11,7 +11,11 @@
       "Vijayanagar 4th Stage",
       "Basavanahalli",
       "Mysuru, Karnataka 570032"
-    ]
+    ],
+    "coordinates": {
+      "lat": 12.328657,
+      "lng": 76.578461
+    }
   },
   "scale": {
     "unitCount": 32,
@@ -24,8 +28,8 @@
   ],
   "compliance": {
     "reraAuthorityUrl": "https://rera.karnataka.gov.in",
-    "reraNumber": "PRM/KA/RERA/1268/378/PR/220823/005733",
-    "reraProvenance": "placeholder"
+    "reraNumber": "PRM/KA/RERA/1268/378/PR/080125/007364",
+    "reraProvenance": "verified"
   },
   "amenities": [
     {
@@ -143,7 +147,6 @@
     }
   ],
   "contentWarnings": [
-    "RERA number is a PLACEHOLDER for development. It is not a real registration and has not been checked against the Karnataka register. The page labels it unverified and the project stays out of the sitemap until reraProvenance is set to \"verified\".",
     "Connectivity omitted — see the note on the shared connectivity list across seven projects."
   ]
 }

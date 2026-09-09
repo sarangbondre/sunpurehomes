@@ -12,7 +12,11 @@
       "Vijayanagar 4th Stage",
       "Basavanahalli",
       "Mysuru, Karnataka 570032"
-    ]
+    ],
+    "coordinates": {
+      "lat": 12.330432,
+      "lng": 76.578498
+    }
   },
   "scale": {
     "unitCount": 24,
@@ -30,7 +34,7 @@
   ],
   "compliance": {
     "reraAuthorityUrl": "https://rera.karnataka.gov.in",
-    "reraNumber": "PRM/KA/RERA/1268/378/PR/150423/005864",
+    "reraNumber": "PRM/KA/RERA/1268/378/PR/011024/007108",
     "reraProvenance": "verified"
   },
   "amenities": [
@@ -117,8 +121,7 @@
     }
   ],
   "contentWarnings": [
-    "RERA number is the one real number in the brief (PRM/KA/RERA/1268/378/PR/150423/005864), which the live site also shows on Fadal. Assigned to V4 only. If it in fact belongs to Fadal, move it — the two cannot share it.",
-    "One live-site image for this project is filenamed 'V4_Sold_Out'. The project is listed as ongoing. Confirm whether V4 is in fact sold out.",
+    "Client confirms V4 is sold out. Every unit is marked sold in the availability file, so the unit-level plan is withheld and the page reads \"Fully sold\". Status remains ongoing, which is construction rather than sales.",
     "Gallery filenames on the live site read 'SunEscuro_11 - Foto N', suggesting an external render set. Confirm these depict V4 and that the rights are held.",
     "Connectivity omitted — see the note on the shared connectivity list across seven projects.",
     "Tagline on the live site is shared verbatim with Happiness 1, Happiness 2 and Blessed. Replaced with a project-specific line."
