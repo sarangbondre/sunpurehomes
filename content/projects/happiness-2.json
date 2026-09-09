@@ -25,9 +25,116 @@
   },
   "configurations": [
     {
-      "label": "3 BHK villa",
-      "areaSqft": 2543,
-      "count": 32
+      "label": "Villas 1 & 8 · corner",
+      "areaSqft": [
+        2877.75,
+        3171.1
+      ],
+      "areaBasis": "built-up",
+      "carpetAreaSqft": [
+        2389.83,
+        2659.39
+      ],
+      "facing": "East, east entrance",
+      "count": 2
+    },
+    {
+      "label": "Villas 2–7",
+      "areaSqft": [
+        2380.16,
+        2658.4
+      ],
+      "areaBasis": "built-up",
+      "carpetAreaSqft": [
+        1909.76,
+        2161.68
+      ],
+      "facing": "East, north entrance",
+      "count": 6
+    },
+    {
+      "label": "Villas 9–15, 29–31",
+      "areaSqft": [
+        2321.25,
+        2494.78
+      ],
+      "areaBasis": "built-up",
+      "carpetAreaSqft": [
+        1898.18,
+        2055.19
+      ],
+      "facing": "South, east entrance",
+      "count": 10
+    },
+    {
+      "label": "Villa 16 · corner",
+      "areaSqft": [
+        2376.81,
+        2714.72
+      ],
+      "areaBasis": "built-up",
+      "carpetAreaSqft": [
+        1954.8,
+        2265.15
+      ],
+      "facing": "South, east entrance",
+      "count": 1
+    },
+    {
+      "label": "Villas 17–20",
+      "areaSqft": [
+        2380.16,
+        2658.4
+      ],
+      "areaBasis": "built-up",
+      "carpetAreaSqft": [
+        1909.76,
+        2161.68
+      ],
+      "facing": "North, east entrance",
+      "count": 4
+    },
+    {
+      "label": "Villas 21 & 28 · corner",
+      "areaSqft": [
+        2584.34,
+        2838.64
+      ],
+      "areaBasis": "built-up",
+      "carpetAreaSqft": [
+        2242.99,
+        2475.11
+      ],
+      "facing": "West, north entrance",
+      "count": 2
+    },
+    {
+      "label": "Villas 22–27",
+      "areaSqft": [
+        2167.44,
+        2370.9
+      ],
+      "areaBasis": "built-up",
+      "carpetAreaSqft": [
+        1838.68,
+        2021.4
+      ],
+      "facing": "West, north entrance",
+      "count": 6
+    },
+    {
+      "label": "Villa 32 · corner",
+      "areaSqft": [
+        3086.05,
+        3520.08
+      ],
+      "areaBasis": "built-up",
+      "carpetAreaSqft": [
+        2540.67,
+        2940.31
+      ],
+      "facing": "East, east entrance",
+      "count": 1
     }
   ],
   "compliance": {
@@ -72,46 +179,207 @@
       "group": "Structure",
       "items": [
         "RCC framed structure, Seismic Zone II compliant",
-        "Anti-termite treated"
+        "Anti-termite treated",
+        "Solid blocks for walls",
+        "Internal walls plastered to a superior finish",
+        "Cement plaster to external walls"
       ]
     },
     {
       "group": "Flooring",
       "items": [
-        "Premium flooring"
+        "Vitrified tiles to living, dining, foyer, family and internal common areas",
+        "Anti-slip vitrified tiles to bathroom floors",
+        "Glazed tiles to bathroom walls, seven feet high",
+        "Glazed tiles to kitchen walls, two feet high"
       ]
     },
     {
       "group": "Doors & windows",
       "items": [
-        "Modern designed doors",
-        "Large windows for light and ventilation"
+        "Teak wood frame with teak wood panel shutter to the main entrance",
+        "Engineered wood flush doors with natural wood laminate finish internally",
+        "WPC frame and shutter to bathrooms",
+        "Stainless steel door hardware",
+        "2 and 3 track UPVC sliding windows"
       ]
     },
     {
       "group": "Electrical",
       "items": [
+        "PVC conducting pipes",
+        "Copper wire with fire-resistant PVC coating",
+        "Modular switches, Anchor Roma or equivalent",
+        "Provision for points only; fixtures are not included",
         "Underground electrical system",
-        "100% power backup"
+        "100% power backup",
+        "Provision for a UPS point"
       ]
     },
     {
       "group": "Plumbing & water",
       "items": [
-        "Standard concealed plumbing systems"
+        "CPVC for domestic supply, hot water, rainwater and embedded lines",
+        "PVC for drainage",
+        "Chrome-finish fittings to all bathrooms and the kitchen, Jaquar or similar",
+        "White sanitary ware, Jaquar or similar",
+        "Water inlet and outlet for washing machine and sink in the utility",
+        "Stainless steel sink and slab to the kitchen",
+        "5,000 litre underground sump tank",
+        "1,000 litre overhead tank, Sintex or equivalent"
       ]
     },
     {
       "group": "Other",
       "items": [
-        "Contemporary façade design",
-        "High-quality finishes",
-        "Functional layouts across floors",
-        "Terrace and open space to each villa"
+        "External emulsion paint outside, internal emulsion paint inside",
+        "Enamel paint to metal and iron surfaces",
+        "Stainless steel staircase railing",
+        "Stainless steel balcony railing with toughened glass",
+        "Provision for split air conditioning in the living room and master bedroom",
+        "Daylight and cross-ventilation planned into each villa",
+        "Columns and beams sized to carry full second-floor construction",
+        "Approved by private and nationalised banks"
       ]
     }
   ],
-  "connectivity": [],
+  "connectivity": [
+    {
+      "name": "SVEI Public School",
+      "category": "education",
+      "distanceKm": 1.1
+    },
+    {
+      "name": "Hunsur Main Road",
+      "category": "transport",
+      "distanceKm": 1.9
+    },
+    {
+      "name": "National Public School",
+      "category": "education",
+      "distanceKm": 2.3
+    },
+    {
+      "name": "Pralaksha Hospital",
+      "category": "health",
+      "distanceKm": 2.1
+    },
+    {
+      "name": "Reliance Market",
+      "category": "retail",
+      "distanceKm": 2.4
+    },
+    {
+      "name": "Hinkal Flyover",
+      "category": "transport",
+      "distanceKm": 2.9
+    },
+    {
+      "name": "More Megastore",
+      "category": "retail",
+      "distanceKm": 3.9
+    },
+    {
+      "name": "Infosys",
+      "category": "work",
+      "distanceKm": 4
+    },
+    {
+      "name": "Brindavan Hospital",
+      "category": "health",
+      "distanceKm": 4.2
+    },
+    {
+      "name": "Seshadripuram Degree College",
+      "category": "education",
+      "distanceKm": 5
+    },
+    {
+      "name": "L&T",
+      "category": "work",
+      "distanceKm": 5.5
+    },
+    {
+      "name": "Big Bazaar",
+      "category": "retail",
+      "distanceKm": 5.7
+    },
+    {
+      "name": "BM Habitat Mall",
+      "category": "retail",
+      "distanceKm": 5.7
+    },
+    {
+      "name": "NIE Institute of Technology",
+      "category": "education",
+      "distanceKm": 5.9
+    },
+    {
+      "name": "Bharath Cancer Hospital",
+      "category": "health",
+      "distanceKm": 6
+    },
+    {
+      "name": "BARC",
+      "category": "work",
+      "distanceKm": 6.8
+    },
+    {
+      "name": "Wipro",
+      "category": "work",
+      "distanceKm": 7.8
+    },
+    {
+      "name": "JK Tyres",
+      "category": "work",
+      "distanceKm": 8
+    },
+    {
+      "name": "University of Mysuru and SJCE",
+      "category": "education",
+      "distanceKm": 8.4
+    },
+    {
+      "name": "GRS Fantasy Park",
+      "category": "leisure",
+      "distanceKm": 8.9
+    },
+    {
+      "name": "Mysuru Railway Station",
+      "category": "transport",
+      "distanceKm": 9.2
+    },
+    {
+      "name": "Apollo BGS Hospital",
+      "category": "health",
+      "distanceKm": 9.2
+    },
+    {
+      "name": "Mysuru Palace",
+      "category": "leisure",
+      "distanceKm": 10
+    },
+    {
+      "name": "Suburban Bus Stand",
+      "category": "transport",
+      "distanceKm": 11
+    },
+    {
+      "name": "Reserve Bank of India",
+      "category": "work",
+      "distanceKm": 11
+    },
+    {
+      "name": "Clearmedi Radiant Hospital",
+      "category": "health",
+      "distanceKm": 14.4
+    },
+    {
+      "name": "Mysuru Airport",
+      "category": "transport",
+      "distanceKm": 23
+    }
+  ],
   "gallery": [
     {
       "src": "/images/projects/happiness-2/hero.avif",
@@ -144,7 +412,10 @@
   ],
   "contentWarnings": [
     "The two apartments within the 34 homes have no published configuration, area or availability. Only the 32 villas are described.",
-    "Connectivity omitted — see the note on the shared connectivity list across seven projects.",
-    "Gallery images are renders, not photographs of the completed community. This project is marked completed, so photography should exist and should replace them."
+    "Gallery images are renders, not photographs of the completed community. This project is marked completed, so photography should exist and should replace them.",
+    "Areas are the brochure's floor-by-floor built-up and carpet figures added together: ground + first + second. The second floor is offered with and without its multipurpose area, which is why every type is a range. Per-floor figures are in the brochure if a breakdown is wanted on the page.",
+    "The brochure's connectivity page is headed with a paragraph about Blessed, not Happiness II, and the location map shows Happiness. Both are in Vijayanagar 4th Stage. The distances are carried here as Happiness II's — confirm, and fix the brochure.",
+    "The two hospital columns on the brochure's QUICK CONNECT panel are a grid the PDF flattens into one stream, so the pairing of distance to hospital name is inferred from reading order. Verify the five health figures against the printed page.",
+    "The brochure names the developer as MK Infra Holding, MB Road, Srirangapatna 571438. The site records the group's legal name as M.K. Agrotech Pvt. Ltd., which is the oil business. Confirm which entity is the promoter on RERA."
   ]
 }

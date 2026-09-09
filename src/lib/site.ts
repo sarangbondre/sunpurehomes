@@ -70,5 +70,6 @@ export const site = {
  * papered over with invented values (BRIEF.md §15).
  */
 export const openQuestions: readonly string[] = [
-  "Hero image is the Mysore Palace photo carried over from the live site, at the client's direction. It is a public landmark rather than a Sunpure property — confirm the usage rights for the photograph before launch.",
+  "The brochures on the Drive carry four different sales numbers between them: +91 99722 75566 (Fadal, Meraki, Happiness II), +91 77900 88900 (Curve, Meraki), +91 81058 17070 (Rare Earth) and +91 90147 81478 (Fadal). The site publishes +91 96069 07153, which appears in none of them. Confirm the one number buyers should see, and whether any project needs its own.",
+  "The Happiness II brochure names the developer as MK Infra Holding, MB Road, Srirangapatna 571438. This file records the group's legal name as M.K. Agrotech Pvt. Ltd., the oil business. Confirm which entity is the promoter on the RERA registrations before any legal-entity name is published.",
 ];

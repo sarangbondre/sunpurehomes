@@ -24,7 +24,25 @@
   },
   "configurations": [
     {
-      "label": "3 BHK"
+      "label": "3 BHK · flats 101, 201, 301",
+      "areaSqft": 1847,
+      "areaBasis": "super-built-up",
+      "carpetAreaSqft": 1542,
+      "count": 3
+    },
+    {
+      "label": "3 BHK · flats 103, 203, 303",
+      "areaSqft": 1838,
+      "areaBasis": "super-built-up",
+      "carpetAreaSqft": 1510,
+      "count": 3
+    },
+    {
+      "label": "3 BHK · flats 102, 202, 302",
+      "areaSqft": 1806,
+      "areaBasis": "super-built-up",
+      "carpetAreaSqft": 1509,
+      "count": 3
     }
   ],
   "compliance": {
@@ -34,7 +52,25 @@
   },
   "amenities": [
     {
-      "name": "Landscaped surroundings"
+      "name": "Fully featured children's park"
+    },
+    {
+      "name": "Landscaped gardens"
+    },
+    {
+      "name": "Garden retreat"
+    },
+    {
+      "name": "Eight-passenger lift"
+    },
+    {
+      "name": "Generator backup"
+    },
+    {
+      "name": "CCTV security"
+    },
+    {
+      "name": "Video door phones"
     },
     {
       "name": "Parking facilities"
@@ -47,41 +83,57 @@
     {
       "group": "Structure",
       "items": [
-        "RCC framed structure"
+        "RCC framed structure",
+        "6\" thick AAC eco-friendly blocks for walls",
+        "Gypsum plaster to internal ceilings and walls",
+        "Waterproof cement plaster to external surfaces"
       ]
     },
     {
       "group": "Flooring",
       "items": [
-        "Premium vitrified tiles to living areas and bedrooms",
-        "Anti-skid tiles to bathrooms and balconies"
+        "800 × 800 mm premium floor tiles to living areas",
+        "300 × 300 mm anti-skid ceramic tiles to wet areas",
+        "300 × 450 mm glazed tiles to bathroom walls, up to false-ceiling height",
+        "300 × 450 mm glazed tiles to the kitchen panel, two feet high",
+        "False ceiling in toilets"
       ]
     },
     {
       "group": "Doors & windows",
       "items": [
-        "Engineered doors with premium finish",
-        "Large windows for ventilation and light"
+        "Teak wood frame with veneer-finish shutters to the main door",
+        "Natural wood veneer finish to internal doors",
+        "WPC shutters to toilets and utility areas",
+        "Premium stainless steel door hardware",
+        "2 and 3 track UPVC windows with MS grills"
       ]
     },
     {
       "group": "Electrical",
       "items": [
-        "Concealed wiring",
-        "Modular switches"
+        "FRLS copper cables",
+        "Modular switches, Anchor Roma or equivalent",
+        "Generator backup to lift, common utilities and common-area lighting",
+        "1 kW backup to each apartment"
       ]
     },
     {
       "group": "Plumbing & water",
       "items": [
-        "Standard concealed plumbing systems"
+        "CPVC pipes for water supply, PVC for drainage",
+        "Chrome-finish sanitary fittings to toilet and kitchen, Jaquar or equivalent",
+        "White sanitary fixtures, Hindware or equivalent",
+        "Stainless steel sink with drain board on a granite top",
+        "Sink and washing-machine provision in the utility"
       ]
     },
     {
       "group": "Other",
       "items": [
-        "Contemporary elevation design",
-        "Modern kitchen and bathroom fittings"
+        "Acrylic emulsion paint to walls and ceilings",
+        "Enamel paint to doors and grills",
+        "Natural polish to the main door"
       ]
     }
   ],
@@ -118,7 +170,7 @@
   ],
   "contentWarnings": [
     "Every gallery image is an interior. There is no exterior view of the building.",
-    "Connectivity omitted — see the note on the shared connectivity list across seven projects.",
-    "Gallery images are renders. This project is marked completed, so photography should exist and should replace them."
+    "Gallery images are renders. This project is marked completed, so photography should exist and should replace them.",
+    "Unit areas, amenities and specifications are the Meraki brochure's. The brochure's connectivity is a hand-drawn locality map with no distances, so connectivity is still missing."
   ]
 }
