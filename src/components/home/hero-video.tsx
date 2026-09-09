@@ -16,10 +16,15 @@ import { useEffect, useRef, useState } from "react";
  *   poster is then the entire hero, which is why the still has to stand on
  *   its own as a composition rather than being a blurred first frame.
  *
-  * The fade masks the swap from still to first video frame; they are the
+  * It does not carry a `poster` attribute either. The still behind it is a
+ * next/image, already optimised and already painted; a poster here would be
+ * a second, unoptimised download of the same frame that nobody ever sees,
+ * because this element is transparent until it is playing.
+ *
+ * The fade masks the swap from still to first video frame; they are the
  * same shot, so without it the join reads as a flicker.
  */
-export function HeroVideo({ src, poster }: { src: string; poster: string }) {
+export function HeroVideo({ src }: { src: string }) {
   const ref = useRef<HTMLVideoElement>(null);
   const [ready, setReady] = useState(false);
 
@@ -29,6 +34,21 @@ export function HeroVideo({ src, poster }: { src: string; poster: string }) {
 
     const reduced = window.matchMedia("(prefers-reduced-motion: reduce)");
     if (reduced.matches) return;
+
+    /*
+      Most of this audience arrives on a phone on mobile data. Eight
+      megabytes of drone footage is not worth their money when they have
+      told the browser to economise, and the poster loses them nothing.
+    */
+    const connection = (
+      navigator as Navigator & {
+        connection?: { saveData?: boolean; effectiveType?: string };
+      }
+    ).connection;
+    if (connection?.saveData) return;
+    if (connection?.effectiveType && /(^|-)2g$/.test(connection.effectiveType)) {
+      return;
+    }
 
     /*
       play() is what starts the fetch. `preload="none"` keeps the clip out of
@@ -83,7 +103,6 @@ export function HeroVideo({ src, poster }: { src: string; poster: string }) {
   return (
     <video
       ref={ref}
-      poster={poster}
       preload="none"
       muted
       loop

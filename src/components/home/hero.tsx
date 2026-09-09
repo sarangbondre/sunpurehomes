@@ -53,7 +53,7 @@ export function Hero({ media }: { media?: HeroMedia }) {
       )}
 
       {media?.kind === "video" && (
-        <HeroVideo src={media.src} poster={media.poster} />
+        <HeroVideo src={media.src} />
       )}
 
       {/*
