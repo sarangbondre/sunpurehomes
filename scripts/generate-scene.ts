@@ -12,7 +12,7 @@
  *
  * Output is deterministic — no randomness — so the JSON diffs cleanly.
  */
-import { writeFileSync, mkdirSync } from "node:fs";
+import { writeFileSync, mkdirSync, existsSync, readFileSync } from "node:fs";
 import { join } from "node:path";
 import { sceneSchema, availabilitySchema, type Scene } from "../src/lib/scene-schema";
 
@@ -463,17 +463,45 @@ function apartmentBlock(opts: {
 }
 
 /* ------------------------------------------------------------ Rare Earth */
-// 279 plots across 18 acres (72,843 m²). 340 × 214 m = 72,760 m².
-// Nine rows of 31, split by a central cross road.
+/*
+  Dimensions from the approved MUDA layout, "1st Phase (40%) Site Release",
+  Authority Resolution 14 of 08-08-2024, Kadakola village.
+
+    net extent   18A-07G, 73,551.61 sq m
+    residential  40,298.07 sq m (54.79%)
+    roads        21,661.29 sq m (29.45%), nine metres wide
+    park          7,488.48 sq m (10.18%)
+
+  Site analysis, 279 sites:
+    102 at 9.0 × 12.0m,  53 at 9.0 × 15.0m,  31 at 12.0 × 18.0m,
+     10 at 9.0 × 13.44m, 83 irregular
+
+  Positions are still generated — the drawing gives the schedule, not
+  surveyed coordinates — but every dimension and count below is the
+  approved one, so the plan reads at the right size and the right mix.
+*/
 const rareEarth = layout({
   slug: "rare-earth",
-  site: { width: 340, depth: 214 },
+  site: { width: 372, depth: 198 },
   setback: 10,
   roadWidth: 9,
   spineWidth: 12,
   crossRoadAfter: 15,
   startNumber: 101,
-  rows: Array.from({ length: 9 }, () => ({ plots: 31, widthM: 9, depthM: 15 })),
+  rows: [
+    // 12.0 × 18.0m — the largest class, 31 sites
+    { plots: 31, widthM: 12, depthM: 18 },
+    // 9.0 × 15.0m — 53 sites
+    ...Array.from({ length: 2 }, () => ({ plots: 26, widthM: 9, depthM: 15 })),
+    { plots: 1, widthM: 9, depthM: 15 },
+    // 9.0 × 13.44m — 10 sites
+    { plots: 10, widthM: 9, depthM: 13.44 },
+    // 9.0 × 12.0m — 102 sites, the commonest
+    ...Array.from({ length: 3 }, () => ({ plots: 34, widthM: 9, depthM: 12 })),
+    // the 83 irregular sites, carried at their nominal nine-metre frontage
+    ...Array.from({ length: 2 }, () => ({ plots: 30, widthM: 9, depthM: 14 })),
+    { plots: 23, widthM: 9, depthM: 14 },
+  ],
   amenities: [
     "Multi-purpose court",
     "Yoga deck",
@@ -487,20 +515,30 @@ const rareEarth = layout({
 });
 
 /* ----------------------------------------------------------------- Fadal */
-// 43 plots across 3 acres (12,141 m²). 142 × 86 m = 12,212 m².
-// Published plot sizes run 1,164–2,498 sq ft, so rows vary in depth.
+/*
+  Dimensions from the approved MUDA layout, Sy. No. 129/1 and 129/2,
+  Shyadanahalli village, Authority Resolution 97 of 07-03-2020.
+
+    net extent   02A-35.8G, 11,735.90 sq m
+    residential   6,400.44 sq m (54.60%)
+    roads         3,558.06 sq m (30.36%), nine metres wide
+    park          1,175.45 sq m (10.03%)
+
+  Site analysis, 44 sites — not the 43 previously published:
+    16 at 9.0 × 12.0m, 14 at 9.0 × 15.0m, 6 at 9.0 × 13.02m, 8 irregular
+*/
 const fadal = layout({
   slug: "fadal",
-  site: { width: 142, depth: 86 },
+  site: { width: 150, depth: 82 },
   setback: 6,
   roadWidth: 9,
   spineWidth: 9,
   startNumber: 1,
   rows: [
-    { plots: 11, widthM: 9, depthM: 12 },   // 1,163 sq ft
-    { plots: 11, widthM: 9, depthM: 14 },   // 1,357 sq ft
-    { plots: 11, widthM: 10.5, depthM: 15 }, // 1,695 sq ft
-    { plots: 10, widthM: 12, depthM: 19.3 }, // 2,494 sq ft
+    { plots: 16, widthM: 9, depthM: 12 },    // 1,163 sq ft
+    { plots: 14, widthM: 9, depthM: 15 },    // 1,453 sq ft
+    { plots: 6, widthM: 9, depthM: 13.02 },  // 1,261 sq ft
+    { plots: 8, widthM: 9, depthM: 14 },     // the eight irregular sites
   ],
   amenities: [
     "Landscaped garden",
@@ -522,6 +560,24 @@ const happiness2 = villaCluster({
   setback: 8,
   startNumber: 1,
   amenities: ["Garden and play area", "Indoor green courts", "Parking"],
+});
+
+/* ---------------------------------------------------------- Happiness 1 */
+/*
+  Twenty-six villas, confirmed by the client. This project had no scene
+  before: its unit count was the one figure nobody could state, because the
+  live site claimed 34 — a number copied from Happiness 2.
+*/
+const happiness1 = villaCluster({
+  slug: "happiness-1",
+  count: 26,
+  perRow: 7,
+  plot: { widthM: 12.5, depthM: 18 },
+  built: { widthM: 9, depthM: 11.8, heightM: 7.2 },
+  roadWidth: 9,
+  setback: 8,
+  startNumber: 1,
+  amenities: ["Yoga space", "Gym", "Indoor kids play area", "Senior citizen area"],
 });
 
 /* ------------------------------------------------------------------- H4 */
@@ -563,8 +619,8 @@ const curve = apartmentBlock({
 /* -------------------------------------------------------------- Blessed */
 const blessed = apartmentBlock({
   slug: "blessed",
-  count: 20,
-  perFloor: 4,
+  count: 21,
+  perFloor: 3,
   unit: { widthM: 12.2, depthM: 11.4 },
   levelHeightM: 3.1,
   amenities: ["Gymnasium", "Community hall", "Jogging track", "Children's play area"],
@@ -598,18 +654,39 @@ function seedAvailability(scene: Scene) {
   return { slug: scene.slug, provenance: "placeholder" as const, units };
 }
 
-for (const scene of [rareEarth, fadal, happiness2, h4, v4, curve, blessed, meraki]) {
+for (const scene of [rareEarth, fadal, happiness1, happiness2, h4, v4, curve, blessed, meraki]) {
   const parsedScene = sceneSchema.parse(scene);
   writeFileSync(
     join("content", "scenes", `${scene.slug}.json`),
     JSON.stringify(parsedScene, null, 1) + "\n",
   );
 
-  const availability = availabilitySchema.parse(seedAvailability(scene));
-  writeFileSync(
-    join("content", "availability", `${scene.slug}.json`),
-    JSON.stringify(availability, null, 1) + "\n",
-  );
+  /*
+    Never overwrite availability the sales team owns.
+
+    This script seeds a placeholder file so a new scene has something to
+    render. Re-running it used to clobber whatever was there, which silently
+    reverted V4 from sold out back to demonstration data. Anything marked
+    provenance "sales" is left exactly as it is.
+  */
+  const availabilityPath = join("content", "availability", `${scene.slug}.json`);
+  let keep = false;
+  if (existsSync(availabilityPath)) {
+    const current = availabilitySchema.safeParse(
+      JSON.parse(readFileSync(availabilityPath, "utf8")),
+    );
+    keep = current.success && current.data.provenance === "sales";
+  }
+
+  if (keep) {
+    console.log(`${scene.slug.padEnd(12)} availability kept — owned by sales`);
+  } else {
+    const availability = availabilitySchema.parse(seedAvailability(scene));
+    writeFileSync(
+      availabilityPath,
+      JSON.stringify(availability, null, 1) + "\n",
+    );
+  }
 
   const areas = scene.units.map((u) => u.areaSqft);
   const acres = (scene.extent.width * scene.extent.depth) / 4046.86;

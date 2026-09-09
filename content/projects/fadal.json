@@ -3,8 +3,8 @@
   "name": "Fadal",
   "type": "plot",
   "status": "ongoing",
-  "tagline": "Forty-three plots across three acres.",
-  "description": "Fadal is a plotted development where buyers build their own homes. Forty-three plots of 1,164 to 2,498 sq ft sit across three acres, served by concrete roads, underground drainage and street lighting, with a tree to every plot. The layout is Vaastu and Feng Shui compliant.",
+  "tagline": "Forty-four MUDA-approved plots at Shyadanahalli.",
+  "description": "Fadal is a MUDA-approved plotted development at Shyadanahalli, where buyers build their own homes. Forty-four plots sit on 11,736 sq m — just under three acres — with a tenth of the site given to park and nine-metre roads throughout. The layout is Vaastu and Feng Shui compliant.",
   "location": {
     "label": "KRS Main Road",
     "addressLines": [
@@ -19,17 +19,29 @@
     }
   },
   "scale": {
-    "acres": 3,
-    "unitCount": 43,
+    "acres": 2.9,
+    "unitCount": 44,
     "unitNoun": "plots"
   },
   "configurations": [
     {
-      "label": "Plot",
-      "areaSqft": [
-        1164,
-        2498
-      ]
+      "label": "9.0 × 12.0 m",
+      "areaSqft": 1163,
+      "count": 16
+    },
+    {
+      "label": "9.0 × 13.02 m",
+      "areaSqft": 1261,
+      "count": 6
+    },
+    {
+      "label": "9.0 × 15.0 m",
+      "areaSqft": 1453,
+      "count": 14
+    },
+    {
+      "label": "9.0 m × irregular",
+      "count": 8
     }
   ],
   "compliance": {
@@ -155,10 +167,12 @@
     }
   ],
   "contentWarnings": [
-    "Address confirmed by the client. It is a third address, differing from both the KRS Main Road copy and the Lalitadripura Road block on the live site; the filter still groups Fadal under KRS Main Road, which the client's own copy also uses. Confirm the label if that is wrong.",
     "Specifications omitted. The live page lists interior finishes — imported marble, wooden flooring to bedrooms, engineered wooden doors, floor-to-ceiling glass — on a development that sells bare land. It also refers to 'partial villas'. This is another project's content and is not carried over.",
     "The live page duplicates its 'Electrical' specification group.",
     "The live page shows an empty Amenities section. The amenities here are taken from the brief, sourced from the old WordPress page.",
-    "Fadal ranks in search on the old WordPress URL. That page carries Happiness 2's villa floor plans under a 'Master Plan' heading. The redirect matters (§13)."
+    "Fadal ranks in search on the old WordPress URL. That page carries Happiness 2's villa floor plans under a 'Master Plan' heading. The redirect matters (§13).",
+    "Plot count corrected from 43 to 44 against the approved MUDA layout (Authority Resolution 97, 07-03-2020). Net extent 11,735.90 sq m; land use 54.60% residential, 30.36% roads, 10.03% park, 5.01% civic amenities.",
+    "Eight plots are irregular (\"9.0 × Odd\" on the approved drawing) and have no single stated dimension. They are counted but not sized.",
+    "Location label still reads KRS Main Road, which the client's own copy uses; the approved layout places the site at Shyadanahalli, Kasaba Hobli. Confirm which the filter should show."
   ]
 }

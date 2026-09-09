@@ -4,7 +4,7 @@
   "type": "plot",
   "status": "ongoing",
   "tagline": "Two hundred and seventy-nine plots across eighteen acres.",
-  "description": "Rare Earth is a low-density plotted development on the Mysuru–Ooty road, at the tenth kilometre stone near Kadakola. Two hundred and seventy-nine plots sit across eighteen acres, 280 metres from NH 766 and about two kilometres from Mysore airport.",
+  "description": "Rare Earth is a MUDA-approved plotted development on the Mysuru–Ooty road at Kadakola. Two hundred and seventy-nine plots sit across 73,552 sq m — a little over eighteen acres — with more than a tenth of the site given to park, and a further 3,774 sq m to civic amenities. It is 280 metres from NH 766 and about two kilometres from Mysore airport.",
   "location": {
     "label": "Mysuru–Ooty Road, near Kadakola",
     "addressLines": [
@@ -19,11 +19,44 @@
     }
   },
   "scale": {
-    "acres": 18,
+    "acres": 18.2,
     "unitCount": 279,
     "unitNoun": "plots"
   },
-  "configurations": [],
+  "configurations": [
+    {
+      "label": "9.0 × 12.0 m",
+      "areaSqft": 1163,
+      "count": 102
+    },
+    {
+      "label": "9.0 × 13.44 m",
+      "areaSqft": 1302,
+      "count": 10
+    },
+    {
+      "label": "9.0 × 15.0 m",
+      "areaSqft": 1453,
+      "count": 53
+    },
+    {
+      "label": "12.0 × 18.0 m",
+      "areaSqft": 2325,
+      "count": 31
+    },
+    {
+      "label": "9.0 m × irregular",
+      "count": 52
+    },
+    {
+      "label": "12.0 m × irregular",
+      "count": 30
+    },
+    {
+      "label": "Irregular",
+      "count": 1
+    }
+  ],
   "compliance": {
     "reraAuthorityUrl": "https://rera.karnataka.gov.in",
     "reraNumber": "PRM/KA/RERA/1268/378/PR/210126/008419",
@@ -127,8 +160,10 @@
   "contentWarnings": [
     "RERA field on the live page renders the literal string 'NUMBER GOES HERE'.",
     "Specifications omitted. The live page lists interior finishes — engineered marble, wood laminate, Jaquar or Kohler sanitary fittings, premium paints — on a development that sells bare land. Not carried over.",
-    "No plot size range is published for Rare Earth, so the configuration table is empty.",
     "Connectivity is published in travel minutes rather than distances. Carried over as given.",
-    "All eight amenities and all six gallery images are dead links on the live page."
+    "All eight amenities and all six gallery images are dead links on the live page.",
+    "Plot sizes and counts taken from the approved MUDA layout (Authority Resolution 14, 08-08-2024), which answers question (i) of the information request. Net extent 18A-07G, 73,551.61 sq m; land use 54.79% residential, 29.45% roads, 10.18% park, 5.13% civic amenities, 0.45% public utility.",
+    "The approved drawing is titled \"1st Phase (40%) Site Release\". The 279 sites are the full layout; confirm how many are released for sale today before the plan implies all of them are.",
+    "Eighty-three plots are irregular (\"Odd\") on the approved drawing and have no single stated dimension. They are counted but not sized."
   ]
 }
