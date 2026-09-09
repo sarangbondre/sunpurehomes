@@ -15,6 +15,9 @@ const eslintConfig = [
     ignores: [
       "node_modules/**",
       ".next/**",
+      // `npm run build:verify` writes here so builds cannot clobber the
+      // running dev server. It is generated output, same as .next.
+      ".next-verify/**",
       "out/**",
       "build/**",
       "next-env.d.ts",

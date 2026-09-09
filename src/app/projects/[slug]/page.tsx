@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Approvals } from "@/components/projects/approvals";
+import { ProjectFilm } from "@/components/projects/project-film";
 import { CinematicSequence } from "@/components/projects/cinematic-sequence";
 import { PlanExplorer } from "@/components/plan/plan-explorer";
 import { Gallery } from "@/components/projects/gallery";
@@ -107,6 +108,12 @@ export default async function ProjectPage({
           <StatusChip status={project.status} type={project.type} />
         </div>
       </header>
+
+      {/*
+        Footage of the real site outranks the renders, so it leads. Only a
+        handful of projects have any — see the note on `film` in the schema.
+      */}
+      {project.film && <ProjectFilm film={project.film} name={project.name} />}
 
       {/*
         Three or more photographs earn the scroll sequence; below that it

@@ -173,6 +173,30 @@ export const projectSchema = z
         }),
     ),
 
+    /**
+     * Drone footage of this project, web-encoded. Optional and expected to
+     * stay that way for most projects: the flight on 3 July 2026 covered the
+     * Vijayanagar campus only, so Fadal, Rare Earth and Meraki have none.
+     *
+     * A film must show THIS project. The live site's failure mode is one
+     * identical connectivity list across seven projects in different
+     * neighbourhoods (§2); putting the same campus clip on six project pages
+     * would be the same mistake in a new medium.
+     */
+    film: z
+      .object({
+        /** H.264 MP4, muted, built to loop. */
+        src: z.string().startsWith("/"),
+        /** The clip's own first frame, so the still and first frame match. */
+        poster: z.string().startsWith("/"),
+        alt: realString("film alt"),
+        /** ISO date the footage was shot, shown as a caption. */
+        captured: z
+          .string()
+          .regex(/^\d{4}-\d{2}-\d{2}$/, "captured must be YYYY-MM-DD"),
+      })
+      .optional(),
+
     scene: z
       .object({
         kind: z.enum(["villa-cluster", "apartment-block", "plot-layout"]),

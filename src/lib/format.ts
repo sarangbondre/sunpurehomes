@@ -23,3 +23,22 @@ export function formatIndianNumber(value: number): string {
 
   return negative ? `-${grouped}` : grouped;
 }
+
+/**
+ * "3 July 2026" from "2026-07-03".
+ *
+ * Same reasoning as `formatIndianNumber`: `toLocaleDateString` depends on the
+ * ICU data compiled into the runtime, and a slim server image would render a
+ * different string from the browser and trip a hydration mismatch. Parsed by
+ * hand rather than through `new Date`, which reads a bare YYYY-MM-DD as UTC
+ * and can shift the day backwards west of Greenwich.
+ */
+const MONTHS = [
+  "January", "February", "March", "April", "May", "June",
+  "July", "August", "September", "October", "November", "December",
+] as const;
+
+export function formatDayMonthYear(iso: string): string {
+  const [year, month, day] = iso.split("-").map(Number);
+  return `${day} ${MONTHS[month - 1]} ${year}`;
+}

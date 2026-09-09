@@ -3,7 +3,8 @@
 import { useEffect, useRef, useState } from "react";
 
 /**
- * The hero clip, layered over the poster still.
+ * A muted, looping clip layered over a poster still — the home hero and the
+ * per-project films both use it.
  *
  * Two things this deliberately does not do:
  *
@@ -24,7 +25,14 @@ import { useEffect, useRef, useState } from "react";
  * The fade masks the swap from still to first video frame; they are the
  * same shot, so without it the join reads as a flicker.
  */
-export function HeroVideo({ src }: { src: string }) {
+export function AutoplayVideo({
+  src,
+  className = "absolute inset-0 size-full object-cover",
+}: {
+  src: string;
+  /** Layout is the caller's; this component owns behaviour only. */
+  className?: string;
+}) {
   const ref = useRef<HTMLVideoElement>(null);
   const [ready, setReady] = useState(false);
 
@@ -110,7 +118,7 @@ export function HeroVideo({ src }: { src: string }) {
       /* Decorative: the poster's alt on the parent already describes the shot. */
       aria-hidden
       tabIndex={-1}
-      className={`absolute inset-0 size-full object-cover transition-opacity ease-enter ${
+      className={`${className} transition-opacity ease-enter ${
         ready ? "opacity-100" : "opacity-0"
       }`}
       style={{ transitionDuration: "var(--duration-camera)" }}

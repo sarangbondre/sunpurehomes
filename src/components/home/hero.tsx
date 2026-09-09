@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { HeroVideo } from "@/components/home/hero-video";
+import { AutoplayVideo } from "@/components/media/autoplay-video";
 
 /**
  * The full-bleed cinematic hero, built to the reference the client sent
@@ -37,7 +37,7 @@ export function Hero({ media }: { media?: HeroMedia }) {
     <section className="relative isolate flex h-[calc(100svh-5rem)] min-h-[32rem] w-full flex-col justify-end overflow-hidden bg-ink sm:h-[calc(100svh-6rem)]">
       {/*
         The still is the LCP element and is fetched at high priority. The
-        clip is deliberately NOT preloaded — HeroVideo attaches its source
+        clip is deliberately NOT preloaded — AutoplayVideo attaches its source
         after mount so a multi-megabyte download never races the poster.
       */}
       {poster && (
@@ -53,7 +53,7 @@ export function Hero({ media }: { media?: HeroMedia }) {
       )}
 
       {media?.kind === "video" && (
-        <HeroVideo src={media.src} />
+        <AutoplayVideo src={media.src} />
       )}
 
       {/*
