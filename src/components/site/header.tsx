@@ -18,9 +18,9 @@ const NAV = [
 export function SiteHeader() {
   return (
     <header className="sticky top-0 z-50 bg-paper/92 backdrop-blur-sm">
-      <div className="flex h-16 items-center gap-6 px-6 sm:h-20 sm:px-10 lg:px-16">
+      <div className="flex h-20 items-center gap-6 px-6 sm:h-24 sm:px-10 lg:px-16">
         <Link href="/" className="shrink-0" aria-label={`${site.name} — home`}>
-          <Logo decorative className="h-8 w-auto text-laterite sm:h-9" />
+          <Logo decorative className="h-11 w-auto text-ink sm:h-13" />
         </Link>
 
         <nav aria-label="Main" className="ml-auto flex items-center gap-8">

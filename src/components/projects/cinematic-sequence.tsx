@@ -162,7 +162,7 @@ export function CinematicSequence({ shots }: { shots: Shot[] }) {
       className="relative mt-12 sm:mt-16"
       style={{ height: `${shots.length * HOLD_VH}vh` }}
     >
-      <div className="sticky top-16 h-[calc(100svh-4rem)] overflow-hidden bg-ink sm:top-20 sm:h-[calc(100svh-5rem)]">
+      <div className="sticky top-20 h-[calc(100svh-5rem)] overflow-hidden bg-ink sm:top-24 sm:h-[calc(100svh-6rem)]">
         {shots.map((shot, i) =>
           Math.abs(i - active) <= 1 ? (
             <div

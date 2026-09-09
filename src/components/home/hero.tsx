@@ -20,7 +20,7 @@ export type HeroMedia =
 
 export function Hero({ media }: { media?: HeroMedia }) {
   return (
-    <section className="relative bg-paper lg:grid lg:min-h-[calc(100svh-5rem)] lg:grid-cols-[42fr_58fr]">
+    <section className="relative bg-paper lg:grid lg:min-h-[calc(100svh-6rem)] lg:grid-cols-[42fr_58fr]">
       {/* ── Left: the brand panel */}
       <div className="relative flex flex-col justify-center px-6 py-16 sm:px-10 sm:py-24 lg:py-0 lg:pl-16 lg:pr-14">
         <h1 className="text-[clamp(2.75rem,6.2vw,4.6rem)]">

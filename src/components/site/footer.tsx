@@ -19,7 +19,7 @@ export function SiteFooter() {
       <div className="mx-auto max-w-[86rem] px-6 py-16 sm:px-10 lg:px-16">
         <div className="grid gap-12 sm:grid-cols-2 lg:grid-cols-4">
           <div className="lg:col-span-2">
-            <Logo variant="stacked" className="h-16 w-auto text-ink" />
+            <Logo variant="stacked" className="h-20 w-auto text-ink" />
             <p className="mt-6 font-display text-2xl">{site.tagline}</p>
           </div>
 
