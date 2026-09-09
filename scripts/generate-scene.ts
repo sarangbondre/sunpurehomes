@@ -524,8 +524,9 @@ const rareEarth = layout({
     roads         3,558.06 sq m (30.36%), nine metres wide
     park          1,175.45 sq m (10.03%)
 
-  Site analysis, 44 sites — not the 43 previously published:
-    16 at 9.0 × 12.0m, 14 at 9.0 × 15.0m, 6 at 9.0 × 13.02m, 8 irregular
+  Site analysis from the FINAL approval, 43 sites. The provisional sheet
+  showed 44; the final order records 43, which matches the published figure:
+    12 at 9.0 × 12.0m, 14 at 9.0 × 15.0m, 6 at 9.0 × 13.0m, 11 irregular
 */
 const fadal = layout({
   slug: "fadal",
@@ -535,10 +536,10 @@ const fadal = layout({
   spineWidth: 9,
   startNumber: 1,
   rows: [
-    { plots: 16, widthM: 9, depthM: 12 },    // 1,163 sq ft
-    { plots: 14, widthM: 9, depthM: 15 },    // 1,453 sq ft
-    { plots: 6, widthM: 9, depthM: 13.02 },  // 1,261 sq ft
-    { plots: 8, widthM: 9, depthM: 14 },     // the eight irregular sites
+    { plots: 12, widthM: 9, depthM: 12 },  // 1,163 sq ft
+    { plots: 14, widthM: 9, depthM: 15 },  // 1,453 sq ft
+    { plots: 6, widthM: 9, depthM: 13 },   // 1,259 sq ft
+    { plots: 11, widthM: 9, depthM: 14 },  // the eleven irregular sites
   ],
   amenities: [
     "Landscaped garden",

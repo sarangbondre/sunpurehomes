@@ -3,8 +3,8 @@
   "name": "Fadal",
   "type": "plot",
   "status": "ongoing",
-  "tagline": "Forty-four MUDA-approved plots at Shyadanahalli.",
-  "description": "Fadal is a MUDA-approved plotted development at Shyadanahalli, where buyers build their own homes. Forty-four plots sit on 11,736 sq m — just under three acres — with a tenth of the site given to park and nine-metre roads throughout. The layout is Vaastu and Feng Shui compliant.",
+  "tagline": "Forty-three MUDA-approved plots at Shyadanahalli.",
+  "description": "Fadal is a MUDA-approved plotted development at Shyadanahalli, reached from KRS Main Road, where buyers build their own homes. Forty-three plots sit on 11,722 sq m — two acres and thirty-six guntas — with a tenth of the site given to park and nine-metre roads throughout. The layout has final approval and every site is released. It is Vaastu and Feng Shui compliant.",
   "location": {
     "label": "KRS Main Road",
     "addressLines": [
@@ -20,18 +20,18 @@
   },
   "scale": {
     "acres": 2.9,
-    "unitCount": 44,
+    "unitCount": 43,
     "unitNoun": "plots"
   },
   "configurations": [
     {
       "label": "9.0 × 12.0 m",
       "areaSqft": 1163,
-      "count": 16
+      "count": 12
     },
     {
-      "label": "9.0 × 13.02 m",
-      "areaSqft": 1261,
+      "label": "9.0 × 13.0 m",
+      "areaSqft": 1259,
       "count": 6
     },
     {
@@ -41,7 +41,7 @@
     },
     {
       "label": "9.0 m × irregular",
-      "count": 8
+      "count": 11
     }
   ],
   "compliance": {
@@ -171,8 +171,8 @@
     "The live page duplicates its 'Electrical' specification group.",
     "The live page shows an empty Amenities section. The amenities here are taken from the brief, sourced from the old WordPress page.",
     "Fadal ranks in search on the old WordPress URL. That page carries Happiness 2's villa floor plans under a 'Master Plan' heading. The redirect matters (§13).",
-    "Plot count corrected from 43 to 44 against the approved MUDA layout (Authority Resolution 97, 07-03-2020). Net extent 11,735.90 sq m; land use 54.60% residential, 30.36% roads, 10.03% park, 5.01% civic amenities.",
-    "Eight plots are irregular (\"9.0 × Odd\" on the approved drawing) and have no single stated dimension. They are counted but not sized.",
-    "Location label still reads KRS Main Road, which the client's own copy uses; the approved layout places the site at Shyadanahalli, Kasaba Hobli. Confirm which the filter should show."
+    "Figures taken from the FINAL approved layout and 100% release order, which supersedes the provisional drawing. The provisional sheet showed 44 sites; the final approval records 43 — matching the published figure. Land use: 54.06% residential, 30.36% roads, 10.03% park, 5.01% civic amenities, 0.54% not in enjoyment.",
+    "Eleven plots are irregular (\"9.0 × odd\") on the approved drawing and have no single stated dimension. They are counted but not sized.",
+    "All sites released: the 100% release order is on file. The approach is marked \"From KRS Main Road\" on the drawing, which is why the filter keeps that label while the address gives Shyadanahalli."
   ]
 }

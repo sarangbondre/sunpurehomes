@@ -1,14 +1,14 @@
 import { Hero, type HeroMedia } from "@/components/home/hero";
 
 /**
- * The reference the client supplied shows a residential property, not a
- * landmark, so the hero now carries a Sunpure villa rather than the Mysore
- * Palace photograph chosen earlier. Both are one line to change.
+ * The banner the client supplied for this page, 2560 × 1500. It is an aerial
+ * of the Vijayanagar cluster with six developments labelled on it, which is
+ * why it earns the hero: it shows the portfolio rather than one building.
  */
 const heroMedia: HeroMedia = {
   kind: "image",
-  src: "/images/projects/rare-earth/hero.avif",
-  alt: "The Rare Earth entrance gateway — a tiled canopy on timber beams, carried on stone piers hung with creepers.",
+  src: "/images/home/masterplan-aerial.jpg",
+  alt: "An aerial view of the Sunpure Homes cluster in Vijayanagar, with Curve, Happiness I, Happiness II, Happiness IV, V4 and Blessed labelled across the site.",
 };
 
 export default function HomePage() {
