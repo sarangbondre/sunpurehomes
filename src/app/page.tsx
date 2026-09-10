@@ -1,34 +1,29 @@
 import { Hero, type HeroMedia } from "@/components/home/hero";
 import { getAllProjects, getCoverImage } from "@/lib/content";
+import { getSuppliedShowcase } from "@/lib/home-showcase";
 
 /**
- * The hero crossfades through the cover image of each development.
+ * The hero crossfades through the six images the client supplied, once those
+ * files are in `public/images/home/showcase/` — see src/lib/home-showcase.ts
+ * for the names, and docs/adr/0001 for why images that are not Sunpure
+ * developments are on this page at all.
  *
- * THESE ARE PLACEHOLDERS FOR THE SIX IMAGES THE CLIENT SUPPLIED on
- * 10 September 2026, which could not be saved to the repository — they were
- * pasted into chat rather than shared as files. To swap them in: drop the
- * files into `public/images/home/showcase/` and replace the body of
- * `heroSlides` with one entry per image.
- *
- * Two things to settle before those six ship. They are not photographs of
- * Sunpure developments — travertine villas, marble pool surrounds, desert
- * palms — and none corresponds to the built work in Mysuru. On a RERA
- * registered sales site, imagery that reads as "our homes" but is not
- * carries a real misleading-advertising exposure, and it is a decision for
- * the client, not for this file. Whatever ships needs alt text that
- * describes what is actually shown.
- *
- * Until then the slides are the real developments, with the alt text already
- * written for each project's gallery, so nothing on the page claims anything
- * untrue.
+ * Until they are, it falls back to the ongoing developments' own cover
+ * renders, with the alt text already written for each gallery. The fallback
+ * exists so the handover cannot leave the landing page empty.
  */
-const heroSlides = getAllProjects()
+const supplied = getSuppliedShowcase();
+
+const fallback = getAllProjects()
   .filter((project) => project.status === "ongoing")
   .map((project) => getCoverImage(project))
   .filter((image) => image !== undefined)
   .map((image) => ({ src: image.src, alt: image.alt }));
 
-const heroMedia: HeroMedia = { kind: "gallery", slides: heroSlides };
+const heroMedia: HeroMedia = {
+  kind: "gallery",
+  slides: supplied.length > 0 ? supplied : fallback,
+};
 
 export default function HomePage() {
   return (
