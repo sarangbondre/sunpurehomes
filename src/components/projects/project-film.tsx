@@ -11,7 +11,14 @@ import { formatDayMonthYear } from "@/lib/format";
  * capture date is printed for exactly that reason — footage of a development
  * under construction is only meaningful if you know when it was taken.
  */
-export function ProjectFilm({ film, name }: { film: NonNullable<Project["film"]>; name: string }) {
+export function ProjectFilm({
+  film,
+  label,
+}: {
+  film: NonNullable<Project["film"]>;
+  /** What the footage is of — a project name, or the campus. */
+  label: string;
+}) {
   return (
     <figure className="relative isolate mt-16 w-full overflow-hidden bg-ink sm:mt-24">
       <div className="relative aspect-4/3 w-full sm:aspect-16/9">
@@ -26,7 +33,7 @@ export function ProjectFilm({ film, name }: { film: NonNullable<Project["film"]>
       </div>
 
       <figcaption className="u-mono flex flex-wrap items-baseline justify-between gap-x-6 gap-y-2 bg-ink px-6 py-5 text-paper/75 sm:px-10 lg:px-16">
-        <span>{name} from the air</span>
+        <span>{label} from the air</span>
         <span>Filmed {formatDayMonthYear(film.captured)}</span>
       </figcaption>
     </figure>

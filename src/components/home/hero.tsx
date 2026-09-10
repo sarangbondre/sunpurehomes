@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { AutoplayVideo } from "@/components/media/autoplay-video";
+import { HeroCarousel, type HeroSlide } from "@/components/home/hero-carousel";
 
 /**
  * The full-bleed cinematic hero, built to the reference the client sent
@@ -21,6 +22,8 @@ import { AutoplayVideo } from "@/components/media/autoplay-video";
  */
 export type HeroMedia =
   | { kind: "image"; src: string; alt: string }
+  /** Crossfades on its own. See HeroCarousel for the pause requirement. */
+  | { kind: "gallery"; slides: HeroSlide[] }
   | {
       kind: "video";
       /** Web-encoded H.264 MP4. The poster carries the frame until it plays. */
@@ -31,7 +34,16 @@ export type HeroMedia =
     };
 
 export function Hero({ media }: { media?: HeroMedia }) {
-  const poster = media?.kind === "video" ? media.poster : media?.src;
+  /*
+    The single still behind everything: a video's poster, or the image
+    itself. A gallery brings its own stack, so it has none.
+  */
+  const still =
+    media?.kind === "video"
+      ? { src: media.poster, alt: media.alt }
+      : media?.kind === "image"
+        ? { src: media.src, alt: media.alt }
+        : undefined;
 
   return (
     <section className="relative isolate flex h-[calc(100svh-5rem)] min-h-[32rem] w-full flex-col justify-end overflow-hidden bg-ink sm:h-[calc(100svh-6rem)]">
@@ -40,10 +52,12 @@ export function Hero({ media }: { media?: HeroMedia }) {
         clip is deliberately NOT preloaded — AutoplayVideo attaches its source
         after mount so a multi-megabyte download never races the poster.
       */}
-      {poster && (
+      {media?.kind === "gallery" && <HeroCarousel slides={media.slides} />}
+
+      {still && (
         <Image
-          src={poster}
-          alt={media?.alt ?? ""}
+          src={still.src}
+          alt={still.alt}
           fill
           priority
           fetchPriority="high"
@@ -59,11 +73,15 @@ export function Hero({ media }: { media?: HeroMedia }) {
       {/*
         Two scrims. The base tint settles the whole frame; the band carries
         the text zone to the 85% that measured safe. Decorative, so aria-hidden.
+
+        The base is deliberately light. It only has to unify the frame — the
+        band alone already carries the text zone — and at the 35% first used
+        for bright drone footage it turned the darker project renders to mud.
       */}
-      <div aria-hidden className="absolute inset-0 bg-ink/35" />
+      <div aria-hidden className="absolute inset-0 bg-ink/20" />
       <div
         aria-hidden
-        className="absolute inset-x-0 bottom-0 h-[70%] bg-gradient-to-t from-ink via-ink/85 to-transparent"
+        className="absolute inset-x-0 bottom-0 h-[85%] bg-gradient-to-t from-ink via-ink/85 to-transparent"
       />
 
       <div className="relative mx-auto w-full max-w-[86rem] px-6 pb-14 sm:px-10 sm:pb-20 lg:px-16 lg:pb-24">

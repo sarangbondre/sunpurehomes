@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { FilterBar } from "@/components/projects/filter-bar";
 import { ProjectCard } from "@/components/projects/project-card";
+import { ProjectFilm } from "@/components/projects/project-film";
 import {
   filterProjects,
   getAllProjects,
@@ -9,6 +10,20 @@ import {
 } from "@/lib/content";
 import { PROJECT_STATUSES, PROJECT_TYPES } from "@/lib/schema";
 import { site } from "@/lib/site";
+
+/**
+ * The 3 July 2026 drone flight over Vijayanagar 4th Stage, where six of the
+ * nine developments sit. It lives here rather than on any one project page
+ * because it shows the campus — the shared park, the entrance, the cluster —
+ * and no single project owns that. Per-project films need per-project
+ * footage; see the note on `film` in the schema.
+ */
+const campusFilm = {
+  src: "/video/hero-vijayanagar.mp4",
+  poster: "/images/home/hero-vijayanagar.jpg",
+  alt: "An aerial view over Vijayanagar 4th Stage: a landscaped park of palms and clipped hedges inside a crenellated boundary wall, with the villa row and apartment block beyond it and Mysuru spreading to the horizon.",
+  captured: "2026-07-03",
+} as const;
 
 export const metadata: Metadata = {
   title: "Projects",
@@ -59,6 +74,10 @@ export default async function ProjectsPage({
           and where you want to be.
         </p>
       </header>
+
+      <div className="mt-14">
+        <ProjectFilm film={campusFilm} label="Vijayanagar 4th Stage" />
+      </div>
 
       <div className="mt-14 border-y border-line py-8">
         <FilterBar

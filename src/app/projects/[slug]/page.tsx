@@ -113,7 +113,7 @@ export default async function ProjectPage({
         Footage of the real site outranks the renders, so it leads. Only a
         handful of projects have any — see the note on `film` in the schema.
       */}
-      {project.film && <ProjectFilm film={project.film} name={project.name} />}
+      {project.film && <ProjectFilm film={project.film} label={project.name} />}
 
       {/*
         Three or more photographs earn the scroll sequence; below that it
