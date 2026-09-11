@@ -55,6 +55,14 @@
   --color-laterite: #f15b22;
   /* The same orange, deepened to 4.50:1 — AA for body text on --paper. */
   --color-accent-ink: #c0450f;
+  /*
+    Amber, at the client's direction, for the second line of the hero
+    headline. Hue 36deg at full saturation, darkened until it clears 4.51:1
+    on --paper — AA for BODY text, not merely for the display size it is used
+    at, so it stays safe anywhere it spreads to. The brand golds cannot do
+    this: Sunpure Gold reaches 1.30:1 and Dark Gold 1.74:1 on this ground.
+  */
+  --color-amber: #9e5f00;
   --color-stone: #c4bcac;
   --color-mist: #ded6c6;
 
