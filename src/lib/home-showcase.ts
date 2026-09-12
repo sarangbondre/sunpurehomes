@@ -2,73 +2,49 @@ import { existsSync } from "node:fs";
 import { join } from "node:path";
 
 /**
- * The six images the client supplied on 10 September 2026 for the landing
- * page, and confirmed on 11 September should ship as they are.
+ * The single photograph on the landing hero.
  *
- * They are NOT photographs of Sunpure developments — see docs/adr/0001.
- * Nothing here labels them as such: no caption, no project name, and the alt
- * text below describes only what is visible in each frame.
+ * The client sent six images on 10 September and on 12 September asked for
+ * one, with the rest off the home page. The other five files are removed
+ * from public/ rather than left unreferenced, where they would still be
+ * deployed; they are in git history and the client holds the originals, so
+ * restoring one is `git checkout`.
  *
- * The client added the files on 11 September. They arrived named "img 1"
- * through "img 5" plus "6", in an order unrelated to the order they were
- * sent, so each was checked against the description below before renaming —
- * "img 1" is the courtyard, not the travertine villa. The names carry the
- * display order, and the alt text is matched to the image it describes, so
- * renaming a file silently gives it someone else's description.
+ * NOT the photograph in the 12 September reference mockup — the hillside
+ * villa with the infinity pool and the mountains. That is a seventh image
+ * and it arrived inside the mockup screenshot, so no file exists for it.
+ * This is the closest of the six that were sent as files: the travertine
+ * villa at sunset. To swap it, drop the real one in under this name.
  *
- * KNOWN LIMITATION: the sources are at most 736px wide and four of the six
- * are portrait or square. The hero is full-bleed and landscape, so each is
- * cropped to a horizontal band — the travertine villa loses its garden and
- * pool entirely — and a 736px file stretched across a 1440px-plus hero is
- * visibly soft. Next clamps at the source width rather than upscaling, so
- * this costs no bandwidth, but higher-resolution landscape originals would
- * be a straight improvement.
+ * It is NOT a photograph of a Sunpure development. Nothing on the page
+ * attributes it to one — no caption, no project name, no link — and the alt
+ * text describes only what is in the frame. See
+ * docs/adr/0001-non-project-imagery-on-the-landing-page.md.
  *
- * Any file that is missing is skipped, and if none are present the hero
- * falls back to the developments' own cover renders.
+ * KNOWN LIMITATION: the source is 735px wide, so it is soft on a desktop
+ * hero. Next clamps at the source width rather than upscaling, so this costs
+ * no bandwidth, but a larger landscape original would be a straight
+ * improvement.
  */
+const HERO = {
+  file: "01-travertine-villa-sunset.jpeg",
+  alt: "A two-storey villa in pale travertine at sunset, its full-height glazing reflecting the low sun, with a carved stone relief panel, a timber-lined upper terrace, clipped hedging and ornamental grasses beside a still reflecting pool.",
+} as const;
+
 const SHOWCASE_DIR = join("images", "home", "showcase");
 
-type Slide = { src: string; alt: string };
-
-const SUPPLIED: readonly Slide[] = [
-  {
-    src: "01-travertine-villa-sunset.jpeg",
-    alt: "A two-storey villa in pale travertine at sunset, its full-height glazing reflecting the low sun, with a carved stone relief panel, a timber-lined upper terrace, clipped hedging and ornamental grasses beside a still reflecting pool.",
-  },
-  {
-    src: "02-stone-villa-pool.jpeg",
-    alt: "A stone-clad villa under a clear sky, its upper volumes cantilevered over timber-panelled recesses, beside a lap pool set in marble paving with spherical stone forms and low white loungers.",
-  },
-  {
-    src: "03-pavilion-palms.jpeg",
-    alt: "A single-storey pavilion in pale brick with tall timber screens folded open to a living room, framed by date palms and mirrored in a long still pool.",
-  },
-  {
-    src: "04-villa-dusk.jpeg",
-    alt: "A villa at dusk with deep stone soffits and warm downlights, its sliding glass drawn back to open a double-height living room onto a mirror-still pool.",
-  },
-  {
-    src: "05-courtyard-stair.jpeg",
-    alt: "An interior courtyard where a timber stair rises past a double-height glazed wall, beside a garden of boulders, gravel and tropical planting.",
-  },
-  {
-    src: "06-cantilever-terrace.jpeg",
-    alt: "A contemporary villa at dusk, its upper floor cantilevered over an open terrace with a long fireplace, an outdoor kitchen and a green-lit pool below.",
-  },
-];
+export type HeroImage = { src: string; alt: string };
 
 /**
- * Reads once at module load, on the server, like the project content. Pages
- * are static, so a file dropped in after the build needs a rebuild — which
- * is the same contract as every image already on the site.
+ * Reads once at module load, on the server, like the project content. Absent
+ * means the caller falls back, so a missing or renamed file cannot leave the
+ * landing page with an empty panel.
  */
-export function getSuppliedShowcase(): Slide[] {
-  const publicDir = join(process.cwd(), "public");
-  return SUPPLIED.filter((slide) =>
-    existsSync(join(publicDir, SHOWCASE_DIR, slide.src)),
-  ).map((slide) => ({
-    src: `/${SHOWCASE_DIR}/${slide.src}`.replaceAll("\\", "/"),
-    alt: slide.alt,
-  }));
+export function getHeroImage(): HeroImage | undefined {
+  const onDisk = join(process.cwd(), "public", SHOWCASE_DIR, HERO.file);
+  if (!existsSync(onDisk)) return undefined;
+  return {
+    src: `/${SHOWCASE_DIR}/${HERO.file}`.replaceAll("\\", "/"),
+    alt: HERO.alt,
+  };
 }

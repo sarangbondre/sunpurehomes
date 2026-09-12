@@ -1,55 +1,22 @@
-"use client";
-
 import Image from "next/image";
 import Link from "next/link";
-import { useEffect, useState } from "react";
 
-export type HeroSlide = { src: string; alt: string };
+export type HeroImage = { src: string; alt: string };
 
 /**
  * The landing hero, to the client's reference design: the brand line on the
- * paper ground at the left, the imagery bleeding in from the right, and a
+ * paper ground at the left, the photograph bleeding in from the right, and a
  * soft wash between them rather than a seam.
  *
- * The wash is what makes it read as one canvas instead of two panels, and it
- * does a second job — it is why the header can sit over the picture with no
- * bar of its own and stay legible.
+ * The wash does a second job beyond looking like one canvas — it is why the
+ * header can sit over the picture with no bar of its own and stay legible.
  *
- * The images are portrait and square and only 736px wide (see
- * lib/home-showcase.ts). Letting them run the full height of a tall column
- * shows them close to whole and close to native width; the earlier
- * full-bleed landscape treatment cropped them to a band and stretched them.
+ * One picture, not a rotation. That is a plain server component again: no
+ * state, no interval, no reduced-motion branch, and no pause control, since
+ * WCAG 2.2.2 only applies to something that moves. The home page ships no
+ * client JavaScript of its own as a result.
  */
-export function Hero({
-  slides,
-  intervalMs = 6000,
-}: {
-  slides: HeroSlide[];
-  intervalMs?: number;
-}) {
-  const [index, setIndex] = useState(0);
-  const [paused, setPaused] = useState(false);
-  const [reduced, setReduced] = useState(false);
-
-  useEffect(() => {
-    const query = window.matchMedia("(prefers-reduced-motion: reduce)");
-    const sync = () => setReduced(query.matches);
-    sync();
-    query.addEventListener("change", sync);
-    return () => query.removeEventListener("change", sync);
-  }, []);
-
-  useEffect(() => {
-    if (slides.length < 2 || paused || reduced) return;
-    const id = setInterval(
-      () => setIndex((i) => (i + 1) % slides.length),
-      intervalMs,
-    );
-    return () => clearInterval(id);
-  }, [slides.length, paused, reduced, intervalMs]);
-
-  const rotating = slides.length > 1 && !reduced;
-
+export function Hero({ image }: { image: HeroImage }) {
   return (
     <section className="relative overflow-hidden bg-paper lg:min-h-svh">
       {/* ── Text, over the wash */}
@@ -84,70 +51,28 @@ export function Hero({
             </svg>
           </Link>
         </div>
-
-        {rotating && (
-          <div className="mt-10 flex items-center gap-4">
-            <ul className="flex items-center gap-3">
-              {slides.map((slide, i) => (
-                <li key={slide.src}>
-                  <button
-                    type="button"
-                    onClick={() => setIndex(i)}
-                    aria-current={i === index}
-                    aria-label={`Show image ${i + 1} of ${slides.length}`}
-                    className={`block size-2.5 rounded-full border transition-colors duration-hover ease-hover ${
-                      i === index
-                        ? "border-accent-ink bg-accent-ink"
-                        : "border-stone bg-transparent hover:border-ink"
-                    }`}
-                  />
-                </li>
-              ))}
-            </ul>
-            <span aria-hidden className="h-4 w-px bg-line" />
-            {/*
-              WCAG 2.2.2: the images change on their own and run past five
-              seconds, so a control that stops them is required.
-              prefers-reduced-motion suppresses rotation separately (2.3.3)
-              and is not a substitute for this.
-            */}
-            <button
-              type="button"
-              onClick={() => setPaused((p) => !p)}
-              className="u-mono text-muted transition-colors duration-hover ease-hover hover:text-ink"
-            >
-              {paused ? "Play" : "Pause"}
-            </button>
-          </div>
-        )}
       </div>
 
-      {/* ── Imagery. In flow beneath the text on small screens; at lg it fills
-             the right of the section and washes into the paper. */}
+      {/* ── The photograph. In flow beneath the text on small screens; at lg it
+             fills the right of the section and washes into the paper. */}
       <div className="relative aspect-4/5 w-full sm:aspect-16/10 lg:absolute lg:inset-y-0 lg:right-0 lg:aspect-auto lg:w-[64%]">
-        {slides.map((slide, i) => (
-          <Image
-            key={slide.src}
-            src={slide.src}
-            alt={slide.alt}
-            fill
-            priority={i === 0}
-            fetchPriority={i === 0 ? "high" : "auto"}
-            sizes="(min-width: 1024px) 64vw, 100vw"
-            className="object-cover transition-opacity ease-enter"
-            style={{
-              opacity: i === index ? 1 : 0,
-              transitionDuration: "var(--duration-camera)",
-            }}
-          />
-        ))}
+        <Image
+          src={image.src}
+          alt={image.alt}
+          fill
+          priority
+          fetchPriority="high"
+          sizes="(min-width: 1024px) 64vw, 100vw"
+          className="object-cover"
+        />
 
         {/*
           Three washes, all decorative. The first dissolves the left edge into
           the panel. The second keeps the top light enough for the nav and the
-          WhatsApp pill to sit over the picture whatever the picture is — the
-          slides run from a bright sunset to a dark courtyard interior. The
-          third does the same for the caption in the corner.
+          WhatsApp pill to sit over the picture. The third does the same for
+          the caption in the corner — as literal rgba, because
+          var(--color-ink)/0.55 does not parse inside a gradient and was
+          being dropped silently.
         */}
         <div
           aria-hidden
@@ -157,11 +82,6 @@ export function Hero({
           aria-hidden
           className="absolute inset-x-0 top-0 h-40 bg-gradient-to-b from-paper to-transparent"
         />
-        {/*
-          Literal rgba, not var(--color-ink)/0.55 — a CSS variable with a
-          slash alpha does not parse inside a gradient, so that rule was
-          dropped silently and the caption had no scrim at all.
-        */}
         <div
           aria-hidden
           className="absolute bottom-0 right-0 hidden h-[28rem] w-[34rem] bg-[radial-gradient(ellipse_at_bottom_right,rgba(28,26,24,0.94)_0%,rgba(28,26,24,0.72)_32%,rgba(28,26,24,0.3)_55%,transparent_78%)] lg:block"
