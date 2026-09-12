@@ -3,14 +3,24 @@ export function Section({
   title,
   children,
   className = "",
+  id,
 }: {
   eyebrow: string;
   title: string;
   children: React.ReactNode;
   className?: string;
+  /** Anchor target, so a nav item can link straight to this section. */
+  id?: string;
 }) {
   return (
-    <section className={`border-t border-line py-14 sm:py-20 ${className}`}>
+    <section
+      id={id}
+      /*
+        scroll-mt clears the sticky header, which would otherwise cover the
+        eyebrow of whichever section was jumped to.
+      */
+      className={`scroll-mt-24 border-t border-line py-14 sm:py-20 ${className}`}
+    >
       <p className="u-mono text-canopy">{eyebrow}</p>
       <h2 className="mt-4 text-[clamp(1.9rem,4vw,3rem)]">{title}</h2>
       <div className="mt-10">{children}</div>

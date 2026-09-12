@@ -41,7 +41,7 @@ export default function AboutPage() {
         </p>
       </header>
 
-      <Section eyebrow="How we build" title="Three things we hold to">
+      <Section id="philosophy" eyebrow="How we build" title="Three things we hold to">
         <dl className="grid gap-10 sm:grid-cols-3">
           {[
             {
@@ -85,7 +85,7 @@ export default function AboutPage() {
         </ul>
       </Section>
 
-      <Section eyebrow="Talk to us" title="Come and see one">
+      <Section id="contact" eyebrow="Talk to us" title="Come and see one">
         <div className="flex flex-wrap gap-3">
           <a
             href={whatsappHref(

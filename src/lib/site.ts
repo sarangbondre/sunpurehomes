@@ -10,7 +10,7 @@ export const site = {
   name: "Sunpure Homes",
 
   /** The only tagline. Three others on the live site are retired. */
-  tagline: "Thoughtfully Built. Deeply Lived.",
+  tagline: "Thoughtfully Built, Deeply Lived.",
 
   city: "Mysuru",
   region: "Karnataka",

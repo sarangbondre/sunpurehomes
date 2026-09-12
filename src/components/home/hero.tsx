@@ -7,32 +7,18 @@ import { useEffect, useState } from "react";
 export type HeroSlide = { src: string; alt: string };
 
 /**
- * The landing hero: a warm panel carrying the brand line, and the imagery
- * beside it rather than behind it.
+ * The landing hero, to the client's reference design: the brand line on the
+ * paper ground at the left, the imagery bleeding in from the right, and a
+ * soft wash between them rather than a seam.
  *
- * This is a deliberate return to a split after a spell of full-bleed. Two
- * reasons, and the second is the one that matters:
+ * The wash is what makes it read as one canvas instead of two panels, and it
+ * does a second job — it is why the header can sit over the picture with no
+ * bar of its own and stay legible.
  *
- *   The headline is set in ink and amber on paper, at the client's
- *   direction. Dark type cannot sit over photography — it needs a light
- *   ground of its own, and a panel is that ground.
- *
- *   The supplied images are portrait and square, at most 736px wide. A
- *   full-bleed landscape frame cropped each one to a horizontal band and
- *   threw away most of the composition — the travertine villa lost its
- *   garden and pool entirely. A tall panel is the shape these images
- *   actually are, so they are shown nearly whole, and at close to their
- *   native width they are far sharper than when stretched across a
- *   1440px-wide hero.
- *
- * There is no scrim now. Nothing is laid over the pictures, so they render
- * at full fidelity — which matters more than usual given how small the
- * sources are.
- *
- * The whole hero is a client component because the slide index is shared
- * between the images on the right and the controls on the left. Next still
- * renders it on the server for the first paint, so the headline is in the
- * initial HTML and the first image is still the LCP element.
+ * The images are portrait and square and only 736px wide (see
+ * lib/home-showcase.ts). Letting them run the full height of a tall column
+ * shows them close to whole and close to native width; the earlier
+ * full-bleed landscape treatment cropped them to a band and stretched them.
  */
 export function Hero({
   slides,
@@ -65,25 +51,25 @@ export function Hero({
   const rotating = slides.length > 1 && !reduced;
 
   return (
-    <section className="relative bg-paper lg:grid lg:min-h-[calc(100svh-6rem)] lg:grid-cols-[46fr_54fr]">
-      {/* ── Left: the brand panel */}
-      <div className="relative flex flex-col justify-center px-6 py-16 sm:px-10 sm:py-24 lg:py-0 lg:pl-16 lg:pr-14">
-        <h1 className="text-[clamp(2.75rem,5.6vw,4.6rem)] text-ink">
-          Thoughtfully&nbsp;Built.
-          <span className="mt-1 block text-amber">Deeply&nbsp;Lived.</span>
+    <section className="relative overflow-hidden bg-paper lg:min-h-svh">
+      {/* ── Text, over the wash */}
+      <div className="relative z-10 flex flex-col justify-center px-6 pb-14 pt-14 sm:px-10 sm:pt-16 lg:min-h-svh lg:max-w-[52%] lg:py-0 lg:pl-16 lg:pr-8 lg:pt-24">
+        <p className="u-mono leading-[1.9] text-muted">
+          Spaces for a
+          <br />
+          more meaningful tomorrow
+        </p>
+        <span aria-hidden className="mt-5 block h-px w-20 bg-line" />
+
+        <h1 className="mt-8 text-[clamp(2.75rem,5.4vw,4.9rem)] text-ink">
+          Thoughtfully&nbsp;Built,
+          <span className="mt-1 block text-accent-ink">Deeply&nbsp;Lived.</span>
         </h1>
 
-        <span aria-hidden className="mt-10 block h-px w-32 bg-amber/60" />
-
-        <div className="mt-9">
-          {/*
-            The shared .u-cta is laterite-on-paper, which fights the amber.
-            This one is ink, so the panel holds to black and a single accent
-            — .u-cta is untouched because /about still uses it.
-          */}
+        <div className="mt-10">
           <Link
             href="/projects"
-            className="u-mono inline-flex items-center gap-3.5 border border-ink px-6 py-4 text-ink transition-colors duration-hover ease-hover hover:bg-ink hover:text-paper"
+            className="u-mono inline-flex items-center gap-4 border border-ink/25 px-7 py-5 text-ink transition-colors duration-hover ease-hover hover:border-ink hover:bg-ink hover:text-paper"
           >
             Discover our projects
             <svg
@@ -99,15 +85,9 @@ export function Hero({
           </Link>
         </div>
 
-        {/*
-          The controls live on the panel, not over the pictures. On the light
-          ground they are legible against a known colour instead of against
-          whatever happens to be in the frame, and nothing has to be laid over
-          the image to make them work.
-        */}
         {rotating && (
-          <div className="mt-12 flex items-center gap-5">
-            <ul className="flex items-center gap-2.5">
+          <div className="mt-10 flex items-center gap-4">
+            <ul className="flex items-center gap-3">
               {slides.map((slide, i) => (
                 <li key={slide.src}>
                   <button
@@ -115,24 +95,26 @@ export function Hero({
                     onClick={() => setIndex(i)}
                     aria-current={i === index}
                     aria-label={`Show image ${i + 1} of ${slides.length}`}
-                    className={`block size-2.5 rounded-full border border-ink transition-colors duration-hover ease-hover ${
-                      i === index ? "bg-ink" : "bg-transparent hover:bg-ink/40"
+                    className={`block size-2.5 rounded-full border transition-colors duration-hover ease-hover ${
+                      i === index
+                        ? "border-accent-ink bg-accent-ink"
+                        : "border-stone bg-transparent hover:border-ink"
                     }`}
                   />
                 </li>
               ))}
             </ul>
-
+            <span aria-hidden className="h-4 w-px bg-line" />
             {/*
-              WCAG 2.2.2: the images change on their own, run past five
-              seconds and sit alongside the headline, so a control that stops
-              them is required. prefers-reduced-motion suppresses the
-              rotation separately (2.3.3) and does not substitute for this.
+              WCAG 2.2.2: the images change on their own and run past five
+              seconds, so a control that stops them is required.
+              prefers-reduced-motion suppresses rotation separately (2.3.3)
+              and is not a substitute for this.
             */}
             <button
               type="button"
               onClick={() => setPaused((p) => !p)}
-              className="u-mono text-ink-soft underline decoration-line underline-offset-4 transition-colors duration-hover ease-hover hover:text-ink"
+              className="u-mono text-muted transition-colors duration-hover ease-hover hover:text-ink"
             >
               {paused ? "Play" : "Pause"}
             </button>
@@ -140,8 +122,9 @@ export function Hero({
         )}
       </div>
 
-      {/* ── Right: the imagery */}
-      <div className="relative aspect-4/5 w-full overflow-hidden bg-paper-2 sm:aspect-16/10 lg:aspect-auto lg:h-full">
+      {/* ── Imagery. In flow beneath the text on small screens; at lg it fills
+             the right of the section and washes into the paper. */}
+      <div className="relative aspect-4/5 w-full sm:aspect-16/10 lg:absolute lg:inset-y-0 lg:right-0 lg:aspect-auto lg:w-[64%]">
         {slides.map((slide, i) => (
           <Image
             key={slide.src}
@@ -150,7 +133,7 @@ export function Hero({
             fill
             priority={i === 0}
             fetchPriority={i === 0 ? "high" : "auto"}
-            sizes="(min-width: 1024px) 54vw, 100vw"
+            sizes="(min-width: 1024px) 64vw, 100vw"
             className="object-cover transition-opacity ease-enter"
             style={{
               opacity: i === index ? 1 : 0,
@@ -158,6 +141,42 @@ export function Hero({
             }}
           />
         ))}
+
+        {/*
+          Three washes, all decorative. The first dissolves the left edge into
+          the panel. The second keeps the top light enough for the nav and the
+          WhatsApp pill to sit over the picture whatever the picture is — the
+          slides run from a bright sunset to a dark courtyard interior. The
+          third does the same for the caption in the corner.
+        */}
+        <div
+          aria-hidden
+          className="absolute inset-0 bg-gradient-to-b from-paper from-0% via-paper/40 via-10% to-transparent to-26% lg:bg-gradient-to-r"
+        />
+        <div
+          aria-hidden
+          className="absolute inset-x-0 top-0 h-40 bg-gradient-to-b from-paper to-transparent"
+        />
+        {/*
+          Literal rgba, not var(--color-ink)/0.55 — a CSS variable with a
+          slash alpha does not parse inside a gradient, so that rule was
+          dropped silently and the caption had no scrim at all.
+        */}
+        <div
+          aria-hidden
+          className="absolute bottom-0 right-0 hidden h-[28rem] w-[34rem] bg-[radial-gradient(ellipse_at_bottom_right,rgba(28,26,24,0.94)_0%,rgba(28,26,24,0.72)_32%,rgba(28,26,24,0.3)_55%,transparent_78%)] lg:block"
+        />
+
+        <p className="u-mono absolute bottom-10 right-10 hidden text-right leading-[2] text-paper lg:block">
+          Homes
+          <br />
+          for a
+          <br />
+          brighter
+          <br />
+          tomorrow
+          <span aria-hidden className="mt-3 ml-auto block h-px w-10 bg-paper/70" />
+        </p>
       </div>
     </section>
   );
