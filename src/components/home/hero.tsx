@@ -27,7 +27,7 @@ export function Hero({ image }: { image: HeroImage }) {
   return (
     <section className="relative overflow-hidden bg-paper lg:min-h-svh">
       {/* ── Text, over the wash */}
-      <div className="relative z-10 flex flex-col justify-center px-6 pb-14 pt-14 sm:px-10 sm:pt-16 lg:min-h-svh lg:max-w-[62%] lg:py-0 lg:pl-16 lg:pr-10 lg:pt-24">
+      <div className="relative z-10 flex flex-col justify-center px-6 pb-14 pt-14 sm:px-10 sm:pt-16 lg:min-h-svh lg:max-w-[56%] lg:py-0 lg:pl-16 lg:pr-10 lg:pt-24">
         <p className="u-mono leading-[1.9] text-muted">
           Spaces for a
           <br />
@@ -62,15 +62,15 @@ export function Hero({ image }: { image: HeroImage }) {
 
       {/* ── The photograph. In flow beneath the text on small screens; at lg it
              fills the right of the section and washes into the paper. */}
-      <div className="relative aspect-4/3 w-full sm:aspect-16/9 lg:absolute lg:inset-y-0 lg:right-0 lg:aspect-auto lg:w-[36%]">
+      <div className="relative aspect-4/3 w-full sm:aspect-16/9 lg:absolute lg:inset-y-0 lg:right-0 lg:aspect-auto lg:w-[46%]">
         <Image
           src={image.src}
           alt={image.alt}
           fill
           priority
           fetchPriority="high"
-          sizes="(min-width: 1024px) 36vw, 100vw"
-          className="object-cover"
+          sizes="(min-width: 1024px) 46vw, 100vw"
+          className="object-cover object-left"
         />
 
         {/*
@@ -83,7 +83,7 @@ export function Hero({ image }: { image: HeroImage }) {
         */}
         <div
           aria-hidden
-          className="absolute inset-0 bg-gradient-to-b from-paper from-0% via-paper/40 via-16% to-transparent to-42% lg:bg-gradient-to-r"
+          className="absolute inset-0 bg-gradient-to-b from-paper from-0% via-paper/20 via-4% to-transparent to-11% lg:bg-gradient-to-r"
         />
         <div
           aria-hidden
