@@ -26,6 +26,46 @@ import { z } from "zod";
  *        The live site publishes amenity names only.
  */
 
+/**
+ * Hosts we will frame. An iframe executes third-party code inside the
+ * visitor's session, so the host is checked rather than trusted: a tour URL
+ * arrives from a sales conversation, and §6 treats anything from outside the
+ * process as untrusted.
+ */
+export const TOUR_HOSTS = {
+  matterport: ["my.matterport.com"],
+  istaging: ["livetour.istaging.com"],
+  kuula: ["kuula.co"],
+  cloudpano: ["app.cloudpano.com"],
+  shapespark: [".shapespark.com"],
+} as const;
+
+export const TOUR_PROVIDERS = [
+  "matterport",
+  "istaging",
+  "kuula",
+  "cloudpano",
+  "shapespark",
+] as const;
+
+export type TourProvider = (typeof TOUR_PROVIDERS)[number];
+
+export function isAllowedTourHost(provider: TourProvider, url: string): boolean {
+  let host: string;
+  try {
+    const parsed = new URL(url);
+    /* http embeds are blocked on an https page anyway; reject them here so the
+       failure is a build error with a message rather than a blank frame. */
+    if (parsed.protocol !== "https:") return false;
+    host = parsed.hostname.toLowerCase();
+  } catch {
+    return false;
+  }
+  return TOUR_HOSTS[provider].some((allowed) =>
+    allowed.startsWith(".") ? host.endsWith(allowed) : host === allowed,
+  );
+}
+
 export const PROJECT_TYPES = ["villa", "apartment", "plot"] as const;
 export const PROJECT_STATUSES = ["ongoing", "completed", "upcoming"] as const;
 
@@ -172,6 +212,43 @@ export const projectSchema = z
           message: "connectivity entry needs a distance or a travel time",
         }),
     ),
+
+    /**
+     * A hosted 360 virtual tour, embedded on the project page.
+     *
+     * The tour itself is never built here — it is captured. Either a camera
+     * operator scans a finished room, or 360 panoramas are rendered from the
+     * architect's model, and a platform hosts the result. The site's whole
+     * job is to embed the URL that comes back. This is how the reference the
+     * client sent (aureliaresidences.com) does it: five iframes, four to
+     * iStaging and one to Matterport.
+     *
+     * `provider` is not decoration. It selects the allowlist that `url` is
+     * checked against, so a mistyped or hostile URL cannot be framed into the
+     * page — an iframe runs third-party code in the visitor's session.
+     */
+    tour: z
+      .object({
+        provider: z.enum(TOUR_PROVIDERS),
+        url: z.string().url(),
+        /**
+         * What the tour actually shows. A show flat is not the flat being
+         * sold, and a visitor is entitled to know which they are walking
+         * through.
+         */
+        subject: realString("tour subject"),
+        /** Absent for a rendered tour; set when a real room was scanned. */
+        captured: z
+          .string()
+          .regex(/^\d{4}-\d{2}-\d{2}$/, "captured must be YYYY-MM-DD")
+          .optional(),
+      })
+      .refine((t) => isAllowedTourHost(t.provider, t.url), {
+        message:
+          "tour.url host does not belong to the named provider — see TOUR_HOSTS",
+        path: ["url"],
+      })
+      .optional(),
 
     /**
      * Drone footage of this project, web-encoded. Optional and expected to

@@ -4,6 +4,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Approvals } from "@/components/projects/approvals";
 import { ProjectFilm } from "@/components/projects/project-film";
+import { ProjectTour } from "@/components/projects/project-tour";
 import { CinematicSequence } from "@/components/projects/cinematic-sequence";
 import { PlanExplorer } from "@/components/plan/plan-explorer";
 import { Gallery } from "@/components/projects/gallery";
@@ -114,6 +115,11 @@ export default async function ProjectPage({
         handful of projects have any — see the note on `film` in the schema.
       */}
       {project.film && <ProjectFilm film={project.film} label={project.name} />}
+
+      {/* Walking the rooms beats looking at them, so the tour leads the page. */}
+      {project.tour && (
+        <ProjectTour tour={project.tour} name={project.name} poster={cover} />
+      )}
 
       {/*
         Three or more photographs earn the scroll sequence; below that it
