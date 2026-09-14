@@ -15,12 +15,19 @@ export type HeroImage = { src: string; alt: string };
  * state, no interval, no reduced-motion branch, and no pause control, since
  * WCAG 2.2.2 only applies to something that moves. The home page ships no
  * client JavaScript of its own as a result.
+ *
+ * The balance is deliberately tilted away from the reference mockup, at the
+ * client's direction on 14 September: show little of the picture, and let
+ * the line carry the page. The photograph is a 36% column rather than 64%,
+ * and the headline runs to 7rem rather than 4.9rem — near twice the area.
+ * A narrow column also suits the source, which is portrait: less of it is
+ * cropped away here than in any wider frame.
  */
 export function Hero({ image }: { image: HeroImage }) {
   return (
     <section className="relative overflow-hidden bg-paper lg:min-h-svh">
       {/* ── Text, over the wash */}
-      <div className="relative z-10 flex flex-col justify-center px-6 pb-14 pt-14 sm:px-10 sm:pt-16 lg:min-h-svh lg:max-w-[52%] lg:py-0 lg:pl-16 lg:pr-8 lg:pt-24">
+      <div className="relative z-10 flex flex-col justify-center px-6 pb-14 pt-14 sm:px-10 sm:pt-16 lg:min-h-svh lg:max-w-[62%] lg:py-0 lg:pl-16 lg:pr-10 lg:pt-24">
         <p className="u-mono leading-[1.9] text-muted">
           Spaces for a
           <br />
@@ -28,12 +35,12 @@ export function Hero({ image }: { image: HeroImage }) {
         </p>
         <span aria-hidden className="mt-5 block h-px w-20 bg-line" />
 
-        <h1 className="mt-8 text-[clamp(2.75rem,5.4vw,4.9rem)] text-ink">
+        <h1 className="mt-10 text-[clamp(3rem,7.2vw,7rem)] leading-[1.04] text-ink">
           Thoughtfully&nbsp;Built,
           <span className="mt-1 block text-accent-ink">Deeply&nbsp;Lived.</span>
         </h1>
 
-        <div className="mt-10">
+        <div className="mt-12">
           <Link
             href="/projects"
             className="u-mono inline-flex items-center gap-4 border border-ink/25 px-7 py-5 text-ink transition-colors duration-hover ease-hover hover:border-ink hover:bg-ink hover:text-paper"
@@ -55,14 +62,14 @@ export function Hero({ image }: { image: HeroImage }) {
 
       {/* ── The photograph. In flow beneath the text on small screens; at lg it
              fills the right of the section and washes into the paper. */}
-      <div className="relative aspect-4/5 w-full sm:aspect-16/10 lg:absolute lg:inset-y-0 lg:right-0 lg:aspect-auto lg:w-[64%]">
+      <div className="relative aspect-4/3 w-full sm:aspect-16/9 lg:absolute lg:inset-y-0 lg:right-0 lg:aspect-auto lg:w-[36%]">
         <Image
           src={image.src}
           alt={image.alt}
           fill
           priority
           fetchPriority="high"
-          sizes="(min-width: 1024px) 64vw, 100vw"
+          sizes="(min-width: 1024px) 36vw, 100vw"
           className="object-cover"
         />
 
@@ -76,7 +83,7 @@ export function Hero({ image }: { image: HeroImage }) {
         */}
         <div
           aria-hidden
-          className="absolute inset-0 bg-gradient-to-b from-paper from-0% via-paper/40 via-10% to-transparent to-26% lg:bg-gradient-to-r"
+          className="absolute inset-0 bg-gradient-to-b from-paper from-0% via-paper/40 via-16% to-transparent to-42% lg:bg-gradient-to-r"
         />
         <div
           aria-hidden
@@ -84,10 +91,10 @@ export function Hero({ image }: { image: HeroImage }) {
         />
         <div
           aria-hidden
-          className="absolute bottom-0 right-0 hidden h-[28rem] w-[34rem] bg-[radial-gradient(ellipse_at_bottom_right,rgba(28,26,24,0.94)_0%,rgba(28,26,24,0.72)_32%,rgba(28,26,24,0.3)_55%,transparent_78%)] lg:block"
+          className="absolute bottom-0 right-0 hidden h-[24rem] w-[22rem] bg-[radial-gradient(ellipse_at_bottom_right,rgba(28,26,24,0.94)_0%,rgba(28,26,24,0.72)_34%,rgba(28,26,24,0.3)_58%,transparent_80%)] lg:block"
         />
 
-        <p className="u-mono absolute bottom-10 right-10 hidden text-right leading-[2] text-paper lg:block">
+        <p className="u-mono absolute bottom-9 right-8 hidden text-right leading-[2] text-paper lg:block">
           Homes
           <br />
           for a
