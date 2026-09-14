@@ -26,7 +26,7 @@ import { join } from "node:path";
  */
 const HERO = {
   file: "01-hillside-villa-sunset.jpeg",
-  alt: "A villa on a wooded hillside at sunset, its deep stone roof cantilevered over a terrace of pale paving, with a low linen sofa and olive trees along the roof edge, an infinity pool in the foreground and a valley falling away behind.",
+  alt: "A villa on a wooded hillside at sunrise, the sun low over distant ranges and its light running down an infinity pool in the foreground, with a deep stone roof cantilevered over a terrace of pale paving, a low linen sofa, and a valley falling away below.",
 } as const;
 
 const SHOWCASE_DIR = join("images", "home", "showcase");

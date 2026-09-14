@@ -27,7 +27,7 @@ export function Hero({ image }: { image: HeroImage }) {
   return (
     <section className="relative overflow-hidden bg-paper lg:min-h-svh">
       {/* ── Text, over the wash */}
-      <div className="relative z-10 flex flex-col justify-center px-6 pb-14 pt-14 sm:px-10 sm:pt-16 lg:min-h-svh lg:max-w-[46%] lg:py-0 lg:pl-16 lg:pr-10 lg:pt-24">
+      <div className="relative z-10 flex flex-col justify-center px-6 pb-14 pt-14 sm:px-10 sm:pt-16 lg:min-h-svh lg:max-w-[42%] lg:py-0 lg:pl-16 lg:pr-10 lg:pt-24">
         <p className="u-mono leading-[1.9] text-muted">
           Spaces for a
           <br />
@@ -35,7 +35,7 @@ export function Hero({ image }: { image: HeroImage }) {
         </p>
         <span aria-hidden className="mt-5 block h-px w-20 bg-line" />
 
-        <h1 className="mt-10 text-[clamp(2.75rem,5.6vw,5.4rem)] leading-[1.06] text-ink">
+        <h1 className="mt-10 text-[clamp(2.6rem,4.8vw,4.6rem)] leading-[1.08] text-ink">
           Thoughtfully&nbsp;Built,
           <span className="mt-1 block text-accent-ink">Deeply&nbsp;Lived.</span>
         </h1>
@@ -62,14 +62,14 @@ export function Hero({ image }: { image: HeroImage }) {
 
       {/* ── The photograph. In flow beneath the text on small screens; at lg it
              fills the right of the section and washes into the paper. */}
-      <div className="relative aspect-4/3 w-full sm:aspect-16/9 lg:absolute lg:inset-y-0 lg:right-0 lg:aspect-auto lg:w-[60%]">
+      <div className="relative aspect-4/3 w-full sm:aspect-16/9 lg:absolute lg:inset-y-0 lg:right-0 lg:aspect-auto lg:w-[70%]">
         <Image
           src={image.src}
           alt={image.alt}
           fill
           priority
           fetchPriority="high"
-          sizes="(min-width: 1024px) 60vw, 100vw"
+          sizes="(min-width: 1024px) 70vw, 100vw"
           className="object-cover object-left"
         />
 
@@ -83,7 +83,7 @@ export function Hero({ image }: { image: HeroImage }) {
         */}
         <div
           aria-hidden
-          className="absolute inset-0 bg-gradient-to-b from-paper from-0% via-paper/80 via-15% to-transparent to-34% lg:bg-gradient-to-r"
+          className="absolute inset-0 bg-gradient-to-b from-paper from-0% via-paper/92 via-13% to-transparent to-27% lg:bg-gradient-to-r"
         />
         <div
           aria-hidden
