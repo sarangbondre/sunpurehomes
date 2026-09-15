@@ -39,27 +39,30 @@ export function SiteHeader() {
           : ""
       }`}
     >
-      <div className="mx-auto flex h-20 items-center gap-3 px-4 min-[400px]:gap-4 min-[400px]:px-5 sm:h-24 sm:gap-6 sm:px-10 lg:grid lg:grid-cols-[auto_1fr_auto] lg:px-16">
+      <div className="mx-auto flex h-20 items-center gap-3 px-4 min-[400px]:px-5 sm:h-24 sm:px-10 lg:px-16">
         <Link href="/" className="shrink-0" aria-label={`${site.name} — home`}>
           <Logo decorative className="h-8 w-auto text-ink min-[400px]:h-9 sm:h-11 lg:h-13" />
         </Link>
 
-        <nav aria-label="Main">
-          <ul className="flex items-center gap-4 min-[400px]:gap-6 sm:gap-8 lg:justify-center">
-            {NAV.map((item) => (
-              <li key={item.href}>
-                <Link
-                  href={item.href}
-                  className="whitespace-nowrap text-[0.8125rem] text-ink transition-colors duration-hover ease-hover hover:text-accent-ink min-[400px]:text-[0.875rem] sm:text-[0.95rem]"
-                >
-                  {item.label}
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </nav>
+        {/* Nav and the pill travel together, hard right against the wordmark. */}
+        <div className="ml-auto flex items-center gap-4 min-[400px]:gap-6 sm:gap-8">
+          <nav aria-label="Main">
+            <ul className="flex items-center gap-4 min-[400px]:gap-6 sm:gap-8">
+              {NAV.map((item) => (
+                <li key={item.href}>
+                  <Link
+                    href={item.href}
+                    className="whitespace-nowrap text-[0.8125rem] text-ink transition-colors duration-hover ease-hover hover:text-accent-ink min-[400px]:text-[0.875rem] sm:text-[0.95rem]"
+                  >
+                    {item.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </nav>
 
-        <WhatsAppPill className="ml-auto inline-flex lg:ml-0" />
+          <WhatsAppPill className="inline-flex" />
+        </div>
       </div>
     </header>
   );
