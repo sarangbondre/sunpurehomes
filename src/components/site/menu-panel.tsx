@@ -20,7 +20,14 @@ export type MenuLink = { href: string; label: string };
  * it, focus returns to the button when it does, and the button reports its
  * state so a screen reader knows whether the panel is open.
  */
-export function MenuPanel({ links }: { links: readonly MenuLink[] }) {
+export function MenuPanel({
+  links,
+  tone = "ink",
+}: {
+  links: readonly MenuLink[];
+  /** "paper" when the header overlays a dark hero rather than the page. */
+  tone?: "ink" | "paper";
+}) {
   const [open, setOpen] = useState(false);
   const wrapRef = useRef<HTMLDivElement>(null);
   const buttonRef = useRef<HTMLButtonElement>(null);
@@ -54,7 +61,11 @@ export function MenuPanel({ links }: { links: readonly MenuLink[] }) {
         aria-expanded={open}
         aria-controls="more-menu"
         aria-label={open ? "Close menu" : "Open menu"}
-        className="flex size-9 shrink-0 items-center justify-center rounded-full border border-ink/25 text-ink transition-colors duration-hover ease-hover hover:border-ink sm:size-10"
+        className={`flex size-9 shrink-0 items-center justify-center rounded-full border transition-colors duration-hover ease-hover sm:size-10 ${
+          tone === "paper"
+            ? "border-paper/50 text-paper hover:border-paper"
+            : "border-ink/25 text-ink hover:border-ink"
+        }`}
       >
         <svg aria-hidden viewBox="0 0 20 14" className="h-3 w-5" fill="none" stroke="currentColor" strokeWidth="1.5">
           {open ? (

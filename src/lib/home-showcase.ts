@@ -15,6 +15,13 @@ import { join } from "node:path";
  * top-right corner, left over from the video frame it was captured from.
  * That is patched out here rather than left to appear at full bleed.
  *
+ * There is a second, portrait plate for phones. A portrait viewport shows
+ * roughly a quarter of a 2:1 frame, and the sun and the building's corner
+ * are half a frame apart, so no crop of the landscape plate holds both. The
+ * portrait plate keeps the render at full width and grows the sky above it
+ * for the sun to rise into; the sky it grows into is the render's own cloud
+ * band, smoothed and stretched. Absent, the landscape plate serves both.
+ *
  * IT IS STILL A RENDER, not a photograph, and Curve is not built. Regrading
  * a render's sky is ordinary practice and makes no claim a render does not
  * already make — but if this image is ever captioned or presented as a
@@ -23,12 +30,13 @@ import { join } from "node:path";
  */
 const HERO = {
   file: "curve-sunrise.jpg",
+  portraitFile: "curve-sunrise-portrait.jpg",
   alt: "Curve at sunrise: a five-storey apartment building whose white balconies curve around each corner, the sun rising through trees to its left and warming the façade.",
 } as const;
 
 const HOME_DIR = join("images", "home");
 
-export type HeroImage = { src: string; alt: string };
+export type HeroImage = { src: string; alt: string; portraitSrc?: string };
 
 /**
  * Reads once at module load, on the server, like the project content. Absent
@@ -36,10 +44,16 @@ export type HeroImage = { src: string; alt: string };
  * landing page with an empty background.
  */
 export function getHeroImage(): HeroImage | undefined {
-  const onDisk = join(process.cwd(), "public", HOME_DIR, HERO.file);
-  if (!existsSync(onDisk)) return undefined;
+  const href = (file: string) => `/${HOME_DIR}/${file}`.replaceAll("\\", "/");
+  const present = (file: string) =>
+    existsSync(join(process.cwd(), "public", HOME_DIR, file));
+
+  if (!present(HERO.file)) return undefined;
   return {
-    src: `/${HOME_DIR}/${HERO.file}`.replaceAll("\\", "/"),
+    src: href(HERO.file),
     alt: HERO.alt,
+    portraitSrc: present(HERO.portraitFile)
+      ? href(HERO.portraitFile)
+      : undefined,
   };
 }

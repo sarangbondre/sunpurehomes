@@ -33,26 +33,36 @@ const MORE = [
 
 export function SiteHeader() {
   /*
-    On the landing page at lg the hero runs to the top of the viewport and
-    the header sits over it with no bar of its own, which is what makes the
-    page read as one canvas. Below lg the header is two rows and the image
-    is stacked under the text, so there is no canvas to preserve and it stays
-    a normal bar. Everywhere else it is always the sticky bar — transparent
-    over scrolling content would be unreadable.
+    The landing hero is a full-bleed photograph at every width now, so the
+    header sits over it with no bar of its own at every width too. It was
+    transparent only from lg while the picture was a column; leaving that in
+    place would have put paper type on a paper bar on phones, which is
+    invisible. Everywhere else it is the sticky bar — transparent over
+    scrolling content would be unreadable.
   */
   const overlay = usePathname() === "/";
+  /*
+    The landing hero is a photograph with a dark foot, so over it the header
+    is set in paper. Everywhere else it sits on the paper ground and is ink.
+    The WhatsApp pill is filled either way, so its contrast never depends on
+    what is behind it.
+  */
+  const onImage = overlay;
 
   return (
     <header
-      className={`sticky top-0 z-50 bg-paper/92 backdrop-blur-sm ${
+      className={
         overlay
-          ? "lg:absolute lg:inset-x-0 lg:bg-transparent lg:backdrop-blur-none"
-          : ""
-      }`}
+          ? "absolute inset-x-0 top-0 z-50"
+          : "sticky top-0 z-50 bg-paper/92 backdrop-blur-sm"
+      }
     >
       <div className="mx-auto flex h-20 items-center gap-3 px-4 min-[400px]:px-5 sm:h-24 sm:px-10 lg:px-16">
         <Link href="/" className="shrink-0" aria-label={`${site.name} — home`}>
-          <Logo decorative className="h-8 w-auto text-ink min-[400px]:h-9 sm:h-11 lg:h-13" />
+          <Logo
+            decorative
+            className={`h-8 w-auto min-[400px]:h-9 sm:h-11 lg:h-13 ${onImage ? "text-paper" : "text-ink"}`}
+          />
         </Link>
 
         {/* Nav and the pill travel together, hard right against the wordmark. */}
@@ -63,7 +73,11 @@ export function SiteHeader() {
                 <li key={item.href}>
                   <Link
                     href={item.href}
-                    className="whitespace-nowrap text-[0.8125rem] text-ink transition-colors duration-hover ease-hover hover:text-accent-ink min-[400px]:text-[0.875rem] sm:text-[0.95rem]"
+                    className={`whitespace-nowrap text-[0.8125rem] transition-colors duration-hover ease-hover min-[400px]:text-[0.875rem] sm:text-[0.95rem] ${
+                      onImage
+                        ? "text-paper hover:text-laterite"
+                        : "text-ink hover:text-accent-ink"
+                    }`}
                   >
                     {item.label}
                   </Link>
@@ -73,7 +87,7 @@ export function SiteHeader() {
           </nav>
 
           <WhatsAppPill className="inline-flex" />
-          <MenuPanel links={MORE} />
+          <MenuPanel links={MORE} tone={onImage ? "paper" : "ink"} />
         </div>
       </div>
     </header>

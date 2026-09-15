@@ -1,54 +1,87 @@
-import Image from "next/image";
 import Link from "next/link";
 
-export type HeroImage = { src: string; alt: string };
+export type HeroImage = { src: string; alt: string; portraitSrc?: string };
 
 /**
- * The landing hero, to the client's reference design: the brand line on the
- * paper ground at the left, the photograph bleeding in from the right, and a
- * soft wash between them rather than a seam.
+ * The landing hero: one photograph, full bleed, with the brand line over it.
  *
- * The wash does a second job beyond looking like one canvas — it is why the
- * header can sit over the picture with no bar of its own and stay legible.
+ * There is no panel and no left-hand wash. An earlier version put the text on
+ * a paper column beside the picture, which split the page in two and bleached
+ * the half the building stood in. The picture now runs clear edge to edge and
+ * the type sits on it.
  *
- * One picture, not a rotation. That is a plain server component again: no
- * state, no interval, no reduced-motion branch, and no pause control, since
- * WCAG 2.2.2 only applies to something that moves. The home page ships no
- * client JavaScript of its own as a result.
+ * That inverts the palette, and for the better. Over a bright sunrise, ink
+ * needs the ground lightened under it — which is the wash that was doing the
+ * splitting. Over a dark foot, paper needs nothing, and the second line can
+ * finally use the real brand orange: --laterite measures 2.95:1 on paper,
+ * which is why --accent-ink existed as a deepened stand-in, but 5.17:1 on
+ * ink. The colour the brand actually specifies works here and nowhere else.
  *
- * The picture is full bleed at the client's direction — it is the page's
- * background rather than a column beside the text. The photograph is a 36% column rather than 64%,
- * and the headline runs to 7rem rather than 4.9rem — near twice the area.
- * A narrow column also suits the source, which is portrait: less of it is
- * cropped away here than in any wider frame.
+ * Two plates, not one. A phone sees about a quarter of the landscape frame,
+ * and the sun and the building are too far apart to both survive that crop —
+ * so below lg the picture is a portrait plate composed for it. They are
+ * genuinely different images, which is what <picture> is for; two <Image>
+ * elements toggled with `hidden` would make every phone download the desktop
+ * plate as well.
  */
 export function Hero({ image }: { image: HeroImage }) {
   return (
-    <section className="relative min-h-svh overflow-hidden bg-paper">
-      {/* ── Text, over the wash */}
-      <div className="relative z-10 flex min-h-svh flex-col justify-start px-6 pb-14 pt-28 sm:px-10 sm:pt-32 lg:max-w-[42%] lg:justify-center lg:py-0 lg:pl-16 lg:pr-10 lg:pt-24">
+    <section className="relative flex min-h-svh flex-col justify-end overflow-hidden bg-ink">
+      <div className="absolute inset-0">
+        <picture>
+          {image.portraitSrc && (
+            <source media="(max-width: 1023px)" srcSet={image.portraitSrc} />
+          )}
+          {/*
+            A bare <img>, because art direction needs <picture> and
+            next/image cannot express it. Both plates are already sized and
+            compressed for the one place they are used, so the optimiser has
+            nothing left to do; fetchPriority carries the LCP hint that
+            `priority` would have.
+          */}
+          <img
+            src={image.src}
+            alt={image.alt}
+            fetchPriority="high"
+            decoding="async"
+            className="absolute inset-0 h-full w-full object-cover object-[30%_center] lg:object-left"
+          />
+        </picture>
+
+        {/* Shade shaped to the type and clear of the sun — see .u-hero-shade. */}
+        <div aria-hidden className="u-hero-shade absolute inset-0" />
+        <div
+          aria-hidden
+          className="u-hero-shade-corner absolute inset-0 hidden lg:block"
+        />
         {/*
-          ink-soft rather than the site's usual muted eyebrow. Muted is tuned
-          for flat paper, where it measures 4.91:1; over the photograph, even
-          behind the wash, it fell to 3.65 against a 4.5 floor for text this
-          size. ink-soft has the headroom the image demands.
+          A short fall of shade under the header. The wordmark and nav sit
+          over open sky, which at dawn is dusky but not dark, and paper type
+          on it is marginal without this.
         */}
-        <p className="u-mono leading-[1.9] text-ink-soft">
+        <div
+          aria-hidden
+          className="absolute inset-x-0 top-0 h-36 bg-gradient-to-b from-ink/88 via-ink/40 via-42% to-transparent sm:h-44"
+        />
+      </div>
+
+      <div className="relative z-10 mx-auto w-full max-w-[86rem] px-6 pb-14 pt-32 sm:px-10 sm:pb-16 lg:px-16 lg:pb-20">
+        <p className="u-mono leading-[1.9] text-paper">
           Spaces for a
           <br />
           more meaningful tomorrow
         </p>
-        <span aria-hidden className="mt-5 block h-px w-20 bg-line" />
+        <span aria-hidden className="mt-5 block h-px w-20 bg-paper/40" />
 
-        <h1 className="mt-10 text-[clamp(2.6rem,4.8vw,4.6rem)] leading-[1.08] text-ink">
+        <h1 className="mt-7 max-w-[16ch] text-[clamp(2.4rem,5.1vw,4.5rem)] leading-[1.06] text-paper">
           Thoughtfully&nbsp;Built,
-          <span className="mt-1 block text-accent-ink">Deeply&nbsp;Lived.</span>
+          <span className="mt-1 block text-laterite">Deeply&nbsp;Lived.</span>
         </h1>
 
-        <div className="mt-12">
+        <div className="mt-8">
           <Link
             href="/projects"
-            className="u-mono inline-flex items-center gap-4 border border-ink/25 px-7 py-5 text-ink transition-colors duration-hover ease-hover hover:border-ink hover:bg-ink hover:text-paper"
+            className="u-mono inline-flex items-center gap-4 border border-paper/60 px-7 py-5 text-paper transition-colors duration-hover ease-hover hover:border-paper hover:bg-paper hover:text-ink"
           >
             Discover our projects
             <svg
@@ -65,51 +98,16 @@ export function Hero({ image }: { image: HeroImage }) {
         </div>
       </div>
 
-      {/* ── The photograph. In flow beneath the text on small screens; at lg it
-             fills the right of the section and washes into the paper. */}
-      <div className="absolute inset-0">
-        <Image
-          src={image.src}
-          alt={image.alt}
-          fill
-          priority
-          fetchPriority="high"
-          sizes="100vw"
-          className="object-cover object-[85%_center] lg:object-left"
-        />
-
-        {/*
-          Three washes, all decorative. The first dissolves the left edge into
-          the panel. The second keeps the top light enough for the nav and the
-          WhatsApp pill to sit over the picture. The third does the same for
-          the caption in the corner — as literal rgba, because
-          var(--color-ink)/0.55 does not parse inside a gradient and was
-          being dropped silently.
-        */}
-        <div
-          aria-hidden
-          className="absolute inset-0 bg-gradient-to-b from-paper from-0% via-paper/96 via-46% to-transparent to-70% lg:via-38% lg:to-56% lg:bg-gradient-to-r"
-        />
-        <div
-          aria-hidden
-          className="absolute inset-x-0 top-0 h-40 bg-gradient-to-b from-paper to-transparent"
-        />
-        <div
-          aria-hidden
-          className="absolute bottom-0 right-0 hidden h-[24rem] w-[22rem] bg-[radial-gradient(ellipse_at_bottom_right,rgba(28,26,24,0.94)_0%,rgba(28,26,24,0.72)_34%,rgba(28,26,24,0.3)_58%,transparent_80%)] lg:block"
-        />
-
-        <p className="u-mono absolute bottom-9 right-8 hidden text-right leading-[2] text-paper lg:block">
-          Homes
-          <br />
-          for a
-          <br />
-          brighter
-          <br />
-          tomorrow
-          <span aria-hidden className="mt-3 ml-auto block h-px w-10 bg-paper/70" />
-        </p>
-      </div>
+      <p className="u-mono absolute bottom-10 right-10 z-10 hidden text-right leading-[2] text-paper/80 lg:block">
+        Homes
+        <br />
+        for a
+        <br />
+        brighter
+        <br />
+        tomorrow
+        <span aria-hidden className="mt-3 ml-auto block h-px w-10 bg-paper/50" />
+      </p>
     </section>
   );
 }
