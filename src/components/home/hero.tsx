@@ -16,19 +16,24 @@ export type HeroImage = { src: string; alt: string };
  * WCAG 2.2.2 only applies to something that moves. The home page ships no
  * client JavaScript of its own as a result.
  *
- * The balance is deliberately tilted away from the reference mockup, at the
- * client's direction on 14 September: show little of the picture, and let
- * the line carry the page. The photograph is a 36% column rather than 64%,
+ * The picture is full bleed at the client's direction — it is the page's
+ * background rather than a column beside the text. The photograph is a 36% column rather than 64%,
  * and the headline runs to 7rem rather than 4.9rem — near twice the area.
  * A narrow column also suits the source, which is portrait: less of it is
  * cropped away here than in any wider frame.
  */
 export function Hero({ image }: { image: HeroImage }) {
   return (
-    <section className="relative overflow-hidden bg-paper lg:min-h-svh">
+    <section className="relative min-h-svh overflow-hidden bg-paper">
       {/* ── Text, over the wash */}
-      <div className="relative z-10 flex flex-col justify-center px-6 pb-14 pt-14 sm:px-10 sm:pt-16 lg:min-h-svh lg:max-w-[42%] lg:py-0 lg:pl-16 lg:pr-10 lg:pt-24">
-        <p className="u-mono leading-[1.9] text-muted">
+      <div className="relative z-10 flex min-h-svh flex-col justify-start px-6 pb-14 pt-28 sm:px-10 sm:pt-32 lg:max-w-[42%] lg:justify-center lg:py-0 lg:pl-16 lg:pr-10 lg:pt-24">
+        {/*
+          ink-soft rather than the site's usual muted eyebrow. Muted is tuned
+          for flat paper, where it measures 4.91:1; over the photograph, even
+          behind the wash, it fell to 3.65 against a 4.5 floor for text this
+          size. ink-soft has the headroom the image demands.
+        */}
+        <p className="u-mono leading-[1.9] text-ink-soft">
           Spaces for a
           <br />
           more meaningful tomorrow
@@ -62,15 +67,15 @@ export function Hero({ image }: { image: HeroImage }) {
 
       {/* ── The photograph. In flow beneath the text on small screens; at lg it
              fills the right of the section and washes into the paper. */}
-      <div className="relative aspect-4/3 w-full sm:aspect-16/9 lg:absolute lg:inset-y-0 lg:right-0 lg:aspect-auto lg:w-[70%]">
+      <div className="absolute inset-0">
         <Image
           src={image.src}
           alt={image.alt}
           fill
           priority
           fetchPriority="high"
-          sizes="(min-width: 1024px) 70vw, 100vw"
-          className="object-cover object-left"
+          sizes="100vw"
+          className="object-cover object-[85%_center] lg:object-left"
         />
 
         {/*
@@ -83,7 +88,7 @@ export function Hero({ image }: { image: HeroImage }) {
         */}
         <div
           aria-hidden
-          className="absolute inset-0 bg-gradient-to-b from-paper from-0% via-paper/92 via-13% to-transparent to-27% lg:bg-gradient-to-r"
+          className="absolute inset-0 bg-gradient-to-b from-paper from-0% via-paper/96 via-46% to-transparent to-70% lg:via-38% lg:to-56% lg:bg-gradient-to-r"
         />
         <div
           aria-hidden

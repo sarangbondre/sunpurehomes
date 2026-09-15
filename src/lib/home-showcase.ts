@@ -2,47 +2,44 @@ import { existsSync } from "node:fs";
 import { join } from "node:path";
 
 /**
- * The single photograph on the landing hero.
+ * The single photograph behind the landing hero.
  *
- * It is CROPPED OUT OF THE CLIENT'S REFERENCE MOCKUP. The photograph has
- * never existed here as a file — it arrived three times inside a screenshot
- * of the designed page, and on 14 September that screenshot itself was
- * dropped into this folder. Rendering it would have put a second copy of the
- * header, headline and caption inside the page, so the picture was cut out
- * of it: x 900-1440, y 95-900, which clears the nav row above, the WhatsApp
- * pill to the right and the corner caption below.
+ * This is Curve — a real Sunpure development — at the client's direction,
+ * replacing the stock villa that was here. The source render is the one in
+ * Curve's own gallery, graded to a sunrise: the sky was flat overcast, so it
+ * is recoloured through a dawn gradient while keeping each cloud's own
+ * luminance, a sun is placed behind the treeline, and the whole frame is
+ * warmed so the building agrees with the light.
  *
- * KNOWN LIMITATION, and the reason to replace this: the crop is 540 x 805.
- * The column it fills is about 518 CSS px wide and full height, so it is
- * adequate at 1x and soft on any retina screen, which is most phones. It is
- * also all that was recoverable — the mockup is only 1600 x 900 to begin
- * with. The original photograph at any size would be a straight improvement;
- * drop it in under this same name.
+ * The original render also carried a share-icon artifact baked into its
+ * top-right corner, left over from the video frame it was captured from.
+ * That is patched out here rather than left to appear at full bleed.
  *
- * It is NOT a photograph of a Sunpure development. Nothing on the page
- * attributes it to one — no caption, no project name, no link — and the alt
- * text describes only what is in the frame. See
+ * IT IS STILL A RENDER, not a photograph, and Curve is not built. Regrading
+ * a render's sky is ordinary practice and makes no claim a render does not
+ * already make — but if this image is ever captioned or presented as a
+ * photograph of a finished building, that changes. See
  * docs/adr/0001-non-project-imagery-on-the-landing-page.md.
  */
 const HERO = {
-  file: "01-hillside-villa-sunset.jpeg",
-  alt: "A villa on a wooded hillside at sunrise, the sun low over distant ranges and its light running down an infinity pool in the foreground, with a deep stone roof cantilevered over a terrace of pale paving, a low linen sofa, and a valley falling away below.",
+  file: "curve-sunrise.jpg",
+  alt: "Curve at sunrise: a five-storey apartment building whose white balconies curve around each corner, the sun rising through trees to its left and warming the façade.",
 } as const;
 
-const SHOWCASE_DIR = join("images", "home", "showcase");
+const HOME_DIR = join("images", "home");
 
 export type HeroImage = { src: string; alt: string };
 
 /**
  * Reads once at module load, on the server, like the project content. Absent
  * means the caller falls back, so a missing or renamed file cannot leave the
- * landing page with an empty panel.
+ * landing page with an empty background.
  */
 export function getHeroImage(): HeroImage | undefined {
-  const onDisk = join(process.cwd(), "public", SHOWCASE_DIR, HERO.file);
+  const onDisk = join(process.cwd(), "public", HOME_DIR, HERO.file);
   if (!existsSync(onDisk)) return undefined;
   return {
-    src: `/${SHOWCASE_DIR}/${HERO.file}`.replaceAll("\\", "/"),
+    src: `/${HOME_DIR}/${HERO.file}`.replaceAll("\\", "/"),
     alt: HERO.alt,
   };
 }

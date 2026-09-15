@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Logo } from "@/components/brand/logo";
+import { MenuPanel } from "@/components/site/menu-panel";
 import { whatsappHref } from "@/lib/links";
 import { site } from "@/lib/site";
 
@@ -18,6 +19,16 @@ import { site } from "@/lib/site";
 const NAV = [
   { href: "/about", label: "About" },
   { href: "/projects", label: "Projects" },
+] as const;
+
+/**
+ * Everything else, behind the three-line button. These were in the footer
+ * only; the client asked for them at the top as well, on every width.
+ */
+const MORE = [
+  { href: "/amenities", label: "Amenities" },
+  { href: "/about#philosophy", label: "Our philosophy" },
+  { href: "/about#contact", label: "Contact & visits" },
 ] as const;
 
 export function SiteHeader() {
@@ -62,6 +73,7 @@ export function SiteHeader() {
           </nav>
 
           <WhatsAppPill className="inline-flex" />
+          <MenuPanel links={MORE} />
         </div>
       </div>
     </header>
