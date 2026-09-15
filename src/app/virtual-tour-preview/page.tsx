@@ -7,14 +7,18 @@ import { site } from "@/lib/site";
  * A working demonstration of the tour feature, for showing the client before
  * any Sunpure tour exists.
  *
- * It is NOT a project page and must never become one. The tour embedded here
- * belongs to another developer — it is the link the client sent as their
- * reference. Putting it on a Sunpure project page would present someone
- * else's building as Sunpure's, which is the exact claim docs/adr/0001 was
- * written to keep off this site.
+ * It is NOT a project page and must never become one.
  *
- * So: noindex, absent from the navigation, reachable only by direct link,
- * and the page says plainly whose building it is in the first sentence a
+ * The tour embedded is the platform's own sample space, branded to a
+ * placeholder company and carrying no outbound links. An earlier version
+ * used the reference tour the client sent, which was a real competing
+ * development — that put another company's building, name and links on a
+ * Sunpure page, which is the claim docs/adr/0001 exists to keep off this
+ * site. A sample space demonstrates the same mechanism and represents
+ * nobody.
+ *
+ * Still noindex, still absent from the navigation, still reachable only by
+ * direct link, and the page says it is a sample in the first sentence a
  * visitor reads. Delete the route once real tours land.
  */
 export const metadata: Metadata = {
@@ -22,10 +26,16 @@ export const metadata: Metadata = {
   robots: { index: false, follow: false },
 };
 
+/**
+ * The tour platform's own sample space. It is branded to "Acme Realty" — a
+ * placeholder company that does not exist — and carries no outbound links,
+ * which is why it is here: it demonstrates the mechanism without putting a
+ * real developer's building on a Sunpure page.
+ */
 const SAMPLE = {
   provider: "matterport",
-  url: "https://my.matterport.com/show/?m=Sqfui6CzcVx",
-  subject: "a sample three-bedroom show flat",
+  url: "https://my.matterport.com/show/?m=SxQL3iGyoDo",
+  subject: "a sample space, not a real development",
 } as const;
 
 export default function VirtualTourPreviewPage() {
@@ -39,11 +49,11 @@ export default function VirtualTourPreviewPage() {
         <div className="mt-8 max-w-[62ch] border-l-2 border-accent-ink bg-paper-2 px-6 py-5">
           <p className="leading-relaxed text-ink-soft">
             <strong className="text-ink">
-              The tour below is not a {site.name} property.
+              The tour below is a sample, not a {site.name} property.
             </strong>{" "}
-            It is another developer&rsquo;s show flat, embedded here only to
-            demonstrate that the feature works. Nothing on this page is ours
-            except the frame around it.
+            It is the tour platform&rsquo;s own demonstration space, branded to
+            a placeholder company that does not exist. It shows no real
+            development, belongs to no real developer, and links nowhere.
           </p>
         </div>
         <p className="mt-6 max-w-[62ch] text-lg leading-relaxed text-ink-soft">
@@ -53,7 +63,7 @@ export default function VirtualTourPreviewPage() {
         </p>
       </header>
 
-      <ProjectTour tour={SAMPLE} name="Sample" />
+      <ProjectTour tour={SAMPLE} name="Demonstration" />
 
       <section className="mx-auto max-w-[86rem] px-6 py-14 sm:px-10 lg:px-16">
         <h2 className="text-[clamp(1.9rem,4vw,3rem)]">

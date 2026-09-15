@@ -219,9 +219,7 @@ export const projectSchema = z
      * The tour itself is never built here — it is captured. Either a camera
      * operator scans a finished room, or 360 panoramas are rendered from the
      * architect's model, and a platform hosts the result. The site's whole
-     * job is to embed the URL that comes back. This is how the reference the
-     * client sent (aureliaresidences.com) does it: five iframes, four to
-     * iStaging and one to Matterport.
+     * job is to embed the URL that comes back.
      *
      * `provider` is not decoration. It selects the allowlist that `url` is
      * checked against, so a mistyped or hostile URL cannot be framed into the
