@@ -57,17 +57,26 @@ export function SiteFooter() {
 
           <div>
             <h2 className="u-mono text-muted">Explore</h2>
+            {/*
+              The header carries three items at the client's instruction.
+              These are the rest — a real page and two real sections of
+              /about — kept reachable here rather than deleted, because a
+              page nothing links to is a page nobody finds.
+            */}
             <ul className="mt-4 space-y-2 text-ink-soft">
-              <li>
-                <Link className="hover:text-accent-ink" href="/about">
-                  About
-                </Link>
-              </li>
-              <li>
-                <Link className="hover:text-accent-ink" href="/projects">
-                  Projects
-                </Link>
-              </li>
+              {[
+                { href: "/about", label: "About" },
+                { href: "/projects", label: "Projects" },
+                { href: "/amenities", label: "Amenities" },
+                { href: "/about#philosophy", label: "Our philosophy" },
+                { href: "/about#contact", label: "Arrange a visit" },
+              ].map((item) => (
+                <li key={item.href}>
+                  <Link className="hover:text-accent-ink" href={item.href}>
+                    {item.label}
+                  </Link>
+                </li>
+              ))}
             </ul>
             {/* Privacy and Terms are linked once those routes exist (Phase 6). */}
           </div>
