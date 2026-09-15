@@ -39,6 +39,7 @@ export const site = {
     "Saint-Gobain",
     "Somany",
     "Jaquar",
+    "Koala",
     "Astral Pipes",
     "V-Guard",
     "Schneider Electric",
@@ -48,8 +49,8 @@ export const site = {
   contact: {
     email: "sales@sunpurehomes.com",
     /** Also the WhatsApp number. E.164 for tel: and wa.me links. */
-    phoneE164: "+919606907153",
-    phoneDisplay: "+91 96069 07153",
+    phoneE164: "+919916900511",
+    phoneDisplay: "+91 99169 00511",
   },
 
   social: {
@@ -70,6 +71,7 @@ export const site = {
  * papered over with invented values (BRIEF.md §15).
  */
 export const openQuestions: readonly string[] = [
-  "The brochures on the Drive carry four different sales numbers between them: +91 99722 75566 (Fadal, Meraki, Happiness II), +91 77900 88900 (Curve, Meraki), +91 81058 17070 (Rare Earth) and +91 90147 81478 (Fadal). The site publishes +91 96069 07153, which appears in none of them. Confirm the one number buyers should see, and whether any project needs its own.",
+  "The brochures on the Drive carry four different sales numbers between them: +91 99722 75566 (Fadal, Meraki, Happiness II), +91 77900 88900 (Curve, Meraki), +91 81058 17070 (Rare Earth) and +91 90147 81478 (Fadal). The site publishes +91 99169 00511, given by the client on 15 September 2026, which appears in none of them. Confirm whether any project needs its own number as well.",
+  "The About page now says Sunpure Homes build beyond Mysuru, at the client's instruction on 15 September 2026. All nine developments on this site are in Mysuru, so nothing names the other places. Send the cities, and they can be said plainly instead of in the abstract.",
   "The Happiness II brochure names the developer as MK Infra Holding, MB Road, Srirangapatna 571438. This file records the group's legal name as M.K. Agrotech Pvt. Ltd., the oil business. Confirm which entity is the promoter on the RERA registrations before any legal-entity name is published.",
 ];

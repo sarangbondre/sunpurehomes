@@ -2,41 +2,27 @@ import { existsSync } from "node:fs";
 import { join } from "node:path";
 
 /**
- * The single photograph behind the landing hero.
+ * The single image behind the landing hero.
  *
- * This is Curve — a real Sunpure development — at the client's direction,
- * replacing the stock villa that was here. The source render is the one in
- * Curve's own gallery, graded to a sunrise: the sky was flat overcast, so it
- * is recoloured through a dawn gradient while keeping each cloud's own
- * luminance, a sun is placed behind the treeline, and the whole frame is
- * warmed so the building agrees with the light.
- *
- * The original render also carried a share-icon artifact baked into its
- * top-right corner, left over from the video frame it was captured from.
- * That is patched out here rather than left to appear at full bleed.
- *
- * There is a second, portrait plate for phones. A portrait viewport shows
- * roughly a quarter of a 2:1 frame, and the sun and the building's corner
- * are half a frame apart, so no crop of the landscape plate holds both. The
- * portrait plate keeps the render at full width and grows the sky above it
- * for the sun to rise into; the sky it grows into is the render's own cloud
- * band, smoothed and stretched. Absent, the landscape plate serves both.
- *
- * IT IS STILL A RENDER, not a photograph, and Curve is not built. Regrading
- * a render's sky is ordinary practice and makes no claim a render does not
- * already make — but if this image is ever captioned or presented as a
- * photograph of a finished building, that changes. See
+ * Supplied by the client on 15 September 2026, replacing the regraded Curve
+ * render that was here. It is a render, not a photograph, and it is not
+ * attributed to any development: no caption, no project name, no link, and
+ * alt text that describes only what is in the frame. That is the standing
+ * rule for imagery on this page —
  * docs/adr/0001-non-project-imagery-on-the-landing-page.md.
+ *
+ * It is square, which is why one file serves every viewport. A landscape
+ * window crops it vertically and a portrait one horizontally, and the sun
+ * survives both: see the object-position pair in components/home/hero.tsx.
  */
 const HERO = {
-  file: "curve-sunrise.jpg",
-  portraitFile: "curve-sunrise-portrait.jpg",
-  alt: "Curve at sunrise: a five-storey apartment building whose white balconies curve around each corner, the sun rising through trees to its left and warming the façade.",
+  file: "hero-sunrise.jpg",
+  alt: "A curved white apartment building at sunrise, balconies stacked in long horizontal bands, the sun low through trees to its left and a lawn in front.",
 } as const;
 
 const HOME_DIR = join("images", "home");
 
-export type HeroImage = { src: string; alt: string; portraitSrc?: string };
+export type HeroImage = { src: string; alt: string };
 
 /**
  * Reads once at module load, on the server, like the project content. Absent
@@ -44,16 +30,10 @@ export type HeroImage = { src: string; alt: string; portraitSrc?: string };
  * landing page with an empty background.
  */
 export function getHeroImage(): HeroImage | undefined {
-  const href = (file: string) => `/${HOME_DIR}/${file}`.replaceAll("\\", "/");
-  const present = (file: string) =>
-    existsSync(join(process.cwd(), "public", HOME_DIR, file));
-
-  if (!present(HERO.file)) return undefined;
+  const onDisk = join(process.cwd(), "public", HOME_DIR, HERO.file);
+  if (!existsSync(onDisk)) return undefined;
   return {
-    src: href(HERO.file),
+    src: `/${HOME_DIR}/${HERO.file}`.replaceAll("\\", "/"),
     alt: HERO.alt,
-    portraitSrc: present(HERO.portraitFile)
-      ? href(HERO.portraitFile)
-      : undefined,
   };
 }

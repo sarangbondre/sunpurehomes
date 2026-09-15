@@ -1,5 +1,6 @@
+import { PartnerList } from "@/components/brand/partner-list";
+import { getMaterialPartners } from "@/lib/partners";
 import type { Project } from "@/lib/schema";
-import { site } from "@/lib/site";
 
 /**
  * §11 question 4 — "Is it safe".
@@ -112,16 +113,9 @@ export function Approvals({ project }: { project: Project }) {
 
       <div>
         <h3 className="u-mono text-muted">Built with</h3>
-        <ul className="mt-4 flex flex-wrap gap-2">
-          {site.materialPartners.map((partner) => (
-            <li
-              key={partner}
-              className="rounded-full border border-line px-4 py-2 text-sm text-ink-soft"
-            >
-              {partner}
-            </li>
-          ))}
-        </ul>
+        <div className="mt-4">
+          <PartnerList partners={getMaterialPartners()} size="sm" />
+        </div>
         {/*
           The group and edible-oil lineage were removed from every page at the
           client's instruction. The material partners above carry the trust

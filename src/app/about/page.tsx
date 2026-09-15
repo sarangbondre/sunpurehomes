@@ -1,8 +1,11 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { MailIcon, PhoneIcon, WhatsAppIcon } from "@/components/brand/icons";
+import { PartnerList } from "@/components/brand/partner-list";
 import { Section } from "@/components/ui/section";
 import { getAllProjects } from "@/lib/content";
 import { mailtoHref, telHref, whatsappHref } from "@/lib/links";
+import { getMaterialPartners } from "@/lib/partners";
 import { site } from "@/lib/site";
 
 export const metadata: Metadata = {
@@ -23,6 +26,7 @@ export const metadata: Metadata = {
  */
 export default function AboutPage() {
   const projects = getAllProjects();
+  const partners = getMaterialPartners();
   const villas = projects.filter((p) => p.type === "villa").length;
   const apartments = projects.filter((p) => p.type === "apartment").length;
   const plots = projects.filter((p) => p.type === "plot").length;
@@ -31,17 +35,26 @@ export default function AboutPage() {
     <main className="mx-auto max-w-[86rem] px-6 pb-8 sm:px-10 lg:px-16">
       <header className="max-w-[52rem] pb-6 pt-16 sm:pt-24">
         <p className="u-mono text-accent-ink">About</p>
+        {/*
+          This read "We build in Mysuru. Only in Mysuru." until 15 September
+          2026, when the client asked for it to say the practice works across
+          India. No city outside Mysuru is named here, because none has been
+          given — see openQuestions in lib/site.ts. What is named is what the
+          content file can prove: nine developments, all of them here.
+        */}
         <h1 className="mt-6 text-[clamp(2.5rem,6vw,4.5rem)]">
-          We build in {site.city}. <em className="italic">Only in {site.city}.</em>
+          We build across India.{" "}
+          <em className="italic">It began in {site.city}.</em>
         </h1>
         <p className="mt-8 text-lg leading-relaxed text-ink-soft sm:text-xl">
-          Nine developments across the city — {villas} villa communities,{" "}
-          {apartments} apartment buildings and {plots} plotted developments.
-          Every one of them within a short drive of the last.
+          Nine developments to date — {villas} villa communities,{" "}
+          {apartments} apartment buildings and {plots} plotted developments —
+          all of them in {site.city}, where the practice started and where the
+          work still runs deepest.
         </p>
       </header>
 
-      <Section id="philosophy" eyebrow="How we build" title="Three things we hold to">
+      <Section id="philosophy" eyebrow="How we build">
         <dl className="grid gap-10 sm:grid-cols-3">
           {[
             {
@@ -68,39 +81,42 @@ export default function AboutPage() {
         </dl>
       </Section>
 
-      <Section eyebrow="What goes in" title="Who we build with">
+      <Section eyebrow="What goes in">
         <p className="max-w-[58ch] leading-relaxed text-ink-soft">
           The same names appear across every development, which is what makes a
           specification worth reading.
         </p>
-        <ul className="mt-8 flex flex-wrap gap-2">
-          {site.materialPartners.map((partner) => (
-            <li
-              key={partner}
-              className="rounded-full border border-line px-5 py-2.5 text-ink-soft"
-            >
-              {partner}
-            </li>
-          ))}
-        </ul>
+        <div className="mt-8">
+          <PartnerList partners={partners} />
+        </div>
       </Section>
 
-      <Section id="contact" eyebrow="Talk to us" title="Come and see one">
-        <div className="flex flex-wrap gap-3">
+      <Section id="contact" eyebrow="Talk to us">
+        {/*
+          Three channels, each wearing its own mark at the client's
+          instruction. WhatsApp is the mark alone — square, no label — so the
+          aria-label is the only thing naming it and has to say where it goes.
+          The other two keep their value as the label, because a phone number
+          and an address are the useful part of the control.
+        */}
+        <div className="flex flex-wrap items-center gap-3">
           <a
             href={whatsappHref(
               `Hello ${site.name} — I'd like to arrange a visit.`,
             )}
             target="_blank"
             rel="noopener noreferrer"
-            className="u-cta"
+            aria-label={`WhatsApp the ${site.name} sales team`}
+            className="u-cta justify-center px-4"
           >
-            WhatsApp the sales team
+            <WhatsAppIcon className="size-5" />
           </a>
           <a href={telHref} className="u-cta">
+            <PhoneIcon className="size-4" />
             {site.contact.phoneDisplay}
           </a>
           <a href={mailtoHref} className="u-cta">
+            <MailIcon className="size-4" />
             {site.contact.email}
           </a>
         </div>

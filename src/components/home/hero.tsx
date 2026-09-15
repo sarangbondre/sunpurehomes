@@ -1,52 +1,42 @@
+import Image from "next/image";
 import Link from "next/link";
 
-export type HeroImage = { src: string; alt: string; portraitSrc?: string };
+export type HeroImage = { src: string; alt: string };
 
 /**
- * The landing hero: one photograph, full bleed, with the brand line over it.
+ * The landing hero: one image, full bleed, with the brand line over it.
  *
- * There is no panel and no left-hand wash. An earlier version put the text on
- * a paper column beside the picture, which split the page in two and bleached
- * the half the building stood in. The picture now runs clear edge to edge and
- * the type sits on it.
+ * The type sits at the TOP of the frame, which is the picture's doing. In the
+ * image the client supplied the sun is low and to the left — at 13% across
+ * and 72% down — which is exactly where a bottom-left headline would stand.
+ * Shading the type there would have shaded the sun, and the sun is the reason
+ * the client chose the frame. So the words take the open sky above and the
+ * sun keeps the foot of the picture to itself.
  *
- * That inverts the palette, and for the better. Over a bright sunrise, ink
- * needs the ground lightened under it — which is the wash that was doing the
- * splitting. Over a dark foot, paper needs nothing, and the second line can
- * finally use the real brand orange: --laterite measures 2.95:1 on paper,
- * which is why --accent-ink existed as a deepened stand-in, but 5.17:1 on
- * ink. The colour the brand actually specifies works here and nowhere else.
+ * Paper type, and the second line in the real brand orange. --laterite
+ * measures 2.95:1 on paper, which is why --accent-ink exists as a deepened
+ * stand-in, but 5.17:1 on ink; over a shaded picture the colour the brand
+ * actually specifies is the one that works. It is the same #f15b22 the
+ * previous site gives "Thought." in "Built on Thought."
  *
- * Two plates, not one. A phone sees about a quarter of the landscape frame,
- * and the sun and the building are too far apart to both survive that crop —
- * so below lg the picture is a portrait plate composed for it. They are
- * genuinely different images, which is what <picture> is for; two <Image>
- * elements toggled with `hidden` would make every phone download the desktop
- * plate as well.
+ * One file serves every viewport because the source is square. A landscape
+ * window crops it vertically, so object-position sets the vertical share and
+ * keeps the building's crown in frame; a portrait window crops it
+ * horizontally, so it sets the horizontal one and keeps the sun in frame.
  */
 export function Hero({ image }: { image: HeroImage }) {
   return (
-    <section className="relative flex min-h-svh flex-col justify-end overflow-hidden bg-ink">
+    <section className="relative flex min-h-svh flex-col overflow-hidden bg-ink">
       <div className="absolute inset-0">
-        <picture>
-          {image.portraitSrc && (
-            <source media="(max-width: 1023px)" srcSet={image.portraitSrc} />
-          )}
-          {/*
-            A bare <img>, because art direction needs <picture> and
-            next/image cannot express it. Both plates are already sized and
-            compressed for the one place they are used, so the optimiser has
-            nothing left to do; fetchPriority carries the LCP hint that
-            `priority` would have.
-          */}
-          <img
-            src={image.src}
-            alt={image.alt}
-            fetchPriority="high"
-            decoding="async"
-            className="absolute inset-0 h-full w-full object-cover object-[30%_center] lg:object-left"
-          />
-        </picture>
+        <Image
+          src={image.src}
+          alt={image.alt}
+          fill
+          priority
+          fetchPriority="high"
+          sizes="100vw"
+          className="object-cover object-[0%_50%] lg:object-[50%_60%]"
+        />
 
         {/* Shade shaped to the type and clear of the sun — see .u-hero-shade. */}
         <div aria-hidden className="u-hero-shade absolute inset-0" />
@@ -55,17 +45,17 @@ export function Hero({ image }: { image: HeroImage }) {
           className="u-hero-shade-corner absolute inset-0 hidden lg:block"
         />
         {/*
-          A short fall of shade under the header. The wordmark and nav sit
-          over open sky, which at dawn is dusky but not dark, and paper type
-          on it is marginal without this.
+          A short fall of shade under the header, full width. The ellipse is
+          left-anchored and the nav sits hard right, over open sky that at
+          sunrise is bright; paper type on it is marginal without this.
         */}
         <div
           aria-hidden
-          className="absolute inset-x-0 top-0 h-36 bg-gradient-to-b from-ink/88 via-ink/40 via-42% to-transparent sm:h-44"
+          className="absolute inset-x-0 top-0 h-36 bg-gradient-to-b from-ink/92 via-ink/52 via-45% to-transparent sm:h-44"
         />
       </div>
 
-      <div className="relative z-10 mx-auto w-full max-w-[86rem] px-6 pb-14 pt-32 sm:px-10 sm:pb-16 lg:px-16 lg:pb-20">
+      <div className="relative z-10 mx-auto w-full max-w-[86rem] px-6 pb-20 pt-28 sm:px-10 sm:pt-36 lg:px-16 lg:pt-40">
         <p className="u-mono leading-[1.9] text-paper">
           Spaces for a
           <br />

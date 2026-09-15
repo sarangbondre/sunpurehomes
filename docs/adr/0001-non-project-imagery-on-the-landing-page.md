@@ -33,6 +33,13 @@ and never names a development.
 Every image that IS a Sunpure development, everywhere else on the site,
 remains attributed and captioned as now.
 
+## Amendment, 15 September 2026
+
+The six rotating images were replaced by a single hero image, also supplied
+by the client and also not attributed to a development. The decision above
+governs it unchanged: no caption, no project name, no link, and alt text that
+describes only what is in the frame.
+
 ## Consequences
 
 - A visitor may still infer the homes are Sunpure's. That risk is accepted by

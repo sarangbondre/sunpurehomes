@@ -1,17 +1,36 @@
 import Link from "next/link";
+import {
+  FacebookIcon,
+  InstagramIcon,
+  LinkedInIcon,
+  MailIcon,
+  PhoneIcon,
+  YouTubeIcon,
+} from "@/components/brand/icons";
 import { Logo } from "@/components/brand/logo";
 import { mailtoHref, telHref } from "@/lib/links";
 import { site } from "@/lib/site";
 
-/** One canonical URL each (§14). Absent entries are simply not rendered. */
-const SOCIAL: { href: string; label: string }[] = (
+/**
+ * One canonical URL each (§14), now each with its own mark at the client's
+ * instruction. Absent entries are simply not rendered.
+ *
+ * The mark is decorative and the name stays beside it: an icon-only row of
+ * four would be four unlabelled links, and the names are what make the list
+ * scannable.
+ */
+const SOCIAL: {
+  href: string;
+  label: string;
+  Icon: (props: { className?: string }) => React.ReactElement;
+}[] = (
   [
-    [site.social.instagram, "Instagram"],
-    [site.social.facebook, "Facebook"],
-    [site.social.youtube, "YouTube"],
-    [site.social.linkedin, "LinkedIn"],
+    [site.social.instagram, "Instagram", InstagramIcon],
+    [site.social.facebook, "Facebook", FacebookIcon],
+    [site.social.youtube, "YouTube", YouTubeIcon],
+    [site.social.linkedin, "LinkedIn", LinkedInIcon],
   ] as const
-).flatMap(([href, label]) => (href ? [{ href, label }] : []));
+).flatMap(([href, label, Icon]) => (href ? [{ href, label, Icon }] : []));
 
 export function SiteFooter() {
   return (
@@ -19,7 +38,7 @@ export function SiteFooter() {
       <div className="mx-auto max-w-[86rem] px-6 py-16 sm:px-10 lg:px-16">
         <div className="grid gap-12 sm:grid-cols-2 lg:grid-cols-4">
           <div className="lg:col-span-2">
-            <Logo variant="stacked" className="h-20 w-auto text-ink" />
+            <Logo variant="stacked" className="h-24 w-auto text-ink sm:h-28" />
             <p className="mt-6 font-display text-2xl">{site.tagline}</p>
           </div>
 
@@ -27,12 +46,20 @@ export function SiteFooter() {
             <h2 className="u-mono text-muted">Contact</h2>
             <ul className="mt-4 space-y-2 text-ink-soft">
               <li>
-                <a className="hover:text-accent-ink" href={mailtoHref}>
+                <a
+                  className="inline-flex items-center gap-2.5 hover:text-accent-ink"
+                  href={mailtoHref}
+                >
+                  <MailIcon className="size-4" />
                   {site.contact.email}
                 </a>
               </li>
               <li>
-                <a className="hover:text-accent-ink" href={telHref}>
+                <a
+                  className="inline-flex items-center gap-2.5 hover:text-accent-ink"
+                  href={telHref}
+                >
+                  <PhoneIcon className="size-4" />
                   {site.contact.phoneDisplay}
                 </a>
               </li>
@@ -40,15 +67,16 @@ export function SiteFooter() {
 
             <h2 className="u-mono mt-8 text-muted">Follow</h2>
             <ul className="mt-4 space-y-2 text-ink-soft">
-              {SOCIAL.map((s) => (
-                <li key={s.label}>
+              {SOCIAL.map(({ href, label, Icon }) => (
+                <li key={label}>
                   <a
-                    className="hover:text-accent-ink"
-                    href={s.href}
+                    className="inline-flex items-center gap-2.5 hover:text-accent-ink"
+                    href={href}
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    {s.label}
+                    <Icon className="size-4" />
+                    {label}
                   </a>
                 </li>
               ))}

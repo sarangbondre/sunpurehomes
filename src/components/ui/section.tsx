@@ -1,3 +1,11 @@
+/**
+ * A section with a label above a heading.
+ *
+ * `title` is optional. Where it is left off the label becomes the heading —
+ * set larger, and as the h2 the section would otherwise not have. The About
+ * page runs this way at the client's instruction: its three titles were
+ * dropped and its three labels asked to carry the sections on their own.
+ */
 export function Section({
   eyebrow,
   title,
@@ -6,7 +14,7 @@ export function Section({
   id,
 }: {
   eyebrow: string;
-  title: string;
+  title?: string;
   children: React.ReactNode;
   className?: string;
   /** Anchor target, so a nav item can link straight to this section. */
@@ -21,8 +29,16 @@ export function Section({
       */
       className={`scroll-mt-24 border-t border-line py-14 sm:py-20 ${className}`}
     >
-      <p className="u-mono text-canopy">{eyebrow}</p>
-      <h2 className="mt-4 text-[clamp(1.9rem,4vw,3rem)]">{title}</h2>
+      {title === undefined ? (
+        <h2 className="u-mono text-[1.05rem] leading-snug tracking-[0.14em] text-canopy sm:text-[1.2rem]">
+          {eyebrow}
+        </h2>
+      ) : (
+        <>
+          <p className="u-mono text-canopy">{eyebrow}</p>
+          <h2 className="mt-4 text-[clamp(1.9rem,4vw,3rem)]">{title}</h2>
+        </>
+      )}
       <div className="mt-10">{children}</div>
     </section>
   );
