@@ -209,7 +209,7 @@ export function ArkaPanel({
       aria-modal="false"
       aria-labelledby={titleId}
       hidden={!open}
-      className="fixed inset-x-2 bottom-2 z-50 flex max-h-[85svh] flex-col overflow-hidden rounded-2xl border border-line bg-paper text-ink shadow-[0_18px_60px_rgba(28,26,24,0.22)] motion-safe:animate-[arka-in_180ms_ease-out] sm:inset-x-auto sm:bottom-24 sm:right-6 sm:w-[25rem] sm:max-h-[min(40rem,78svh)]"
+      className="fixed inset-x-2 bottom-2 z-50 flex max-h-[85svh] flex-col overflow-hidden rounded-2xl border border-line bg-paper text-ink shadow-[0_18px_60px_rgba(28,26,24,0.22)] motion-safe:animate-[arka-in_180ms_ease-out] sm:inset-x-auto sm:bottom-[6.5rem] sm:right-6 sm:w-[25rem] sm:max-h-[min(40rem,78svh)]"
     >
       <header className="flex items-center gap-3 border-b border-line px-4 py-3">
         <SunMark className="size-7 text-laterite" />

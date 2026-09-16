@@ -101,7 +101,9 @@ export function Hero({ image }: { image: HeroImage }) {
           Three washes, all decorative. The first dissolves the left edge into
           the panel. The second keeps the top light enough for the nav and the
           WhatsApp pill to sit over the picture. The third does the same for
-          the caption in the corner — as literal rgba, because
+          the caption in the corner — sized to its own box so it is fully
+          clear at the box's edges, which otherwise show as a hard rectangle —
+          as literal rgba, because
           var(--color-ink)/0.55 does not parse inside a gradient and was
           being dropped silently.
         */}
@@ -115,10 +117,14 @@ export function Hero({ image }: { image: HeroImage }) {
         />
         <div
           aria-hidden
-          className="absolute bottom-0 right-0 hidden h-[24rem] w-[22rem] bg-[radial-gradient(ellipse_at_bottom_right,rgba(28,26,24,0.94)_0%,rgba(28,26,24,0.72)_34%,rgba(28,26,24,0.3)_58%,transparent_80%)] lg:block"
+          className="absolute bottom-0 right-0 hidden h-[32rem] w-[24rem] bg-[radial-gradient(ellipse_100%_100%_at_bottom_right,rgba(28,26,24,0.94)_0%,rgba(28,26,24,0.8)_36%,rgba(28,26,24,0.42)_62%,rgba(28,26,24,0.12)_84%,transparent_100%)] lg:block"
         />
 
-        <p className="u-mono absolute bottom-9 right-8 hidden text-right leading-[2] text-paper lg:block">
+        {/*
+          Raised clear of the Arka launcher, which is fixed to this corner of
+          every page and was sitting on top of "tomorrow".
+        */}
+        <p className="u-mono absolute bottom-32 right-8 hidden text-right leading-[2] text-paper lg:block">
           Homes
           <br />
           for a

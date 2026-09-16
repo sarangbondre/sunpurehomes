@@ -177,6 +177,21 @@
 }
 
 /*
+  A ring leaving Arka's sun, three times on arrival and then still — motion
+  that carries on past five seconds would need a pause control (WCAG 2.2.2).
+*/
+@keyframes arka-halo {
+  from {
+    opacity: 0.55;
+    transform: scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: scale(1.75);
+  }
+}
+
+/*
   prefers-reduced-motion must disable camera flights, autoplay and parallax
   entirely and replace them with instant state changes (BRIEF.md §8).
 */
