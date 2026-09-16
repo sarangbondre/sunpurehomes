@@ -1,6 +1,8 @@
 import type { Metadata, Viewport } from "next";
+import { Arka } from "@/components/chat/arka";
 import { SiteFooter } from "@/components/site/footer";
 import { SiteHeader } from "@/components/site/header";
+import { getAllProjects } from "@/lib/content";
 import { fontVariables } from "@/lib/fonts";
 import { site } from "@/lib/site";
 import "./globals.css";
@@ -16,6 +18,9 @@ export const metadata: Metadata = {
 export const viewport: Viewport = {
   themeColor: "#f8f9f6",
 };
+
+/** Names only: the widget ships to browsers and needs nothing more. */
+const ARKA_PROJECTS = getAllProjects().map(({ slug, name }) => ({ slug, name }));
 
 export default function RootLayout({
   children,
@@ -47,6 +52,7 @@ export default function RootLayout({
           {children}
         </div>
         <SiteFooter />
+        <Arka projects={ARKA_PROJECTS} />
       </body>
     </html>
   );

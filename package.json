@@ -10,14 +10,18 @@
     "lint": "eslint",
     "content:audit": "tsx scripts/content-audit.ts",
     "crawl": "node scripts/crawl.mjs",
-    "scenes:generate": "tsx scripts/generate-scene.ts"
+    "scenes:generate": "tsx scripts/generate-scene.ts",
+    "test": "tsx --test $(find src -name '*.test.ts')",
+    "eval:arka": "tsx scripts/eval-arka.ts"
   },
   "dependencies": {
+    "@anthropic-ai/sdk": "^0.126.0",
     "@react-three/drei": "^10.7.8",
     "@react-three/fiber": "^9.7.0",
     "next": "15.5.24",
     "react": "19.1.0",
     "react-dom": "19.1.0",
+    "resend": "^6.28.1",
     "three": "^0.185.1",
     "zod": "^4.5.2",
     "zustand": "^5.0.15"
