@@ -4,9 +4,9 @@ import type { ArkaConfig } from "@/lib/chatbot/env";
 /**
  * The one place a model is called.
  *
- * Two adapters behind one function, chosen by ARKA_PROVIDER. Claude Haiku 4.5
- * is the default; an open-source model on any OpenAI-compatible host
- * (Together, DeepInfra, Fireworks, Groq) is the alternative. Switching is an
+ * Two adapters behind one function, chosen by ARKA_PROVIDER. Hugging Face
+ * Inference Providers is the default and, like any other OpenAI-compatible
+ * host, goes through the second adapter; Claude goes through the first. Switching is an
  * environment change, and evals/arka.json is how to decide whether it is safe
  * to — see docs/adr/0002-arka.md.
  *
@@ -33,6 +33,10 @@ export class ProviderRefusal extends Error {}
   listed log a null cost rather than a guessed one; add a row when switching.
 */
 const PRICES: Readonly<Record<string, { input: number; output: number }>> = {
+  // Hugging Face passes hosts' prices through; these are as of 16 Sept 2026.
+  "meta-llama/Llama-3.3-70B-Instruct:novita": { input: 0.135, output: 0.4 },
+  "meta-llama/Llama-3.1-8B-Instruct:deepinfra": { input: 0.02, output: 0.05 },
+  "meta-llama/Llama-3.1-8B-Instruct:novita": { input: 0.02, output: 0.05 },
   "claude-haiku-4-5": { input: 1, output: 5 },
   "claude-sonnet-5": { input: 2, output: 10 },
   "claude-opus-5": { input: 5, output: 25 },

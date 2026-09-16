@@ -2,14 +2,15 @@
  * Scores Arka against evals/arka.json, through the same pipeline the site
  * uses: retrieval, system prompt, model, guards.
  *
- *   ANTHROPIC_API_KEY=… npm run eval:arka
- *   ARKA_PROVIDER=openai-compatible ARKA_OSS_BASE_URL=… ARKA_OSS_API_KEY=… \
- *     ARKA_MODEL=meta-llama/Llama-3.1-8B-Instruct npm run eval:arka
+ *   npm run eval:arka                      reads .env.local
+ *   npm run eval:arka -- price-curve       one case
+ *   ARKA_MODEL=meta-llama/Llama-3.1-8B-Instruct:deepinfra npm run eval:arka
  *
- * Every run calls the model once per case and costs real money — on Claude
- * Haiku 4.5, about ₹5 for the whole file. Exits non-zero if any case fails.
+ * Every run calls the model once per case and costs real money — well under
+ * ₹1 on the default Hugging Face model, about ₹5 on Claude Haiku 4.5. Exits
+ * non-zero if any case fails.
  */
-import { readFileSync } from "node:fs";
+import { existsSync, readFileSync } from "node:fs";
 import { getBrief } from "@/lib/chatbot/corpus";
 import { arkaConfig } from "@/lib/chatbot/env";
 import { guardStream } from "@/lib/chatbot/guards";
@@ -74,6 +75,8 @@ async function run(c: Case) {
 }
 
 async function main() {
+  // Variables already set in the shell win over the file.
+  if (existsSync(".env.local")) process.loadEnvFile(".env.local");
   const config = arkaConfig();
   if (!config.ready) {
     console.error(

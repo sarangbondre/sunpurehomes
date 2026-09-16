@@ -15,7 +15,7 @@ import { site } from "@/lib/site";
  * did before Arka existed.
  */
 
-const PROVIDERS = ["anthropic", "openai-compatible"] as const;
+const PROVIDERS = ["huggingface", "anthropic", "openai-compatible"] as const;
 export type ProviderKind = (typeof PROVIDERS)[number];
 
 const optional = z
@@ -25,13 +25,16 @@ const optional = z
   .optional();
 
 const schema = z.object({
-  ARKA_PROVIDER: z.enum(PROVIDERS).default("anthropic"),
   /*
-    Claude Haiku 4.5 by default — the client chose a small model on cost, and
-    the retrieval and guards are built so a small model is safe here. See
-    docs/adr/0002-arka.md for the comparison that led to it.
+    Hugging Face Inference Providers by default, at the client's instruction
+    on 16 September 2026 — open models at the host's own price. Claude and any
+    other OpenAI-compatible host remain one variable away. See
+    docs/adr/0002-arka.md.
   */
+  ARKA_PROVIDER: z.enum(PROVIDERS).default("huggingface"),
   ARKA_MODEL: optional,
+  /** Hugging Face's own name for the variable, so an existing token just works. */
+  HF_TOKEN: optional,
   ANTHROPIC_API_KEY: optional,
   ARKA_OSS_BASE_URL: optional.pipe(z.string().url().optional()),
   ARKA_OSS_API_KEY: optional,
@@ -68,39 +71,59 @@ export type ArkaConfig = {
   };
 };
 
+/*
+  The provider suffix is part of the id on Hugging Face and it matters: an
+  unpinned id is routed per request to whichever host is fastest, so the
+  model a visitor gets could differ from the one the eval passed. Llama 3.3
+  70B is served by Novita at $0.135 in / $0.40 out per million tokens
+  (16 September 2026). An 8B is cheaper still but markedly worse at holding a
+  refusal under pressure — run the eval before swapping it in.
+*/
 const DEFAULT_MODEL: Record<ProviderKind, string | undefined> = {
+  huggingface: "meta-llama/Llama-3.3-70B-Instruct:novita",
   anthropic: "claude-haiku-4-5",
-  // No sensible default: an open-source host's model ids are host-specific.
+  // No sensible default: other hosts' model ids are host-specific.
   "openai-compatible": undefined,
 };
 
-let cached: ArkaConfig | undefined;
+const DEFAULT_BASE_URL: Record<ProviderKind, string | undefined> = {
+  huggingface: "https://router.huggingface.co/v1",
+  anthropic: undefined,
+  "openai-compatible": undefined,
+};
 
-export function arkaConfig(): ArkaConfig {
-  if (cached) return cached;
-
-  const parsed = schema.safeParse(process.env);
+/** Pure, so it can be tested without touching process.env. */
+export function parseConfig(source: Record<string, string | undefined>): ArkaConfig {
+  const parsed = schema.safeParse(source);
   if (!parsed.success) {
     // Name the variable, never echo its value.
     const fields = parsed.error.issues.map((i) => i.path.join(".")).join(", ");
     throw new Error(`Arka configuration is invalid: ${fields}`);
   }
   const env = parsed.data;
-  const model = env.ARKA_MODEL ?? DEFAULT_MODEL[env.ARKA_PROVIDER] ?? "";
+  const provider = env.ARKA_PROVIDER;
+  const model = env.ARKA_MODEL ?? DEFAULT_MODEL[provider] ?? "";
+
+  // Everything but Anthropic speaks the OpenAI-compatible protocol.
+  const ossBaseUrl = env.ARKA_OSS_BASE_URL ?? DEFAULT_BASE_URL[provider];
+  const ossKey =
+    provider === "huggingface"
+      ? (env.HF_TOKEN ?? env.ARKA_OSS_API_KEY)
+      : env.ARKA_OSS_API_KEY;
 
   const ready =
     model !== "" &&
-    (env.ARKA_PROVIDER === "anthropic"
+    (provider === "anthropic"
       ? Boolean(env.ANTHROPIC_API_KEY)
-      : Boolean(env.ARKA_OSS_BASE_URL && env.ARKA_OSS_API_KEY));
+      : Boolean(ossBaseUrl && ossKey));
 
-  cached = {
-    provider: env.ARKA_PROVIDER,
+  return {
+    provider,
     model,
     ready,
     anthropicKey: env.ANTHROPIC_API_KEY,
-    ossBaseUrl: env.ARKA_OSS_BASE_URL,
-    ossKey: env.ARKA_OSS_API_KEY,
+    ossBaseUrl,
+    ossKey,
     maxTokens: env.ARKA_MAX_TOKENS,
     timeoutMs: env.ARKA_TIMEOUT_MS,
     ossTemperature: env.ARKA_OSS_TEMPERATURE,
@@ -111,5 +134,11 @@ export function arkaConfig(): ArkaConfig {
       from: env.LEAD_FROM,
     },
   };
+}
+
+let cached: ArkaConfig | undefined;
+
+export function arkaConfig(): ArkaConfig {
+  cached ??= parseConfig(process.env);
   return cached;
 }
