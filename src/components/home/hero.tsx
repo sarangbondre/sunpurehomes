@@ -20,11 +20,18 @@ export type HeroImage = { src: string; alt: string };
  * picture edge to edge with paper type over it — and the client asked for
  * this back, so this is that design again, with the Curve render it carried.
  *
- * The picture is a 70% column, and the crop is anchored left so the sun
- * clears the wash: the wash is opaque paper at the column's left edge and
- * gone a fifth of the way across, and the sun sits just past it. That is the
- * one measurement to re-check if the image or the column width changes,
- * because a sun inside the wash is a sun the client cannot see.
+ * The picture is a 70% column carrying the first grading of the Curve
+ * render, where the sun sits low and to the RIGHT of the building. That is
+ * the version the client picked out of two, and it is the one the crop is
+ * built around.
+ *
+ * The column is much taller than the frame is deep, so on most windows the
+ * picture is cropped hard from the sides and only a short window shows the
+ * whole width. Anchored at 75% rather than left, what survives that crop is
+ * the building, the sun behind it and the treeline — anchored left the sun
+ * is the first thing to go. That is the measurement to re-check if the
+ * image or the column width ever changes: a sun outside the crop, or inside
+ * the wash, is a sun the client cannot see.
  */
 export function Hero({ image }: { image: HeroImage }) {
   return (
@@ -87,7 +94,7 @@ export function Hero({ image }: { image: HeroImage }) {
           priority
           fetchPriority="high"
           sizes="(min-width: 1024px) 70vw, 100vw"
-          className="object-cover object-left"
+          className="object-cover object-[75%_center]"
         />
 
         {/*
