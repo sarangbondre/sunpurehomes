@@ -42,7 +42,7 @@ export function Hero({ image }: { image: HeroImage }) {
            hero and grew when the wordmark did. At lg the block is centred
            and the padding is only a floor — it matters on a short window.
          */
-        className="relative z-10 flex flex-col justify-center px-6 pb-14 pt-28 sm:px-10 sm:pt-32 lg:min-h-svh lg:max-w-[42%] lg:py-0 lg:pl-16 lg:pr-10 lg:pt-32">
+        className="relative z-10 flex flex-col justify-center px-6 pb-14 pt-28 sm:px-10 sm:pt-32 lg:min-h-svh lg:max-w-[46%] lg:py-0 lg:pl-16 lg:pr-10 lg:pt-32">
         <p className="u-mono leading-[1.9] text-muted">
           Spaces for a
           <br />
@@ -50,7 +50,14 @@ export function Hero({ image }: { image: HeroImage }) {
         </p>
         <span aria-hidden className="mt-5 block h-px w-20 bg-line" />
 
-        <h1 className="mt-10 text-[clamp(2.6rem,4.8vw,4.6rem)] leading-[1.08] text-ink">
+        {/*
+          Sized to its column. "Thoughtfully Built," never wraps and measures
+          6.21 times the font size, so the vw factor is the largest that
+          still fits the column at the narrowest width it applies to — 320px
+          on a phone, 1024px at lg, where the column is 46% of the screen.
+          Change the column or the words and re-measure.
+        */}
+        <h1 className="mt-10 text-[clamp(2.6rem,12.5vw,4.5rem)] leading-[1.08] text-ink lg:text-[clamp(3rem,5.6vw,6rem)]">
           Thoughtfully&nbsp;Built,
           {/*
             --laterite, Ferrari red since 16 September at the client's
