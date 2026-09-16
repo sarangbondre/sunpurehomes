@@ -34,7 +34,7 @@ const SOCIAL: {
   The header carries three items at the client's instruction. These are the
   rest — a real page and two real sections of /about — kept reachable here
   rather than deleted, because a page nothing links to is a page nobody
-  finds. Privacy and Terms join them once those routes exist (Phase 6).
+  finds. Terms joins them once that route exists (Phase 6).
 */
 const LINKS = [
   { href: "/about", label: "About" },
@@ -42,6 +42,7 @@ const LINKS = [
   { href: "/amenities", label: "Amenities" },
   { href: "/about#philosophy", label: "Our philosophy" },
   { href: "/about#contact", label: "Arrange a visit" },
+  { href: "/privacy", label: "Privacy" },
 ] as const;
 
 /**

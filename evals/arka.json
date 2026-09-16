@@ -1,5 +1,5 @@
 {
-  "about": "Questions Arka must refuse and questions it must answer, with the correct response checked by hand against content/projects/*.json on 16 September 2026. Run with `npm run eval:arka` against whichever model ARKA_PROVIDER and ARKA_MODEL point at. `expect`: handoff = routes to a person (contact buttons or the form); lead = offers the form; answer = every mustInclude present; decline = says no without routing. mustNotInclude applies to every case. Matching ignores case and thousands separators.",
+  "about": "Questions Arka must refuse and questions it must answer, with the correct response checked by hand against content/projects/*.json on 16 September 2026. Run with `npm run eval:arka` against whichever model ARKA_PROVIDER and ARKA_MODEL point at. `expect`: handoff = routes to a person (contact buttons or the form); lead = offers the form; answer = every mustInclude present (an array entry accepts any one of its forms); decline = says no without routing. mustNotInclude applies to every case. Matching ignores case and thousands separators.",
   "cases": [
     { "id": "price-curve", "page": "/projects/curve", "ask": "How much is a 3 BHK here?", "expect": "handoff", "mustNotInclude": ["lakh", "crore", "₹", "rs."] },
     { "id": "price-rate", "page": "/", "ask": "What's the rate per sq ft at Rare Earth?", "expect": "handoff", "mustNotInclude": ["per sq ft", "₹", "psf"] },
@@ -22,11 +22,15 @@
     { "id": "v4-sold", "page": "/", "ask": "Can I still buy an apartment at V4?", "expect": "answer", "mustInclude": ["sold"] },
     { "id": "fadal-plots", "page": "/", "ask": "How many plots does Fadal have?", "expect": "answer", "mustInclude": ["43"], "mustNotInclude": ["44 plots"] },
     { "id": "rera-curve", "page": "/", "ask": "What is Curve's RERA registration number?", "expect": "answer", "mustInclude": ["PRM/KA/RERA/1268/378/PR/080125/007364"] },
-    { "id": "rare-earth-sizes", "page": "/", "ask": "What plot sizes are available at Rare Earth?", "expect": "answer", "mustInclude": ["1163"], "mustNotInclude": ["102 plots", "53 plots"] },
+    { "id": "rare-earth-sizes", "page": "/", "ask": "What plot sizes are available at Rare Earth?", "expect": "answer", "mustInclude": [["1163", "30 × 40", "30x40", "9.0 × 12.0"]], "mustNotInclude": ["102 plots", "53 plots"] },
     { "id": "meraki-locality", "page": "/", "ask": "Where is Meraki?", "expect": "answer", "mustInclude": ["Yadavagiri"] },
     { "id": "h4-alias", "page": "/", "ask": "Tell me about Happiness IV.", "expect": "answer", "mustInclude": ["3 BHK", "Vijayanagar"] },
     { "id": "page-context", "page": "/projects/rare-earth", "ask": "How big is it?", "expect": "answer", "mustInclude": ["18.2"] },
     { "id": "happiness-2-size", "page": "/projects/happiness-2", "ask": "How big are the villas here?", "expect": "answer", "mustInclude": ["sq ft"], "mustNotInclude": ["2543"] },
-    { "id": "visit", "page": "/projects/curve", "ask": "I'd like to come and see Curve this weekend.", "expect": "lead" }
+    { "id": "visit", "page": "/projects/curve", "ask": "I'd like to come and see Curve this weekend.", "expect": "lead" },
+    { "id": "visit-suggestion-on-page", "page": "/projects/curve", "ask": "Can I visit a site?", "expect": "lead", "mustNotInclude": ["which project"] },
+    { "id": "visit-suggestion-home", "page": "/", "ask": "Can I visit a site?", "expect": "lead" },
+    { "id": "here-means-page", "page": "/projects/meraki", "ask": "Is there a lift here?", "expect": "answer", "mustInclude": ["lift"], "mustNotInclude": ["which project"] },
+    { "id": "call-back", "page": "/", "ask": "Please ask someone to call me back.", "expect": "lead" }
   ]
 }

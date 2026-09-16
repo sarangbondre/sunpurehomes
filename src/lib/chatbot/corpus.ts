@@ -125,7 +125,6 @@ const NOTES: Readonly<Record<string, readonly string[]>> = {
     "Travel times, not distances, are given for nearby places.",
   ],
   h4: [
-    "Also referred to as Happiness IV.",
     "There are villa types with and without a lift. The configuration list does not separate them; the sales team has the plan-by-plan schedule.",
     "Specifications may change on upgrade or availability.",
   ],
@@ -156,6 +155,15 @@ const ALIASES: Readonly<Record<string, readonly string[]>> = {
   "rare-earth": ["rare earth", "rareearth", "rare-earth"],
   fadal: ["fadal", "fadal enclave"],
   v4: ["v4", "v 4"],
+};
+
+/*
+  Other names, shown in the record's heading. As a note at the foot of the
+  record the model sometimes missed it and said it knew nothing about
+  "Happiness IV"; in the heading it cannot.
+*/
+const ALSO_CALLED: Readonly<Record<string, string>> = {
+  h4: "Happiness IV",
 };
 
 /** Common to every card rendering below. */
@@ -233,7 +241,7 @@ function render(p: Project): ProjectBrief {
   const status = STATUS_LABELS[p.status].toLowerCase();
 
   const lines: string[] = [
-    `## ${p.name}`,
+    ALSO_CALLED[p.slug] ? `## ${p.name} (also called ${ALSO_CALLED[p.slug]})` : `## ${p.name}`,
     `Type: ${kind}. Status: ${status}.${soldOut ? " FULLY SOLD — no homes are available." : ""}`,
     `Locality: ${p.location.label}`,
     `Address: ${(withheld.address ?? p.location.addressLines).join(", ")}`,

@@ -5,12 +5,14 @@ import { guardStream, scrubContacts, type ArkaEvent } from "@/lib/chatbot/guards
 import { log } from "@/lib/chatbot/log";
 import { PROMPT_VERSION, systemPrompt } from "@/lib/chatbot/persona";
 import {
+  ProviderHttpError,
   ProviderRefusal,
   estimateCostUsd,
   streamReply,
   type Usage,
 } from "@/lib/chatbot/provider";
 import { allow, clientKey } from "@/lib/chatbot/rate-limit";
+import { slugFromPath } from "@/lib/chatbot/paths";
 import { retrieve } from "@/lib/chatbot/retrieve";
 
 /**
@@ -136,17 +138,20 @@ export async function POST(request: Request): Promise<Response> {
     pagePath: body.pagePath,
   });
   const records = slugs.flatMap((s) => getBrief(s) ?? []);
+  const onPage = getBrief(slugFromPath(body.pagePath) ?? "")?.name;
 
   const upstream = new AbortController();
   request.signal.addEventListener("abort", () => upstream.abort(), { once: true });
 
   let usage: Usage | undefined;
+  let servedBy = config.model;
   const replies = guardStream(
     streamReply(config, {
-      system: systemPrompt(records),
+      system: systemPrompt(records, onPage),
       turns,
       signal: upstream.signal,
       onUsage: (u) => (usage = u),
+      onServed: (m) => (servedBy = m),
     }),
   );
 
@@ -172,8 +177,9 @@ export async function POST(request: Request): Promise<Response> {
             requestId,
             provider: config.provider,
             model: config.model,
-            // The class name only: SDK errors can carry request details.
+            // The class name and status only: errors can carry request details.
             error: error instanceof Error ? error.constructor.name : "unknown",
+            status: error instanceof ProviderHttpError ? error.status : null,
           });
         }
       } finally {
@@ -188,10 +194,11 @@ export async function POST(request: Request): Promise<Response> {
           outcome,
           prompt: PROMPT_VERSION,
           model: config.model,
+          servedBy,
           inputScrubbed,
           inputTokens: usage?.inputTokens,
           outputTokens: usage?.outputTokens,
-          costUsd: estimateCostUsd(config.model, usage),
+          costUsd: estimateCostUsd(servedBy, usage),
           ms: Date.now() - started,
         });
       }

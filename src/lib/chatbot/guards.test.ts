@@ -105,3 +105,13 @@ describe("guardStream", () => {
     assert.ok(events.some((e) => e.t === "handoff" && e.reason === "contact"));
   });
 });
+
+describe("guardStream whitespace", () => {
+  it("sends nothing for a piece that was only a marker", async () => {
+    const events = await collect(chunks("Curve has a gym. [[handoff]]"));
+    assert.deepEqual(
+      events.filter((e) => e.t === "text").map((e) => (e as { v: string }).v),
+      ["Curve has a gym."],
+    );
+  });
+});

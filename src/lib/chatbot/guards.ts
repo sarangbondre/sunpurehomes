@@ -135,7 +135,8 @@ export async function* guardStream(
 
     const clean = scrubContacts(marked.text);
     if (clean.scrubbed) handoff = "contact";
-    if (clean.text) yield { t: "text", v: clean.text };
+    // A piece that was only a marker leaves whitespace behind; send nothing.
+    if (clean.text.trim()) yield { t: "text", v: clean.text };
     return true;
   }
 

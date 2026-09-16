@@ -12,6 +12,23 @@ describe("parseConfig", () => {
     assert.equal(c.ready, true);
   });
 
+  it("falls back to the same model on another host", () => {
+    const c = parseConfig({ HF_TOKEN: "hf_x" });
+    const [mainModel] = c.model.split(":");
+    assert.ok(c.fallbackModel);
+    assert.equal(c.fallbackModel.split(":")[0], mainModel, "same weights");
+    assert.notEqual(c.fallbackModel, c.model, "different host");
+  });
+
+  it("drops the default fallback when the main model is changed", () => {
+    const c = parseConfig({ HF_TOKEN: "hf_x", ARKA_MODEL: "Qwen/Qwen3-8B:nscale" });
+    assert.equal(c.fallbackModel, undefined);
+  });
+
+  it("can turn the fallback off", () => {
+    assert.equal(parseConfig({ HF_TOKEN: "hf_x", ARKA_FALLBACK_MODEL: "off" }).fallbackModel, undefined);
+  });
+
   it("is not ready without a token, so the widget hands off", () => {
     assert.equal(parseConfig({}).ready, false);
   });

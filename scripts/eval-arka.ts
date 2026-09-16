@@ -3,7 +3,7 @@
  * uses: retrieval, system prompt, model, guards.
  *
  *   npm run eval:arka                      reads .env.local
- *   npm run eval:arka -- price-curve       one case
+ *   npm run eval:arka -- price-curve visit  only these cases
  *   ARKA_MODEL=meta-llama/Llama-3.1-8B-Instruct:deepinfra npm run eval:arka
  *
  * Every run calls the model once per case and costs real money — well under
@@ -14,6 +14,7 @@ import { existsSync, readFileSync } from "node:fs";
 import { getBrief } from "@/lib/chatbot/corpus";
 import { arkaConfig } from "@/lib/chatbot/env";
 import { guardStream } from "@/lib/chatbot/guards";
+import { slugFromPath } from "@/lib/chatbot/paths";
 import { systemPrompt } from "@/lib/chatbot/persona";
 import { streamReply } from "@/lib/chatbot/provider";
 import { retrieve } from "@/lib/chatbot/retrieve";
@@ -23,7 +24,8 @@ type Case = {
   page: string;
   ask: string;
   expect: "answer" | "handoff" | "lead" | "decline";
-  mustInclude?: string[];
+  /** Each entry must appear; an array entry passes if any one of it appears. */
+  mustInclude?: (string | string[])[];
   mustNotInclude?: string[];
 };
 
@@ -41,13 +43,15 @@ async function run(c: Case) {
   let routed = false;
   let lead = false;
   let tokens = { input: 0, output: 0 };
+  let served = config.model;
 
   const events = guardStream(
     streamReply(config, {
-      system: systemPrompt(records),
+      system: systemPrompt(records, getBrief(slugFromPath(c.page) ?? "")?.name),
       turns: [{ role: "user", content: c.ask }],
       signal: AbortSignal.timeout(30_000),
       onUsage: (u) => (tokens = { input: u.inputTokens, output: u.outputTokens }),
+      onServed: (m) => (served = m),
     }),
   );
   for await (const e of events) {
@@ -64,14 +68,17 @@ async function run(c: Case) {
   }
   if (c.expect === "answer") {
     for (const needle of c.mustInclude ?? []) {
-      if (!shown.includes(norm(needle))) problems.push(`missing "${needle}"`);
+      const options = Array.isArray(needle) ? needle : [needle];
+      if (!options.some((o) => shown.includes(norm(o)))) {
+        problems.push(`missing ${options.map((o) => `"${o}"`).join(" or ")}`);
+      }
     }
   }
   if (c.expect === "handoff" && !routed && !lead) problems.push("did not route to a person");
   if (c.expect === "lead" && !lead) problems.push("did not offer the form");
   if (!text.trim()) problems.push("empty reply");
 
-  return { id: c.id, pass: problems.length === 0, problems, text, slugs, tokens };
+  return { id: c.id, pass: problems.length === 0, problems, text, slugs, tokens, served };
 }
 
 async function main() {
@@ -86,8 +93,8 @@ async function main() {
   }
 
   const { cases } = JSON.parse(readFileSync("evals/arka.json", "utf8")) as { cases: Case[] };
-  const only = process.argv[2];
-  const selected = only ? cases.filter((c) => c.id === only) : cases;
+  const only = new Set(process.argv.slice(2));
+  const selected = only.size ? cases.filter((c) => only.has(c.id)) : cases;
 
   console.log(`${config.provider} · ${config.model} · ${selected.length} cases\n`);
 
@@ -100,7 +107,8 @@ async function main() {
       totals.input += r.tokens.input;
       totals.output += r.tokens.output;
       if (r.pass) passed++;
-      console.log(`${r.pass ? "PASS" : "FAIL"}  ${r.id.padEnd(24)} [${r.slugs.join(",") || "-"}]`);
+      const via = r.served === config.model ? "" : `  (answered by fallback ${r.served})`;
+      console.log(`${r.pass ? "PASS" : "FAIL"}  ${r.id.padEnd(24)} [${r.slugs.join(",") || "-"}]${via}`);
       if (!r.pass) {
         console.log(`      ${r.problems.join("; ")}`);
         console.log(`      reply: ${r.text.replace(/\s+/g, " ").slice(0, 220)}`);

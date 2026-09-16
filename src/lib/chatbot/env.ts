@@ -35,6 +35,11 @@ const schema = z.object({
   ARKA_MODEL: optional,
   /** Hugging Face's own name for the variable, so an existing token just works. */
   HF_TOKEN: optional,
+  /**
+   * Tried when the main model's host is overloaded. "off" disables it. It
+   * should be the same model on another host, so the eval result still holds.
+   */
+  ARKA_FALLBACK_MODEL: optional,
   ANTHROPIC_API_KEY: optional,
   ARKA_OSS_BASE_URL: optional.pipe(z.string().url().optional()),
   ARKA_OSS_API_KEY: optional,
@@ -60,6 +65,8 @@ export type ArkaConfig = {
   anthropicKey?: string;
   ossBaseUrl?: string;
   ossKey?: string;
+  /** Same model on another host, for when the main one is overloaded. */
+  fallbackModel?: string;
   maxTokens: number;
   timeoutMs: number;
   ossTemperature: number;
@@ -86,6 +93,18 @@ const DEFAULT_MODEL: Record<ProviderKind, string | undefined> = {
   "openai-compatible": undefined,
 };
 
+/*
+  Novita reported server_overload on about one request in eight while this was
+  being tested; retrying the same host only sometimes helps. OVHcloud serves
+  the same weights at $0.74 per million tokens both ways — dearer, and used
+  only when Novita is refusing.
+*/
+const DEFAULT_FALLBACK: Record<ProviderKind, string | undefined> = {
+  huggingface: "meta-llama/Llama-3.3-70B-Instruct:ovhcloud",
+  anthropic: undefined,
+  "openai-compatible": undefined,
+};
+
 const DEFAULT_BASE_URL: Record<ProviderKind, string | undefined> = {
   huggingface: "https://router.huggingface.co/v1",
   anthropic: undefined,
@@ -103,6 +122,14 @@ export function parseConfig(source: Record<string, string | undefined>): ArkaCon
   const env = parsed.data;
   const provider = env.ARKA_PROVIDER;
   const model = env.ARKA_MODEL ?? DEFAULT_MODEL[provider] ?? "";
+  const fallbackSetting = env.ARKA_FALLBACK_MODEL ?? DEFAULT_FALLBACK[provider];
+  // A custom main model gets no default fallback: it may not be the same model.
+  const fallbackModel =
+    fallbackSetting === "off" ||
+    (env.ARKA_MODEL && !env.ARKA_FALLBACK_MODEL) ||
+    fallbackSetting === model
+      ? undefined
+      : fallbackSetting;
 
   // Everything but Anthropic speaks the OpenAI-compatible protocol.
   const ossBaseUrl = env.ARKA_OSS_BASE_URL ?? DEFAULT_BASE_URL[provider];
@@ -124,6 +151,7 @@ export function parseConfig(source: Record<string, string | undefined>): ArkaCon
     anthropicKey: env.ANTHROPIC_API_KEY,
     ossBaseUrl,
     ossKey,
+    fallbackModel: provider === "anthropic" ? undefined : fallbackModel,
     maxTokens: env.ARKA_MAX_TOKENS,
     timeoutMs: env.ARKA_TIMEOUT_MS,
     ossTemperature: env.ARKA_OSS_TEMPERATURE,

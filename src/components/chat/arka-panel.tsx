@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { usePathname } from "next/navigation";
 import {
   useCallback,
@@ -542,6 +543,16 @@ function LeadForm({
               used for nothing else.
             </label>
           </div>
+          {/*
+            Outside the label: a link inside it would become part of the
+            checkbox's name, and a tap on it would tick the box. The panel
+            lives in the root layout, so the conversation survives the visit.
+          */}
+          <p className="ml-6.5 mt-1 text-sm">
+            <Link href="/privacy" className="text-accent-ink underline underline-offset-4">
+              Privacy policy
+            </Link>
+          </p>
           <FieldError id={`${idFor("consent")}-err`} message={errors.consent} />
         </div>
       </div>
