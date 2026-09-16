@@ -42,7 +42,7 @@ export function Hero({ image }: { image: HeroImage }) {
            hero and grew when the wordmark did. At lg the block is centred
            and the padding is only a floor — it matters on a short window.
          */
-        className="relative z-10 flex flex-col justify-center px-6 pb-14 pt-28 sm:px-10 sm:pt-32 lg:min-h-svh lg:max-w-[46%] lg:py-0 lg:pl-16 lg:pr-10 lg:pt-32">
+        className="relative z-10 flex flex-col justify-center px-6 pb-14 pt-28 sm:px-10 sm:pt-32 lg:min-h-svh lg:max-w-[46%] lg:pb-40 lg:[@media(max-height:700px)]:pb-16 lg:pl-16 lg:pr-10 lg:pt-32">
         <p className="u-mono leading-[1.9] text-muted">
           Spaces for a
           <br />
