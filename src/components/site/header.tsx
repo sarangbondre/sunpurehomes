@@ -66,7 +66,7 @@ export function SiteHeader() {
       */}
       <div
         className={`mx-auto flex items-center gap-2 px-3 min-[400px]:px-5 sm:px-10 lg:px-16 ${
-          overlay ? "h-24 sm:h-28 lg:h-32" : "h-20 sm:h-24 lg:h-26"
+          overlay ? "h-24 sm:h-28 lg:h-32" : "h-20 sm:h-24 lg:h-28"
         }`}
       >
         <Link href="/" className="shrink-0" aria-label={`${site.name} — home`}>
@@ -74,8 +74,8 @@ export function SiteHeader() {
             decorative
             className={`w-auto ${
               overlay
-                ? "h-9 min-[400px]:h-11 sm:h-15 lg:h-18"
-                : "h-8 min-[400px]:h-10 sm:h-13 lg:h-15"
+                ? "h-9 min-[360px]:h-10 min-[400px]:h-12 sm:h-18 lg:h-22"
+                : "h-9 min-[400px]:h-11 sm:h-15 lg:h-18"
             } text-ink`}
           />
         </Link>
