@@ -40,6 +40,17 @@ by the client and also not attributed to a development. The decision above
 governs it unchanged: no caption, no project name, no link, and alt text that
 describes only what is in the frame.
 
+## Amendment, 16 September 2026
+
+The Projects page now opens on a photograph of a concrete villa terrace
+with an infinity pool, cut from the client's reference mockup for that page
+(the only copy of the frame) with the mockup's own header, headline and
+caption removed. It is not a Sunpure development, and the same rule
+applies: no caption, no project name, no link, and alt text that describes
+only what is in the frame. The original file, if the client has it, should
+replace `public/images/pages/projects-hero.jpg` — the cut is 1024px wide,
+enlarged 2x, and soft on large screens.
+
 ## Consequences
 
 - A visitor may still infer the homes are Sunpure's. That risk is accepted by

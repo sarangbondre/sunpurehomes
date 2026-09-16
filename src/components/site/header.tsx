@@ -41,7 +41,9 @@ export function SiteHeader() {
     invisible. Everywhere else it is the sticky bar — transparent over
     scrolling content would be unreadable.
   */
-  const overlay = usePathname() === "/";
+  const pathname = usePathname();
+  // Pages whose opening picture runs under the header.
+  const overlay = pathname === "/" || pathname === "/projects";
   /*
     Ink everywhere, including the landing page. The hero there is the split
     design again: the header floats over the paper column on the left and
@@ -88,7 +90,14 @@ export function SiteHeader() {
                 <li key={item.href}>
                   <Link
                     href={item.href}
-                    className="whitespace-nowrap text-ink transition-colors duration-hover ease-hover hover:text-accent-ink text-[0.8125rem] min-[400px]:text-[0.875rem] sm:text-[0.95rem]"
+                    aria-current={pathname === item.href ? "page" : undefined}
+                    // The section you are in carries a short red rule, as in
+                    // the reference design — project pages count as Projects.
+                    className={`relative whitespace-nowrap text-ink transition-colors duration-hover ease-hover hover:text-accent-ink text-[0.8125rem] min-[400px]:text-[0.875rem] sm:text-[0.95rem] ${
+                      pathname === item.href || pathname.startsWith(`${item.href}/`)
+                        ? "after:absolute after:inset-x-0 after:-bottom-2 after:h-px after:bg-laterite"
+                        : ""
+                    }`}
                   >
                     {item.label}
                   </Link>

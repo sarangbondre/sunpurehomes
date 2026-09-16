@@ -108,3 +108,48 @@ export function MailIcon({ className = "" }: IconProps) {
     </svg>
   );
 }
+
+/** A location pin, filled to sit with the brand marks at small sizes. */
+export function PinIcon({ className = "" }: IconProps) {
+  return (
+    <svg aria-hidden viewBox="0 0 24 24" className={`${BASE} fill-current ${className}`}>
+      <path d="M12 2a7 7 0 0 0-7 7c0 5.1 6.1 12.3 6.4 12.6a.8.8 0 0 0 1.2 0C12.9 21.3 19 14.1 19 9a7 7 0 0 0-7-7Zm0 9.6A2.6 2.6 0 1 1 12 6.4a2.6 2.6 0 0 1 0 5.2Z" />
+    </svg>
+  );
+}
+
+/** A short right arrow, drawn to match the outlined handset and envelope. */
+export function ArrowRightIcon({ className = "" }: IconProps) {
+  return (
+    <svg
+      aria-hidden
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.8"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      className={`${BASE} ${className}`}
+    >
+      <path d="M5 12h14M13 6l6 6-6 6" />
+    </svg>
+  );
+}
+
+/** A cross in a circle, for clearing a set of choices. */
+export function ClearIcon({ className = "" }: IconProps) {
+  return (
+    <svg
+      aria-hidden
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.6"
+      strokeLinecap="round"
+      className={`${BASE} ${className}`}
+    >
+      <circle cx="12" cy="12" r="9" />
+      <path d="M9 9l6 6M15 9l-6 6" />
+    </svg>
+  );
+}

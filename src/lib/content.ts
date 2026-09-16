@@ -140,6 +140,45 @@ export function filterProjects(all: Project[], filters: Filters): Project[] {
   );
 }
 
+/* ------------------------------------------------------------------ sort */
+
+export const SORTS = ["featured", "name", "type"] as const;
+export type Sort = (typeof SORTS)[number];
+
+export const SORT_LABELS: Record<Sort, string> = {
+  featured: "Featured",
+  name: "Name (A–Z)",
+  type: "Type",
+};
+
+/*
+  "Featured" means what a buyer can act on first: projects under way, then
+  upcoming, then completed, and anything fully sold last. Within each group,
+  by name — the order the content is already in.
+*/
+const STATUS_RANK: Record<ProjectStatus, number> = {
+  ongoing: 0,
+  upcoming: 1,
+  completed: 2,
+};
+const TYPE_RANK: Record<ProjectType, number> = { villa: 0, apartment: 1, plot: 2 };
+
+export function sortProjects(
+  list: readonly Project[],
+  sort: Sort,
+  /** Passed in so this module stays free of the availability read path. */
+  isSoldOut: (slug: string) => boolean,
+): Project[] {
+  const byName = (a: Project, b: Project) => a.name.localeCompare(b.name, "en");
+  const sorted = [...list];
+  if (sort === "name") return sorted.sort(byName);
+  if (sort === "type") {
+    return sorted.sort((a, b) => TYPE_RANK[a.type] - TYPE_RANK[b.type] || byName(a, b));
+  }
+  const rank = (p: Project) => (isSoldOut(p.slug) ? 3 : STATUS_RANK[p.status]);
+  return sorted.sort((a, b) => rank(a) - rank(b) || byName(a, b));
+}
+
 /** Facets are derived from the content, so a tenth project needs no code change. */
 export function getFacets(all: Project[] = projects) {
   const count = <T extends string>(values: T[]) => {
