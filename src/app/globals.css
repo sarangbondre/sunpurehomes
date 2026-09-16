@@ -151,65 +151,6 @@
     color: var(--color-paper);
   }
 
-  /*
-    The hero's shade. Two things have to be true at once: the type must be
-    legible over a photograph, and the sun must stay the brightest thing on
-    the page — it is the whole reason the client chose this frame.
-
-    They fit together because they do not overlap. In the image the client
-    supplied the sun is low — 72% down the frame — so the words took the open
-    sky above it. The shade is one broad, soft ellipse hung from the top of
-    the text, strong where the words are and gone long before it reaches the
-    sun. Measured on the glyphs themselves, the worst line clears AA with
-    room to spare while the sun takes none of it.
-
-    The ellipse is anchored to the left edge of the content column, not the
-    viewport corner: past 86rem the column centres, and a corner-anchored
-    wash drifts away from the type it exists to carry.
-  */
-  .u-hero-shade {
-    --shade-w: 78rem;
-    --shade-h: 40rem;
-    --shade-x: max(0px, (100% - 86rem) / 2);
-    background: radial-gradient(
-      var(--shade-w) var(--shade-h) at var(--shade-x) 0%,
-      rgba(28, 26, 24, 0.95) 0%,
-      rgba(28, 26, 24, 0.94) 50%,
-      rgba(28, 26, 24, 0.9) 66%,
-      rgba(28, 26, 24, 0.84) 78%,
-      rgba(28, 26, 24, 0.58) 88%,
-      rgba(28, 26, 24, 0.24) 95%,
-      transparent 100%
-    );
-  }
-
-  /*
-    Below lg the frame is portrait and the words take a far larger share of
-    it. Radii fixed for a desktop frame swallow a phone whole, so here they
-    are a share of the viewport instead.
-  */
-  @media (max-width: 1023px) {
-    .u-hero-shade {
-      --shade-w: 150vw;
-      --shade-h: 62svh;
-    }
-  }
-
-  /*
-    The same idea for the standing line in the opposite corner, at a fifth
-    the size. It only exists from lg up, where that line does.
-  */
-  .u-hero-shade-corner {
-    background: radial-gradient(
-      28rem 16rem at 100% 100%,
-      rgba(28, 26, 24, 0.92) 0%,
-      rgba(28, 26, 24, 0.85) 45%,
-      rgba(28, 26, 24, 0.66) 70%,
-      rgba(28, 26, 24, 0.34) 85%,
-      transparent 100%
-    );
-  }
-
   /* Eyebrows, status labels, RERA numbers, coordinates. */
   .u-mono {
     font-family: var(--font-mono);

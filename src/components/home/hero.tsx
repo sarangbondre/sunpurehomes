@@ -4,74 +4,63 @@ import Link from "next/link";
 export type HeroImage = { src: string; alt: string };
 
 /**
- * The landing hero: one image, full bleed, with the brand line over it.
+ * The landing hero, to the client's reference design: the brand line on the
+ * paper ground at the left, the photograph bleeding in from the right, and a
+ * soft wash between them rather than a seam.
  *
- * The type sits at the TOP of the frame, which is the picture's doing. In the
- * image the client supplied the sun is low and to the left — at 13% across
- * and 72% down — which is exactly where a bottom-left headline would stand.
- * Shading the type there would have shaded the sun, and the sun is the reason
- * the client chose the frame. So the words take the open sky above and the
- * sun keeps the foot of the picture to itself.
+ * The wash does a second job beyond looking like one canvas — it is why the
+ * header can sit over the picture with no bar of its own and stay legible.
  *
- * Paper type, and the second line in the real brand orange. --laterite
- * measures 2.95:1 on paper, which is why --accent-ink exists as a deepened
- * stand-in, but 5.17:1 on ink; over a shaded picture the colour the brand
- * actually specifies is the one that works. It is the same #f15b22 the
- * previous site gives "Thought." in "Built on Thought."
+ * One picture, not a rotation. That is a plain server component again: no
+ * state, no interval, no reduced-motion branch, and no pause control, since
+ * WCAG 2.2.2 only applies to something that moves. The home page ships no
+ * client JavaScript of its own as a result.
  *
- * One file serves every viewport because the source is square. A landscape
- * window crops it vertically, so object-position sets the vertical share and
- * keeps the building's crown in frame; a portrait window crops it
- * horizontally, so it sets the horizontal one and keeps the sun in frame.
+ * Restored on 16 September. The page went full bleed for two days — one
+ * picture edge to edge with paper type over it — and the client asked for
+ * this back, so this is that design again, with the Curve render it carried.
+ *
+ * The picture is a 70% column, and the crop is anchored left so the sun
+ * clears the wash: the wash is opaque paper at the column's left edge and
+ * gone a fifth of the way across, and the sun sits just past it. That is the
+ * one measurement to re-check if the image or the column width changes,
+ * because a sun inside the wash is a sun the client cannot see.
  */
 export function Hero({ image }: { image: HeroImage }) {
   return (
-    <section className="relative flex min-h-svh flex-col overflow-hidden bg-ink">
-      <div className="absolute inset-0">
-        <Image
-          src={image.src}
-          alt={image.alt}
-          fill
-          priority
-          fetchPriority="high"
-          sizes="100vw"
-          className="object-cover object-[0%_50%] lg:object-[50%_60%]"
-        />
-
-        {/* Shade shaped to the type and clear of the sun — see .u-hero-shade. */}
-        <div aria-hidden className="u-hero-shade absolute inset-0" />
-        <div
-          aria-hidden
-          className="u-hero-shade-corner absolute inset-0 hidden lg:block"
-        />
-        {/*
-          A short fall of shade under the header, full width. The ellipse is
-          left-anchored and the nav sits hard right, over open sky that at
-          sunrise is bright; paper type on it is marginal without this.
-        */}
-        <div
-          aria-hidden
-          className="absolute inset-x-0 top-0 h-36 bg-gradient-to-b from-ink/92 via-ink/52 via-45% to-transparent sm:h-44"
-        />
-      </div>
-
-      <div className="relative z-10 mx-auto w-full max-w-[86rem] px-6 pb-20 pt-28 sm:px-10 sm:pt-36 lg:px-16 lg:pt-40">
-        <p className="u-mono leading-[1.9] text-paper">
+    <section className="relative overflow-hidden bg-paper lg:min-h-svh">
+      {/* ── Text, over the wash */}
+      <div /*
+           The top padding clears the header, which is absolute over this
+           hero and grew when the wordmark did. At lg the block is centred
+           and the padding is only a floor — it matters on a short window.
+         */
+        className="relative z-10 flex flex-col justify-center px-6 pb-14 pt-28 sm:px-10 sm:pt-32 lg:min-h-svh lg:max-w-[42%] lg:py-0 lg:pl-16 lg:pr-10 lg:pt-32">
+        <p className="u-mono leading-[1.9] text-muted">
           Spaces for a
           <br />
           more meaningful tomorrow
         </p>
-        <span aria-hidden className="mt-5 block h-px w-20 bg-paper/40" />
+        <span aria-hidden className="mt-5 block h-px w-20 bg-line" />
 
-        <h1 className="mt-7 max-w-[16ch] text-[clamp(2.4rem,5.1vw,4.5rem)] leading-[1.06] text-paper">
+        <h1 className="mt-10 text-[clamp(2.6rem,4.8vw,4.6rem)] leading-[1.08] text-ink">
           Thoughtfully&nbsp;Built,
+          {/*
+            --laterite, the brand orange the previous site gives "Thought."
+            in "Built on Thought.", at the client's instruction on 15
+            September. On paper it measures 2.95:1, a hair under the 3:1
+            large-text floor — --accent-ink exists as the deepened stand-in
+            and clears it at 4.51:1. The client asked for this one, and
+            their own site sets it this way; the trade is recorded here so
+            nobody has to rediscover it.
+          */}
           <span className="mt-1 block text-laterite">Deeply&nbsp;Lived.</span>
         </h1>
 
-        <div className="mt-8">
+        <div className="mt-12">
           <Link
             href="/projects"
-            className="u-mono inline-flex items-center gap-4 border border-paper/60 px-7 py-5 text-paper transition-colors duration-hover ease-hover hover:border-paper hover:bg-paper hover:text-ink"
+            className="u-mono inline-flex items-center gap-4 border border-ink/25 px-7 py-5 text-ink transition-colors duration-hover ease-hover hover:border-ink hover:bg-ink hover:text-paper"
           >
             Discover our projects
             <svg
@@ -88,16 +77,51 @@ export function Hero({ image }: { image: HeroImage }) {
         </div>
       </div>
 
-      <p className="u-mono absolute bottom-10 right-10 z-10 hidden text-right leading-[2] text-paper/80 lg:block">
-        Homes
-        <br />
-        for a
-        <br />
-        brighter
-        <br />
-        tomorrow
-        <span aria-hidden className="mt-3 ml-auto block h-px w-10 bg-paper/50" />
-      </p>
+      {/* ── The photograph. In flow beneath the text on small screens; at lg it
+             fills the right of the section and washes into the paper. */}
+      <div className="relative aspect-4/3 w-full sm:aspect-16/9 lg:absolute lg:inset-y-0 lg:right-0 lg:aspect-auto lg:w-[70%]">
+        <Image
+          src={image.src}
+          alt={image.alt}
+          fill
+          priority
+          fetchPriority="high"
+          sizes="(min-width: 1024px) 70vw, 100vw"
+          className="object-cover object-left"
+        />
+
+        {/*
+          Three washes, all decorative. The first dissolves the left edge into
+          the panel. The second keeps the top light enough for the nav and the
+          WhatsApp pill to sit over the picture. The third does the same for
+          the caption in the corner — as literal rgba, because
+          var(--color-ink)/0.55 does not parse inside a gradient and was
+          being dropped silently.
+        */}
+        <div
+          aria-hidden
+          className="absolute inset-0 bg-gradient-to-b from-paper from-0% via-paper/92 via-13% to-transparent to-27% lg:bg-gradient-to-r"
+        />
+        <div
+          aria-hidden
+          className="absolute inset-x-0 top-0 h-40 bg-gradient-to-b from-paper to-transparent"
+        />
+        <div
+          aria-hidden
+          className="absolute bottom-0 right-0 hidden h-[24rem] w-[22rem] bg-[radial-gradient(ellipse_at_bottom_right,rgba(28,26,24,0.94)_0%,rgba(28,26,24,0.72)_34%,rgba(28,26,24,0.3)_58%,transparent_80%)] lg:block"
+        />
+
+        <p className="u-mono absolute bottom-9 right-8 hidden text-right leading-[2] text-paper lg:block">
+          Homes
+          <br />
+          for a
+          <br />
+          brighter
+          <br />
+          tomorrow
+          <span aria-hidden className="mt-3 ml-auto block h-px w-10 bg-paper/70" />
+        </p>
+      </div>
     </section>
   );
 }

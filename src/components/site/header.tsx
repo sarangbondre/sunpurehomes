@@ -43,12 +43,12 @@ export function SiteHeader() {
   */
   const overlay = usePathname() === "/";
   /*
-    The landing hero is a photograph with a dark foot, so over it the header
-    is set in paper. Everywhere else it sits on the paper ground and is ink.
-    The WhatsApp pill is filled either way, so its contrast never depends on
-    what is behind it.
+    Ink everywhere, including the landing page. The hero there is the split
+    design again: the header floats over the paper column on the left and
+    over the picture's own top wash on the right, both of which are paper.
+    It was set in paper for the two days the hero ran full bleed on a dark
+    picture; that is the condition to restore it under, and nothing else.
   */
-  const onImage = overlay;
 
   return (
     <header
@@ -76,7 +76,7 @@ export function SiteHeader() {
               overlay
                 ? "h-9 min-[400px]:h-11 sm:h-15 lg:h-18"
                 : "h-8 min-[400px]:h-10 sm:h-13 lg:h-15"
-            } ${onImage ? "text-paper" : "text-ink"}`}
+            } text-ink`}
           />
         </Link>
 
@@ -88,11 +88,7 @@ export function SiteHeader() {
                 <li key={item.href}>
                   <Link
                     href={item.href}
-                    className={`whitespace-nowrap text-[0.8125rem] transition-colors duration-hover ease-hover min-[400px]:text-[0.875rem] sm:text-[0.95rem] ${
-                      onImage
-                        ? "text-paper hover:text-laterite"
-                        : "text-ink hover:text-accent-ink"
-                    }`}
+                    className="whitespace-nowrap text-ink transition-colors duration-hover ease-hover hover:text-accent-ink text-[0.8125rem] min-[400px]:text-[0.875rem] sm:text-[0.95rem]"
                   >
                     {item.label}
                   </Link>
@@ -102,7 +98,7 @@ export function SiteHeader() {
           </nav>
 
           <WhatsAppPill className="inline-flex" />
-          <MenuPanel links={MORE} tone={onImage ? "paper" : "ink"} />
+          <MenuPanel links={MORE} tone="ink" />
         </div>
       </div>
     </header>
