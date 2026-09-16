@@ -44,17 +44,23 @@
   /* Meaning-bearing */
   --color-canopy: #6f7b5a;
   /*
-    The brand orange from the existing site, now the primary accent.
-    It still carries the §8 meaning of laterite — villas, and "held" — so
-    cards, chips, pins and the 3D scenes all follow.
+    Ferrari red — Rosso Corsa — the primary accent since 16 September 2026,
+    at the client's instruction. It replaced the previous site's brand orange
+    (#f15b22). The token keeps its old name because it still carries the §8
+    meaning of laterite — villas, and "held" — so cards, chips, pins and the
+    3D scenes all follow.
 
-    On the beige ground it measures 2.95:1, which is under the 3:1 floor even
-    for large text. So it is used for fills, borders, rules and display type,
-    and --accent-ink below stands in wherever orange has to be small text.
+    On --paper it measures 4.86:1, which clears AA even for small text; the
+    orange managed only 2.95:1.
   */
-  --color-laterite: #f15b22;
-  /* The same orange, deepened to 4.50:1 — AA for body text on --paper. */
-  --color-accent-ink: #c0450f;
+  --color-laterite: #d40000;
+  /*
+    The accent for text and controls. The same red, because Rosso Corsa
+    already passes on --paper — the orange needed a deepened stand-in
+    (#c0450f). Kept as its own token so it can be deepened again if red text
+    ever has to sit on a darker ground: on --paper-2 this red is 4.33:1.
+  */
+  --color-accent-ink: #d40000;
   --color-stone: #c4bcac;
   --color-mist: #ded6c6;
 

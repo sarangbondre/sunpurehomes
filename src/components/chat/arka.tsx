@@ -56,7 +56,7 @@ export function SunMark({ className = "" }: { className?: string }) {
 /**
  * The launcher, fixed bottom-right on every page, and the panel it opens.
  *
- * Made to be noticed, at the client's request: the brand orange rather than
+ * Made to be noticed, at the client's request: the accent red rather than
  * ink, a second line saying what it is for, a sun that pulses three times on
  * arrival, and a greeting that appears once per visit. The greeting sits
  * beside the launcher on wide screens, not above it, so the corner of the
@@ -161,11 +161,10 @@ export function Arka({ projects }: { projects: readonly ProjectOption[] }) {
           aria-controls={loaded ? PANEL_ID : undefined}
           onClick={() => (open ? setOpen(false) : openChat())}
           /*
-            --accent-ink, not --laterite: paper type on the brand orange
-            measures 2.95:1, on the deepened stand-in 4.51:1. The sun sits on
-            a paper disc in the same colour, for the same reason.
+            The accent red, with paper type on it at 4.86:1. The sun sits on a
+            paper disc in the same red, which reads at the same ratio.
           */
-          className="inline-flex shrink-0 items-center gap-3 rounded-full bg-accent-ink py-2 pl-2 pr-5 text-paper shadow-[0_10px_30px_rgba(192,69,15,0.38)] transition-colors duration-hover ease-hover hover:bg-ink sm:py-2.5 sm:pl-2.5 sm:pr-6"
+          className="inline-flex shrink-0 items-center gap-3 rounded-full bg-accent-ink py-2 pl-2 pr-5 text-paper shadow-[0_10px_30px_rgba(212,0,0,0.32)] transition-colors duration-hover ease-hover hover:bg-ink sm:py-2.5 sm:pl-2.5 sm:pr-6"
         >
           <span className="relative flex size-9 items-center justify-center rounded-full bg-paper sm:size-10">
             {!open && (

@@ -53,13 +53,9 @@ export function Hero({ image }: { image: HeroImage }) {
         <h1 className="mt-10 text-[clamp(2.6rem,4.8vw,4.6rem)] leading-[1.08] text-ink">
           Thoughtfully&nbsp;Built,
           {/*
-            --laterite, the brand orange the previous site gives "Thought."
-            in "Built on Thought.", at the client's instruction on 15
-            September. On paper it measures 2.95:1, a hair under the 3:1
-            large-text floor — --accent-ink exists as the deepened stand-in
-            and clears it at 4.51:1. The client asked for this one, and
-            their own site sets it this way; the trade is recorded here so
-            nobody has to rediscover it.
+            --laterite, Ferrari red since 16 September at the client's
+            instruction (it was the previous site's orange before that).
+            4.86:1 on paper, so the contrast shortfall the orange had is gone.
           */}
           <span className="mt-1 block text-laterite">Deeply&nbsp;Lived.</span>
         </h1>

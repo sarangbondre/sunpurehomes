@@ -21,7 +21,7 @@ const FALLBACK: Record<string, string> = {
   "--color-paper-2": "#eae3d5",
   "--color-line": "#ded5c4",
   "--color-canopy": "#6f7b5a",
-  "--color-laterite": "#b0634a",
+  "--color-laterite": "#d40000",
   "--color-stone": "#c4bcac",
   "--color-mist": "#ded6c6",
 };
