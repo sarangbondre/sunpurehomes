@@ -115,3 +115,26 @@ describe("guardStream whitespace", () => {
     );
   });
 });
+
+describe("guardStream without a working enquiry form", () => {
+  const collectWith = async (source: AsyncIterable<string>) => {
+    const out: ArkaEvent[] = [];
+    for await (const e of guardStream(source, { leadForm: false })) out.push(e);
+    return out;
+  };
+
+  it("turns a request for the form into the contact buttons", async () => {
+    const events = await collectWith(chunks("Happy to arrange that. [[lead]]"));
+    assert.equal(events.some((e) => e.t === "lead"), false);
+    assert.ok(events.some((e) => e.t === "handoff"));
+  });
+
+  it("does not tell a price-seeker to leave details", async () => {
+    const events = await collectWith(chunks("It is ₹85 lakh."));
+    const replaced = events.find((e) => e.t === "replace") as { v: string } | undefined;
+    assert.ok(replaced);
+    assert.doesNotMatch(replaced.v, /leave your details/i);
+    assert.equal(events.some((e) => e.t === "lead"), false);
+    assert.ok(events.some((e) => e.t === "handoff" && e.reason === "price"));
+  });
+});

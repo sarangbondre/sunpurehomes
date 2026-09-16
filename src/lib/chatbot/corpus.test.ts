@@ -76,3 +76,12 @@ describe("corpus", () => {
     assert.equal(PORTFOLIO_INDEX.split("\n").length, allBriefs().length + 1);
   });
 });
+
+describe("systemPrompt and the enquiry form", () => {
+  it("offers the form only when it can send", async () => {
+    const { systemPrompt, LEAD } = await import("@/lib/chatbot/persona");
+    assert.ok(systemPrompt([], undefined, true).includes(LEAD));
+    assert.equal(systemPrompt([], undefined, false).includes(LEAD), false);
+    assert.doesNotMatch(systemPrompt([], undefined, false), /\{\{/);
+  });
+});

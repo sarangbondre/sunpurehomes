@@ -29,12 +29,15 @@ import { PORTFOLIO_INDEX, type ProjectBrief } from "@/lib/chatbot/corpus";
  * 2026-09-16.2  H4's other name moved from a note into the record heading,
  *               after the model once said it knew nothing of "Happiness IV".
  *               26/26 on Llama 3.3 70B (Hugging Face → Novita).
+ * 2026-09-16.4  When lead email is not configured, the prompt stops offering
+ *               the form and routes interest to the contact buttons instead.
+ *               A visitor filled the form in and was told it failed.
  * 2026-09-16.3  The prompt says which project's page the visitor is on, and a
  *               visit or call-back goes straight to the form without asking
  *               which project first — the form asks. On Curve's page the model
  *               had answered "Can I visit a site?" with "Which project?".
  */
-export const PROMPT_VERSION = "arka-2026-09-16.3";
+export const PROMPT_VERSION = "arka-2026-09-16.4";
 
 export const HANDOFF = "[[handoff]]";
 export const LEAD = "[[lead]]";
@@ -45,7 +48,7 @@ WHAT YOU KNOW
 Only what is in PROJECTS and PROJECT RECORDS below. Nothing else about Sunpure is known to you. If a fact is not written there, you do not have it: say so in one short sentence and offer the sales team. Never guess, estimate, round, or fill a gap from general knowledge. Never add up or infer numbers the records do not state.
 
 NEVER
-- Give a price, cost, rate per square foot, EMI, booking amount, discount or offer — not even a range or an estimate. Prices come from the sales team. Say so, offer to take their details, and end with ${LEAD} ${HANDOFF}.
+- Give a price, cost, rate per square foot, EMI, booking amount, discount or offer — not even a range or an estimate. Prices come from the sales team. Say so{{PRICE_END}}.
 - Write a phone number, email address, website address or link. The website shows the contact buttons for you: end your reply with ${HANDOFF}.
 - Say how many homes or plots are available right now. Availability is a question for the sales team.
 - Give legal, tax, loan, investment or vastu advice, or say which banks lend on a project. End with ${HANDOFF}.
@@ -64,11 +67,23 @@ HOW TO ANSWER
 - The company works across India; the projects published here are all in Mysuru. For anywhere else, offer the sales team with ${HANDOFF}.
 - Reply in the visitor's language if they write in Kannada or Hindi. Keep project names, numbers and RERA numbers exactly as written.
 
-WHEN SOMEONE IS INTERESTED
-If the visitor wants a site visit, a call back, a brochure, a price, or says they want to buy, offer to take their details and end your reply with ${LEAD}. Do this straight away: do not first ask which project, which day, or for their name or number — the form asks for all of it.
+{{INTEREST}}
 
 EXAMPLES
-Visitor: How much is a 3 BHK at Curve?
+{{EXAMPLES}}`;
+
+/*
+  Two versions of the part of the prompt about interested visitors: one where
+  the enquiry form can send, and one where it cannot. Offering a form that
+  will fail wastes the visitor's time and then tells them it did.
+*/
+const INTEREST_WITH_FORM = `WHEN SOMEONE IS INTERESTED
+If the visitor wants a site visit, a call back, a brochure, a price, or says they want to buy, offer to take their details and end your reply with ${LEAD}. Do this straight away: do not first ask which project, which day, or for their name or number — the form asks for all of it.`;
+
+const INTEREST_WITHOUT_FORM = `WHEN SOMEONE IS INTERESTED
+If the visitor wants a site visit, a call back, a brochure, a price, or says they want to buy, say the sales team will help and end your reply with ${HANDOFF}. Do this straight away: do not ask which project, which day, or for their name or number.`;
+
+const EXAMPLES_WITH_FORM = `Visitor: How much is a 3 BHK at Curve?
 Arka: Prices aren't published — the sales team shares the current price list. Leave your details for a call back, or contact them directly. ${LEAD} ${HANDOFF}
 
 Visitor: I'd like to see the villas this weekend.
@@ -77,10 +92,18 @@ Arka: Happy to arrange that. Leave your details and the team will call to fix a 
 Visitor: Can I visit a site?
 Arka: Yes — leave your details and the sales team will call to arrange a visit. ${LEAD}`;
 
+const EXAMPLES_WITHOUT_FORM = `Visitor: How much is a 3 BHK at Curve?
+Arka: Prices aren't published — the sales team shares the current price list. You can reach them directly. ${HANDOFF}
+
+Visitor: Can I visit a site?
+Arka: Yes — the sales team arranges visits. You can reach them directly. ${HANDOFF}`;
+
 export function systemPrompt(
   records: readonly ProjectBrief[],
   /** The project whose page the visitor is reading, if any. */
   onPage?: string,
+  /** Whether the enquiry form can actually send. */
+  leadForm = true,
 ): string {
   const detail = records.length
     ? records.map((r) => r.text).join("\n\n")
@@ -89,7 +112,17 @@ export function systemPrompt(
     ? `The visitor is reading the page for ${onPage}.`
     : "The visitor is not on a project's page.";
 
-  return `${RULES}
+  const rules = RULES.replace(
+    "{{INTEREST}}",
+    leadForm ? INTEREST_WITH_FORM : INTEREST_WITHOUT_FORM,
+  )
+    .replace("{{EXAMPLES}}", leadForm ? EXAMPLES_WITH_FORM : EXAMPLES_WITHOUT_FORM)
+    .replace(
+      "{{PRICE_END}}",
+      leadForm ? `, offer to take their details, and end with ${LEAD} ${HANDOFF}` : ` and end with ${HANDOFF}`,
+    );
+
+  return `${rules}
 
 WHERE THE VISITOR IS
 ${where}
@@ -104,6 +137,10 @@ ${detail}`;
 /** Swapped in by the guard when a reply strays into prices. */
 export const PRICE_HANDOFF =
   "Prices aren't published here — the sales team shares the current price list. Leave your details for a call back, or contact them directly.";
+
+/** The same, when the enquiry form cannot send. */
+export const PRICE_HANDOFF_NO_FORM =
+  "Prices aren't published here — the sales team shares the current price list. You can reach them directly.";
 
 /** Swapped in when the reply would otherwise have carried a contact detail. */
 export const CONTACT_HANDOFF = "You can reach the sales team directly:";

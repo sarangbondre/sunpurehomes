@@ -3,6 +3,7 @@ import {
   HANDOFF,
   LEAD,
   PRICE_HANDOFF,
+  PRICE_HANDOFF_NO_FORM,
 } from "@/lib/chatbot/persona";
 
 /**
@@ -113,6 +114,12 @@ function lastBoundary(text: string): number {
 
 export async function* guardStream(
   source: AsyncIterable<string>,
+  /**
+   * Whether the enquiry form can send. When it cannot, a request for the form
+   * becomes a request for the contact buttons — a visitor should never fill
+   * in a form that is going to fail.
+   */
+  { leadForm = true }: { leadForm?: boolean } = {},
 ): AsyncGenerator<ArkaEvent> {
   let pending = "";
   let handoff: Extract<ArkaEvent, { t: "handoff" }>["reason"] | null = null;
@@ -122,12 +129,15 @@ export async function* guardStream(
   function* release(piece: string): Generator<ArkaEvent, boolean> {
     const marked = takeMarkers(piece);
     if (marked.handoff) handoff ??= "model";
-    if (marked.lead) lead = true;
+    if (marked.lead) {
+      if (leadForm) lead = true;
+      else handoff ??= "model";
+    }
 
     if (containsPrice(marked.text)) {
       // Someone asking about price is the warmest lead there is.
-      yield { t: "replace", v: PRICE_HANDOFF };
-      yield { t: "lead" };
+      yield { t: "replace", v: leadForm ? PRICE_HANDOFF : PRICE_HANDOFF_NO_FORM };
+      if (leadForm) yield { t: "lead" };
       yield { t: "handoff", reason: "price" };
       yield { t: "done" };
       return false;

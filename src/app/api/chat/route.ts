@@ -147,12 +147,13 @@ export async function POST(request: Request): Promise<Response> {
   let servedBy = config.model;
   const replies = guardStream(
     streamReply(config, {
-      system: systemPrompt(records, onPage),
+      system: systemPrompt(records, onPage, config.lead.ready),
       turns,
       signal: upstream.signal,
       onUsage: (u) => (usage = u),
       onServed: (m) => (servedBy = m),
     }),
+    { leadForm: config.lead.ready },
   );
 
   const stream = new ReadableStream<Uint8Array>({
