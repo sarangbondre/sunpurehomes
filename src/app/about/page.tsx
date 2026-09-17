@@ -10,7 +10,7 @@ import { site } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "About",
-  description: `Who ${site.name} are, how they build, and the nine developments they have delivered across ${site.city}.`,
+  description: `Who ${site.name} are, how they build, and the developments they have delivered across ${site.city}.`,
 };
 
 /**
@@ -34,7 +34,10 @@ export default function AboutPage() {
   return (
     <main className="mx-auto max-w-[86rem] px-6 pb-8 sm:px-10 lg:px-16">
       <header className="max-w-[52rem] pb-6 pt-16 sm:pt-24">
-        <p className="u-mono text-accent-ink">About</p>
+        {/* The same size as the section headings below, at the client's request. */}
+        <p className="u-mono text-[1.05rem] leading-snug tracking-[0.14em] text-laterite sm:text-[1.2rem]">
+          About
+        </p>
         {/*
           This read "We build in Mysuru. Only in Mysuru." until 15 September
           2026, when the client asked for it to say the practice works across
@@ -115,7 +118,15 @@ export default function AboutPage() {
             <PhoneIcon className="size-4" />
             {site.contact.phoneDisplay}
           </a>
-          <a href={mailtoHref} className="u-cta">
+          {/*
+            Always one line, at the client's request. Lowercase and untracked,
+            as an address is written, and sized with the screen so it fits a
+            320px phone without breaking.
+          */}
+          <a
+            href={mailtoHref}
+            className="u-cta whitespace-nowrap px-4 text-[clamp(0.7rem,3.9vw,0.9rem)] normal-case tracking-[0.02em] sm:px-6"
+          >
             <MailIcon className="size-4" />
             {site.contact.email}
           </a>
@@ -125,7 +136,7 @@ export default function AboutPage() {
             href="/projects"
             className="u-mono text-accent-ink underline underline-offset-4"
           >
-            See all {projects.length} projects
+            See all projects
           </Link>
         </p>
       </Section>

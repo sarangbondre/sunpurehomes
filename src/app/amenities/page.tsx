@@ -1,11 +1,12 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { AmenityIcon } from "@/components/brand/amenity-icons";
 import { getAllProjects } from "@/lib/content";
 import { site } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Amenities",
-  description: `What comes with a ${site.name} home — every amenity across the nine developments, and which ones carry it.`,
+  description: `What comes with a ${site.name} home — every amenity across our developments, and which ones carry it.`,
 };
 
 /**
@@ -44,7 +45,7 @@ export default function AmenitiesPage() {
     <main className="mx-auto max-w-[86rem] px-6 py-16 sm:px-10 sm:py-20 lg:px-16">
       <header className="max-w-[52rem]">
         <p className="u-mono text-canopy">
-          {amenities.length} amenities · {projects.length} developments
+          {amenities.length} amenities
         </p>
         <h1 className="mt-6 text-[clamp(2.5rem,6vw,4.5rem)]">
           What comes <em className="italic">with the home.</em>
@@ -62,7 +63,12 @@ export default function AmenitiesPage() {
             key={amenity.name}
             className="grid gap-x-8 gap-y-3 border-b border-line py-6 sm:grid-cols-[1fr_auto] sm:items-baseline"
           >
-            <span className="font-display text-2xl">{amenity.name}</span>
+            <span className="flex items-center gap-4 font-display text-2xl">
+              <span className="flex size-12 shrink-0 items-center justify-center rounded-full bg-paper-2 text-canopy">
+                <AmenityIcon name={amenity.name} className="size-7" />
+              </span>
+              {amenity.name}
+            </span>
             <span className="flex flex-wrap gap-x-2 gap-y-1 sm:justify-end">
               {amenity.slugs.map((slug, i) => (
                 <span key={slug} className="u-mono text-muted">

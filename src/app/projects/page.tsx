@@ -67,11 +67,16 @@ export default async function ProjectsPage({
           <FilterBar filters={filters} facets={facets} sort={sort} />
         </div>
 
-        <div className="mt-14 flex flex-wrap items-end justify-between gap-x-8 gap-y-4">
-          {/* Announced when a filter changes, so the result is not silent. */}
-          <h2 className="font-display text-[clamp(2rem,3.4vw,2.75rem)] leading-none" aria-live="polite">
-            {results.length} {results.length === 1 ? "Project" : "Projects"}
-          </h2>
+        {/*
+          No visible count, at the client's request. The heading stays for
+          screen readers — the cards are h3s — and the count is still
+          announced when a filter changes, so the result is not silent.
+        */}
+        <div className="mt-10 flex flex-wrap items-center justify-end gap-x-8 gap-y-4">
+          <h2 className="sr-only">Projects</h2>
+          <p className="sr-only" aria-live="polite">
+            {results.length} {results.length === 1 ? "project" : "projects"} shown
+          </p>
           <div className="flex items-center gap-3">
             <SelectNav
               name="sort"

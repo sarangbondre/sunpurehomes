@@ -5,6 +5,7 @@
  * set larger, and as the h2 the section would otherwise not have. The About
  * page runs this way at the client's instruction: its three titles were
  * dropped and its three labels asked to carry the sections on their own.
+ * Those headings are the accent red (17 September), as "Deeply Lived." is.
  */
 export function Section({
   eyebrow,
@@ -30,7 +31,7 @@ export function Section({
       className={`scroll-mt-24 border-t border-line py-14 sm:py-20 ${className}`}
     >
       {title === undefined ? (
-        <h2 className="u-mono text-[1.05rem] leading-snug tracking-[0.14em] text-canopy sm:text-[1.2rem]">
+        <h2 className="u-mono text-[1.05rem] leading-snug tracking-[0.14em] text-laterite sm:text-[1.2rem]">
           {eyebrow}
         </h2>
       ) : (

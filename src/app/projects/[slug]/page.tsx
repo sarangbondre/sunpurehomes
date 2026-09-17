@@ -16,6 +16,7 @@ import {
   getProject,
   getProjectSlugs,
 } from "@/lib/content";
+import { AmenityIcon } from "@/components/brand/amenity-icons";
 import { mailtoHref, projectEnquiryMessage, telHref, whatsappHref } from "@/lib/links";
 import { formatIndianNumber } from "@/lib/format";
 import { singularNoun } from "@/lib/nouns";
@@ -273,13 +274,12 @@ export default async function ProjectPage({
               {project.amenities.map((a) => (
                 <li
                   key={a.name}
-                  className="flex gap-3 border-b border-line pb-4 text-lg"
+                  className="flex items-start gap-4 border-b border-line pb-4 text-lg"
                 >
-                  <span
-                    aria-hidden
-                    className="mt-2.5 size-1.5 shrink-0 rounded-full bg-canopy"
-                  />
-                  <span>
+                  <span className="flex size-12 shrink-0 items-center justify-center rounded-full bg-paper-2 text-canopy">
+                    <AmenityIcon name={a.name} className="size-7" />
+                  </span>
+                  <span className="self-center">
                     {a.name}
                     {a.description && (
                       <span className="block text-base text-ink-soft">

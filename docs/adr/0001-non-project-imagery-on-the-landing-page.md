@@ -51,6 +51,13 @@ only what is in the frame. The original file, if the client has it, should
 replace `public/images/pages/projects-hero.jpg` — the cut is 1024px wide,
 enlarged 2x, and soft on large screens.
 
+**Amended 17 September 2026.** The landing page is full bleed again at the
+client's instruction: the Curve render fills the screen, with the brand line
+over a paper haze at the left. Curve is a Sunpure development, so this image
+is outside this decision's concern; the note is here because the layout
+changed. The file is 1440px wide and soft on large screens — the client's
+original, at `public/images/home/curve-sunrise.jpg`, would sharpen it.
+
 ## Consequences
 
 - A visitor may still infer the homes are Sunpure's. That risk is accepted by

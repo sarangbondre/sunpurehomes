@@ -4,73 +4,87 @@ import Link from "next/link";
 export type HeroImage = { src: string; alt: string };
 
 /**
- * The landing hero, to the client's reference design: the brand line on the
- * paper ground at the left, the photograph bleeding in from the right, and a
- * soft wash between them rather than a seam.
+ * The landing page: one picture, edge to edge and the full height of the
+ * screen, with the brand line over it.
  *
- * The wash does a second job beyond looking like one canvas — it is why the
- * header can sit over the picture with no bar of its own and stay legible.
+ * Full bleed at the client's instruction on 17 September — "the entire
+ * landing page has to be full of only image". It replaces the split design
+ * (paper column left, picture right) that ran from 16 September.
  *
- * One picture, not a rotation. That is a plain server component again: no
- * state, no interval, no reduced-motion branch, and no pause control, since
- * WCAG 2.2.2 only applies to something that moves. The home page ships no
- * client JavaScript of its own as a result.
+ * The type is ink and the accent red, as before, so it sits on light rather
+ * than dark: a paper haze falls from the top-left corner, over the sky, and
+ * fades out well before the building. It is what keeps the headline, the
+ * red "Deeply Lived." (4.86:1 on paper) and the header readable on every
+ * crop, and it is the only thing laid over the picture on the left.
  *
- * Restored on 16 September. The page went full bleed for two days — one
- * picture edge to edge with paper type over it — and the client asked for
- * this back, so this is that design again, with the Curve render it carried.
+ * The source is 1440px wide — the client's current file. A larger original
+ * at the same path (see src/lib/home-showcase.ts) sharpens this with no code
+ * change; next/image serves the width each screen needs.
  *
- * The picture is a 70% column carrying the first grading of the Curve
- * render, where the sun sits low and to the RIGHT of the building. That is
- * the version the client picked out of two, and it is the one the crop is
- * built around.
- *
- * The column is much taller than the frame is deep, so on most windows the
- * picture is cropped hard from the sides and only a short window shows the
- * whole width. Anchored at 75% rather than left, what survives that crop is
- * the building, the sun behind it and the treeline — anchored left the sun
- * is the first thing to go. That is the measurement to re-check if the
- * image or the column width ever changes: a sun outside the crop, or inside
- * the wash, is a sun the client cannot see.
+ * One picture, not a rotation: a plain server component with no client
+ * JavaScript, and nothing that moves, so WCAG 2.2.2 does not apply.
  */
 export function Hero({ image }: { image: HeroImage }) {
   return (
-    <section className="relative overflow-hidden bg-paper lg:min-h-svh">
-      {/* ── Text, over the wash */}
-      <div /*
-           The top padding clears the header, which is absolute over this
-           hero and grew when the wordmark did. At lg the block is centred
-           and the padding is only a floor — it matters on a short window.
-         */
-        className="relative z-10 flex flex-col justify-center px-6 pb-14 pt-28 sm:px-10 sm:pt-32 lg:min-h-svh lg:max-w-[46%] lg:pb-40 lg:[@media(max-height:700px)]:pb-16 lg:pl-16 lg:pr-10 lg:pt-32">
-        <p className="u-mono leading-[1.9] text-muted">
+    <section className="relative isolate min-h-svh overflow-hidden bg-paper">
+      <Image
+        src={image.src}
+        alt={image.alt}
+        fill
+        priority
+        fetchPriority="high"
+        sizes="100vw"
+        /*
+          The building sits just left of centre, the sun right of it. On a
+          portrait phone the frame keeps a narrow strip; 62% holds the
+          building's curved corner and the sun together.
+        */
+        className="-z-10 object-cover object-[62%_center] lg:object-center"
+      />
+
+      {/*
+        Two washes, both decorative. The first is the haze the type sits on:
+        from the top-left on wide screens, from the top on phones, where the
+        text runs full width above the building. The second clears the top
+        edge for the header on the right, where the menu sits.
+      */}
+      <div
+        aria-hidden
+        className="absolute inset-0 -z-10 bg-gradient-to-b from-paper/94 from-0% via-paper/88 via-40% to-transparent to-62% lg:bg-[radial-gradient(ellipse_62%_85%_at_0%_45%,rgba(244,240,231,0.95)_0%,rgba(244,240,231,0.86)_46%,rgba(244,240,231,0.45)_72%,transparent_100%)]"
+      />
+      <div
+        aria-hidden
+        className="absolute inset-x-0 top-0 -z-10 h-36 bg-gradient-to-b from-paper/90 via-paper/55 to-transparent"
+      />
+
+      {/*
+        The top padding clears the header, which is absolute over this hero;
+        the bottom padding clears the footer, which sits over its foot. On a
+        short phone the section grows rather than letting the two overlap.
+        At lg the block is centred and the padding is only a floor.
+      */}
+      <div className="flex min-h-svh flex-col px-6 pb-[23rem] pt-28 sm:px-10 sm:pb-52 sm:pt-32 lg:max-w-[50%] lg:justify-center lg:pb-32 lg:pl-16 lg:pr-10 lg:pt-28 lg:[@media(max-height:700px)]:pb-28">
+        <p className="u-mono leading-[1.9] text-ink-soft">
           Spaces for a
           <br />
           more meaningful tomorrow
         </p>
-        <span aria-hidden className="mt-5 block h-px w-20 bg-line" />
+        <span aria-hidden className="mt-5 block h-px w-20 bg-ink/25" />
 
         {/*
-          Sized to its column. "Thoughtfully Built," never wraps and measures
-          6.21 times the font size, so the vw factor is the largest that
-          still fits the column at the narrowest width it applies to — 320px
-          on a phone, 1024px at lg, where the column is 46% of the screen.
-          Change the column or the words and re-measure.
+          "Thoughtfully Built," never wraps and measures 6.21 times the font
+          size, so the vw factor is the largest that still fits at 320px on a
+          phone and in half the screen at lg. Change the words and re-measure.
         */}
-        <h1 className="mt-10 text-[clamp(2.6rem,12.5vw,4.5rem)] leading-[1.08] text-ink lg:text-[clamp(3rem,5.6vw,6rem)]">
+        <h1 className="mt-10 text-[clamp(2.6rem,12.5vw,4.5rem)] leading-[1.08] text-ink lg:text-[clamp(3rem,6vw,6.5rem)]">
           Thoughtfully&nbsp;Built,
-          {/*
-            --laterite, Ferrari red since 16 September at the client's
-            instruction (it was the previous site's orange before that).
-            4.86:1 on paper, so the contrast shortfall the orange had is gone.
-          */}
           <span className="mt-1 block text-laterite">Deeply&nbsp;Lived.</span>
         </h1>
 
         <div className="mt-12">
           <Link
             href="/projects"
-            className="u-mono inline-flex items-center gap-4 border border-ink/25 px-7 py-5 text-ink transition-colors duration-hover ease-hover hover:border-ink hover:bg-ink hover:text-paper"
+            className="u-mono inline-flex items-center gap-4 border border-ink/30 bg-paper/60 px-7 py-5 text-ink backdrop-blur-[2px] transition-colors duration-hover ease-hover hover:border-ink hover:bg-ink hover:text-paper"
           >
             Discover our projects
             <svg
@@ -87,57 +101,27 @@ export function Hero({ image }: { image: HeroImage }) {
         </div>
       </div>
 
-      {/* ── The photograph. In flow beneath the text on small screens; at lg it
-             fills the right of the section and washes into the paper. */}
-      <div className="relative aspect-4/3 w-full sm:aspect-16/9 lg:absolute lg:inset-y-0 lg:right-0 lg:aspect-auto lg:w-[70%]">
-        <Image
-          src={image.src}
-          alt={image.alt}
-          fill
-          priority
-          fetchPriority="high"
-          sizes="(min-width: 1024px) 70vw, 100vw"
-          className="object-cover object-[75%_center]"
-        />
-
-        {/*
-          Three washes, all decorative. The first dissolves the left edge into
-          the panel. The second keeps the top light enough for the nav and the
-          WhatsApp pill to sit over the picture. The third does the same for
-          the caption in the corner — sized to its own box so it is fully
-          clear at the box's edges, which otherwise show as a hard rectangle —
-          as literal rgba, because
-          var(--color-ink)/0.55 does not parse inside a gradient and was
-          being dropped silently.
-        */}
-        <div
-          aria-hidden
-          className="absolute inset-0 bg-gradient-to-b from-paper from-0% via-paper/92 via-13% to-transparent to-27% lg:bg-gradient-to-r"
-        />
-        <div
-          aria-hidden
-          className="absolute inset-x-0 top-0 h-40 bg-gradient-to-b from-paper to-transparent"
-        />
-        <div
-          aria-hidden
-          className="absolute bottom-0 right-0 hidden h-[32rem] w-[24rem] bg-[radial-gradient(ellipse_100%_100%_at_bottom_right,rgba(28,26,24,0.94)_0%,rgba(28,26,24,0.8)_36%,rgba(28,26,24,0.42)_62%,rgba(28,26,24,0.12)_84%,transparent_100%)] lg:block"
-        />
-
-        {/*
-          Raised clear of the Arka launcher, which is fixed to this corner of
-          every page and was sitting on top of "tomorrow".
-        */}
-        <p className="u-mono absolute bottom-32 right-8 hidden text-right leading-[2] text-paper lg:block">
-          Homes
-          <br />
-          for a
-          <br />
-          brighter
-          <br />
-          tomorrow
-          <span aria-hidden className="mt-3 ml-auto block h-px w-10 bg-paper/70" />
-        </p>
-      </div>
+      {/*
+        The corner caption, on its own soft shade in the water's reflection,
+        raised clear of the footer and the WhatsApp button, which both sit
+        in this corner. The shade is sized to its box so no edge shows, and written as
+        literal rgba because a colour token with an alpha does not parse
+        inside a gradient.
+      */}
+      <div
+        aria-hidden
+        className="absolute bottom-0 right-0 -z-10 hidden h-[32rem] w-[24rem] bg-[radial-gradient(ellipse_100%_100%_at_bottom_right,rgba(28,26,24,0.94)_0%,rgba(28,26,24,0.8)_36%,rgba(28,26,24,0.42)_62%,rgba(28,26,24,0.12)_84%,transparent_100%)] lg:block"
+      />
+      <p className="u-mono absolute bottom-40 right-8 hidden text-right leading-[2] text-paper lg:block">
+        Homes
+        <br />
+        for a
+        <br />
+        brighter
+        <br />
+        tomorrow
+        <span aria-hidden className="mt-3 ml-auto block h-px w-10 bg-paper/70" />
+      </p>
     </section>
   );
 }

@@ -12,10 +12,7 @@ import { site } from "@/lib/site";
  * Three items, at the client's instruction: About, Projects and WhatsApp,
  * with no Home link — the wordmark carries that, as it does on most sites.
  *
- * The reference design briefly put five here. Our Philosophy, Amenities and
- * Contact moved into the footer rather than being deleted: /amenities is a
- * real page and the two anchors point at real sections of /about, so
- * dropping the links entirely would have orphaned them.
+ * The rest of the site is in the menu beside them.
  */
 const NAV = [
   { href: "/about", label: "About" },
@@ -23,33 +20,28 @@ const NAV = [
 ] as const;
 
 /**
- * Everything else, behind the three-line button. These were in the footer
- * only; the client asked for them at the top as well, on every width.
+ * Every page, behind the three-line button. The footer that used to carry
+ * these was removed at the client's instruction on 17 September, so this is
+ * now the one place Amenities, the About sections and Privacy are linked
+ * from — About and Projects repeat here so the menu reads as complete.
  */
-const MORE = [
+const MENU = [
+  { href: "/about", label: "About" },
+  { href: "/projects", label: "Projects" },
   { href: "/amenities", label: "Amenities" },
   { href: "/about#philosophy", label: "Our philosophy" },
-  { href: "/about#contact", label: "Contact & visits" },
+  { href: "/about#contact", label: "Arrange a visit" },
+  { href: "/privacy", label: "Privacy" },
 ] as const;
 
 export function SiteHeader() {
-  /*
-    The landing hero is a full-bleed photograph at every width now, so the
-    header sits over it with no bar of its own at every width too. It was
-    transparent only from lg while the picture was a column; leaving that in
-    place would have put paper type on a paper bar on phones, which is
-    invisible. Everywhere else it is the sticky bar — transparent over
-    scrolling content would be unreadable.
-  */
   const pathname = usePathname();
+  const isHome = pathname === "/";
   // Pages whose opening picture runs under the header.
-  const overlay = pathname === "/" || pathname === "/projects";
+  const overlay = isHome || pathname === "/projects";
   /*
-    Ink everywhere, including the landing page. The hero there is the split
-    design again: the header floats over the paper column on the left and
-    over the picture's own top wash on the right, both of which are paper.
-    It was set in paper for the two days the hero ran full bleed on a dark
-    picture; that is the condition to restore it under, and nothing else.
+    Ink everywhere. Where the header overlays a picture — the landing page
+    and /projects — the picture carries a paper haze across its top for it.
   */
 
   return (
@@ -61,25 +53,28 @@ export function SiteHeader() {
       }
     >
       {/*
-        A taller bar on the landing page, where it floats over the picture and
-        costs no layout: the client asked for a bigger wordmark there, and a
-        bigger wordmark needs the room. Everywhere else the bar is sticky and
-        pushes the page down, so it grows by less.
+        The full lockup — mark and name — on the landing page only, at the
+        client's instruction on 17 September, and a step smaller than it was.
+        Every other page carries the mark alone.
       */}
       <div
         className={`mx-auto flex items-center gap-2 px-3 min-[400px]:px-5 sm:px-10 lg:px-16 ${
-          overlay ? "h-24 sm:h-28 lg:h-32" : "h-20 sm:h-24 lg:h-28"
+          isHome ? "h-20 sm:h-24 lg:h-28" : "h-20 sm:h-22 lg:h-24"
         }`}
       >
         <Link href="/" className="shrink-0" aria-label={`${site.name} — home`}>
-          <Logo
-            decorative
-            className={`w-auto ${
-              overlay
-                ? "h-9 min-[360px]:h-10 min-[400px]:h-12 sm:h-18 lg:h-22"
-                : "h-9 min-[400px]:h-11 sm:h-15 lg:h-18"
-            } text-ink`}
-          />
+          {isHome ? (
+            <Logo
+              decorative
+              className="h-9 w-auto text-ink min-[400px]:h-11 sm:h-15 lg:h-18"
+            />
+          ) : (
+            <Logo
+              variant="mark"
+              decorative
+              className="h-10 w-auto text-ink sm:h-12 lg:h-13"
+            />
+          )}
         </Link>
 
         {/* Nav and the pill travel together, hard right against the wordmark. */}
@@ -107,7 +102,7 @@ export function SiteHeader() {
           </nav>
 
           <WhatsAppPill className="inline-flex" />
-          <MenuPanel links={MORE} tone="ink" />
+          <MenuPanel links={MENU} tone="ink" />
         </div>
       </div>
     </header>

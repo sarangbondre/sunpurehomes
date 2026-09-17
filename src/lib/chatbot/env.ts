@@ -25,12 +25,6 @@ const optional = z
   .optional();
 
 const schema = z.object({
-  /*
-    Hugging Face Inference Providers by default, at the client's instruction
-    on 16 September 2026 — open models at the host's own price. Claude and any
-    other OpenAI-compatible host remain one variable away. See
-    docs/adr/0002-arka.md.
-  */
   ARKA_PROVIDER: z.enum(PROVIDERS).default("huggingface"),
   ARKA_MODEL: optional,
   /** Hugging Face's own name for the variable, so an existing token just works. */
@@ -58,6 +52,8 @@ const schema = z.object({
 });
 
 export type ArkaConfig = {
+  /** Whether Arka is on the site at all. */
+  enabled: boolean;
   provider: ProviderKind;
   model: string;
   /** Set only when the chosen provider has everything it needs. */
@@ -111,6 +107,21 @@ const DEFAULT_BASE_URL: Record<ProviderKind, string | undefined> = {
   "openai-compatible": undefined,
 };
 
+/**
+ * Whether Arka is on the site at all. Off unless ARKA_ENABLED is "true".
+ *
+ * The client asked for Arka to be taken off the site on 17 September; the
+ * code stays so it can come back with this one variable. Off means no
+ * launcher on any page and both endpoints answer 404, so nothing can reach a
+ * model or the email provider.
+ *
+ * Read on its own, not through parseConfig, because the root layout calls
+ * it: a mistyped Arka variable must not be able to take down every page.
+ */
+export function arkaEnabled(source: Record<string, string | undefined> = process.env): boolean {
+  return source.ARKA_ENABLED?.trim() === "true";
+}
+
 /** Pure, so it can be tested without touching process.env. */
 export function parseConfig(source: Record<string, string | undefined>): ArkaConfig {
   const parsed = schema.safeParse(source);
@@ -145,6 +156,7 @@ export function parseConfig(source: Record<string, string | undefined>): ArkaCon
       : Boolean(ossBaseUrl && ossKey));
 
   return {
+    enabled: arkaEnabled(source),
     provider,
     model,
     ready,

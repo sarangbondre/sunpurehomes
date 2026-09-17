@@ -1,6 +1,6 @@
 import { z } from "zod";
 import { getBrief } from "@/lib/chatbot/corpus";
-import { arkaConfig } from "@/lib/chatbot/env";
+import { arkaConfig, arkaEnabled } from "@/lib/chatbot/env";
 import { guardStream, scrubContacts, type ArkaEvent } from "@/lib/chatbot/guards";
 import { log } from "@/lib/chatbot/log";
 import { PROMPT_VERSION, systemPrompt } from "@/lib/chatbot/persona";
@@ -77,6 +77,12 @@ function events(
 export async function POST(request: Request): Promise<Response> {
   const requestId = request.headers.get("x-request-id") ?? crypto.randomUUID();
   const started = Date.now();
+
+  // Switched off: as if the route did not exist. See ARKA_ENABLED.
+  if (!arkaEnabled()) {
+    log("info", "chat.disabled", { requestId });
+    return new Response(null, { status: 404, headers: { "x-request-id": requestId } });
+  }
 
   let body: z.infer<typeof bodySchema>;
   try {

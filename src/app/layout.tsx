@@ -1,7 +1,9 @@
 import type { Metadata, Viewport } from "next";
 import { Arka } from "@/components/chat/arka";
+import { WhatsAppButton } from "@/components/site/whatsapp-button";
 import { SiteFooter } from "@/components/site/footer";
 import { SiteHeader } from "@/components/site/header";
+import { arkaEnabled } from "@/lib/chatbot/env";
 import { getAllProjects } from "@/lib/content";
 import { fontVariables } from "@/lib/fonts";
 import { site } from "@/lib/site";
@@ -38,7 +40,7 @@ export default function RootLayout({
     */
     <html lang="en-IN" className={fontVariables} suppressHydrationWarning>
       <body
-        className="flex min-h-dvh flex-col bg-paper text-ink antialiased"
+        className="relative flex min-h-dvh flex-col bg-paper text-ink antialiased"
         suppressHydrationWarning
       >
         <a
@@ -52,7 +54,12 @@ export default function RootLayout({
           {children}
         </div>
         <SiteFooter />
-        <Arka projects={ARKA_PROJECTS} />
+        {/*
+          WhatsApp in the corner of every page, where Arka was, at the
+          client's instruction on 17 September. Arka stays in the code behind
+          ARKA_ENABLED; it and this button share the corner, so only one shows.
+        */}
+        {arkaEnabled() ? <Arka projects={ARKA_PROJECTS} /> : <WhatsAppButton />}
       </body>
     </html>
   );

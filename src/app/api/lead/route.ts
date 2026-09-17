@@ -1,4 +1,4 @@
-import { arkaConfig } from "@/lib/chatbot/env";
+import { arkaConfig, arkaEnabled } from "@/lib/chatbot/env";
 import { leadSchema, sendLead } from "@/lib/chatbot/lead";
 import { log } from "@/lib/chatbot/log";
 import { allow, clientKey } from "@/lib/chatbot/rate-limit";
@@ -25,6 +25,12 @@ function json(requestId: string, status: number, body: object): Response {
 
 export async function POST(request: Request): Promise<Response> {
   const requestId = request.headers.get("x-request-id") ?? crypto.randomUUID();
+
+  // Switched off: as if the route did not exist. See ARKA_ENABLED.
+  if (!arkaEnabled()) {
+    log("info", "lead.disabled", { requestId });
+    return json(requestId, 404, { ok: false, code: "disabled" });
+  }
 
   let raw: unknown;
   try {

@@ -44,6 +44,12 @@ describe("parseConfig", () => {
     assert.equal(c.ready, true);
   });
 
+  it("is off unless switched on", () => {
+    assert.equal(parseConfig({ HF_TOKEN: "hf_x" }).enabled, false);
+    assert.equal(parseConfig({ ARKA_ENABLED: "true" }).enabled, true);
+    assert.equal(parseConfig({ ARKA_ENABLED: "false" }).enabled, false);
+  });
+
   it("names a bad variable without echoing it", () => {
     assert.throws(
       () => parseConfig({ ARKA_PROVIDER: "secret-value" }),

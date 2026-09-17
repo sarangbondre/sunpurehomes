@@ -8,14 +8,14 @@ export type MenuLink = { href: string; label: string };
 /**
  * The three-line menu beside the main navigation.
  *
- * It holds the pages that are not in the top three — Amenities, the
- * philosophy and contact sections of /about — so they are reachable from
- * every page rather than only from the footer, without putting five items
- * back in a nav the client asked to keep at three.
+ * It holds every page on the site. There is no footer menu — the client
+ * removed it on 17 September — so this is how Amenities, the About sections
+ * and Privacy are reached, without putting them back in a nav the client
+ * asked to keep at three.
  *
  * Same control on every width, at the client's direction. It is a disclosure,
  * not a modal: it does not trap focus or block the page, because it holds
- * four links and nothing else. What it does owe the visitor is the usual
+ * links and nothing else. What it does owe the visitor is the usual
  * contract for a thing that opens — Escape closes it, a click outside closes
  * it, focus returns to the button when it does, and the button reports its
  * state so a screen reader knows whether the panel is open.

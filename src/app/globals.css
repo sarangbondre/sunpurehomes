@@ -55,6 +55,12 @@
   */
   --color-laterite: #d40000;
   /*
+    WhatsApp's green, a step deeper than the brand's #25d366 so the white
+    mark on it clears 3:1 (3.1:1) — at #25d366 it was 2.0:1. Used only for the
+    floating WhatsApp button, where the colour is what says "WhatsApp".
+  */
+  --color-whatsapp: #1da851;
+  /*
     The accent for text and controls. The same red, because Rosso Corsa
     already passes on --paper — the orange needed a deepened stand-in
     (#c0450f). Kept as its own token so it can be deepened again if red text

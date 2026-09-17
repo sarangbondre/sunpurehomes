@@ -1,4 +1,5 @@
-import Link from "next/link";
+"use client";
+
 import {
   FacebookIcon,
   InstagramIcon,
@@ -7,7 +8,7 @@ import {
   PhoneIcon,
   YouTubeIcon,
 } from "@/components/brand/icons";
-import { Logo } from "@/components/brand/logo";
+import { usePathname } from "next/navigation";
 import { mailtoHref, telHref } from "@/lib/links";
 import { site } from "@/lib/site";
 
@@ -30,99 +31,73 @@ const SOCIAL: {
   ] as const
 ).flatMap(([href, label, Icon]) => (href ? [{ href, label, Icon }] : []));
 
-/*
-  The header carries three items at the client's instruction. These are the
-  rest — a real page and two real sections of /about — kept reachable here
-  rather than deleted, because a page nothing links to is a page nobody
-  finds. Terms joins them once that route exists (Phase 6).
-*/
-const LINKS = [
-  { href: "/about", label: "About" },
-  { href: "/projects", label: "Projects" },
-  { href: "/amenities", label: "Amenities" },
-  { href: "/about#philosophy", label: "Our philosophy" },
-  { href: "/about#contact", label: "Arrange a visit" },
-  { href: "/privacy", label: "Privacy" },
-] as const;
-
 /**
- * Minimalist, at the client's instruction.
+ * Icons only, at the client's instruction on 17 September. The footer's
+ * menu was removed — every page is now in the header's menu — and what is
+ * left is the ways to reach a person and the places to follow, each a mark
+ * with its name in an aria-label, then the fine print.
  *
- * It was a four-column slab on its own ground with a repeated tagline and
- * two column headings. It is now one hairline and three lines: the wordmark
- * with the links, the two ways to reach a person with the four places to
- * follow, and the fine print. Nothing has been dropped that anyone could
- * reach only from here — the headings went, not the links under them.
+ * Email and phone open the mail app and the dialler; the address and number
+ * themselves are still written out on /about and every project page.
  *
  * The disclaimer keeps its exact wording. It is a legal notice on a
- * RERA-registered sales site, so it is set quietly rather than edited down.
+ * RERA-registered sales site, so it is set quietly rather than dropped.
+ *
+ * The right and bottom padding keep everything clear of the WhatsApp button
+ * fixed in the corner.
+ *
+ * On the landing page it sits over the foot of the picture rather than below
+ * it (client, 17 September), so the page is the picture and nothing else. It
+ * turns to paper type there, on a shade that deepens the water's dark
+ * reflection. The body is the positioning parent, and the hero fills the
+ * screen, so "the bottom of the body" is the bottom of the picture.
  */
 export function SiteFooter() {
+  const overImage = usePathname() === "/";
+  const icon = `flex size-10 items-center justify-center rounded-full border transition-colors duration-hover ease-hover ${
+    overImage
+      ? "border-paper/45 text-paper hover:border-paper hover:bg-paper hover:text-ink"
+      : "border-line text-ink-soft hover:border-accent-ink hover:text-accent-ink"
+  }`;
+
   return (
-    <footer className="border-t border-line">
-      <div className="mx-auto max-w-[86rem] px-6 py-12 sm:px-10 sm:py-14 lg:px-16">
-        <div className="flex flex-col gap-8 sm:flex-row sm:items-center sm:justify-between">
-          <Link href="/" aria-label={`${site.name} — home`}>
-            <Logo decorative className="h-10 w-auto text-ink sm:h-11" />
-          </Link>
-
-          <nav aria-label="Footer">
-            <ul className="flex flex-wrap gap-x-7 gap-y-2 text-ink-soft">
-              {LINKS.map((item) => (
-                <li key={item.href}>
-                  <Link
-                    className="transition-colors duration-hover ease-hover hover:text-accent-ink"
-                    href={item.href}
-                  >
-                    {item.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </nav>
-        </div>
-
-        <div className="mt-10 flex flex-col gap-6 border-t border-line pt-8 sm:flex-row sm:items-center sm:justify-between">
-          <ul className="flex flex-wrap gap-x-7 gap-y-2 text-ink-soft">
-            <li>
+    <footer
+      className={
+        overImage
+          ? "absolute inset-x-0 bottom-0 z-10 bg-gradient-to-t from-ink/90 via-ink/70 via-60% to-transparent pt-10"
+          : "border-t border-line"
+      }
+    >
+      <div className="mx-auto flex max-w-[86rem] flex-col gap-5 px-6 pb-24 pt-8 sm:px-10 sm:pb-8 sm:pr-28 lg:flex-row lg:items-center lg:justify-between lg:gap-10 lg:pl-16">
+        <ul className="flex shrink-0 flex-wrap items-center gap-3">
+          <li>
+            <a className={icon} href={mailtoHref} aria-label={`Email ${site.contact.email}`}>
+              <MailIcon className="size-[1.1rem]" />
+            </a>
+          </li>
+          <li>
+            <a className={icon} href={telHref} aria-label={`Call ${site.contact.phoneDisplay}`}>
+              <PhoneIcon className="size-[1.1rem]" />
+            </a>
+          </li>
+          <li aria-hidden className={`mx-1 h-6 w-px ${overImage ? "bg-paper/40" : "bg-line"}`} />
+          {SOCIAL.map(({ href, label, Icon }) => (
+            <li key={label}>
               <a
-                className="inline-flex items-center gap-2.5 transition-colors duration-hover ease-hover hover:text-accent-ink"
-                href={mailtoHref}
+                className={icon}
+                href={href}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={label}
               >
-                <MailIcon className="size-4" />
-                {site.contact.email}
+                <Icon className="size-[1.1rem]" />
               </a>
             </li>
-            <li>
-              <a
-                className="inline-flex items-center gap-2.5 transition-colors duration-hover ease-hover hover:text-accent-ink"
-                href={telHref}
-              >
-                <PhoneIcon className="size-4" />
-                {site.contact.phoneDisplay}
-              </a>
-            </li>
-          </ul>
+          ))}
+        </ul>
 
-          <ul className="flex items-center gap-5">
-            {SOCIAL.map(({ href, label, Icon }) => (
-              <li key={label}>
-                <a
-                  className="block text-ink-soft transition-colors duration-hover ease-hover hover:text-accent-ink"
-                  href={href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label={label}
-                >
-                  <Icon className="size-5" />
-                </a>
-              </li>
-            ))}
-          </ul>
-        </div>
-
-        <div className="mt-8 flex flex-col gap-4 text-sm leading-relaxed text-muted sm:flex-row-reverse sm:items-baseline sm:justify-between sm:gap-10">
-          <p className="max-w-[72ch]">
+        <div className={`flex flex-col gap-2 text-xs leading-relaxed sm:flex-row sm:items-baseline sm:gap-6 lg:min-w-0 lg:max-w-[46rem] ${overImage ? "text-paper/85" : "text-muted"}`}>
+          <p>
             Information on this website is representational and informative, and
             is subject to variation during execution. {site.name} reserves the
             right to make additions, deletions, alterations or amendments as it
