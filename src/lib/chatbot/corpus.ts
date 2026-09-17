@@ -58,9 +58,8 @@ const WITHHELD: Readonly<Record<string, Withheld>> = {
     description: { find: "Its twenty-one homes are", replace: "Its homes are" },
   },
 
-  // "scale.unitCount is 32, which predates the brochure ... Confirm the real
-  // total."
-  curve: { unitCount: true },
+  // Curve's 32 was confirmed by the client's data sheet on 17 September 2026,
+  // so its entry is gone.
 
   // "The approved drawing is titled '1st Phase (40%) Site Release'. The 279
   // sites are the full layout; confirm how many are released for sale today."

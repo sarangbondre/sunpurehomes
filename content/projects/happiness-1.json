@@ -5,6 +5,9 @@
   "status": "completed",
   "tagline": "Twenty-six premium 3 BHK villas in Vijayanagar.",
   "description": "Happiness 1 is a completed villa development in Vijayanagar 4th Stage, Mysuru. Twenty-six 3 BHK villas sit on a planned layout with landscaped green space between them.",
+  "headline": "Room to grow, room to breathe.",
+  "homesLine": "Premium 3 BHK villas set around green space.",
+  "configurationsNote": "Well-proportioned villas designed for comfort, light and privacy.",
   "location": {
     "label": "Vijayanagar 4th Stage",
     "addressLines": [
@@ -113,27 +116,33 @@
   "gallery": [
     {
       "src": "/images/projects/happiness-1/gallery-1.avif",
-      "alt": "A white villa at Happiness 1, its upper floor cantilevered over a covered car porch."
+      "alt": "A white villa at Happiness 1, its upper floor cantilevered over a covered car porch.",
+      "view": "exterior"
     },
     {
       "src": "/images/projects/happiness-1/gallery-2.avif",
-      "alt": "The street frontage of a Happiness 1 villa, with a mature tree at the boundary wall."
+      "alt": "The street frontage of a Happiness 1 villa, with a mature tree at the boundary wall.",
+      "view": "exterior"
     },
     {
       "src": "/images/projects/happiness-1/gallery-3.avif",
-      "alt": "A row of Happiness 1 villas running along an internal road."
+      "alt": "A row of Happiness 1 villas running along an internal road.",
+      "view": "exterior"
     },
     {
       "src": "/images/projects/happiness-1/gallery-4.avif",
-      "alt": "Stepped white terraces of the Happiness 1 villas seen along the street."
+      "alt": "Stepped white terraces of the Happiness 1 villas seen along the street.",
+      "view": "exterior"
     },
     {
       "src": "/images/projects/happiness-1/gallery-5.avif",
-      "alt": "Planting and garden beds in the open space between the Happiness 1 villas."
+      "alt": "Planting and garden beds in the open space between the Happiness 1 villas.",
+      "view": "exterior"
     },
     {
       "src": "/images/projects/happiness-1/gallery-6.avif",
-      "alt": "Happiness 1 villas seen across a landscaped courtyard."
+      "alt": "Happiness 1 villas seen across a landscaped courtyard.",
+      "view": "exterior"
     }
   ],
   "contentWarnings": [

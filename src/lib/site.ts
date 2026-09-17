@@ -76,4 +76,8 @@ export const openQuestions: readonly string[] = [
   "Happiness 2's description says its villas are 2,543 sq ft, but the brochure's floor-by-floor figures put them at 2,167–3,520 sq ft built-up. Arka answers from the floor-by-floor figures and does not repeat the 2,543. Confirm which the page should say.",
   "The About page now says Sunpure Homes build beyond Mysuru, at the client's instruction on 15 September 2026. All nine developments on this site are in Mysuru, so nothing names the other places. Send the cities, and they can be said plainly instead of in the abstract.",
   "The Happiness II brochure names the developer as MK Infra Holding, MB Road, Srirangapatna 571438. This file records the group's legal name as M.K. Agrotech Pvt. Ltd., the oil business. Confirm which entity is the promoter on the RERA registrations before any legal-entity name is published.",
+  "Every project page shows bathrooms equal to bedrooms (a 3 BHK shows 3 bathrooms), at the client's instruction of 17 September 2026. No project file records bathroom counts. Send them per configuration and they will replace the rule.",
+  "Meraki's areas were labelled super built-up in its brochure and are now shown as built-up, at the client's instruction of 17 September 2026. Confirm the figures are built-up against the approved plans.",
+  "Curve's data sheet gives a total super built-up area of 55,000 sq ft, marked 'to confirm with Shahab'. It is not published until confirmed.",
+  "Brand marks were taken from Wikipedia and Wikimedia Commons on 17 September 2026. None was found for Koala, Astral Pipes, Ashirvad, Qcon RKB, SK Super Steel or Techtonics, which show as names. Send their logo files, and confirm the marks used are the current ones.",
 ];

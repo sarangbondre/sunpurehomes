@@ -12,7 +12,106 @@ import { amenityIcon, type AmenityIcon as Kind } from "@/lib/amenity-icon";
 
 const DOT = { fill: "currentColor", stroke: "none" } as const;
 
-const DRAWINGS: Record<Kind, ReactNode> = {
+/** Drawings used outside the amenity list, in the same hand. */
+export type ExtraIcon =
+  | "tiles"
+  | "door"
+  | "gear"
+  | "document"
+  | "certificate"
+  | "external"
+  | "bed"
+  | "bath"
+  | "balcony"
+  | "headset"
+  | "people"
+  | "car"
+  | "plug"
+  | "pin";
+
+const DRAWINGS: Record<Kind | ExtraIcon, ReactNode> = {
+  tiles: (
+    <>
+      <path d="M3 9.5 12 5l9 4.5L12 14Z" />
+      <path d="M7.5 7.25 16.5 11.75M16.5 7.25 7.5 11.75M3 9.5V14l9 4.5 9-4.5V9.5" />
+    </>
+  ),
+  door: (
+    <>
+      <path d="M6 21V4.5A1.5 1.5 0 0 1 7.5 3h9A1.5 1.5 0 0 1 18 4.5V21M3.5 21h17" />
+      <path d="M14.5 12.5v1" />
+    </>
+  ),
+  gear: (
+    <>
+      <circle cx="12" cy="12" r="3" />
+      <path d="M12 2.8v2.4M12 18.8v2.4M2.8 12h2.4M18.8 12h2.4M5.5 5.5l1.7 1.7M16.8 16.8l1.7 1.7M5.5 18.5l1.7-1.7M16.8 7.2l1.7-1.7" />
+      <circle cx="12" cy="12" r="6.6" />
+    </>
+  ),
+  document: (
+    <>
+      <path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8Z" />
+      <path d="M14 3v5h5M8.5 12.5h7M8.5 16h7M8.5 9h3" />
+    </>
+  ),
+  certificate: (
+    <>
+      <path d="M13 21H7a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h7l5 5v3" />
+      <path d="M14 3v5h5M8.5 9h3M8.5 12.5h4" />
+      <circle cx="17" cy="15.5" r="2.8" />
+      <path d="m15.4 17.8-.9 3.7 2.5-1.3 2.5 1.3-.9-3.7" />
+    </>
+  ),
+  bed: (
+    <>
+      <path d="M3 18V7M21 18v-5a3 3 0 0 0-3-3h-7v4M3 13h18M3 16h18" />
+      <path d="M5.5 11.5a1.8 1.8 0 1 0 3.6 0 1.8 1.8 0 0 0-3.6 0Z" />
+    </>
+  ),
+  bath: (
+    <>
+      <path d="M3 12h18v2a5 5 0 0 1-5 5H8a5 5 0 0 1-5-5Z" />
+      <path d="M6 12V6a2 2 0 0 1 3.7-1M7 19l-1 2M17 19l1 2" />
+    </>
+  ),
+  balcony: (
+    <>
+      <path d="M3 21h18M4 11h16M5 11v10M9.5 11v10M14.5 11v10M19 11v10" />
+      <path d="M12 8c0-2.5 1.5-4 3.5-4.5 0 2.5-1.5 4-3.5 4.5ZM12 8c0-1.8-1-3-2.5-3.3 0 1.8 1 3 2.5 3.3Z" />
+    </>
+  ),
+  headset: (
+    <>
+      <path d="M4 14v-2a8 8 0 0 1 16 0v2" />
+      <rect x="3" y="13" width="4" height="6" rx="1.5" />
+      <rect x="17" y="13" width="4" height="6" rx="1.5" />
+      <path d="M19 19c0 1.5-1.5 2.5-4 2.5h-1.5" />
+    </>
+  ),
+  people: (
+    <>
+      <circle cx="9" cy="8" r="3" />
+      <circle cx="17" cy="9" r="2.3" />
+      <path d="M3.5 20a5.5 5.5 0 0 1 11 0M14.5 14.3A4.5 4.5 0 0 1 21 18.5" />
+    </>
+  ),
+  car: (
+    <>
+      <path d="M4 16v-3l2-5.2A2 2 0 0 1 7.9 6.5h8.2a2 2 0 0 1 1.9 1.3L20 13v3" />
+      <path d="M3 13h18v4H3ZM5.5 17v2M18.5 17v2" />
+      <circle cx="7" cy="15" r=".6" fill="currentColor" />
+      <circle cx="17" cy="15" r=".6" fill="currentColor" />
+    </>
+  ),
+  plug: <path d="M9 3v4.5M15 3v4.5M6.5 7.5h11v3a5.5 5.5 0 0 1-11 0ZM12 16v5" />,
+  pin: (
+    <>
+      <path d="M12 21s-6.5-6.2-6.5-11a6.5 6.5 0 0 1 13 0c0 4.8-6.5 11-6.5 11Z" />
+      <circle cx="12" cy="10" r="2.3" />
+    </>
+  ),
+  external: <path d="M14 4h6v6M20 4l-9 9M18 14v4.5A1.5 1.5 0 0 1 16.5 20h-11A1.5 1.5 0 0 1 4 18.5v-11A1.5 1.5 0 0 1 5.5 6H10" />,
   ev: (
     <>
       <path d="M9 3v4M15 3v4M7 7h10v4a5 5 0 0 1-10 0Z" />
@@ -39,6 +138,12 @@ const DRAWINGS: Record<Kind, ReactNode> = {
     <>
       <path d="M12 3s6 6.5 6 11a6 6 0 0 1-12 0c0-4.5 6-11 6-11Z" />
       <path d="M9.5 14.5A2.5 2.5 0 0 0 12 17" />
+    </>
+  ),
+  pool: (
+    <>
+      <path d="M8 16V5.5a2 2 0 0 1 4 0M16 16V5.5a2 2 0 0 1 4 0M8 9h8M8 12.5h8" />
+      <path d="M3 18.5c1.5 0 1.5 1 3 1s1.5-1 3-1 1.5 1 3 1 1.5-1 3-1 1.5 1 3 1 1.5-1 3-1" />
     </>
   ),
   rain: (
@@ -166,6 +271,17 @@ export function AmenityIcon({
   name: string;
   className?: string;
 }) {
+  return <LineIcon kind={amenityIcon(name) ?? "leaf"} className={className} />;
+}
+
+/** Any drawing in this set, by name. */
+export function LineIcon({
+  kind,
+  className = "",
+}: {
+  kind: Kind | ExtraIcon;
+  className?: string;
+}) {
   return (
     <svg
       aria-hidden
@@ -177,7 +293,7 @@ export function AmenityIcon({
       strokeLinejoin="round"
       className={`shrink-0 ${className}`}
     >
-      {DRAWINGS[amenityIcon(name) ?? "leaf"]}
+      {DRAWINGS[kind]}
     </svg>
   );
 }

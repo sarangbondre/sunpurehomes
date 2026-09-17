@@ -5,6 +5,9 @@
   "status": "ongoing",
   "tagline": "Twenty-four 3 BHK apartments in Vijayanagar.",
   "description": "V4 is an apartment building under way in Vijayanagar 4th Stage. Twenty-four 3 BHK homes range from 1,678 to 1,870 sq ft, each with a deep balcony.",
+  "headline": "A home for a fuller life.",
+  "homesLine": "Spacious 3 BHK homes with deep balconies.",
+  "configurationsNote": "Well-proportioned homes designed for comfort, light and privacy.",
   "location": {
     "label": "Vijayanagar 4th Stage",
     "addressLines": [
@@ -29,7 +32,9 @@
         1678,
         1870
       ],
-      "count": 24
+      "count": 24,
+      "note": "With deep balconies",
+      "balcony": "Deep balcony"
     }
   ],
   "compliance": {
@@ -93,31 +98,38 @@
   "gallery": [
     {
       "src": "/images/projects/v4/hero.avif",
-      "alt": "The V4 apartment block at dusk, angular balconies stepping across a dark elevation with the interiors lit."
+      "alt": "The V4 apartment block at dusk, angular balconies stepping across a dark elevation with the interiors lit.",
+      "view": "exterior"
     },
     {
       "src": "/images/projects/v4/gallery-1.avif",
-      "alt": "A kitchen inside a V4 apartment, with pale cabinetry and a run of wall units."
+      "alt": "A kitchen inside a V4 apartment, with pale cabinetry and a run of wall units.",
+      "view": "interior"
     },
     {
       "src": "/images/projects/v4/gallery-2.avif",
-      "alt": "The V4 block seen from the corner, balconies running the length of the elevation."
+      "alt": "The V4 block seen from the corner, balconies running the length of the elevation.",
+      "view": "exterior"
     },
     {
       "src": "/images/projects/v4/gallery-3.avif",
-      "alt": "The V4 elevation in white render, each floor set back behind a deep balcony."
+      "alt": "The V4 elevation in white render, each floor set back behind a deep balcony.",
+      "view": "exterior"
     },
     {
       "src": "/images/projects/v4/gallery-4.avif",
-      "alt": "A bathroom inside a V4 apartment, finished in veined stone."
+      "alt": "A bathroom inside a V4 apartment, finished in veined stone.",
+      "view": "interior"
     },
     {
       "src": "/images/projects/v4/gallery-5.avif",
-      "alt": "The V4 block along its street frontage, lit at dusk."
+      "alt": "The V4 block along its street frontage, lit at dusk.",
+      "view": "exterior"
     },
     {
       "src": "/images/projects/v4/gallery-6.avif",
-      "alt": "An evening view of V4, warm light behind the balcony line."
+      "alt": "An evening view of V4, warm light behind the balcony line.",
+      "view": "exterior"
     }
   ],
   "contentWarnings": [

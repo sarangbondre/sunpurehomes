@@ -5,6 +5,9 @@
   "status": "ongoing",
   "tagline": "A villa community planned around its planting.",
   "description": "H4 is a villa development in Vijayanagar 4th Stage, currently under way. It is planned as a low-density community with more than five thousand plants, rainwater harvesting, and homes laid out for cross-ventilation and daylight.",
+  "headline": "A home among the trees.",
+  "homesLine": "3 BHK villas in a low-density, planted community.",
+  "configurationsNote": "Villas laid out for cross-ventilation and daylight.",
   "location": {
     "label": "Vijayanagar 4th Stage",
     "addressLines": [
@@ -180,31 +183,38 @@
   "gallery": [
     {
       "src": "/images/projects/h4/hero.avif",
-      "alt": "An H4 villa in pale stone and glass, planting spilling from its upper terraces."
+      "alt": "An H4 villa in pale stone and glass, planting spilling from its upper terraces.",
+      "view": "exterior"
     },
     {
       "src": "/images/projects/h4/gallery-1.avif",
-      "alt": "A corner H4 villa with deep balconies and a planted roof terrace."
+      "alt": "A corner H4 villa with deep balconies and a planted roof terrace.",
+      "view": "exterior"
     },
     {
       "src": "/images/projects/h4/gallery-2.avif",
-      "alt": "An H4 villa seen through surrounding trees, greenery on every level."
+      "alt": "An H4 villa seen through surrounding trees, greenery on every level.",
+      "view": "exterior"
     },
     {
       "src": "/images/projects/h4/gallery-3.avif",
-      "alt": "Two H4 villas side by side, linked by a planted walkway."
+      "alt": "Two H4 villas side by side, linked by a planted walkway.",
+      "view": "exterior"
     },
     {
       "src": "/images/projects/h4/gallery-4.avif",
-      "alt": "A living room inside an H4 villa, opening to a covered terrace."
+      "alt": "A living room inside an H4 villa, opening to a covered terrace.",
+      "view": "interior"
     },
     {
       "src": "/images/projects/h4/gallery-5.avif",
-      "alt": "A shaded pathway running between the H4 villas."
+      "alt": "A shaded pathway running between the H4 villas.",
+      "view": "exterior"
     },
     {
       "src": "/images/projects/h4/gallery-6.avif",
-      "alt": "An H4 villa frontage with timber screening and mature planting."
+      "alt": "An H4 villa frontage with timber screening and mature planting.",
+      "view": "exterior"
     }
   ],
   "contentWarnings": [

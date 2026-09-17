@@ -30,7 +30,6 @@ describe("corpus", () => {
     // The descriptions are prose and spell numbers out. Checking only the
     // digits let "two hundred and seventy-nine plots" straight through.
     const withheld: [string, RegExp][] = [
-      ["curve", /\b32\b|thirty[- ]two/i],
       ["blessed", /\b21\b|twenty[- ]one/i],
       ["rare-earth", /\b279\b|two hundred and seventy[- ]nine/i],
     ];
@@ -48,6 +47,10 @@ describe("corpus", () => {
     assert.doesNotMatch(text("rare-earth"), /of these/);
     // Where the total is not withheld, the per-size counts stay.
     assert.match(text("fadal"), /12 of these/);
+  });
+
+  it("states Curve's flat count, now the client's data sheet confirms it", () => {
+    assert.match(text("curve"), /32 apartments/);
   });
 
   it("states Fadal's plot count, because the approval settles it", () => {

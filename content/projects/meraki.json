@@ -5,6 +5,9 @@
   "status": "completed",
   "tagline": "Nine 3 BHK apartments in Yadavagiri.",
   "description": "Meraki is a completed apartment development in Yadavagiri. Nine 3 BHK homes are laid out for generous shared space and daylight, with premium fittings throughout.",
+  "headline": "Crafted for everyday grace.",
+  "homesLine": "Spacious 3 BHK homes with premium fittings.",
+  "configurationsNote": "Homes laid out for generous shared space and daylight.",
   "location": {
     "label": "Yadavagiri",
     "addressLines": [
@@ -26,21 +29,21 @@
     {
       "label": "3 BHK · flats 101, 201, 301",
       "areaSqft": 1847,
-      "areaBasis": "super-built-up",
+      "areaBasis": "built-up",
       "carpetAreaSqft": 1542,
       "count": 3
     },
     {
       "label": "3 BHK · flats 103, 203, 303",
       "areaSqft": 1838,
-      "areaBasis": "super-built-up",
+      "areaBasis": "built-up",
       "carpetAreaSqft": 1510,
       "count": 3
     },
     {
       "label": "3 BHK · flats 102, 202, 302",
       "areaSqft": 1806,
-      "areaBasis": "super-built-up",
+      "areaBasis": "built-up",
       "carpetAreaSqft": 1509,
       "count": 3
     }
@@ -141,36 +144,44 @@
   "gallery": [
     {
       "src": "/images/projects/meraki/hero.avif",
-      "alt": "The entrance doors to Meraki, in ribbed timber with vertical metal pulls."
+      "alt": "The entrance doors to Meraki, in ribbed timber with vertical metal pulls.",
+      "view": "exterior"
     },
     {
       "src": "/images/projects/meraki/gallery-1.avif",
-      "alt": "A living room in a Meraki apartment, seating arranged toward a full-height window."
+      "alt": "A living room in a Meraki apartment, seating arranged toward a full-height window.",
+      "view": "interior"
     },
     {
       "src": "/images/projects/meraki/gallery-2.avif",
-      "alt": "A dining area in a Meraki apartment under a sculptural pendant light."
+      "alt": "A dining area in a Meraki apartment under a sculptural pendant light.",
+      "view": "interior"
     },
     {
       "src": "/images/projects/meraki/gallery-3.avif",
-      "alt": "A Meraki living space at dusk, glazing opening to a balcony."
+      "alt": "A Meraki living space at dusk, glazing opening to a balcony.",
+      "view": "interior"
     },
     {
       "src": "/images/projects/meraki/gallery-4.avif",
-      "alt": "A seating area in a Meraki apartment beside a display niche."
+      "alt": "A seating area in a Meraki apartment beside a display niche.",
+      "view": "interior"
     },
     {
       "src": "/images/projects/meraki/gallery-5.avif",
-      "alt": "An internal corridor in Meraki, lined in timber panelling."
+      "alt": "An internal corridor in Meraki, lined in timber panelling.",
+      "view": "interior"
     },
     {
       "src": "/images/projects/meraki/gallery-6.avif",
-      "alt": "A Meraki living and dining space seen from the entrance."
+      "alt": "A Meraki living and dining space seen from the entrance.",
+      "view": "interior"
     }
   ],
   "contentWarnings": [
     "Every gallery image is an interior. There is no exterior view of the building.",
     "Gallery images are renders. This project is marked completed, so photography should exist and should replace them.",
-    "Unit areas, amenities and specifications are the Meraki brochure's. The brochure's connectivity is a hand-drawn locality map with no distances, so connectivity is still missing."
+    "Unit areas, amenities and specifications are the Meraki brochure's. The brochure's connectivity is a hand-drawn locality map with no distances, so connectivity is still missing.",
+    "Areas were labelled super built-up in the brochure. They are shown as built-up at the client's instruction of 17 September 2026 (the same correction the client's data sheet makes for Curve). Confirm against the approved plans."
   ]
 }

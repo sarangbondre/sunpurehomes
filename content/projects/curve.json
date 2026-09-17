@@ -5,6 +5,10 @@
   "status": "ongoing",
   "tagline": "2 and 3 BHK apartments proportioned to the golden ratio.",
   "description": "Curve is an apartment development under way in Vijayanagar 4th Stage. Its homes are laid out on golden-ratio proportions, with 2 and 3 BHK plans, landscaped ground-level gardens and a terrace pavilion.",
+  "headline": "Living, drawn to the golden ratio.",
+  "homesLine": "Premium 2 and 3 BHK homes with curved balconies.",
+  "configurationsNote": "Well-proportioned homes designed for comfort, light and privacy.",
+  "category": "Premium apartments",
   "location": {
     "label": "Vijayanagar 4th Stage",
     "addressLines": [
@@ -19,26 +23,106 @@
   },
   "scale": {
     "unitCount": 32,
-    "unitNoun": "apartments"
+    "unitNoun": "apartments",
+    "floors": "G+4",
+    "parking": "Ground floor"
   },
   "configurations": [
     {
       "label": "2 BHK",
       "areaSqft": [
-        1397.77,
-        1588.97
+        1398,
+        1589
       ],
-      "areaBasis": "super-built-up",
+      "areaBasis": "built-up",
       "carpetAreaSqft": [
         923.22,
         951.02
-      ]
+      ],
+      "count": 24,
+      "note": "With curved balconies",
+      "balcony": "Curved balcony"
     },
     {
       "label": "3 BHK",
-      "areaSqft": 1945.74,
-      "areaBasis": "super-built-up",
-      "carpetAreaSqft": 1289.59
+      "areaSqft": 1946,
+      "areaBasis": "built-up",
+      "carpetAreaSqft": 1289.59,
+      "count": 8,
+      "note": "With curved balconies",
+      "balcony": "Curved balcony"
+    }
+  ],
+  "facings": [
+    {
+      "flats": "1 & 2",
+      "facing": "South"
+    },
+    {
+      "flats": "3 & 4",
+      "facing": "West"
+    },
+    {
+      "flats": "5 & 6",
+      "facing": "North"
+    },
+    {
+      "flats": "7 & 8",
+      "facing": "East"
+    }
+  ],
+  "materials": [
+    {
+      "brand": "Qcon RKB",
+      "use": "Blocks"
+    },
+    {
+      "brand": "UltraTech",
+      "use": "Cement"
+    },
+    {
+      "brand": "ACC",
+      "use": "Cement"
+    },
+    {
+      "brand": "SK Super Steel",
+      "use": "Steel"
+    },
+    {
+      "brand": "Techtonics",
+      "use": "Doors"
+    },
+    {
+      "brand": "Saint-Gobain",
+      "use": "UPVC windows, glass & balcony railings"
+    },
+    {
+      "brand": "Somany",
+      "use": "Tiles"
+    },
+    {
+      "brand": "Jaquar",
+      "use": "Bathroom fittings"
+    },
+    {
+      "brand": "Kohler",
+      "use": "Bathroom fittings"
+    },
+    {
+      "brand": "Ashirvad",
+      "use": "Plumbing"
+    },
+    {
+      "brand": "Supreme",
+      "use": "Plumbing"
+    },
+    {
+      "brand": "V-Guard",
+      "use": "Electrical wires"
+    },
+    {
+      "brand": "Schneider Electric",
+      "use": "Switches"
     }
   ],
   "compliance": {
@@ -47,6 +131,27 @@
     "reraProvenance": "verified"
   },
   "amenities": [
+    {
+      "name": "Swimming pool (ground floor)"
+    },
+    {
+      "name": "Gym at the terrace"
+    },
+    {
+      "name": "Centralised heat pump (hot water) by Microtech"
+    },
+    {
+      "name": "Centralised RO plant – Microtech Solutions"
+    },
+    {
+      "name": "Centralised softener – Microtech Solutions"
+    },
+    {
+      "name": "Community hall (terrace)"
+    },
+    {
+      "name": "Park with kids' play area"
+    },
     {
       "name": "Landscaped gardens"
     },
@@ -60,13 +165,7 @@
       "name": "Amphitheatre"
     },
     {
-      "name": "Kids play area"
-    },
-    {
       "name": "Open green zones"
-    },
-    {
-      "name": "Gymnasium"
     },
     {
       "name": "Yoga pavilion"
@@ -79,9 +178,6 @@
     },
     {
       "name": "Centralised gas piping"
-    },
-    {
-      "name": "RO treatment plant"
     },
     {
       "name": "EV charging provision, on demand"
@@ -97,9 +193,6 @@
     },
     {
       "name": "Indoor games area"
-    },
-    {
-      "name": "Centralised heat pump and hot water"
     },
     {
       "name": "Over 5,000 plants across the Sunpure campus"
@@ -207,36 +300,43 @@
   "gallery": [
     {
       "src": "/images/projects/curve/hero.avif",
-      "alt": "The Curve apartment block, its white balcony bands curving around the corner."
+      "alt": "The Curve apartment block, its white balcony bands curving around the corner.",
+      "view": "exterior"
     },
     {
       "src": "/images/projects/curve/gallery-1.avif",
-      "alt": "Curve seen from the garden, curved balconies stacked above mature planting."
+      "alt": "Curve seen from the garden, curved balconies stacked above mature planting.",
+      "view": "exterior"
     },
     {
       "src": "/images/projects/curve/gallery-2.avif",
-      "alt": "A close view of Curve's rounded balcony edges and the stair core behind."
+      "alt": "A close view of Curve's rounded balcony edges and the stair core behind.",
+      "view": "exterior"
     },
     {
       "src": "/images/projects/curve/gallery-3.avif",
-      "alt": "The long elevation of Curve, each floor stepping behind a curved balcony."
+      "alt": "The long elevation of Curve, each floor stepping behind a curved balcony.",
+      "view": "exterior"
     },
     {
       "src": "/images/projects/curve/gallery-4.avif",
-      "alt": "Curve from the approach road, palms in the foreground."
+      "alt": "Curve from the approach road, palms in the foreground.",
+      "view": "exterior"
     },
     {
       "src": "/images/projects/curve/gallery-5.avif",
-      "alt": "Looking up at Curve's curved balconies against the sky."
+      "alt": "Looking up at Curve's curved balconies against the sky.",
+      "view": "exterior"
     },
     {
       "src": "/images/projects/curve/gallery-6.avif",
-      "alt": "The Curve block and its landscaped forecourt."
+      "alt": "The Curve block and its landscaped forecourt.",
+      "view": "exterior"
     }
   ],
   "contentWarnings": [
-    "Areas are from the brochure's detailed plans for flats 05–08. Flats 01–04 are drawn but not dimensioned, and flat 05 (2,207 sq ft super built-up, 1,351 sq ft carpet) has its configuration label unreadable in the file — it is not represented in the table. Get the full unit schedule from sales.",
-    "Connectivity is the brochure's landmark distance chart — mostly leisure destinations. It carries no schools, hospitals or workplaces beyond JSS Medical College. Ask for a proper connectivity list.",
-    "scale.unitCount is 32, which predates the brochure. The brochure shows eight flats per floor across stilt, first, second, third and terrace plans. Confirm the real total."
+    "Built-up areas, flat counts (six 2 BHK and two 3 BHK on each of four floors, 32 in all), floors, facings, amenities and brands are from the client's data sheet of 17 September 2026. Carpet areas are still the brochure's, from its detailed plans for flats 05–08.",
+    "The data sheet gives a total super built-up area of 55,000 sq ft, marked 'to confirm'. It is not published.",
+    "Connectivity is the brochure's landmark distance chart — mostly leisure destinations. It carries no schools, hospitals or workplaces beyond JSS Medical College. Ask for a proper connectivity list."
   ]
 }

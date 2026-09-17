@@ -5,6 +5,9 @@
   "status": "completed",
   "tagline": "Thirty-four homes across four acres in Vijayanagar.",
   "description": "Happiness 2 is a completed villa community in Vijayanagar 4th Stage. Thirty-four homes sit on four acres — thirty-two 3 BHK villas of 2,543 sq ft, plus two apartments.",
+  "headline": "A neighbourhood made for families.",
+  "homesLine": "3 BHK villas across four acres of Vijayanagar.",
+  "configurationsNote": "Villas in several plans, each with its facing and entrance set out.",
   "location": {
     "label": "Vijayanagar 4th Stage",
     "addressLines": [
@@ -383,31 +386,38 @@
   "gallery": [
     {
       "src": "/images/projects/happiness-2/hero.avif",
-      "alt": "The Happiness 2 villas at dusk, a paved lane running between two facing rows."
+      "alt": "The Happiness 2 villas at dusk, a paved lane running between two facing rows.",
+      "view": "exterior"
     },
     {
       "src": "/images/projects/happiness-2/gallery-1.avif",
-      "alt": "A Happiness 2 villa elevation in dark stone and white render, lit from within."
+      "alt": "A Happiness 2 villa elevation in dark stone and white render, lit from within.",
+      "view": "exterior"
     },
     {
       "src": "/images/projects/happiness-2/gallery-2.avif",
-      "alt": "The entrance court of a Happiness 2 villa behind a slatted screen."
+      "alt": "The entrance court of a Happiness 2 villa behind a slatted screen.",
+      "view": "exterior"
     },
     {
       "src": "/images/projects/happiness-2/gallery-3.avif",
-      "alt": "A Happiness 2 villa frontage with vertical timber screening to the upper floor."
+      "alt": "A Happiness 2 villa frontage with vertical timber screening to the upper floor.",
+      "view": "exterior"
     },
     {
       "src": "/images/projects/happiness-2/gallery-4.avif",
-      "alt": "Evening view of a Happiness 2 villa, its ground floor glazing lit."
+      "alt": "Evening view of a Happiness 2 villa, its ground floor glazing lit.",
+      "view": "exterior"
     },
     {
       "src": "/images/projects/happiness-2/gallery-5.avif",
-      "alt": "The boundary wall and gated entrance to a Happiness 2 villa."
+      "alt": "The boundary wall and gated entrance to a Happiness 2 villa.",
+      "view": "exterior"
     },
     {
       "src": "/images/projects/happiness-2/gallery-6.avif",
-      "alt": "A Happiness 2 villa seen at night from the internal road."
+      "alt": "A Happiness 2 villa seen at night from the internal road.",
+      "view": "exterior"
     }
   ],
   "contentWarnings": [

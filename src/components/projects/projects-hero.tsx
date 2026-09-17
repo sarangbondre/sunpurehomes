@@ -2,64 +2,67 @@ import Image from "next/image";
 
 /**
  * The Projects page's opening, to the client's reference design: "Our
- * Projects" over a sunset terrace, full bleed, with the header over it.
+ * Projects" over a full-bleed picture, with the header over it.
  *
- * The photograph is cut from the client's reference mockup (the only copy of
- * this frame at this framing), with the mockup's own header, headline and
- * caption removed and the frame enlarged 2x — so it is soft on large screens.
- * The original file would replace it at the same path. It is not a Sunpure
- * development: no caption, no project name, no link
- * (docs/adr/0001-non-project-imagery-on-the-landing-page.md).
+ * The picture is Curve at dawn — the client's own render, from the project's
+ * elevation folder on their Drive ("01 (4).png", 2000px), chosen on
+ * 17 September for its sunrise sky. It replaced a frame cut from the
+ * reference mockup, which was soft and was not a Sunpure development.
+ * Larger exports of the same render sit beside it on the Drive; one of those
+ * at this path would sharpen the page on very large screens.
  *
- * The type sits on the sky's own light. A soft paper wash at the top left
- * guarantees it on every crop, including phones, where the frame is cut to a
- * narrow strip.
+ * The type sits on the paper ground, never on the picture, so it holds on
+ * every screen; the picture washes into that ground from the left.
  */
 export function ProjectsHero() {
   return (
     <section className="relative isolate overflow-hidden bg-paper">
-      <Image
-        src="/images/pages/projects-hero.jpg"
-        alt="A concrete villa terrace with an infinity pool at sunset, looking out over wooded hills."
-        fill
-        priority
-        fetchPriority="high"
-        sizes="100vw"
-        className="-z-10 object-cover object-[48%_center] lg:object-center"
-      />
-      <div
-        aria-hidden
-        className="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_70%_75%_at_0%_20%,rgba(244,240,231,0.72)_0%,rgba(244,240,231,0.4)_45%,transparent_80%)]"
-      />
       {/*
-        A haze under the header. The menu sits hard right, where the villa's
-        concrete roof is — dark enough to lose ink type (1.83:1 at 1920px
-        before this). On the landing page the same job is done by the top
-        of its wash.
+        The text on paper. At lg it is the left of the frame; below lg it sits
+        above the picture, because on a portrait screen the building would
+        run straight through the headline.
       */}
-      <div
-        aria-hidden
-        className="absolute inset-x-0 top-0 -z-10 h-40 bg-gradient-to-b from-paper/95 via-paper/70 via-45% to-transparent sm:h-44"
-      />
-
-      <div className="mx-auto flex min-h-[36rem] max-w-[86rem] flex-col px-6 pb-16 pt-36 sm:min-h-[40rem] sm:px-10 sm:pt-40 lg:h-[clamp(34rem,54vw,48rem)] lg:min-h-0 lg:px-16 lg:pt-44">
+      <div className="mx-auto flex max-w-[86rem] flex-col px-6 pb-10 pt-36 sm:px-10 sm:pt-40 lg:h-[clamp(34rem,54vw,48rem)] lg:justify-center lg:px-16 lg:pb-16 lg:pt-32">
         <h1 className="text-[clamp(4.25rem,10vw,9.5rem)] leading-[0.92] tracking-[-0.02em] text-ink">
           Our
           <span className="block text-laterite">Projects</span>
         </h1>
         <span aria-hidden className="mt-8 block h-px w-20 bg-laterite/70" />
+        <p className="u-mono mt-8 leading-[2.1] tracking-[0.3em] text-ink-soft">
+          Spaces for a
+          <br />
+          brighter tomorrow
+        </p>
       </div>
 
-      <p className="u-mono absolute left-[61%] top-[46%] hidden leading-[2.1] tracking-[0.3em] text-ink-soft lg:block">
-        Spaces
-        <br />
-        for a
-        <br />
-        brighter
-        <br />
-        tomorrow
-        <span aria-hidden className="mt-4 block h-px w-10 bg-ink-soft/60" />
-      </p>
+      {/*
+        The picture. The render is nearly square, so in a wide frame it is a
+        column, which keeps the whole building, its sky and its reflection in
+        view. The paper washes in from the left so there is no seam.
+      */}
+      <div className="relative aspect-[1.125] w-full lg:absolute lg:inset-y-0 lg:right-0 lg:aspect-auto lg:w-[60%]">
+        <Image
+          src="/images/pages/projects-hero.jpg"
+          alt="Curve at dawn: the white apartment building with its curved balconies under a pink and gold sky, reflected in the wet forecourt."
+          fill
+          priority
+          fetchPriority="high"
+          sizes="(min-width: 1024px) 60vw, 100vw"
+          className="object-cover object-[50%_40%]"
+        />
+        <div
+          aria-hidden
+          className="absolute inset-x-0 top-0 h-16 bg-gradient-to-b from-paper to-transparent lg:inset-y-0 lg:left-0 lg:right-auto lg:h-auto lg:w-2/5 lg:bg-gradient-to-r lg:from-paper lg:via-paper/60 lg:via-35%"
+        />
+        {/*
+          The header's links sit over the top of the picture at lg; the sky
+          there is light, and this haze keeps the ink type clear of it.
+        */}
+        <div
+          aria-hidden
+          className="absolute inset-x-0 top-0 hidden h-36 bg-gradient-to-b from-paper/85 via-paper/45 to-transparent lg:block"
+        />
+      </div>
     </section>
   );
 }

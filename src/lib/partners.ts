@@ -31,15 +31,56 @@ export function brandSlug(name: string): string {
     .replace(/^-|-$/g, "");
 }
 
+/** The brand's mark in public/images/brands, if one is there. */
+export function brandLogo(name: string): string | undefined {
+  const slug = brandSlug(name);
+  const found = EXTENSIONS.find((ext) =>
+    existsSync(join(process.cwd(), "public", BRAND_DIR, `${slug}.${ext}`)),
+  );
+  return found ? `/${BRAND_DIR}/${slug}.${found}`.replaceAll("\\", "/") : undefined;
+}
+
 /** Reads once at module load, on the server, like the rest of the content. */
 export function getMaterialPartners(): readonly MaterialPartner[] {
   return site.materialPartners.map((name) => {
-    const slug = brandSlug(name);
-    const found = EXTENSIONS.find((ext) =>
-      existsSync(join(process.cwd(), "public", BRAND_DIR, `${slug}.${ext}`)),
-    );
-    return found
-      ? { name, logoSrc: `/${BRAND_DIR}/${slug}.${found}`.replaceAll("\\", "/") }
-      : { name };
+    const logoSrc = brandLogo(name);
+    return logoSrc ? { name, logoSrc } : { name };
   });
+}
+
+/**
+ * What each site-wide partner is known for, shown under its mark. Koala has
+ * no line: nothing on file says what it supplies.
+ */
+const SITE_USES: Readonly<Record<string, string>> = {
+  "Asian Paints": "Paints & coatings",
+  "Saint-Gobain": "Glass & building solutions",
+  Somany: "Tiles & surfaces",
+  Jaquar: "Bathroom fittings",
+  "Astral Pipes": "Pipes & plumbing",
+  "V-Guard": "Electricals",
+  "Schneider Electric": "Switchgear",
+  Fujitec: "Lifts",
+};
+
+export type ProjectMaterial = { name: string; use?: string; logoSrc?: string };
+
+/**
+ * The brands on a project page: the project's own list where the client gave
+ * one (a brand named twice has its uses joined), otherwise the site-wide
+ * partners.
+ */
+export function getProjectMaterials(
+  materials: readonly { brand: string; use: string }[] | undefined,
+): readonly ProjectMaterial[] {
+  if (!materials?.length) {
+    return getMaterialPartners().map((p) => ({ ...p, use: SITE_USES[p.name] }));
+  }
+  const byBrand = new Map<string, string[]>();
+  for (const m of materials) byBrand.set(m.brand, [...(byBrand.get(m.brand) ?? []), m.use]);
+  return [...byBrand].map(([name, uses]) => ({
+    name,
+    use: uses.join(" · "),
+    logoSrc: brandLogo(name),
+  }));
 }

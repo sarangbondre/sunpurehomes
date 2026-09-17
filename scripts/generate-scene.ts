@@ -335,9 +335,14 @@ function apartmentBlock(opts: {
   unit: { widthM: number; depthM: number };
   levelHeightM: number;
   amenities: string[];
+  /** The first storey with homes on it — 1 where the ground floor is parking. */
+  firstFloor?: number;
+  /** Facing by position on the floor, when the client has given it. */
+  facings?: Scene["units"][number]["facing"][];
 }): Scene {
   const { slug, count, perFloor, unit, levelHeightM } = opts;
-  const levels = Math.ceil(count / perFloor);
+  const firstFloor = opts.firstFloor ?? 0;
+  const levels = firstFloor + Math.ceil(count / perFloor);
 
   const cols = perFloor <= 2 ? perFloor : Math.ceil(perFloor / 2);
   const rowsPerFloor = Math.ceil(perFloor / cols);
@@ -352,7 +357,7 @@ function apartmentBlock(opts: {
   const originX = margin;
   const originY = margin;
 
-  const FACINGS: Scene["units"][number]["facing"][] = [
+  const FACINGS: Scene["units"][number]["facing"][] = opts.facings ?? [
     "North",
     "East",
     "South",
@@ -362,7 +367,7 @@ function apartmentBlock(opts: {
   const units: Scene["units"] = [];
   let made = 0;
 
-  for (let level = 0; level < levels; level++) {
+  for (let level = firstFloor; level < levels; level++) {
     for (let i = 0; i < perFloor && made < count; i++) {
       const col = i % cols;
       const row = Math.floor(i / cols);
@@ -375,7 +380,7 @@ function apartmentBlock(opts: {
       const y1 = r2(y + unit.depthM);
 
       units.push({
-        id: `${level + 1}0${i + 1}`,
+        id: `${level - firstFloor + 1}0${i + 1}`,
         ring: [
           [x0, y0],
           [x1, y0],
@@ -608,11 +613,17 @@ const v4 = apartmentBlock({
 });
 
 /* ---------------------------------------------------------------- Curve */
+// From the client's data sheet (17 September 2026): G+4, parking on the
+// ground floor, eight flats on each of floors 1–4. Flats 1 & 2 face south,
+// 3 & 4 west, 5 & 6 north, 7 & 8 east. 1,500 sq ft ≈ 12 × 11.6 m, between
+// the sheet's 2 and 3 BHK sizes — the plan is indicative, not a unit schedule.
 const curve = apartmentBlock({
   slug: "curve",
   count: 32,
-  perFloor: 4,
-  unit: { widthM: 13, depthM: 12 },
+  perFloor: 8,
+  firstFloor: 1,
+  facings: ["South", "South", "West", "West", "North", "North", "East", "East"],
+  unit: { widthM: 12, depthM: 11.6 },
   levelHeightM: 3.2,
   amenities: ["Gymnasium", "Yoga pavilion", "Terrace pavilion", "Amphitheatre", "Kids play area"],
 });

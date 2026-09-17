@@ -5,6 +5,9 @@
   "status": "completed",
   "tagline": "Twenty-one apartments planned for the room of a villa.",
   "description": "Blessed is a completed apartment development in Vijayanagar 4th Stage. Its twenty-one homes are 2 and 3 BHK, planned around light and cross-ventilation to feel villa-like in their expansiveness.",
+  "headline": "The room of a villa, in an apartment.",
+  "homesLine": "2 and 3 BHK homes planned around light and air.",
+  "configurationsNote": "Homes planned for light, cross-ventilation and room to live.",
   "location": {
     "label": "Vijayanagar 4th Stage",
     "addressLines": [
@@ -117,31 +120,38 @@
   "gallery": [
     {
       "src": "/images/projects/blessed/hero.avif",
-      "alt": "The Blessed apartment block in white render, seen from the entrance road."
+      "alt": "The Blessed apartment block in white render, seen from the entrance road.",
+      "view": "exterior"
     },
     {
       "src": "/images/projects/blessed/gallery-1.avif",
-      "alt": "Blessed from the forecourt, its balconies stepping back above a planted base."
+      "alt": "Blessed from the forecourt, its balconies stepping back above a planted base.",
+      "view": "exterior"
     },
     {
       "src": "/images/projects/blessed/gallery-2.avif",
-      "alt": "The Blessed elevation behind a screen of young trees."
+      "alt": "The Blessed elevation behind a screen of young trees.",
+      "view": "exterior"
     },
     {
       "src": "/images/projects/blessed/gallery-3.avif",
-      "alt": "A timber pergola over a seating area in the Blessed grounds."
+      "alt": "A timber pergola over a seating area in the Blessed grounds.",
+      "view": "exterior"
     },
     {
       "src": "/images/projects/blessed/gallery-4.avif",
-      "alt": "Planted courtyards between the Blessed blocks."
+      "alt": "Planted courtyards between the Blessed blocks.",
+      "view": "exterior"
     },
     {
       "src": "/images/projects/blessed/gallery-5.avif",
-      "alt": "A landscaped walkway running through the Blessed grounds at dusk."
+      "alt": "A landscaped walkway running through the Blessed grounds at dusk.",
+      "view": "exterior"
     },
     {
       "src": "/images/projects/blessed/gallery-6.avif",
-      "alt": "Paved paths and planting beds in the Blessed courtyard."
+      "alt": "Paved paths and planting beds in the Blessed courtyard.",
+      "view": "exterior"
     }
   ],
   "contentWarnings": [

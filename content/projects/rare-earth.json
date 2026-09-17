@@ -5,6 +5,9 @@
   "status": "ongoing",
   "tagline": "Two hundred and seventy-nine plots across eighteen acres.",
   "description": "Rare Earth is a MUDA-approved plotted development on the Mysuru–Ooty road at Kadakola. Two hundred and seventy-nine plots sit across 73,552 sq m — a little over eighteen acres — with more than a tenth of the site given to park, and a further 3,774 sq m to civic amenities. It is 280 metres from NH 766 and about two kilometres from Mysore airport.",
+  "headline": "Space to build a life.",
+  "homesLine": "MUDA-approved plots on the Mysuru–Ooty road.",
+  "configurationsNote": "Plots set among parks, with land given to civic amenities.",
   "location": {
     "label": "Mysuru–Ooty Road, near Kadakola",
     "addressLines": [
@@ -205,27 +208,33 @@
   "gallery": [
     {
       "src": "/images/projects/rare-earth/hero.avif",
-      "alt": "The Rare Earth entrance gateway — a tiled canopy on timber beams, carried on stone piers hung with creepers."
+      "alt": "The Rare Earth entrance gateway — a tiled canopy on timber beams, carried on stone piers hung with creepers.",
+      "view": "exterior"
     },
     {
       "src": "/images/projects/rare-earth/gallery-1.avif",
-      "alt": "The Rare Earth gateway seen from the approach road, planting either side."
+      "alt": "The Rare Earth gateway seen from the approach road, planting either side.",
+      "view": "exterior"
     },
     {
       "src": "/images/projects/rare-earth/gallery-2.avif",
-      "alt": "An internal road at Rare Earth running between planted verges."
+      "alt": "An internal road at Rare Earth running between planted verges.",
+      "view": "exterior"
     },
     {
       "src": "/images/projects/rare-earth/gallery-3.avif",
-      "alt": "A landscaped walkway at Rare Earth, benches set along the path."
+      "alt": "A landscaped walkway at Rare Earth, benches set along the path.",
+      "view": "exterior"
     },
     {
       "src": "/images/projects/rare-earth/gallery-4.avif",
-      "alt": "Lawn and young trees beside a Rare Earth walkway."
+      "alt": "Lawn and young trees beside a Rare Earth walkway.",
+      "view": "exterior"
     },
     {
       "src": "/images/projects/rare-earth/gallery-6.avif",
-      "alt": "A curving footpath through planting at Rare Earth."
+      "alt": "A curving footpath through planting at Rare Earth.",
+      "view": "exterior"
     }
   ],
   "contentWarnings": [

@@ -78,6 +78,9 @@ export function PlanExplorer({
   // Apartment storeys overlap in plan, so one is shown at a time.
   const stacked = (scene.levels ?? 1) > 1;
 
+  // Floors with homes on them — a block over parking has none at ground.
+  const homeFloors = [...new Set(scene.units.map((u) => u.floor ?? 0))].sort((a, b) => a - b);
+
   /**
    * Seeded from the incoming unit rather than defaulting to the ground
    * floor. Deriving it in an effect instead meant the server rendered storey
@@ -86,7 +89,7 @@ export function PlanExplorer({
    * with JavaScript off.
    */
   const initialFloor =
-    scene.units.find((u) => u.id === initialUnitId)?.floor ?? 0;
+    scene.units.find((u) => u.id === initialUnitId)?.floor ?? homeFloors[0] ?? 0;
   const [floor, setFloor] = useState<number>(initialFloor);
   const visibleFloor = stacked ? floor : null;
 
@@ -151,7 +154,7 @@ export function PlanExplorer({
           generated to match the published totals — {scene.units.length}{" "}
           {unitNoun}
           {publishedAcres ? ` on ${publishedAcres} acres` : ""}
-          {stacked ? ` across ${scene.levels} floors` : ""} — and are not a
+          {stacked ? ` across ${homeFloors.length} floors` : ""} — and are not a
           surveyed drawing. Confirm any {unitNounSingular.toLowerCase()} with
           the sales team before relying on it.
         </p>
@@ -187,7 +190,7 @@ export function PlanExplorer({
       {stacked && (
         <div className="flex flex-wrap items-center gap-3">
           <h3 className="u-mono w-20 shrink-0 text-muted">Floor</h3>
-          {Array.from({ length: scene.levels ?? 1 }, (_, i) => i).map((f) => {
+          {homeFloors.map((f) => {
             const active = floor === f;
             const count = scene.units.filter((u) => u.floor === f).length;
             return (

@@ -5,6 +5,9 @@
   "status": "ongoing",
   "tagline": "Forty-three MUDA-approved plots at Shyadanahalli.",
   "description": "Fadal is a MUDA-approved plotted development at Shyadanahalli, reached from KRS Main Road, where buyers build their own homes. Forty-three plots sit on 11,722 sq m — two acres and thirty-six guntas — with a tenth of the site given to park and nine-metre roads throughout. The layout has final approval and every site is released. It is Vaastu and Feng Shui compliant.",
+  "headline": "A plot to build your own story.",
+  "homesLine": "MUDA-approved plots with nine-metre roads throughout.",
+  "configurationsNote": "Plots laid out around park, with every site released.",
   "location": {
     "label": "KRS Main Road",
     "addressLines": [
@@ -199,27 +202,33 @@
   "gallery": [
     {
       "src": "/images/projects/fadal/hero.avif",
-      "alt": "The Fadal entrance sign, cut into a low stone wall at the edge of the site."
+      "alt": "The Fadal entrance sign, cut into a low stone wall at the edge of the site.",
+      "view": "exterior"
     },
     {
       "src": "/images/projects/fadal/gallery-1.avif",
-      "alt": "A tree-lined path running through the Fadal layout."
+      "alt": "A tree-lined path running through the Fadal layout.",
+      "view": "exterior"
     },
     {
       "src": "/images/projects/fadal/gallery-2.avif",
-      "alt": "A house under construction on a plot at Fadal, trees along the road behind."
+      "alt": "A house under construction on a plot at Fadal, trees along the road behind.",
+      "view": "exterior"
     },
     {
       "src": "/images/projects/fadal/gallery-3.avif",
-      "alt": "The Fadal entrance marker seen across open ground."
+      "alt": "The Fadal entrance marker seen across open ground.",
+      "view": "exterior"
     },
     {
       "src": "/images/projects/fadal/gallery-4.avif",
-      "alt": "A paved walkway curving between planted verges at Fadal."
+      "alt": "A paved walkway curving between planted verges at Fadal.",
+      "view": "exterior"
     },
     {
       "src": "/images/projects/fadal/gallery-5.avif",
-      "alt": "Mown lawn and young trees along a Fadal walkway."
+      "alt": "Mown lawn and young trees along a Fadal walkway.",
+      "view": "exterior"
     }
   ],
   "contentWarnings": [

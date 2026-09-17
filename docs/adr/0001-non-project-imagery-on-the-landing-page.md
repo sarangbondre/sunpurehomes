@@ -58,6 +58,14 @@ is outside this decision's concern; the note is here because the layout
 changed. The file is 1440px wide and soft on large screens — the client's
 original, at `public/images/home/curve-sunrise.jpg`, would sharpen it.
 
+**Amended 17 September 2026 (the Projects page).** The frame cut from the
+reference mockup is gone. `/projects` now opens with Curve at dawn — the
+client's own render, "01 (4).png" from Curve's elevation folder on their
+Drive, 2000px — so that page no longer shows anything that is not a Sunpure
+development. Larger exports of the same render are on the Drive, over the
+download connector's 10 MB limit; one of them at
+`public/images/pages/projects-hero.jpg` would sharpen it.
+
 ## Consequences
 
 - A visitor may still infer the homes are Sunpure's. That risk is accepted by

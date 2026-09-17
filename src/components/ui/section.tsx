@@ -44,21 +44,3 @@ export function Section({
     </section>
   );
 }
-
-/** Label above value, mono above display. Used for scale and configuration. */
-export function DataPoint({
-  label,
-  value,
-}: {
-  label: string;
-  value: React.ReactNode;
-}) {
-  return (
-    <div>
-      <dt className="u-mono text-muted">{label}</dt>
-      <dd className="mt-2 font-display text-3xl leading-none sm:text-4xl">
-        {value}
-      </dd>
-    </div>
-  );
-}

@@ -98,6 +98,36 @@ export const projectSchema = z
     tagline: realString("tagline"),
     description: realString("description"),
 
+    /*
+      Page copy for the client's reference design (17 September 2026). Short
+      lines of voice, not facts: each must stay true of the project, and none
+      may carry a figure the data does not.
+    */
+    /** The large line that opens the page body: "A home for a fuller life." */
+    headline: realString("headline").optional(),
+    /** Beside the unit count: "Spacious 3 BHK homes with deep balconies." */
+    homesLine: realString("homesLine").optional(),
+    /** Under the configurations: "Well-proportioned homes designed for…" */
+    configurationsNote: realString("configurationsNote").optional(),
+    /** The client's own class for the project, e.g. "Premium apartments". */
+    category: realString("category").optional(),
+
+    /**
+     * Which flats face which way, as the client lists them — flat numbers
+     * repeat on every floor. From the client's data sheet.
+     */
+    facings: z
+      .array(z.object({ flats: realString("facing flats"), facing: realString("facing") }))
+      .optional(),
+
+    /**
+     * The brands a project is built with and what each supplies, when the
+     * client has given them for this project. Absent → the site-wide list.
+     */
+    materials: z
+      .array(z.object({ brand: realString("material brand"), use: realString("material use") }))
+      .optional(),
+
     location: z.object({
       label: realString("location.label"),
       addressLines: z.array(realString("address line")),
@@ -109,6 +139,10 @@ export const projectSchema = z
       acres: z.number().positive().optional(),
       unitCount: z.number().int().positive().optional(),
       unitNoun: realString("scale.unitNoun"),
+      /** As the client writes it: "G+4". */
+      floors: realString("scale.floors").optional(),
+      /** Where the parking is: "Ground floor". */
+      parking: realString("scale.parking").optional(),
     }),
 
     configurations: z.array(
@@ -138,6 +172,10 @@ export const projectSchema = z
           .optional(),
         facing: realString("facing").optional(),
         count: z.number().int().positive().optional(),
+        /** A short line under the label: "With deep balconies". */
+        note: realString("configuration note").optional(),
+        /** Shown with the room icons: "Deep balcony". */
+        balcony: realString("configuration balcony").optional(),
       }),
     ),
 
@@ -284,6 +322,11 @@ export const projectSchema = z
         src: z.string().startsWith("/"),
         /** Non-empty alt is a hard requirement (§14). */
         alt: realString("gallery alt"),
+        /**
+         * Which gallery tab the image belongs to (client, 17 September).
+         * Set by looking at the image, not guessed from its name.
+         */
+        view: z.enum(["exterior", "interior"]),
       }),
     ),
 
