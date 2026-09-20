@@ -63,7 +63,7 @@ export default function AmenitiesPage() {
             key={amenity.name}
             className="grid gap-x-8 gap-y-3 border-b border-line py-6 sm:grid-cols-[1fr_auto] sm:items-baseline"
           >
-            <span className="flex items-center gap-4 font-display text-2xl">
+            <span className="flex items-center gap-4 font-display text-xl sm:text-2xl">
               <span className="flex size-12 shrink-0 items-center justify-center rounded-full bg-paper-2 text-canopy">
                 <AmenityIcon name={amenity.name} className="size-7" />
               </span>

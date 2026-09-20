@@ -21,12 +21,12 @@ export function AmenitiesGrid({ project }: { project: Project }) {
         {project.amenities.map((a) => (
           <li
             key={a.name}
-            className="flex flex-col items-center gap-5 border-b border-r border-line px-3 py-9 text-center sm:px-6 sm:py-11"
+            className="flex flex-col items-center gap-4 border-b border-r border-line px-4 py-8 text-center sm:px-6 sm:py-10"
           >
             <IconTile size="lg">
               <AmenityIcon name={a.name} className="size-9" />
             </IconTile>
-            <span className="max-w-[16ch] font-display text-[1.3rem] leading-snug sm:text-2xl">
+            <span className="max-w-[20ch] font-display text-lg leading-snug sm:text-xl">
               {a.name}
             </span>
             {a.description && (

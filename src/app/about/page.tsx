@@ -3,7 +3,6 @@ import Link from "next/link";
 import { MailIcon, PhoneIcon, WhatsAppIcon } from "@/components/brand/icons";
 import { PartnerList } from "@/components/brand/partner-list";
 import { Section } from "@/components/ui/section";
-import { getAllProjects } from "@/lib/content";
 import { mailtoHref, telHref, whatsappHref } from "@/lib/links";
 import { getMaterialPartners } from "@/lib/partners";
 import { site } from "@/lib/site";
@@ -17,19 +16,19 @@ export const metadata: Metadata = {
  * The client asked for About in the main menu, so this route exists to give
  * that link somewhere real to land.
  *
- * It is about Sunpure Homes and nothing else. Every reference to the parent
- * group and to the edible-oil business was removed from the site at the
- * client's instruction, which is also why there are no leadership profiles
- * here yet: the only titles on record for the two directors are roles in the
- * group companies, and inventing Sunpure Homes titles for them would be the
- * failure this rebuild exists to avoid. Send the titles and the section goes in.
+ * The opening is the client's own copy, sent on 20 September 2026. It names
+ * the House of Sunpure and three decades of it; that is the client speaking
+ * about themselves, and it is set here as they wrote it. The edible-oil
+ * business is still named nowhere, and no legal entity is claimed — which
+ * openQuestions in lib/site.ts still asks about.
+ *
+ * There are no leadership profiles here yet: the only titles on record for
+ * the two directors are roles in the group companies, and inventing Sunpure
+ * Homes titles for them would be the failure this rebuild exists to avoid.
+ * Send the titles and the section goes in.
  */
 export default function AboutPage() {
-  const projects = getAllProjects();
   const partners = getMaterialPartners();
-  const villas = projects.filter((p) => p.type === "villa").length;
-  const apartments = projects.filter((p) => p.type === "apartment").length;
-  const plots = projects.filter((p) => p.type === "plot").length;
 
   return (
     <main className="mx-auto max-w-[86rem] px-6 pb-8 sm:px-10 lg:px-16">
@@ -42,19 +41,42 @@ export default function AboutPage() {
           This read "We build in Mysuru. Only in Mysuru." until 15 September
           2026, when the client asked for it to say the practice works across
           India. No city outside Mysuru is named here, because none has been
-          given — see openQuestions in lib/site.ts. What is named is what the
-          content file can prove: nine developments, all of them here.
+          given — see openQuestions in lib/site.ts.
         */}
         <h1 className="mt-6 text-[clamp(2.5rem,6vw,4.5rem)]">
           We build across India.{" "}
           <em className="italic">It began in {site.city}.</em>
         </h1>
-        <p className="mt-8 text-lg leading-relaxed text-ink-soft sm:text-xl">
-          Nine developments to date — {villas} villa communities,{" "}
-          {apartments} apartment buildings and {plots} plotted developments —
-          all of them in {site.city}, where the practice started and where the
-          work still runs deepest.
-        </p>
+        {/*
+          The client's own words, sent on 20 September 2026, set here as they
+          were written. They replaced a paragraph that counted the
+          developments by type.
+        */}
+        <div className="mt-8 space-y-6 text-lg leading-relaxed text-ink-soft sm:text-xl">
+          <p>
+            We come from the House of Sunpure—a name built on more than three
+            decades of enterprise, integrity and enduring trust. We carry that
+            legacy into real estate with a clear purpose: to create the right
+            development for its place, its people and the lives they aspire to
+            lead.
+          </p>
+          <p>
+            Our portfolio spans thoughtfully planned communities, distinctive
+            villas and contemporary apartments. Across every project, our focus
+            remains unchanged: considered design, lasting quality, honest
+            delivery and spaces that continue to add value over time.
+          </p>
+          <p>
+            Wherever we build, we seek to understand the land, respect its
+            context and create something that truly belongs.
+          </p>
+        </div>
+        <blockquote className="mt-12 border-l-2 border-laterite pl-6 sm:pl-8">
+          <p className="max-w-[40ch] font-display text-[clamp(1.6rem,3vw,2.25rem)] italic leading-snug text-ink">
+            We do not simply build for today. We create places that grow more
+            meaningful with time.
+          </p>
+        </blockquote>
       </header>
 
       <Section id="philosophy" eyebrow="How we build">
