@@ -58,12 +58,10 @@ export function Hero({ image }: { image: HeroImage }) {
       />
 
       {/*
-        The top padding clears the header, which is absolute over this hero;
-        the bottom padding clears the footer, which sits over its foot. On a
-        short phone the section grows rather than letting the two overlap.
+        The top padding clears the header, which is absolute over this hero.
         At lg the block is centred and the padding is only a floor.
       */}
-      <div className="flex min-h-svh flex-col px-6 pb-[23rem] pt-28 sm:px-10 sm:pb-52 sm:pt-32 lg:max-w-[50%] lg:justify-center lg:pb-32 lg:pl-16 lg:pr-10 lg:pt-28 lg:[@media(max-height:700px)]:pb-28">
+      <div className="flex min-h-svh flex-col px-6 pb-16 pt-28 sm:px-10 sm:pt-32 lg:max-w-[50%] lg:justify-center lg:pb-32 lg:pl-16 lg:pr-10 lg:pt-28 lg:[@media(max-height:700px)]:pb-16">
         <p className="u-mono leading-[1.9] text-ink-soft">
           Spaces for a
           <br />
@@ -102,9 +100,7 @@ export function Hero({ image }: { image: HeroImage }) {
       </div>
 
       {/*
-        The corner caption, on its own soft shade in the water's reflection,
-        raised clear of the footer and the WhatsApp button, which both sit
-        in this corner. The shade is sized to its box so no edge shows, and written as
+        The corner caption, on its own soft shade in the water's reflection. The shade is sized to its box so no edge shows, and written as
         literal rgba because a colour token with an alpha does not parse
         inside a gradient.
       */}
@@ -112,7 +108,7 @@ export function Hero({ image }: { image: HeroImage }) {
         aria-hidden
         className="absolute bottom-0 right-0 -z-10 hidden h-[32rem] w-[24rem] bg-[radial-gradient(ellipse_100%_100%_at_bottom_right,rgba(28,26,24,0.94)_0%,rgba(28,26,24,0.8)_36%,rgba(28,26,24,0.42)_62%,rgba(28,26,24,0.12)_84%,transparent_100%)] lg:block"
       />
-      <p className="u-mono absolute bottom-40 right-8 hidden text-right leading-[2] text-paper lg:block">
+      <p className="u-mono absolute bottom-12 right-8 hidden text-right leading-[2] text-paper lg:block">
         Homes
         <br />
         for a

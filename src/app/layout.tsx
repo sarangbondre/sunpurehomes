@@ -1,6 +1,5 @@
 import type { Metadata, Viewport } from "next";
 import { Arka } from "@/components/chat/arka";
-import { WhatsAppButton } from "@/components/site/whatsapp-button";
 import { SiteFooter } from "@/components/site/footer";
 import { SiteHeader } from "@/components/site/header";
 import { arkaEnabled } from "@/lib/chatbot/env";
@@ -40,7 +39,7 @@ export default function RootLayout({
     */
     <html lang="en-IN" className={fontVariables} suppressHydrationWarning>
       <body
-        className="relative flex min-h-dvh flex-col bg-paper text-ink antialiased"
+        className="flex min-h-dvh flex-col bg-paper text-ink antialiased"
         suppressHydrationWarning
       >
         <a
@@ -55,11 +54,11 @@ export default function RootLayout({
         </div>
         <SiteFooter />
         {/*
-          WhatsApp in the corner of every page, where Arka was, at the
-          client's instruction on 17 September. Arka stays in the code behind
-          ARKA_ENABLED; it and this button share the corner, so only one shows.
+          Arka stays behind ARKA_ENABLED (docs/adr/0002). The WhatsApp button
+          that held this corner while it was off was removed on 22 September
+          at the client's instruction; the header's pill is the way to it now.
         */}
-        {arkaEnabled() ? <Arka projects={ARKA_PROJECTS} /> : <WhatsAppButton />}
+        {arkaEnabled() && <Arka projects={ARKA_PROJECTS} />}
       </body>
     </html>
   );

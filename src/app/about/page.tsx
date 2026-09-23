@@ -33,26 +33,21 @@ export default function AboutPage() {
   return (
     <main className="mx-auto max-w-[86rem] px-6 pb-8 sm:px-10 lg:px-16">
       <header className="max-w-[52rem] pb-6 pt-16 sm:pt-24">
-        {/* The same size as the section headings below, at the client's request. */}
-        <p className="u-mono text-[1.05rem] leading-snug tracking-[0.14em] text-laterite sm:text-[1.2rem]">
-          About
-        </p>
         {/*
-          This read "We build in Mysuru. Only in Mysuru." until 15 September
-          2026, when the client asked for it to say the practice works across
-          India. No city outside Mysuru is named here, because none has been
-          given — see openQuestions in lib/site.ts.
+          "About" is the page's heading now. The line it sat under — "We build
+          across India. It began in Mysuru." — was removed on 22 September at
+          the client's instruction, so this label carries the page, at the size
+          the client asked for on 17 September.
         */}
-        <h1 className="mt-6 text-[clamp(2.5rem,6vw,4.5rem)]">
-          We build across India.{" "}
-          <em className="italic">It began in {site.city}.</em>
+        <h1 className="u-mono text-[1.05rem] leading-snug tracking-[0.14em] text-laterite sm:text-[1.2rem]">
+          About
         </h1>
         {/*
           The client's own words, sent on 20 September 2026, set here as they
           were written. They replaced a paragraph that counted the
           developments by type.
         */}
-        <div className="mt-8 space-y-6 text-lg leading-relaxed text-ink-soft sm:text-xl">
+        <div className="mt-10 space-y-6 text-lg leading-relaxed text-ink-soft sm:text-xl">
           <p>
             We come from the House of Sunpure—a name built on more than three
             decades of enterprise, integrity and enduring trust. We carry that

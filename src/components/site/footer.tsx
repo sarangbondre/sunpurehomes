@@ -1,5 +1,3 @@
-"use client";
-
 import {
   FacebookIcon,
   InstagramIcon,
@@ -8,7 +6,6 @@ import {
   PhoneIcon,
   YouTubeIcon,
 } from "@/components/brand/icons";
-import { usePathname } from "next/navigation";
 import { mailtoHref, telHref } from "@/lib/links";
 import { site } from "@/lib/site";
 
@@ -53,22 +50,12 @@ const SOCIAL: {
  * screen, so "the bottom of the body" is the bottom of the picture.
  */
 export function SiteFooter() {
-  const overImage = usePathname() === "/";
-  const icon = `flex size-10 items-center justify-center rounded-full border transition-colors duration-hover ease-hover ${
-    overImage
-      ? "border-paper/45 text-paper hover:border-paper hover:bg-paper hover:text-ink"
-      : "border-line text-ink-soft hover:border-accent-ink hover:text-accent-ink"
-  }`;
+  const icon =
+    "flex size-10 items-center justify-center rounded-full border border-line text-ink-soft transition-colors duration-hover ease-hover hover:border-accent-ink hover:text-accent-ink";
 
   return (
-    <footer
-      className={
-        overImage
-          ? "absolute inset-x-0 bottom-0 z-10 bg-gradient-to-t from-ink/90 via-ink/70 via-60% to-transparent pt-10"
-          : "border-t border-line"
-      }
-    >
-      <div className="mx-auto flex max-w-[86rem] flex-col gap-5 px-6 pb-24 pt-8 sm:px-10 sm:pb-8 sm:pr-28 lg:flex-row lg:items-center lg:justify-between lg:gap-10 lg:pl-16">
+    <footer className="border-t border-line">
+      <div className="mx-auto flex max-w-[86rem] flex-col gap-5 px-6 py-8 sm:px-10 lg:flex-row lg:items-center lg:justify-between lg:gap-10 lg:pl-16">
         <ul className="flex shrink-0 flex-wrap items-center gap-3">
           <li>
             <a className={icon} href={mailtoHref} aria-label={`Email ${site.contact.email}`}>
@@ -80,7 +67,7 @@ export function SiteFooter() {
               <PhoneIcon className="size-[1.1rem]" />
             </a>
           </li>
-          <li aria-hidden className={`mx-1 h-6 w-px ${overImage ? "bg-paper/40" : "bg-line"}`} />
+          <li aria-hidden className="mx-1 h-6 w-px bg-line" />
           {SOCIAL.map(({ href, label, Icon }) => (
             <li key={label}>
               <a
@@ -96,7 +83,7 @@ export function SiteFooter() {
           ))}
         </ul>
 
-        <div className={`flex flex-col gap-2 text-xs leading-relaxed sm:flex-row sm:items-baseline sm:gap-6 lg:min-w-0 lg:max-w-[46rem] ${overImage ? "text-paper/85" : "text-muted"}`}>
+        <div className="flex flex-col gap-2 text-xs leading-relaxed text-muted sm:flex-row sm:items-baseline sm:gap-6 lg:min-w-0 lg:max-w-[46rem]">
           <p>
             Information on this website is representational and informative, and
             is subject to variation during execution. {site.name} reserves the
