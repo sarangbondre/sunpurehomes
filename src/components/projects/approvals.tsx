@@ -2,7 +2,7 @@ import Image from "next/image";
 import { LineIcon } from "@/components/brand/amenity-icons";
 import { ASSURANCE_ROW, CLOSING } from "@/components/projects/detail/copy";
 import { Aside, ClosingLine, NoteRow } from "@/components/projects/detail/section-head";
-import { getProjectMaterials } from "@/lib/partners";
+import { getMaterialGroups } from "@/lib/partners";
 import type { Project } from "@/lib/schema";
 
 /**
@@ -181,16 +181,17 @@ function RegisteredSeal({ href }: { href: string }) {
 }
 
 /**
- * The brands a project is built with, as cards: the mark where its file is
- * in public/images/brands (see lib/partners.ts), otherwise the name, and
- * what each supplies beneath it.
+ * The brands a project is built with, grouped by what each supplies —
+ * cement, doors, bathroom fittings, plumbing — at the client's instruction
+ * of 23 September 2026. A brand's mark shows where its file is in
+ * public/images/brands (see lib/partners.ts); otherwise the name stands.
  *
  * The group and edible-oil lineage were removed from every page at the
  * client's instruction. The material partners carry the trust signal on
  * their own.
  */
 function BuiltWith({ materials }: { materials: Project["materials"] }) {
-  const brands = getProjectMaterials(materials);
+  const groups = getMaterialGroups(materials);
   return (
     <div>
       <div className="flex items-end justify-between gap-8">
@@ -200,31 +201,41 @@ function BuiltWith({ materials }: { materials: Project["materials"] }) {
         </h3>
         <Aside lines={CLOSING.approvalsAside} className="hidden sm:block" />
       </div>
-      <ul className="mt-6 grid grid-cols-2 gap-3 sm:grid-cols-3 sm:gap-4">
-        {brands.map((brand) => (
-          <li
-            key={brand.name}
-            className="flex min-h-32 flex-col items-center justify-center gap-4 rounded-lg border border-line bg-paper px-4 py-6 text-center"
+
+      <dl className="mt-8 divide-y divide-line border-y border-line">
+        {groups.map((group, i) => (
+          <div
+            key={group.use ?? `other-${i}`}
+            className="grid gap-4 py-6 lg:grid-cols-[14rem_1fr] lg:items-center lg:gap-8"
           >
-            {brand.logoSrc ? (
-              <Image
-                src={brand.logoSrc}
-                alt={brand.name}
-                width={200}
-                height={60}
-                className="h-11 w-auto max-w-[80%] object-contain"
-              />
-            ) : (
-              <span className="font-display text-2xl leading-tight text-ink">{brand.name}</span>
-            )}
-            {brand.use && (
-              <span className="u-mono text-[0.68rem] leading-relaxed tracking-[0.2em] text-muted">
-                {brand.use}
-              </span>
-            )}
-          </li>
+            <dt className="u-mono tracking-[0.2em] text-muted">{group.use ?? "Also"}</dt>
+            <dd>
+              <ul className="flex flex-wrap gap-3">
+                {group.brands.map((brand) => (
+                  <li
+                    key={brand.name}
+                    className="flex min-h-14 min-w-[8.5rem] items-center justify-center rounded-md border border-line bg-paper px-5 py-3"
+                  >
+                    {brand.logoSrc ? (
+                      <Image
+                        src={brand.logoSrc}
+                        alt={brand.name}
+                        width={160}
+                        height={48}
+                        className="h-8 w-auto max-w-[9rem] object-contain"
+                      />
+                    ) : (
+                      <span className="font-display text-xl leading-tight text-ink">
+                        {brand.name}
+                      </span>
+                    )}
+                  </li>
+                ))}
+              </ul>
+            </dd>
+          </div>
         ))}
-      </ul>
+      </dl>
     </div>
   );
 }

@@ -63,24 +63,47 @@ const SITE_USES: Readonly<Record<string, string>> = {
   Fujitec: "Lifts",
 };
 
-export type ProjectMaterial = { name: string; use?: string; logoSrc?: string };
+export type ProjectMaterial = { name: string; logoSrc?: string };
+/** Brands grouped by what they supply; the last group may have no label. */
+export type MaterialGroup = { use?: string; brands: readonly ProjectMaterial[] };
 
 /**
- * The brands on a project page: the project's own list where the client gave
- * one (a brand named twice has its uses joined), otherwise the site-wide
- * partners.
+ * The brands on a project page, grouped by what each supplies — cement,
+ * doors, bathroom fittings, plumbing — at the client's instruction of
+ * 23 September 2026.
+ *
+ * The project's own list is used where the client gave one, otherwise the
+ * site-wide partners. Groups keep the order the uses first appear in, and a
+ * brand with no use recorded (Koala) falls into a final, unlabelled group
+ * rather than being given a category it might not belong to.
  */
-export function getProjectMaterials(
+export function getMaterialGroups(
   materials: readonly { brand: string; use: string }[] | undefined,
-): readonly ProjectMaterial[] {
-  if (!materials?.length) {
-    return getMaterialPartners().map((p) => ({ ...p, use: SITE_USES[p.name] }));
+): readonly MaterialGroup[] {
+  const pairs: { brand: string; use?: string }[] = materials?.length
+    ? [...materials]
+    : site.materialPartners.map((brand) => ({ brand, use: SITE_USES[brand] }));
+
+  const byUse = new Map<string, string[]>();
+  const unlabelled: string[] = [];
+  for (const { brand, use } of pairs) {
+    if (!use) {
+      if (!unlabelled.includes(brand)) unlabelled.push(brand);
+      continue;
+    }
+    const brands = byUse.get(use) ?? [];
+    if (!brands.includes(brand)) brands.push(brand);
+    byUse.set(use, brands);
   }
-  const byBrand = new Map<string, string[]>();
-  for (const m of materials) byBrand.set(m.brand, [...(byBrand.get(m.brand) ?? []), m.use]);
-  return [...byBrand].map(([name, uses]) => ({
-    name,
-    use: uses.join(" · "),
-    logoSrc: brandLogo(name),
-  }));
+
+  const withMarks = (names: readonly string[]): ProjectMaterial[] =>
+    names.map((name) => {
+      const logoSrc = brandLogo(name);
+      return logoSrc ? { name, logoSrc } : { name };
+    });
+
+  return [
+    ...[...byUse].map(([use, names]) => ({ use, brands: withMarks(names) })),
+    ...(unlabelled.length > 0 ? [{ brands: withMarks(unlabelled) }] : []),
+  ];
 }
