@@ -6,21 +6,12 @@ import {
   PinIcon,
   WhatsAppIcon,
 } from "@/components/brand/icons";
-import { mailtoHref, projectEnquiryMessage, telHref, whatsappHref } from "@/lib/links";
+import { mailtoHref, mapsHref, projectEnquiryMessage, telHref, whatsappHref } from "@/lib/links";
 import type { Project } from "@/lib/schema";
 import { site } from "@/lib/site";
 import { LineIcon } from "@/components/brand/amenity-icons";
 import { ASIDES, CLOSING, visitRow } from "./copy";
 import { Aside, NoteRow, SectionHead } from "./section-head";
-
-/**
- * A maps search for the published address. No project has coordinates (see
- * the schema), so the address is the query; built from our own content, never
- * from anything a visitor supplied.
- */
-function directionsHref(addressLines: readonly string[]): string {
-  return `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(addressLines.join(", "))}`;
-}
 
 /**
  * "Come and look", to the client's reference design: the three ways to reach
@@ -93,16 +84,24 @@ export function Visit({
               <div className="mt-6 flex gap-4">
                 <PinIcon className="mt-1 size-6 text-ink-soft" />
                 <div>
+                  {/* The address opens the map too, not only the link below. */}
                   <address className="not-italic">
-                    <span className="block font-display text-2xl leading-snug">{address[0]}</span>
-                    {address.slice(1).map((line) => (
-                      <span key={line} className="block text-lg leading-relaxed text-ink-soft">
-                        {line}
-                      </span>
-                    ))}
+                    <a
+                      href={mapsHref(address)}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="block transition-colors duration-hover ease-hover hover:text-laterite"
+                    >
+                      <span className="block font-display text-2xl leading-snug">{address[0]}</span>
+                      {address.slice(1).map((line) => (
+                        <span key={line} className="block text-lg leading-relaxed text-ink-soft">
+                          {line}
+                        </span>
+                      ))}
+                    </a>
                   </address>
                   <a
-                    href={directionsHref(address)}
+                    href={mapsHref(address)}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="u-mono mt-6 inline-flex items-center gap-4 border-b border-ink pb-2 tracking-[0.2em] text-ink transition-colors duration-hover ease-hover hover:border-laterite hover:text-laterite"

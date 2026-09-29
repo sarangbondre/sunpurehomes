@@ -60,6 +60,24 @@
     floating WhatsApp button, where the colour is what says "WhatsApp".
   */
   --color-whatsapp: #1da851;
+
+  /*
+    The amenity marks, at the client's instruction of 29 September 2026 —
+    they were all one red and read as a wall. Five families, each a deep hue
+    on a tint of itself: greenery, water, energy, safety and leisure. Every
+    pair measures at least 4.8:1, so the drawing is clear of its tile well
+    above the 3:1 a non-text mark needs.
+  */
+  --color-amenity-green: #4d6137;
+  --color-amenity-green-tint: #e8eddf;
+  --color-amenity-blue: #26596b;
+  --color-amenity-blue-tint: #e0eaee;
+  --color-amenity-amber: #8a5a12;
+  --color-amenity-amber-tint: #f4e8d5;
+  --color-amenity-clay: #9a4a2d;
+  --color-amenity-clay-tint: #f6e4dd;
+  --color-amenity-plum: #6a4462;
+  --color-amenity-plum-tint: #efe3ed;
   /*
     The accent for text and controls. The same red, because Rosso Corsa
     already passes on --paper — the orange needed a deepened stand-in

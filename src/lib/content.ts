@@ -179,6 +179,23 @@ export function sortProjects(
   return sorted.sort((a, b) => rank(a) - rank(b) || byName(a, b));
 }
 
+/**
+ * The listing in two groups, at the client's instruction of 29 September
+ * 2026: what is being built now, then what is finished. A group with nothing
+ * in it is not returned, so the page never shows an empty heading — which is
+ * why "Coming soon" appears only once a project is marked upcoming.
+ */
+export function groupByStatus(list: readonly Project[]): { label: string; projects: Project[] }[] {
+  const order: { status: ProjectStatus; label: string }[] = [
+    { status: "ongoing", label: STATUS_LABELS.ongoing },
+    { status: "upcoming", label: "Coming soon" },
+    { status: "completed", label: STATUS_LABELS.completed },
+  ];
+  return order
+    .map(({ status, label }) => ({ label, projects: list.filter((p) => p.status === status) }))
+    .filter((group) => group.projects.length > 0);
+}
+
 /** Facets are derived from the content, so a tenth project needs no code change. */
 export function getFacets(all: Project[] = projects) {
   const count = <T extends string>(values: T[]) => {
@@ -208,8 +225,13 @@ export const TYPE_LABELS_ONE: Record<ProjectType, string> = {
   plot: "Plotted development",
 };
 
+/**
+ * "Under construction" rather than "Ongoing" since 29 September 2026, at the
+ * client's instruction — it is the phrase a buyer uses. The status values in
+ * the content files are unchanged.
+ */
 export const STATUS_LABELS: Record<ProjectStatus, string> = {
-  ongoing: "Ongoing",
+  ongoing: "Under construction",
   completed: "Completed",
   upcoming: "Upcoming",
 };

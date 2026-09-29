@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { ArrowRightIcon, PinIcon } from "@/components/brand/icons";
 import { STATUS_LABELS, TYPE_LABELS, getCoverImage } from "@/lib/content";
+import { mapsHref } from "@/lib/links";
 import type { Project } from "@/lib/schema";
 import { site } from "@/lib/site";
 
@@ -17,6 +18,11 @@ import { site } from "@/lib/site";
  * The type sits on a short fall of shade at the top, and the name and place
  * on a deeper one at the foot. Both are needed because the photographs are
  * not ours to choose: several have bright skies exactly where the text goes.
+ *
+ * The card is a link, and the place inside it is a second link to the map
+ * (client, 29 September 2026). One anchor cannot sit inside another, so the
+ * project link covers the card with an ::after overlay instead of wrapping
+ * it, and the place is lifted above that overlay.
  */
 export function ProjectCard({
   project,
@@ -35,11 +41,8 @@ export function ProjectCard({
   const status = soldOut ? "Fully sold" : STATUS_LABELS[project.status];
 
   return (
-    <article className="h-full">
-      <Link
-        href={`/projects/${project.slug}`}
-        className="group relative block aspect-[1.08] overflow-hidden rounded-sm bg-ink focus-visible:outline-offset-4"
-      >
+    <article className="group relative h-full overflow-hidden rounded-sm bg-ink">
+      <div className="relative block aspect-[1.08]">
         {cover && (
           <Image
             src={cover.src}
@@ -71,12 +74,24 @@ export function ProjectCard({
         <div className="absolute inset-x-5 bottom-5 flex items-end justify-between gap-4 sm:inset-x-6 sm:bottom-6">
           <div className="min-w-0">
             <h3 className="font-display text-[clamp(1.75rem,2.6vw,2.2rem)] leading-tight text-paper">
-              {project.name}
+              <Link
+                href={`/projects/${project.slug}`}
+                className="after:absolute after:inset-0 after:content-[''] focus-visible:outline-offset-4"
+              >
+                {project.name}
+              </Link>
             </h3>
-            <p className="mt-2 flex items-start gap-1.5 text-[0.9rem] leading-snug text-paper">
+            {/* Above the card's own overlay, so the map link is clickable. */}
+            <a
+              href={mapsHref(place)}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="relative z-10 mt-2 inline-flex items-start gap-1.5 text-[0.9rem] leading-snug text-paper underline decoration-paper/40 underline-offset-4 transition-colors duration-hover ease-hover hover:decoration-paper"
+            >
               <PinIcon className="mt-0.5 size-4" />
               <span>{place}</span>
-            </p>
+              <span className="sr-only">— open in Google Maps</span>
+            </a>
           </div>
           <span
             aria-hidden
@@ -85,7 +100,7 @@ export function ProjectCard({
             <ArrowRightIcon className="size-4" />
           </span>
         </div>
-      </Link>
+      </div>
     </article>
   );
 }

@@ -68,7 +68,7 @@ export default function AboutPage() {
         </div>
         <blockquote className="mt-12 border-l-2 border-laterite pl-6 sm:pl-8">
           <p className="max-w-[40ch] font-display text-[clamp(1.6rem,3vw,2.25rem)] italic leading-snug text-ink">
-            We do not simply build for today. We create places that grow more
+            We do not simply build for today. We build spaces that grow
             meaningful with time.
           </p>
         </blockquote>

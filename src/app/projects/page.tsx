@@ -10,6 +10,7 @@ import {
   filterProjects,
   getAllProjects,
   getFacets,
+  groupByStatus,
   sortProjects,
   type Filters,
   type Sort,
@@ -91,18 +92,38 @@ export default async function ProjectsPage({
         </div>
 
         {results.length > 0 ? (
-          <ul className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            {results.map((project, i) => (
-              <li key={project.slug}>
-                {/* The first row is above the fold once the filters are passed. */}
-                <ProjectCard
-                  project={project}
-                  soldOut={isFullySold(project.slug)}
-                  priority={i < 3}
-                />
-              </li>
+          /*
+            Two groups, at the client's instruction of 29 September 2026: what
+            is being built now, then what is finished. Within a group the
+            chosen sort still applies. A group with nothing in it is not
+            rendered, so filtering to one status shows one heading.
+          */
+          <div className="mt-6 space-y-16">
+            {groupByStatus(results).map((group) => (
+              <section key={group.label} aria-labelledby={`group-${group.label.replace(/\s+/g, "-").toLowerCase()}`}>
+                <h3
+                  id={`group-${group.label.replace(/\s+/g, "-").toLowerCase()}`}
+                  className="u-mono flex items-center gap-5 tracking-[0.22em] text-ink-soft"
+                >
+                  {group.label}
+                  <span aria-hidden className="h-px flex-1 bg-line" />
+                  <span className="text-muted">{group.projects.length}</span>
+                </h3>
+                <ul className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+                  {group.projects.map((project, i) => (
+                    <li key={project.slug}>
+                      {/* The first row is above the fold once the filters are passed. */}
+                      <ProjectCard
+                        project={project}
+                        soldOut={isFullySold(project.slug)}
+                        priority={i < 3}
+                      />
+                    </li>
+                  ))}
+                </ul>
+              </section>
             ))}
-          </ul>
+          </div>
         ) : (
           <div className="mt-10 border-y border-line py-16">
             <p className="max-w-[36ch] font-display text-3xl text-ink-soft">

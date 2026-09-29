@@ -50,18 +50,13 @@ function Pill({
   const base =
     "u-mono inline-flex min-w-[6.5rem] items-center justify-center rounded-full border px-5 py-2.5";
 
-  // A facet with nothing behind it stays visible — the taxonomy is part of
-  // the information — but it is not a link, so it cannot lead to a dead end.
-  if (count === 0) {
-    return (
-      <span
-        className={`${base} cursor-default border-line text-muted/70`}
-        title="No projects in this category yet"
-      >
-        {label}
-      </span>
-    );
-  }
+  /*
+    A facet with nothing behind it is not shown at all. It used to sit there
+    greyed out, so the taxonomy read whole; the client asked on 29 September
+    for the two statuses that exist — under construction and completed — and
+    an empty "Upcoming" beside them was the thing in the way.
+  */
+  if (count === 0) return null;
 
   return (
     <Link

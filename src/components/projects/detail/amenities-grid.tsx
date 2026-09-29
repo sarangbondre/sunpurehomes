@@ -1,8 +1,8 @@
-import { AmenityIcon } from "@/components/brand/amenity-icons";
+import { AmenityTile } from "@/components/brand/amenity-icons";
 import type { Project } from "@/lib/schema";
 import { ArrowRightIcon } from "@/components/brand/icons";
 import { CLOSING, LEDES } from "./copy";
-import { ClosingLine, DetailSection, IconTile, SectionHead } from "./section-head";
+import { ClosingLine, DetailSection, SectionHead } from "./section-head";
 
 /**
  * "On site", to the client's reference design: every amenity in a cell with
@@ -23,9 +23,7 @@ export function AmenitiesGrid({ project }: { project: Project }) {
             key={a.name}
             className="flex flex-col items-center gap-4 border-b border-r border-line px-4 py-8 text-center sm:px-6 sm:py-10"
           >
-            <IconTile size="lg">
-              <AmenityIcon name={a.name} className="size-9" />
-            </IconTile>
+            <AmenityTile name={a.name} className="size-20" iconClassName="size-9" />
             <span className="max-w-[20ch] font-display text-lg leading-snug sm:text-xl">
               {a.name}
             </span>

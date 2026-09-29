@@ -16,6 +16,18 @@ export function whatsappHref(message: string): string {
   return `https://wa.me/${waNumber}?text=${encodeURIComponent(message)}`;
 }
 
+/**
+ * A Google Maps search for a place we publish. Every location on the site is
+ * a link to this, at the client's instruction of 29 September 2026. No
+ * project has surveyed coordinates (see the schema), so the query is the
+ * address or locality as written — always our own content, never anything a
+ * visitor typed.
+ */
+export function mapsHref(place: string | readonly string[]): string {
+  const query = Array.isArray(place) ? place.join(", ") : (place as string);
+  return `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(query)}`;
+}
+
 export function projectEnquiryMessage(projectName: string, unit?: string): string {
   const about = unit
     ? `${projectName}, unit ${unit}`

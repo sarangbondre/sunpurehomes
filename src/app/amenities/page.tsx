@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { AmenityIcon } from "@/components/brand/amenity-icons";
+import { AmenityTile } from "@/components/brand/amenity-icons";
 import { getAllProjects } from "@/lib/content";
 import { site } from "@/lib/site";
 
@@ -64,9 +64,7 @@ export default function AmenitiesPage() {
             className="grid gap-x-8 gap-y-3 border-b border-line py-5 sm:grid-cols-[1fr_auto] sm:items-center"
           >
             <span className="flex items-center gap-4 font-display text-xl">
-              <span className="flex size-12 shrink-0 items-center justify-center rounded-full bg-paper-2 text-canopy">
-                <AmenityIcon name={amenity.name} className="size-7" />
-              </span>
+              <AmenityTile name={amenity.name} className="size-12" iconClassName="size-7" />
               {amenity.name}
             </span>
             <span className="flex flex-wrap gap-x-2 gap-y-1 sm:justify-end">

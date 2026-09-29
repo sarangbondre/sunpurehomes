@@ -274,6 +274,59 @@ export function AmenityIcon({
   return <LineIcon kind={amenityIcon(name) ?? "leaf"} className={className} />;
 }
 
+/**
+ * Which family of colour a drawing belongs to: greenery, water, energy,
+ * safety or leisure. Everything not named here is safety, which is where the
+ * building and service marks sit.
+ */
+const TONES: Readonly<Record<string, readonly (Kind | ExtraIcon)[]>> = {
+  green: ["tree", "leaf", "play", "walk", "footprints", "yoga", "bench", "pavilion", "arch", "home", "balcony", "sun"],
+  blue: ["water", "pool", "rain", "hot-water", "utilities"],
+  amber: ["power", "gas", "ev", "lamp", "plug"],
+  plum: ["ball", "games", "book", "amphitheatre", "fitness"],
+};
+
+export type IconTone = "green" | "blue" | "amber" | "plum" | "clay";
+
+/** The tile and stroke colours for a drawing. */
+export function iconTone(kind: Kind | ExtraIcon): IconTone {
+  const hit = Object.entries(TONES).find(([, kinds]) => kinds.includes(kind));
+  return (hit?.[0] as IconTone) ?? "clay";
+}
+
+/** The classes each family renders in. */
+export const TONE_CLASSES: Readonly<Record<IconTone, string>> = {
+  green: "bg-amenity-green-tint text-amenity-green",
+  blue: "bg-amenity-blue-tint text-amenity-blue",
+  amber: "bg-amenity-amber-tint text-amenity-amber",
+  clay: "bg-amenity-clay-tint text-amenity-clay",
+  plum: "bg-amenity-plum-tint text-amenity-plum",
+};
+
+/**
+ * An amenity's drawing in its own colour, on a tile of the same hue. Used by
+ * the project pages and by /amenities, so one amenity looks the same
+ * wherever it appears.
+ */
+export function AmenityTile({
+  name,
+  className = "",
+  iconClassName = "",
+}: {
+  name: string;
+  className?: string;
+  iconClassName?: string;
+}) {
+  const kind = amenityIcon(name) ?? "leaf";
+  return (
+    <span
+      className={`flex shrink-0 items-center justify-center rounded-full ${TONE_CLASSES[iconTone(kind)]} ${className}`}
+    >
+      <LineIcon kind={kind} className={iconClassName} />
+    </span>
+  );
+}
+
 /** Any drawing in this set, by name. */
 export function LineIcon({
   kind,

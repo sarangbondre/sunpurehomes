@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { formatIndianNumber } from "@/lib/format";
+import { mapsHref } from "@/lib/links";
 import type { Project } from "@/lib/schema";
 
 /**
@@ -105,10 +106,16 @@ export function Overview({
               On its own dark pill: the pictures range from bright lawn to
               white sky, and a shade alone let the name fall to 1.3:1.
             */}
-            <p className="u-mono absolute bottom-6 right-6 flex items-center gap-3 rounded-full bg-ink/75 px-4 py-2 text-paper backdrop-blur-sm">
+            <a
+              href={mapsHref(project.location.addressLines.length > 0 ? project.location.addressLines : project.location.label)}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="u-mono absolute bottom-6 right-6 flex items-center gap-3 rounded-full bg-ink/75 px-4 py-2 text-paper backdrop-blur-sm transition-colors duration-hover ease-hover hover:bg-ink"
+            >
               <span aria-hidden className="h-px w-6 bg-paper/70" />
               {project.location.label}
-            </p>
+              <span className="sr-only">— open in Google Maps</span>
+            </a>
           </div>
         )}
       </div>

@@ -62,19 +62,14 @@ export function Hero({ image }: { image: HeroImage }) {
         At lg the block is centred and the padding is only a floor.
       */}
       <div className="flex min-h-svh flex-col px-6 pb-16 pt-28 sm:px-10 sm:pt-32 lg:max-w-[50%] lg:justify-center lg:pb-32 lg:pl-16 lg:pr-10 lg:pt-28 lg:[@media(max-height:700px)]:pb-16">
-        <p className="u-mono leading-[1.9] text-ink-soft">
-          Spaces for a
-          <br />
-          more meaningful tomorrow
-        </p>
-        <span aria-hidden className="mt-5 block h-px w-20 bg-ink/25" />
-
+        {/* The brand line stands alone: the eyebrow above it was removed on
+            29 September at the client's instruction. */}
         {/*
           "Thoughtfully Built," never wraps and measures 6.21 times the font
           size, so the vw factor is the largest that still fits at 320px on a
           phone and in half the screen at lg. Change the words and re-measure.
         */}
-        <h1 className="mt-10 text-[clamp(2.6rem,12.5vw,4.5rem)] leading-[1.08] text-ink lg:text-[clamp(3rem,6vw,6.5rem)]">
+        <h1 className="text-[clamp(2.6rem,12.5vw,4.5rem)] leading-[1.08] text-ink lg:text-[clamp(3rem,6vw,6.5rem)]">
           Thoughtfully&nbsp;Built,
           <span className="mt-1 block text-laterite">Deeply&nbsp;Lived.</span>
         </h1>
