@@ -172,15 +172,19 @@ function Card({ configuration: c }: { configuration: Configuration }) {
         {features.length > 0 && (
           <dd className="mt-6">
             <span aria-hidden className="block h-px w-8 bg-ink/30" />
-            <ul className="mt-6 flex flex-wrap gap-y-4">
-              {features.map((f, i) => (
-                <li
-                  key={f.icon}
-                  className={`min-w-[6.5rem] pr-6 ${i > 0 ? "border-l border-line pl-6" : ""}`}
-                >
-                  <LineIcon kind={f.icon} className="size-9 text-laterite" />
+            {/*
+              One column each, not a wrapping row: on a phone the third item
+              used to drop to a second line and carry its divider with it,
+              which read as an indent in the middle of the card.
+            */}
+            <ul className="mt-6 grid grid-cols-3 divide-x divide-line">
+              {features.map((f) => (
+                <li key={f.icon} className="px-4 first:pl-0 last:pr-0">
+                  <LineIcon kind={f.icon} className="size-8 text-laterite sm:size-9" />
                   <span className="mt-2 block text-lg leading-tight text-ink">{f.value}</span>
-                  <span className="block text-ink-soft">{f.label}</span>
+                  <span className="block text-[0.9rem] leading-snug text-ink-soft sm:text-base">
+                    {f.label}
+                  </span>
                 </li>
               ))}
             </ul>
