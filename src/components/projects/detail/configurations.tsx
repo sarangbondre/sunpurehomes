@@ -175,9 +175,19 @@ function Card({ configuration: c }: { configuration: Configuration }) {
               used to drop to a second line and carry its divider with it,
               which read as an indent in the middle of the card.
             */}
-            <ul className="mt-6 grid grid-cols-3 divide-x divide-line">
+            <ul className="mt-6 grid grid-cols-3 divide-x divide-line sm:[&>li:first-child]:pl-0 sm:[&>li:last-child]:pr-0">
               {features.map((f) => (
-                <li key={f.icon} className="px-3 first:pl-0 last:pr-0">
+                <li
+                  /*
+                    Centred on a phone: the columns are equal but their words
+                    are not, so left-aligned text left one divider tight
+                    against "bathrooms" and the next one adrift. From sm up
+                    there is room, and the row lines up with the figures
+                    above it.
+                  */
+                  key={f.icon}
+                  className="flex flex-col items-center px-2 text-center sm:items-start sm:px-3 sm:text-left"
+                >
                   <LineIcon kind={f.icon} className="size-8 text-laterite sm:size-9" />
                   <span className="mt-3 block text-[0.95rem] leading-snug text-ink sm:text-base">
                     {f.text}
