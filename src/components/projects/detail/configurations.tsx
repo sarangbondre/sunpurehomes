@@ -124,24 +124,22 @@ export function Configurations({ project }: { project: Project }) {
 const CARD =
   "rounded-lg border border-line bg-paper px-6 py-8 shadow-[0_1px_2px_rgba(28,26,24,0.04),0_10px_30px_rgba(28,26,24,0.05)] sm:px-10 sm:py-10";
 
-function capitalise(text: string): string {
-  return text.charAt(0).toUpperCase() + text.slice(1);
-}
-
 function Card({ configuration: c }: { configuration: Configuration }) {
   const area = formatArea(c.areaSqft);
   const carpet = formatArea(c.carpetAreaSqft);
   const bedrooms = rooms(c.label);
+  /*
+    One line each, in one size. The balcony's value is a word, not a number,
+    so the old two-line form set "Curved" large over a small "Balcony" while
+    "Bedrooms" and "Bathrooms" sat small under a figure — three columns that
+    did not agree, and labels that crowded the dividers on a phone.
+  */
   const features = [
-    bedrooms && { icon: "bed" as const, value: String(bedrooms), label: bedrooms === 1 ? "Bedroom" : "Bedrooms" },
-    bedrooms && { icon: "bath" as const, value: String(bedrooms), label: bedrooms === 1 ? "Bathroom" : "Bathrooms" },
-    c.balcony && {
-      icon: "balcony" as const,
-      // "Deep balcony" → "Deep" over "Balcony", as the reference sets it.
-      value: c.balcony.split(" ")[0],
-      label: capitalise(c.balcony.split(" ").slice(1).join(" ") || "balcony"),
-    },
-  ].filter((f): f is { icon: "bed" | "bath" | "balcony"; value: string; label: string } => Boolean(f));
+    bedrooms && { icon: "bed" as const, text: `${bedrooms} ${bedrooms === 1 ? "bedroom" : "bedrooms"}` },
+    bedrooms && { icon: "bath" as const, text: `${bedrooms} ${bedrooms === 1 ? "bathroom" : "bathrooms"}` },
+    // Already written as a phrase in the content: "Curved balcony".
+    c.balcony && { icon: "balcony" as const, text: c.balcony },
+  ].filter((f): f is { icon: "bed" | "bath" | "balcony"; text: string } => Boolean(f));
 
   return (
     <dl className={`${CARD} grid gap-10 sm:grid-cols-2 sm:gap-0`}>
@@ -179,11 +177,10 @@ function Card({ configuration: c }: { configuration: Configuration }) {
             */}
             <ul className="mt-6 grid grid-cols-3 divide-x divide-line">
               {features.map((f) => (
-                <li key={f.icon} className="px-4 first:pl-0 last:pr-0">
+                <li key={f.icon} className="px-3 first:pl-0 last:pr-0">
                   <LineIcon kind={f.icon} className="size-8 text-laterite sm:size-9" />
-                  <span className="mt-2 block text-lg leading-tight text-ink">{f.value}</span>
-                  <span className="block text-[0.9rem] leading-snug text-ink-soft sm:text-base">
-                    {f.label}
+                  <span className="mt-3 block text-[0.95rem] leading-snug text-ink sm:text-base">
+                    {f.text}
                   </span>
                 </li>
               ))}
