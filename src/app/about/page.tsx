@@ -1,10 +1,10 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { MailIcon, PhoneIcon, WhatsAppIcon } from "@/components/brand/icons";
-import { PartnerList } from "@/components/brand/partner-list";
+import { BrandCards, BrandCardsNote } from "@/components/brand/brand-cards";
 import { Section } from "@/components/ui/section";
 import { mailtoHref, telHref, whatsappHref } from "@/lib/links";
-import { getMaterialPartners } from "@/lib/partners";
+import { getMaterialGroups } from "@/lib/partners";
 import { site } from "@/lib/site";
 
 export const metadata: Metadata = {
@@ -28,7 +28,7 @@ export const metadata: Metadata = {
  * Send the titles and the section goes in.
  */
 export default function AboutPage() {
-  const partners = getMaterialPartners();
+  const brands = getMaterialGroups(undefined);
 
   return (
     <main className="mx-auto max-w-[86rem] px-6 pb-8 sm:px-10 lg:px-16">
@@ -111,7 +111,8 @@ export default function AboutPage() {
           specification worth reading.
         </p>
         <div className="mt-8">
-          <PartnerList partners={partners} />
+          <BrandCards groups={brands} />
+          <BrandCardsNote />
         </div>
       </Section>
 

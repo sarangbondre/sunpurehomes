@@ -53,14 +53,6 @@ export function brandLogo(name: string): string | undefined {
   return extension ? `/${BRAND_DIR}/${slug}.${extension}` : undefined;
 }
 
-/** The site-wide partners, each with its mark where there is one. */
-export function getMaterialPartners(): readonly MaterialPartner[] {
-  return site.materialPartners.map((name) => {
-    const logoSrc = brandLogo(name);
-    return logoSrc ? { name, logoSrc } : { name };
-  });
-}
-
 /**
  * What each site-wide partner is known for, shown under its mark. Koala has
  * no line: nothing on file says what it supplies.

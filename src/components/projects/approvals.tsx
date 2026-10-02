@@ -1,7 +1,7 @@
-import Image from "next/image";
 import { LineIcon } from "@/components/brand/amenity-icons";
 import { ASSURANCE_ROW, CLOSING } from "@/components/projects/detail/copy";
 import { Aside, ClosingLine, NoteRow } from "@/components/projects/detail/section-head";
+import { BrandCards, BrandCardsNote } from "@/components/brand/brand-cards";
 import { getMaterialGroups } from "@/lib/partners";
 import type { Project } from "@/lib/schema";
 
@@ -181,9 +181,10 @@ function RegisteredSeal({ href }: { href: string }) {
 }
 
 /**
- * The brands a project is built with, grouped by what each supplies —
- * cement, doors, bathroom fittings, plumbing — at the client's instruction
- * of 23 September 2026. A brand's mark shows where its file is in
+ * The brands a project is built with, a card for each thing supplied —
+ * windows, bathroom, lift, paint, flooring, switches — at the client's
+ * instruction of 23 September 2026, in the card layout of their own
+ * Happiness IV deck (2 October). A brand's mark shows where its file is in
  * public/images/brands (see lib/partners.ts); otherwise the name stands.
  *
  * The group and edible-oil lineage were removed from every page at the
@@ -202,40 +203,10 @@ function BuiltWith({ materials }: { materials: Project["materials"] }) {
         <Aside lines={CLOSING.approvalsAside} className="hidden sm:block" />
       </div>
 
-      <dl className="mt-8 divide-y divide-line border-y border-line">
-        {groups.map((group, i) => (
-          <div
-            key={group.use ?? `other-${i}`}
-            className="grid gap-4 py-6 lg:grid-cols-[14rem_1fr] lg:items-center lg:gap-8"
-          >
-            <dt className="u-mono tracking-[0.2em] text-muted">{group.use ?? "Also"}</dt>
-            <dd>
-              <ul className="flex flex-wrap gap-3">
-                {group.brands.map((brand) => (
-                  <li
-                    key={brand.name}
-                    className="flex min-h-14 min-w-[8.5rem] items-center justify-center rounded-md border border-line bg-paper px-5 py-3"
-                  >
-                    {brand.logoSrc ? (
-                      <Image
-                        src={brand.logoSrc}
-                        alt={brand.name}
-                        width={160}
-                        height={48}
-                        className="h-8 w-auto max-w-[9rem] object-contain"
-                      />
-                    ) : (
-                      <span className="font-display text-xl leading-tight text-ink">
-                        {brand.name}
-                      </span>
-                    )}
-                  </li>
-                ))}
-              </ul>
-            </dd>
-          </div>
-        ))}
-      </dl>
+      <div className="mt-8">
+        <BrandCards groups={groups} />
+      </div>
+      <BrandCardsNote />
     </div>
   );
 }
