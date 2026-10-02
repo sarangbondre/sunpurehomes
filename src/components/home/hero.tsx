@@ -35,11 +35,16 @@ export function Hero({ image }: { image: HeroImage }) {
         fetchPriority="high"
         sizes="100vw"
         /*
-          The building sits just left of centre, the sun right of it. On a
-          portrait phone the frame keeps a narrow strip; 62% holds the
-          building's curved corner and the sun together.
+          Moved right at the client's instruction on 2 October. A lower
+          percentage aligns an earlier slice of the picture with the left of
+          the frame, so the building travels right — at 1440x900 the 30% here
+          carries it about 70px clear of the brand line, and more on a taller
+          screen, where the crop is wider.
+
+          On a portrait phone the frame keeps a narrow strip, so it shifts
+          less: below 50% the sun falls off the right edge.
         */
-        className="-z-10 object-cover object-[62%_center] lg:object-center"
+        className="-z-10 object-cover object-[52%_center] lg:object-[30%_center]"
       />
 
       {/*
@@ -69,15 +74,33 @@ export function Hero({ image }: { image: HeroImage }) {
           size, so the vw factor is the largest that still fits at 320px on a
           phone and in half the screen at lg. Change the words and re-measure.
         */}
-        <h1 className="text-[clamp(2.6rem,12.5vw,4.5rem)] leading-[1.08] text-ink lg:text-[clamp(3rem,6vw,6.5rem)]">
-          Thoughtfully&nbsp;Built,
-          <span className="mt-1 block text-laterite">Deeply&nbsp;Lived.</span>
-        </h1>
+        {/*
+          The brand line stands on paper, not on the picture: the client asked
+          on 2 October for no image behind it.
+
+          A blurred paper shape rather than a gradient. A gradient is clipped
+          by its own box, so the fade stopped dead at the edge and the line
+          sat in a visible rectangle; blurring a solid shape puts the fade
+          outside the box, where there is room for it. The core stays fully
+          opaque, so no picture shows through the words, and the hero still
+          reads as one photograph under a wash rather than the split panel
+          this design had in September.
+        */}
+        <div className="relative">
+          <div
+            aria-hidden
+            className="pointer-events-none absolute -inset-x-10 -inset-y-12 -z-10 rounded-[30%] bg-paper blur-2xl"
+          />
+          <h1 className="text-[clamp(2.6rem,12.5vw,4.5rem)] leading-[1.08] text-ink lg:text-[clamp(3rem,6vw,6.5rem)]">
+            Thoughtfully&nbsp;Built,
+            <span className="mt-1 block text-laterite">Deeply&nbsp;Lived.</span>
+          </h1>
+        </div>
 
         <div className="mt-12">
           <Link
             href="/projects"
-            className="u-mono inline-flex items-center gap-4 border border-ink/30 bg-paper/60 px-7 py-5 text-ink backdrop-blur-[2px] transition-colors duration-hover ease-hover hover:border-ink hover:bg-ink hover:text-paper"
+            className="u-mono inline-flex items-center gap-4 border border-ink/30 bg-paper/60 px-7 py-5 text-ink backdrop-blur-[2px] transition-colors duration-hover ease-hover hover:border-laterite hover:bg-laterite hover:text-paper"
           >
             Discover our projects
             <svg
