@@ -98,22 +98,39 @@ export function Hero({ image }: { image: HeroImage }) {
         />
 
         {/*
-          Three washes, all decorative. The first dissolves the leading edge
-          into the paper — downward on a phone, where the picture sits under
-          the text, and leftward at lg, where it sits beside it. The second
-          keeps the top light enough for the header to sit over the picture.
-          The third does the same for the caption in the corner, sized to its
-          own box so no hard rectangle shows at its edges, and written as
-          literal rgba because a colour token carrying an alpha does not parse
-          inside a gradient and is dropped silently.
+          Four washes, all decorative, all written as literal rgba because a
+          colour token carrying an alpha does not parse inside a gradient and
+          is dropped silently.
+
+          The first warms the picture toward the page. The sky in this render
+          is rgb(168,176,195), a cool blue-grey, and the paper is a warm
+          cream — so where they met the eye read a change of colour, not a
+          fade, however gently the alpha ramped. A thin paper veil over the
+          whole frame pulls the two within reach of each other.
+
+          The second dissolves the leading edge into the paper: downward on a
+          phone, where the picture sits under the text, and leftward at lg,
+          where it sits beside it. Below lg it fades back in at the foot too,
+          because there the picture is a block in the page and both its ends
+          meet paper; at lg its foot is the bottom of the screen. It holds opaque until past the end of the
+          headline — 19% into the picture at 1440 — and then eases away over
+          half the frame. The stops are many and close because a ramp drawn
+          between three of them is a straight line, and the eye reads a
+          straight line as an edge.
+
+          The third keeps the top light enough for the header to sit over the
+          picture, and is lg-only: on a phone the header is nowhere near the
+          picture, and 10rem of paper over a frame 281px tall erased it. The fourth does the same for the caption in the corner,
+          sized to its own box so no hard rectangle shows at its edges.
         */}
+        <div aria-hidden className="absolute inset-0 bg-paper/12" />
         <div
           aria-hidden
-          className="absolute inset-0 bg-gradient-to-b from-paper from-0% via-paper/92 via-13% to-transparent to-27% lg:bg-gradient-to-r"
+          className="absolute inset-0 bg-[linear-gradient(to_bottom,rgba(244,240,231,1)_0%,rgba(244,240,231,1)_2%,rgba(244,240,231,0.94)_6%,rgba(244,240,231,0.84)_10%,rgba(244,240,231,0.7)_14%,rgba(244,240,231,0.52)_18%,rgba(244,240,231,0.33)_22%,rgba(244,240,231,0.17)_26%,rgba(244,240,231,0.06)_30%,transparent_34%,transparent_78%,rgba(244,240,231,0.07)_83%,rgba(244,240,231,0.2)_88%,rgba(244,240,231,0.42)_93%,rgba(244,240,231,0.7)_97%,rgba(244,240,231,0.9)_100%)] lg:bg-[linear-gradient(to_right,rgba(244,240,231,1)_0%,rgba(244,240,231,1)_19%,rgba(244,240,231,0.97)_24%,rgba(244,240,231,0.92)_28%,rgba(244,240,231,0.84)_32%,rgba(244,240,231,0.74)_36%,rgba(244,240,231,0.62)_40%,rgba(244,240,231,0.49)_44%,rgba(244,240,231,0.37)_48%,rgba(244,240,231,0.26)_52%,rgba(244,240,231,0.17)_56%,rgba(244,240,231,0.1)_60%,rgba(244,240,231,0.05)_64%,rgba(244,240,231,0.02)_68%,transparent_73%)]"
         />
         <div
           aria-hidden
-          className="absolute inset-x-0 top-0 h-40 bg-gradient-to-b from-paper to-transparent"
+          className="absolute inset-x-0 top-0 hidden h-40 bg-gradient-to-b from-paper to-transparent lg:block"
         />
         <div
           aria-hidden
