@@ -9,6 +9,15 @@
 export const site = {
   name: "Sunpure Homes",
 
+  /**
+   * The canonical origin, for the sitemap, robots.txt and anywhere else an
+   * absolute URL is needed. The apex answers 200 and www. redirects to it, so
+   * this is the form search engines should be given. It is deliberately not
+   * the Vercel or Webflow preview host: both serve the same pages, and the
+   * sitemap must point at one of them or they compete for the same results.
+   */
+  url: "https://sunpurehomes.com",
+
   /** The only tagline. Three others on the live site are retired. */
   tagline: "Thoughtfully Built, Deeply Lived.",
 
