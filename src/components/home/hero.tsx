@@ -98,6 +98,11 @@ export function Hero({ image }: { image: HeroImage }) {
             blur to lift the type and a light top edge where the glass catches
             the sky.
 
+            35% since 2 October, at the client's instruction, down from 55%.
+            It can afford it: its label is ink, which measures 14:1 against
+            the ground it sits on, where the red of the brand line has nothing
+            to spare.
+
             It sits inside the ground, though, so what it has to refract
             is mostly paper — glass needs something behind it, and the same
             instruction that put the type on opaque ground took the picture
@@ -110,7 +115,7 @@ export function Hero({ image }: { image: HeroImage }) {
           */}
           <Link
             href="/projects"
-            className="u-mono inline-flex items-center gap-4 rounded-full border border-paper/60 bg-paper/55 px-7 py-5 text-ink shadow-[0_1px_0_rgba(255,255,255,0.5)_inset,0_8px_24px_rgba(28,26,24,0.12)] backdrop-blur-md transition-colors duration-hover ease-hover hover:border-laterite hover:bg-laterite hover:text-paper"
+            className="u-mono inline-flex items-center gap-4 rounded-full border border-paper/60 bg-paper/35 px-7 py-5 text-ink shadow-[0_1px_0_rgba(255,255,255,0.5)_inset,0_8px_24px_rgba(28,26,24,0.12)] backdrop-blur-md transition-colors duration-hover ease-hover hover:border-laterite hover:bg-laterite hover:text-paper"
           >
             Discover our projects
             <svg

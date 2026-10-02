@@ -32,7 +32,7 @@ export default function AboutPage() {
 
   return (
     <main className="mx-auto max-w-[86rem] px-6 pb-8 sm:px-10 lg:px-16">
-      <header className="max-w-[52rem] pb-6 pt-16 sm:pt-24">
+      <header className="pb-6 pt-16 sm:pt-24 lg:grid lg:grid-cols-[13rem_minmax(0,1fr)] lg:gap-x-16">
         {/*
           "About" is the page's heading now. The line it sat under — "We build
           across India. It began in Mysuru." — was removed on 22 September at
@@ -42,14 +42,17 @@ export default function AboutPage() {
         <h1 className="u-mono text-[1.05rem] leading-snug tracking-[0.14em] text-laterite sm:text-[1.2rem]">
           About
         </h1>
+        <div className="lg:col-start-2">
         {/*
           The client's own words, sent on 20 September 2026, set here as they
-          were written. They replaced a paragraph that counted the
-          developments by type.
+          were written but for one mark: the em dash after "House of Sunpure"
+          became a comma on 2 October at their instruction. The sentence needs
+          something there, and a comma is the quietest thing that serves.
+          They replaced a paragraph that counted the developments by type.
         */}
-        <div className="mt-10 space-y-6 text-lg leading-relaxed text-ink-soft sm:text-xl">
+        <div className="mt-10 max-w-[58ch] space-y-6 text-lg leading-relaxed text-ink-soft sm:text-xl lg:mt-0">
           <p>
-            We come from the House of Sunpure—a name built on more than three
+            We come from the House of Sunpure, a name built on more than three
             decades of enterprise, integrity and enduring trust. We carry that
             legacy into real estate with a clear purpose: to create the right
             development for its place, its people and the lives they aspire to
@@ -72,6 +75,7 @@ export default function AboutPage() {
             meaningful with time.
           </p>
         </blockquote>
+        </div>
       </header>
 
       <Section id="philosophy" eyebrow="How we build">
