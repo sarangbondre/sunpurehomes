@@ -22,8 +22,15 @@
  * docs/adr/0001-non-project-imagery-on-the-landing-page.md.
  */
 const HERO = {
-  file: "curve-sunrise.jpg",
-  alt: "Curve at sunrise: a five-storey apartment building whose white balconies curve around each corner, the sun rising through trees to its left and warming the façade.",
+  /*
+    The client's own export, supplied on 2 October at 2400x1350 and 55KB —
+    the size the hero slot asks for, and the first image here that meets it.
+    It is a different grading from the sunrise files beside it: a pale
+    daylight sky, no sun. Anything written about where the sun falls is
+    about those, not this.
+  */
+  file: "curve-daylight.avif",
+  alt: "Curve: a five-storey apartment building whose white balconies curve around each corner, palms at its foot and hills behind, under a pale clouded sky.",
 } as const;
 
 const HOME_DIR = "images/home";
