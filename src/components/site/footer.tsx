@@ -43,14 +43,10 @@ const SOCIAL: {
  * privacy policy and the terms sit beside it, because nothing else on the
  * site links to either and an unreachable policy is not a policy.
  *
- * The right and bottom padding keep everything clear of the WhatsApp button
- * fixed in the corner.
- *
- * On the landing page it sits over the foot of the picture rather than below
- * it (client, 17 September), so the page is the picture and nothing else. It
- * turns to paper type there, on a shade that deepens the water's dark
- * reflection. The body is the positioning parent, and the hero fills the
- * screen, so "the bottom of the body" is the bottom of the picture.
+ * Two paragraphs describing a corner WhatsApp button and a footer laid over
+ * the landing picture were removed on 2 October: the button went on
+ * 22 September and the overlay in 667fc00, and neither had left any code
+ * behind for the comment to describe.
  */
 export function SiteFooter() {
   const icon =
@@ -60,7 +56,8 @@ export function SiteFooter() {
 
   return (
     <footer className="border-t border-line">
-      <div className="mx-auto flex max-w-[86rem] flex-col gap-5 px-6 py-8 sm:px-10 lg:flex-row lg:items-center lg:justify-between lg:gap-10 lg:pl-16">
+      <div className="mx-auto flex max-w-[86rem] flex-col gap-5 px-6 py-8 sm:px-10 lg:pl-16">
+        <div className="flex flex-col gap-5 sm:flex-row sm:items-center sm:justify-between sm:gap-10">
         <ul className="flex shrink-0 flex-wrap items-center gap-3">
           <li>
             <a className={icon} href={mailtoHref} aria-label={`Email ${site.contact.email}`}>
@@ -88,18 +85,11 @@ export function SiteFooter() {
           ))}
         </ul>
 
-        <div className="flex flex-col gap-2 text-xs leading-relaxed text-muted sm:flex-row sm:items-baseline sm:gap-6 lg:min-w-0 lg:max-w-[46rem]">
-          <p>
-            Information on this website is representational and informative, and
-            is subject to variation during execution. {site.name} reserves the
-            right to make additions, deletions, alterations or amendments as it
-            deems fit, without prior notice.
-          </p>
           {/*
             The two legal pages, which nothing else on the site links to. The
             client's own site carries them in the same place.
           */}
-          <p className="u-mono flex shrink-0 items-center gap-3">
+          <div className="u-mono flex shrink-0 items-center gap-3 text-xs text-muted">
             <Link className={legalLink} href="/privacy">
               Privacy
             </Link>
@@ -107,9 +97,28 @@ export function SiteFooter() {
             <Link className={legalLink} href="/terms">
               Terms
             </Link>
-          </p>
-          <p className="u-mono shrink-0">© {site.name}</p>
+            <span aria-hidden className="h-3 w-px bg-line" />
+            <span>© {site.name}</span>
+          </div>
         </div>
+
+        {/*
+          The disclaimer runs the full width on its own row, on one line from
+          xl (client, 2 October). One line is a matter of arithmetic: the
+          sentence measures 1328px at 12px, and the row is the page's measure
+          less its padding — 1272px at the widest. So the type is fluid, sized
+          to the viewport until the measure caps, and it wraps below xl rather
+          than shrink to the 8px that would be needed at 1024.
+
+          Re-measure if the wording changes: a longer sentence needs a smaller
+          coefficient, and nothing here will tell you it has started to clip.
+        */}
+        <p className="text-xs leading-relaxed text-muted xl:whitespace-nowrap xl:text-[clamp(0.625rem,0.82vw,0.7rem)]">
+          Information on this website is representational and informative, and
+          is subject to variation during execution. {site.name} reserves the
+          right to make additions, deletions, alterations or amendments as it
+          deems fit, without prior notice.
+        </p>
       </div>
     </footer>
   );
