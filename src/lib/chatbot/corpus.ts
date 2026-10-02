@@ -51,12 +51,8 @@ type Withheld = {
   with the client, delete its entry here — the fact then flows through again.
 */
 const WITHHELD: Readonly<Record<string, Withheld>> = {
-  // "The Happiness II brochure states Blessed reached occupancy of 20 units;
-  // this page says 21 apartments ... confirm the total."
-  blessed: {
-    unitCount: true,
-    description: { find: "Its twenty-one homes are", replace: "Its homes are" },
-  },
+  // Blessed's twenty was confirmed by the client on 2 October 2026, so its
+  // entry is gone too.
 
   // Curve's 32 was confirmed by the client's data sheet on 17 September 2026,
   // so its entry is gone.
@@ -158,11 +154,12 @@ const ALIASES: Readonly<Record<string, readonly string[]>> = {
 
 /*
   Other names, shown in the record's heading. As a note at the foot of the
-  record the model sometimes missed it and said it knew nothing about
-  "Happiness IV"; in the heading it cannot.
+  record the model sometimes missed it and said it knew nothing about the
+  other name; in the heading it cannot. The project was called H4 on this
+  site until 2 October 2026, and the brochures still are.
 */
 const ALSO_CALLED: Readonly<Record<string, string>> = {
-  h4: "Happiness IV",
+  h4: "H4",
 };
 
 /** Common to every card rendering below. */

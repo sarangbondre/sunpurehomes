@@ -30,7 +30,6 @@ describe("corpus", () => {
     // The descriptions are prose and spell numbers out. Checking only the
     // digits let "two hundred and seventy-nine plots" straight through.
     const withheld: [string, RegExp][] = [
-      ["blessed", /\b21\b|twenty[- ]one/i],
       ["rare-earth", /\b279\b|two hundred and seventy[- ]nine/i],
     ];
     for (const [slug, pattern] of withheld) {
@@ -40,7 +39,11 @@ describe("corpus", () => {
 
   it("keeps the rest of a redacted description", () => {
     assert.match(text("rare-earth"), /Its plots sit across 73,552 sq m/);
-    assert.match(text("blessed"), /Its homes are 2 and 3 BHK/);
+  });
+
+  it("states Blessed's flat count, now the client has confirmed it", () => {
+    assert.match(text("blessed"), /20 apartments/);
+    assert.match(text("blessed"), /Its twenty homes are 2 and 3 BHK/);
   });
 
   it("withholds per-size counts where they add up to a withheld total", () => {
