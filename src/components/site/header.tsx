@@ -119,11 +119,33 @@ export function SiteHeader() {
 }
 
 /**
- * Filled with paper rather than left transparent. At lg the pill sits over
- * the hero image, and the images change — a transparent pill would be
- * legible over a bright sky and invisible over the dark courtyard one. The
- * fill makes its contrast a known quantity: 4.50:1, independent of what is
- * behind it.
+ * Glass, at the client's instruction of 2 October, to match the landing
+ * page's button: the picture blurred behind it under a paper tint, a lit top
+ * edge, and the same full radius.
+ *
+ * IT WAS A SOLID FILL FOR A REASON, AND THE REASON STILL HOLDS. The label is
+ * --accent-ink, #d40000, which is 4.86:1 on paper — a margin of 0.36 over
+ * the 4.5:1 its size owes — and a solid fill made that figure independent of
+ * whatever the pill happened to be sitting on. Glass gives that up: the pill
+ * overlays the hero on the landing page and on /projects, and its contrast
+ * is now a function of those pictures.
+ *
+ * 86% is the measured answer, and /projects sets it, not the landing page:
+ * the pill sits wholly over the dawn render there, and through that hero's
+ * own header haze the label reads 4.56:1 at this tint and 4.48:1 at 82%.
+ * The landing page is easier, at 4.6:1. Modelling the backdrop blur as the
+ * local mean moves those figures by 0.02 — that sky is evenly toned, so
+ * there is nothing dark for the blur to average away.
+ *
+ * Which is to say the glass here is thin, 14% of what is behind it, and it
+ * is the red that caps it. The landing page's button can be 55% glass
+ * because its label is ink, which has contrast to spare. If this pill is
+ * ever wanted as glassy as that one, the lever is the label's colour, not
+ * the tint.
+ *
+ * If a hero is ever replaced with one whose top right corner is dark — a
+ * dusk shot, a courtyard — this pill is the first thing that breaks, and
+ * nothing in the build will say so.
  */
 function WhatsAppPill({ className = "" }: { className?: string }) {
   return (
@@ -140,7 +162,7 @@ function WhatsAppPill({ className = "" }: { className?: string }) {
         control is never anonymous to a screen reader.
       */
       aria-label={`Message ${site.name} on WhatsApp`}
-      className={`shrink-0 items-center gap-2 rounded-full border border-accent-ink bg-paper px-2.5 py-2 text-[0.8125rem] text-accent-ink transition-colors duration-hover ease-hover hover:bg-accent-ink hover:text-paper min-[400px]:px-3 min-[400px]:text-[0.875rem] sm:px-5 sm:py-2.5 sm:text-[0.95rem] ${className}`}
+      className={`shrink-0 items-center gap-2 rounded-full border border-accent-ink/70 bg-paper/86 px-2.5 py-2 text-[0.8125rem] text-accent-ink shadow-[0_1px_0_rgba(255,255,255,0.55)_inset,0_6px_18px_rgba(28,26,24,0.1)] backdrop-blur-md transition-colors duration-hover ease-hover hover:border-accent-ink hover:bg-accent-ink hover:text-paper min-[400px]:px-3 min-[400px]:text-[0.875rem] sm:px-5 sm:py-2.5 sm:text-[0.95rem] ${className}`}
     >
       <WhatsAppIcon className="size-4" />
       <span className="hidden sm:inline">WhatsApp</span>
