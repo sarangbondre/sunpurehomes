@@ -1,25 +1,40 @@
-import { existsSync } from "node:fs";
-import { join } from "node:path";
 import { site } from "@/lib/site";
 
 /**
  * The material partners, each with its mark if the file is there.
  *
  * The client asked for every brand to appear with its logo beside its name.
- * The marks are the brands' own assets, so they are not in this repository
- * until someone puts them there: drop a file into public/images/brands named
- * for the brand — asian-paints.svg, saint-gobain.svg, somany.svg,
- * jaquar.svg, koala.svg, astral-pipes.svg, v-guard.svg,
- * schneider-electric.svg, fujitec.svg — and it appears. SVG is preferred;
- * PNG is read as a fallback.
+ * The marks are the brands' own assets: put a file into public/images/brands
+ * named for the brand — asian-paints.svg, koala.svg, astral-pipes.svg and so
+ * on — and add its line to BRAND_MARKS below, and it appears.
  *
  * A name with no file renders as it does today, as the name alone. That is
  * deliberate: a missing asset should cost the reader nothing, and a partner
  * list that half-renders is worse than one that reads plainly.
+ *
+ * Which marks exist is a list here rather than a look at the filesystem:
+ * Cloudflare Workers, which Webflow Cloud runs this on, have none. The test
+ * in partners.test.ts reads public/images/brands and fails if the two
+ * disagree, so a file added without a line here — or a line without a file —
+ * does not ship.
  */
 
-const BRAND_DIR = join("images", "brands");
-const EXTENSIONS = ["svg", "png"] as const;
+const BRAND_DIR = "images/brands";
+
+/** The marks on disk, by slug, with the extension each one is saved as. */
+export const BRAND_MARKS: Readonly<Record<string, "svg" | "png">> = {
+  acc: "svg",
+  "asian-paints": "svg",
+  fujitec: "svg",
+  jaquar: "png",
+  kohler: "svg",
+  "saint-gobain": "svg",
+  "schneider-electric": "svg",
+  somany: "png",
+  supreme: "svg",
+  ultratech: "svg",
+  "v-guard": "svg",
+};
 
 export type MaterialPartner = { name: string; logoSrc?: string };
 
@@ -34,13 +49,11 @@ export function brandSlug(name: string): string {
 /** The brand's mark in public/images/brands, if one is there. */
 export function brandLogo(name: string): string | undefined {
   const slug = brandSlug(name);
-  const found = EXTENSIONS.find((ext) =>
-    existsSync(join(process.cwd(), "public", BRAND_DIR, `${slug}.${ext}`)),
-  );
-  return found ? `/${BRAND_DIR}/${slug}.${found}`.replaceAll("\\", "/") : undefined;
+  const extension = BRAND_MARKS[slug];
+  return extension ? `/${BRAND_DIR}/${slug}.${extension}` : undefined;
 }
 
-/** Reads once at module load, on the server, like the rest of the content. */
+/** The site-wide partners, each with its mark where there is one. */
 export function getMaterialPartners(): readonly MaterialPartner[] {
   return site.materialPartners.map((name) => {
     const logoSrc = brandLogo(name);

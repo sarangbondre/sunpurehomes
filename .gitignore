@@ -42,3 +42,9 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 /.next-verify/
+
+# local Webflow Cloud / Cloudflare Workers checks — see docs/webflow-cloud.md
+/.open-next
+/.wrangler
+/open-next.config.ts
+/wrangler.jsonc

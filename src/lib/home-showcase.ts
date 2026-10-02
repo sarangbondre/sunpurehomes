@@ -1,6 +1,3 @@
-import { existsSync } from "node:fs";
-import { join } from "node:path";
-
 /**
  * The single image behind the landing hero.
  *
@@ -29,20 +26,16 @@ const HERO = {
   alt: "Curve at sunrise: a five-storey apartment building whose white balconies curve around each corner, the sun rising through trees to its left and warming the façade.",
 } as const;
 
-const HOME_DIR = join("images", "home");
+const HOME_DIR = "images/home";
 
 export type HeroImage = { src: string; alt: string };
 
 /**
- * Reads once at module load, on the server, like the project content. Absent
- * means the caller falls back, so a missing or renamed file cannot leave the
- * landing page with an empty panel.
+ * The file is named here rather than looked for on disk — Cloudflare
+ * Workers, which Webflow Cloud runs this on, have no filesystem. The test in
+ * home-showcase.test.ts fails if the file is missing from public/, which is
+ * the check this used to make at runtime, moved to where it belongs.
  */
-export function getHeroImage(): HeroImage | undefined {
-  const onDisk = join(process.cwd(), "public", HOME_DIR, HERO.file);
-  if (!existsSync(onDisk)) return undefined;
-  return {
-    src: `/${HOME_DIR}/${HERO.file}`.replaceAll("\\", "/"),
-    alt: HERO.alt,
-  };
+export function getHeroImage(): HeroImage {
+  return { src: `/${HOME_DIR}/${HERO.file}`, alt: HERO.alt };
 }

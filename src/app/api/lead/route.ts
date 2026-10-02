@@ -11,6 +11,13 @@ import { allow, clientKey } from "@/lib/chatbot/rate-limit";
  * go out never silently loses someone who asked to be called.
  */
 
+/*
+  The Node runtime, on both hosts. Webflow Cloud runs this site on Cloudflare
+  Workers through OpenNext, which serves Node-runtime handlers under the
+  nodejs_compat flag and refuses to build a route declared as edge. Nothing
+  here touches the filesystem: the corpus is bundled (lib/content-files.ts),
+  and the model and email SDKs are fetch-based.
+*/
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
 

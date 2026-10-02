@@ -19,13 +19,20 @@ import { retrieve } from "@/lib/chatbot/retrieve";
  * POST /api/chat — one turn with Arka, streamed back as newline-delimited
  * JSON events (see ArkaEvent in lib/chatbot/guards.ts).
  *
- * Node runtime: the corpus is read from disk through lib/content.ts.
+ * The corpus is bundled with the code, so no filesystem is touched.
  *
  * Failure behaviour is the same everywhere: the visitor gets an event that
  * makes the widget show the sales contact buttons. There is no state in which
  * Arka is broken and the visitor has nowhere to go.
  */
 
+/*
+  The Node runtime, on both hosts. Webflow Cloud runs this site on Cloudflare
+  Workers through OpenNext, which serves Node-runtime handlers under the
+  nodejs_compat flag and refuses to build a route declared as edge. Nothing
+  here touches the filesystem: the corpus is bundled (lib/content-files.ts),
+  and the model and email SDKs are fetch-based.
+*/
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
 

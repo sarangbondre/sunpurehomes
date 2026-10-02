@@ -1,5 +1,4 @@
-import { readFileSync, readdirSync } from "node:fs";
-import { join } from "node:path";
+import { PROJECT_FILES } from "@/lib/content-files";
 import {
   projectSchema,
   type Project,
@@ -15,16 +14,18 @@ import { formatIndianNumber } from "@/lib/format";
  * themselves. Everything goes through the accessors below, so replacing the
  * file layer with a headless CMS later is a change to this module alone.
  *
- * Reads happen once, at module load, on the server. Pages are static.
+ * Parsing happens once, at module load, on the server. Pages are static.
+ *
+ * The JSON arrives from lib/content-files.ts, which imports it rather than
+ * reading the directory: Cloudflare Workers, which Webflow Cloud runs this
+ * on, have no filesystem.
  */
 
-const CONTENT_DIR = join(process.cwd(), "content", "projects");
-
 function loadProjects(): Project[] {
-  const files = readdirSync(CONTENT_DIR).filter((f) => f.endsWith(".json"));
+  const entries = Object.entries(PROJECT_FILES);
 
-  const projects = files.map((file) => {
-    const raw: unknown = JSON.parse(readFileSync(join(CONTENT_DIR, file), "utf8"));
+  const projects = entries.map(([slug, raw]) => {
+    const file = `${slug}.json`;
     const parsed = projectSchema.safeParse(raw);
 
     if (!parsed.success) {
