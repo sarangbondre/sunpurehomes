@@ -50,7 +50,7 @@ export default function AboutPage() {
           something there, and a comma is the quietest thing that serves.
           They replaced a paragraph that counted the developments by type.
         */}
-        <div className="mt-8 max-w-[58ch] space-y-6 text-lg leading-relaxed text-ink-soft sm:text-xl lg:mt-0">
+        <div className="mt-8 max-w-[58ch] space-y-6 leading-relaxed text-ink-soft sm:text-lg lg:mt-0 lg:text-xl">
           <p>
             We come from the House of Sunpure, a name built on more than three
             decades of enterprise, integrity and enduring trust. We carry that
@@ -98,7 +98,7 @@ export default function AboutPage() {
             },
           ].map((value) => (
             <div key={value.term}>
-              <dt className="font-display text-3xl">{value.term}</dt>
+              <dt className="font-display text-2xl sm:text-3xl">{value.term}</dt>
               <dd className="mt-3 leading-relaxed text-ink-soft">{value.detail}</dd>
             </div>
           ))}

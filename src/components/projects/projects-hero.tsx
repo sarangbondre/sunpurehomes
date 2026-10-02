@@ -11,6 +11,12 @@ import Image from "next/image";
  * Larger exports of the same render sit beside it on the Drive; one of those
  * at this path would sharpen the page on very large screens.
  *
+ * The heading's floor is 2.9rem, not the 4.25rem it carried until
+ * 2 October: below about 430px the floor won rather than the 10vw, so the
+ * words came out 68px on a 375px phone against the landing page's 47px, and
+ * read as a different size of site. Every width where 10vw already won is
+ * unchanged.
+ *
  * Shorter since 2 October: it stood 768px deep at 1440 with the type
  * floating in the middle, and the client asked for the white back. The
  * picture is unchanged — only the frame around it closed up.
@@ -72,7 +78,7 @@ export function ProjectsHero() {
             aria-hidden
             className="pointer-events-none absolute inset-x-0 -top-24 -bottom-16 -z-10 bg-[linear-gradient(to_bottom,transparent_0%,rgba(244,240,231,0.93)_16%,rgba(244,240,231,0.93)_88%,transparent_100%)] lg:hidden"
           />
-          <h1 className="text-[clamp(4.25rem,10vw,9.5rem)] leading-[0.92] tracking-[-0.02em] text-ink">
+          <h1 className="text-[clamp(2.9rem,10vw,9.5rem)] leading-[0.92] tracking-[-0.02em] text-ink">
             Our
             <span className="block text-laterite">Projects</span>
           </h1>
