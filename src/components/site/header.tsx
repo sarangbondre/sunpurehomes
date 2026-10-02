@@ -22,16 +22,25 @@ const NAV = [
 /**
  * Every page, behind the three-line button. The footer that used to carry
  * these was removed at the client's instruction on 17 September, so this is
- * now the one place Amenities, the About sections and Privacy are linked
- * from — About and Projects repeat here so the menu reads as complete.
+ * now the one place Amenities, the About sections and the legal pages are
+ * linked from — About repeats here so the menu reads as complete.
+ *
+ * "Projects" became the three kinds of home on 2 October at the client's
+ * instruction. Each is the listing filtered to that type, which the page
+ * reads from the query and renders on the server, so these work without
+ * JavaScript and are linkable. The header's own Projects link, beside
+ * About, still opens all nine.
  */
 const MENU = [
   { href: "/about", label: "About" },
-  { href: "/projects", label: "Projects" },
+  { href: "/projects?type=villa", label: "Villas" },
+  { href: "/projects?type=apartment", label: "Apartments" },
+  { href: "/projects?type=plot", label: "Plots" },
   { href: "/amenities", label: "Amenities" },
   { href: "/about#philosophy", label: "Our philosophy" },
   { href: "/about#contact", label: "Arrange a visit" },
   { href: "/privacy", label: "Privacy" },
+  { href: "/terms", label: "Terms" },
 ] as const;
 
 export function SiteHeader() {
