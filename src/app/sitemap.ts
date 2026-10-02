@@ -40,6 +40,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/amenities",
     "/about",
     "/privacy",
+    "/terms",
   ];
 
   return paths.map((path) => ({ url: new URL(path, site.url).href }));

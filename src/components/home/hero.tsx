@@ -123,10 +123,10 @@ export function Hero({ image }: { image: HeroImage }) {
           picture, and 10rem of paper over a frame 281px tall erased it. The fourth does the same for the caption in the corner,
           sized to its own box so no hard rectangle shows at its edges.
         */}
-        <div aria-hidden className="absolute inset-0 bg-paper/12" />
+        <div aria-hidden className="absolute inset-0 bg-paper/6" />
         <div
           aria-hidden
-          className="absolute inset-0 bg-[linear-gradient(to_bottom,rgba(244,240,231,1)_0%,rgba(244,240,231,1)_2%,rgba(244,240,231,0.94)_6%,rgba(244,240,231,0.84)_10%,rgba(244,240,231,0.7)_14%,rgba(244,240,231,0.52)_18%,rgba(244,240,231,0.33)_22%,rgba(244,240,231,0.17)_26%,rgba(244,240,231,0.06)_30%,transparent_34%,transparent_78%,rgba(244,240,231,0.07)_83%,rgba(244,240,231,0.2)_88%,rgba(244,240,231,0.42)_93%,rgba(244,240,231,0.7)_97%,rgba(244,240,231,0.9)_100%)] lg:bg-[linear-gradient(to_right,rgba(244,240,231,1)_0%,rgba(244,240,231,1)_19%,rgba(244,240,231,0.97)_24%,rgba(244,240,231,0.92)_28%,rgba(244,240,231,0.84)_32%,rgba(244,240,231,0.74)_36%,rgba(244,240,231,0.62)_40%,rgba(244,240,231,0.49)_44%,rgba(244,240,231,0.37)_48%,rgba(244,240,231,0.26)_52%,rgba(244,240,231,0.17)_56%,rgba(244,240,231,0.1)_60%,rgba(244,240,231,0.05)_64%,rgba(244,240,231,0.02)_68%,transparent_73%)]"
+          className="absolute inset-0 bg-[linear-gradient(to_bottom,rgba(244,240,231,1)_0%,rgba(244,240,231,1)_2%,rgba(244,240,231,0.94)_6%,rgba(244,240,231,0.84)_10%,rgba(244,240,231,0.7)_14%,rgba(244,240,231,0.52)_18%,rgba(244,240,231,0.33)_22%,rgba(244,240,231,0.17)_26%,rgba(244,240,231,0.06)_30%,transparent_34%,transparent_78%,rgba(244,240,231,0.07)_83%,rgba(244,240,231,0.2)_88%,rgba(244,240,231,0.42)_93%,rgba(244,240,231,0.7)_97%,rgba(244,240,231,0.9)_100%)] lg:bg-[linear-gradient(to_right,rgba(244,240,231,1)_0%,rgba(244,240,231,1)_19%,rgba(244,240,231,0.96)_23%,rgba(244,240,231,0.89)_27%,rgba(244,240,231,0.79)_31%,rgba(244,240,231,0.66)_35%,rgba(244,240,231,0.52)_39%,rgba(244,240,231,0.38)_43%,rgba(244,240,231,0.25)_47%,rgba(244,240,231,0.15)_51%,rgba(244,240,231,0.07)_55%,rgba(244,240,231,0.02)_59%,transparent_62%)]"
         />
         <div
           aria-hidden

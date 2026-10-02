@@ -1,3 +1,4 @@
+import Link from "next/link";
 import {
   FacebookIcon,
   InstagramIcon,
@@ -38,7 +39,9 @@ const SOCIAL: {
  * themselves are still written out on /about and every project page.
  *
  * The disclaimer keeps its exact wording. It is a legal notice on a
- * RERA-registered sales site, so it is set quietly rather than dropped.
+ * RERA-registered sales site, so it is set quietly rather than dropped. The
+ * privacy policy and the terms sit beside it, because nothing else on the
+ * site links to either and an unreachable policy is not a policy.
  *
  * The right and bottom padding keep everything clear of the WhatsApp button
  * fixed in the corner.
@@ -52,6 +55,8 @@ const SOCIAL: {
 export function SiteFooter() {
   const icon =
     "flex size-10 items-center justify-center rounded-full border border-line text-ink-soft transition-colors duration-hover ease-hover hover:border-accent-ink hover:text-accent-ink";
+  const legalLink =
+    "transition-colors duration-hover ease-hover hover:text-accent-ink";
 
   return (
     <footer className="border-t border-line">
@@ -89,6 +94,19 @@ export function SiteFooter() {
             is subject to variation during execution. {site.name} reserves the
             right to make additions, deletions, alterations or amendments as it
             deems fit, without prior notice.
+          </p>
+          {/*
+            The two legal pages, which nothing else on the site links to. The
+            client's own site carries them in the same place.
+          */}
+          <p className="u-mono flex shrink-0 items-center gap-3">
+            <Link className={legalLink} href="/privacy">
+              Privacy
+            </Link>
+            <span aria-hidden className="h-3 w-px bg-line" />
+            <Link className={legalLink} href="/terms">
+              Terms
+            </Link>
           </p>
           <p className="u-mono shrink-0">© {site.name}</p>
         </div>
