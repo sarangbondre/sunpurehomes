@@ -23,14 +23,17 @@
  */
 const HERO = {
   /*
-    The client's own export, supplied on 2 October at 2400x1350 and 55KB —
-    the size the hero slot asks for, and the first image here that meets it.
-    It is a different grading from the sunrise files beside it: a pale
-    daylight sky, no sun. Anything written about where the sun falls is
-    about those, not this.
+    The client's own export, supplied on 2 October at 2400x1350 and 292KB —
+    the size the hero slot asks for, inside the 300KB it is allowed. It
+    replaced a pale daylight grading of the same render the same day; that
+    file is still beside it, unused, as the older sunrise is.
+
+    The sun is low and well to the LEFT here, behind the treeline, with the
+    building to the right of it. The landing page's crop and the contrast
+    figures in hero.tsx are both measured against that arrangement.
   */
-  file: "curve-daylight.avif",
-  alt: "Curve: a five-storey apartment building whose white balconies curve around each corner, palms at its foot and hills behind, under a pale clouded sky.",
+  file: "curve-golden-sunrise.avif",
+  alt: "Curve at sunrise: a five-storey apartment building whose white balconies curve around each corner, palms at its foot and a low gold sun behind the trees to its left, the whole reflected in the wet forecourt.",
 } as const;
 
 const HOME_DIR = "images/home";

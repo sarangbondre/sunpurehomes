@@ -130,15 +130,17 @@ export function SiteHeader() {
  * overlays the hero on the landing page and on /projects, and its contrast
  * is now a function of those pictures.
  *
- * 86% is the measured answer, and /projects sets it, not the landing page:
- * the pill sits wholly over the dawn render there, and through that hero's
- * own header haze the label reads 4.56:1 at this tint and 4.48:1 at 82%.
- * The landing page is easier, at 4.6:1. Modelling the backdrop blur as the
- * local mean moves those figures by 0.02 — that sky is evenly toned, so
- * there is nothing dark for the blur to average away.
+ * 90% is the measured answer. It was 86% for half an hour, set by the dawn
+ * render on /projects; the landing page then took a golden sunrise whose
+ * top right corner is darker than the pale sky it replaced, and 86% fell to
+ * 4.48:1 there — under the line. At 90% the landing page reads 4.59:1 and
+ * /projects better than that. This is the second time in a day a new
+ * picture has moved this figure, which is the whole point of the warning
+ * below. Modelling the backdrop blur as a local mean moves it by 0.02: both
+ * skies are evenly toned, so the blur has nothing dark to average away.
  *
- * Which is to say the glass here is thin, 14% of what is behind it, and it
- * is the red that caps it. The landing page's button can be 55% glass
+ * Which is to say the glass here is thin, a tenth of what is behind it, and
+ * it is the red that caps it. The landing page's button can be 55% glass
  * because its label is ink, which has contrast to spare. If this pill is
  * ever wanted as glassy as that one, the lever is the label's colour, not
  * the tint.
@@ -162,7 +164,7 @@ function WhatsAppPill({ className = "" }: { className?: string }) {
         control is never anonymous to a screen reader.
       */
       aria-label={`Message ${site.name} on WhatsApp`}
-      className={`shrink-0 items-center gap-2 rounded-full border border-accent-ink/70 bg-paper/86 px-2.5 py-2 text-[0.8125rem] text-accent-ink shadow-[0_1px_0_rgba(255,255,255,0.55)_inset,0_6px_18px_rgba(28,26,24,0.1)] backdrop-blur-md transition-colors duration-hover ease-hover hover:border-accent-ink hover:bg-accent-ink hover:text-paper min-[400px]:px-3 min-[400px]:text-[0.875rem] sm:px-5 sm:py-2.5 sm:text-[0.95rem] ${className}`}
+      className={`shrink-0 items-center gap-2 rounded-full border border-accent-ink/70 bg-paper/90 px-2.5 py-2 text-[0.8125rem] text-accent-ink shadow-[0_1px_0_rgba(255,255,255,0.55)_inset,0_6px_18px_rgba(28,26,24,0.1)] backdrop-blur-md transition-colors duration-hover ease-hover hover:border-accent-ink hover:bg-accent-ink hover:text-paper min-[400px]:px-3 min-[400px]:text-[0.875rem] sm:px-5 sm:py-2.5 sm:text-[0.95rem] ${className}`}
     >
       <WhatsAppIcon className="size-4" />
       <span className="hidden sm:inline">WhatsApp</span>
