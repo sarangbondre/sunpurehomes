@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { ArrowRightIcon, PinIcon } from "@/components/brand/icons";
 import { STATUS_LABELS, TYPE_LABELS, getCoverImage } from "@/lib/content";
-import { mapsHref } from "@/lib/links";
+import { earthHref } from "@/lib/links";
 import type { Project } from "@/lib/schema";
 import { site } from "@/lib/site";
 
@@ -83,7 +83,7 @@ export function ProjectCard({
             </h3>
             {/* Above the card's own overlay, so the map link is clickable. */}
             <a
-              href={mapsHref(place)}
+              href={earthHref(project.location)}
               target="_blank"
               rel="noopener noreferrer"
               className="relative z-10 mt-2 inline-flex items-start gap-1.5 text-[0.9rem] leading-snug text-paper underline decoration-paper/40 underline-offset-4 transition-colors duration-hover ease-hover hover:decoration-paper"

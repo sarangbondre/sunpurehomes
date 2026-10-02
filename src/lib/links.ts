@@ -16,16 +16,46 @@ export function whatsappHref(message: string): string {
   return `https://wa.me/${waNumber}?text=${encodeURIComponent(message)}`;
 }
 
+/** Enough of a project's location to point at it. */
+type Place = {
+  label: string;
+  addressLines?: readonly string[];
+  coordinates?: { lat: number; lng: number };
+};
+
+const query = (place: Place) =>
+  encodeURIComponent(
+    place.addressLines?.length ? place.addressLines.join(", ") : place.label,
+  );
+
 /**
- * A Google Maps search for a place we publish. Every location on the site is
- * a link to this, at the client's instruction of 29 September 2026. No
- * project has surveyed coordinates (see the schema), so the query is the
- * address or locality as written — always our own content, never anything a
- * visitor typed.
+ * Google Earth, at the client's instruction of 2 October 2026, where every
+ * place on the site used to open Google Maps.
+ *
+ * Pinned by coordinate rather than searched. The client's data sheet of the
+ * same day gave a point for all nine projects, and Earth is much worse than
+ * Maps at finding an Indian address from text — a search there can land a
+ * district away, where a coordinate cannot. The camera is set 600m out and
+ * tilted 45°, which is the view that shows a site and its surroundings
+ * together; a project with no point falls back to a search.
+ *
+ * The numbers after the coordinate are Earth's camera: altitude, distance,
+ * field of view, heading, tilt, roll.
  */
-export function mapsHref(place: string | readonly string[]): string {
-  const query = Array.isArray(place) ? place.join(", ") : (place as string);
-  return `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(query)}`;
+export function earthHref(place: Place): string {
+  const c = place.coordinates;
+  return c
+    ? `https://earth.google.com/web/@${c.lat},${c.lng},0a,600d,35y,0h,45t,0r`
+    : `https://earth.google.com/web/search/${query(place)}`;
+}
+
+/**
+ * Google Maps, and only for the control that says "Get directions" — Earth
+ * does not do directions, so sending that link there would take the one
+ * useful thing away from it. Everything else about a place opens Earth.
+ */
+export function directionsHref(place: Place): string {
+  return `https://www.google.com/maps/search/?api=1&query=${query(place)}`;
 }
 
 export function projectEnquiryMessage(projectName: string, unit?: string): string {

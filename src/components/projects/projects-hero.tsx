@@ -6,7 +6,9 @@ import Image from "next/image";
  *
  * The picture is Curve at dawn — the client's own render, from the project's
  * elevation folder on their Drive ("01 (4).png", 2000px), chosen on
- * 17 September for its sunrise sky. It replaced a frame cut from the
+ * 17 September for its sunrise sky. AVIF since 2 October: as a JPEG it was
+ * 491KB and the slowest thing on the site, and this hero is the one picture
+ * every visitor waits for. It replaced a frame cut from the
  * reference mockup, which was soft and was not a Sunpure development.
  * Larger exports of the same render sit beside it on the Drive; one of those
  * at this path would sharpen the page on very large screens.
@@ -36,7 +38,7 @@ export function ProjectsHero() {
       */}
       <div className="absolute inset-0 -z-10 lg:left-auto lg:w-[60%]">
         <Image
-          src="/images/pages/projects-hero.jpg"
+          src="/images/pages/projects-hero.avif"
           alt="Curve at dawn: the white apartment building with its curved balconies under a pink and gold sky, reflected in the wet forecourt."
           fill
           priority

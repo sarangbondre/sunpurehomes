@@ -6,7 +6,14 @@ import {
   PinIcon,
   WhatsAppIcon,
 } from "@/components/brand/icons";
-import { mailtoHref, mapsHref, projectEnquiryMessage, telHref, whatsappHref } from "@/lib/links";
+import {
+  directionsHref,
+  earthHref,
+  mailtoHref,
+  projectEnquiryMessage,
+  telHref,
+  whatsappHref,
+} from "@/lib/links";
 import type { Project } from "@/lib/schema";
 import { site } from "@/lib/site";
 import { LineIcon } from "@/components/brand/amenity-icons";
@@ -84,10 +91,10 @@ export function Visit({
               <div className="mt-6 flex gap-4">
                 <PinIcon className="mt-1 size-6 text-ink-soft" />
                 <div>
-                  {/* The address opens the map too, not only the link below. */}
+                  {/* The address opens Earth; the link below it still does directions. */}
                   <address className="not-italic">
                     <a
-                      href={mapsHref(address)}
+                      href={earthHref(project.location)}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="block transition-colors duration-hover ease-hover hover:text-laterite"
@@ -101,7 +108,7 @@ export function Visit({
                     </a>
                   </address>
                   <a
-                    href={mapsHref(address)}
+                    href={directionsHref(project.location)}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="u-mono mt-6 inline-flex items-center gap-4 border-b border-ink pb-2 tracking-[0.2em] text-ink transition-colors duration-hover ease-hover hover:border-laterite hover:text-laterite"

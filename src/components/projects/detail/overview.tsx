@@ -1,6 +1,6 @@
 import Image from "next/image";
 import { formatIndianNumber } from "@/lib/format";
-import { mapsHref } from "@/lib/links";
+import { earthHref } from "@/lib/links";
 import type { Project } from "@/lib/schema";
 
 /**
@@ -107,7 +107,7 @@ export function Overview({
               white sky, and a shade alone let the name fall to 1.3:1.
             */}
             <a
-              href={mapsHref(project.location.addressLines.length > 0 ? project.location.addressLines : project.location.label)}
+              href={earthHref(project.location)}
               target="_blank"
               rel="noopener noreferrer"
               className="u-mono absolute bottom-6 right-6 flex items-center gap-3 rounded-full bg-ink/75 px-4 py-2 text-paper backdrop-blur-sm transition-colors duration-hover ease-hover hover:bg-ink"
