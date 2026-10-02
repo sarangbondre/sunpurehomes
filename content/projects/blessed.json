@@ -27,10 +27,14 @@
   },
   "configurations": [
     {
-      "label": "2 BHK"
+      "label": "2 BHK",
+      "count": 12,
+      "facing": "East"
     },
     {
-      "label": "3 BHK"
+      "label": "3 BHK",
+      "count": 8,
+      "facing": "North"
     }
   ],
   "compliance": {
@@ -55,13 +59,7 @@
       "name": "Cricket practice area"
     },
     {
-      "name": "Reflexology path"
-    },
-    {
       "name": "Visitor car parking"
-    },
-    {
-      "name": "Senior citizen areas"
     },
     {
       "name": "Rainwater harvesting"
@@ -95,24 +93,40 @@
     {
       "group": "Flooring",
       "items": [
-        "1200 × 1200 mm premium vitrified tiles to living and common areas",
+        "1200 × 1200 mm premium vitrified tiles for internal areas",
         "Anti-skid vitrified tiles to toilets",
-        "Glazed tiles to bathroom walls, full height"
+        "Glazed tiles to bathroom walls, upto false ceiling height"
       ]
     },
     {
-      "group": "Doors & windows",
+      "group": "Doors",
       "items": [
         "Main door in teak wood frame with veneer finish",
-        "Internal doors in wood frame with laminate finish",
-        "WPC frames and shutters to toilets",
-        "UPVC sliding windows"
+        "Internal doors in wood frame with laminate finish"
+      ]
+    },
+    {
+      "group": "Windows",
+      "items": [
+        "UPVC sliding windows-Kommerling brand"
       ]
     },
     {
       "group": "Electrical",
       "items": [
         "Fire-resistant copper wiring"
+      ]
+    },
+    {
+      "group": "Plumbing fixtures",
+      "items": [
+        "Jaquar"
+      ]
+    },
+    {
+      "group": "Paint",
+      "items": [
+        "Interior-Tractor emulsion, Exterior-Apex-Asian paints"
       ]
     }
   ],

@@ -32,7 +32,7 @@ export default function AboutPage() {
 
   return (
     <main className="mx-auto max-w-[86rem] px-6 pb-8 sm:px-10 lg:px-16">
-      <header className="pb-6 pt-16 sm:pt-24 lg:grid lg:grid-cols-[13rem_minmax(0,1fr)] lg:gap-x-16">
+      <header className="pb-4 pt-12 sm:pt-16 lg:grid lg:grid-cols-[13rem_minmax(0,1fr)] lg:gap-x-16">
         {/*
           "About" is the page's heading now. The line it sat under — "We build
           across India. It began in Mysuru." — was removed on 22 September at
@@ -50,7 +50,7 @@ export default function AboutPage() {
           something there, and a comma is the quietest thing that serves.
           They replaced a paragraph that counted the developments by type.
         */}
-        <div className="mt-10 max-w-[58ch] space-y-6 text-lg leading-relaxed text-ink-soft sm:text-xl lg:mt-0">
+        <div className="mt-8 max-w-[58ch] space-y-6 text-lg leading-relaxed text-ink-soft sm:text-xl lg:mt-0">
           <p>
             We come from the House of Sunpure, a name built on more than three
             decades of enterprise, integrity and enduring trust. We carry that
@@ -69,7 +69,7 @@ export default function AboutPage() {
             context and create something that truly belongs.
           </p>
         </div>
-        <blockquote className="mt-12 border-l-2 border-laterite pl-6 sm:pl-8">
+        <blockquote className="mt-10 border-l-2 border-laterite pl-6 sm:pl-8">
           <p className="max-w-[40ch] font-display text-[clamp(1.6rem,3vw,2.25rem)] italic leading-snug text-ink">
             We do not simply build for today. We build spaces that grow
             meaningful with time.

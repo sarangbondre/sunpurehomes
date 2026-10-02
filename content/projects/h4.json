@@ -58,13 +58,18 @@
     {
       "group": "Flooring",
       "items": [
-        "Engineered marble or vitrified tiles"
+        "kota stone or vitrified tiles"
       ]
     },
     {
-      "group": "Doors & windows",
+      "group": "Doors",
       "items": [
-        "Natural wood laminate finish",
+        "Natural wood laminate finish"
+      ]
+    },
+    {
+      "group": "Windows",
+      "items": [
         "Saint Gobain or equivalent glazing"
       ]
     },
@@ -220,6 +225,7 @@
   "contentWarnings": [
     "The client's aerial banner labels this development HAPPINESS-IV, not H4. The site still calls it H4, which is the name used everywhere else including the brief and the live site. Confirm which name buyers should see.",
     "Specifications are the brochure's own — engineered marble or vitrified tiles, natural wood laminate, ISI-approved electricals, Jaquar/Kohler, Asian/Berger/JSW, Saint Gobain glass. The brochure states they are subject to change on upgrade or availability.",
-    "The brochure shows two villa types, with lift and without. The configuration table lists 3 BHK only and does not distinguish them. Get the plan-by-plan schedule from sales."
+    "The brochure shows two villa types, with lift and without. The configuration table lists 3 BHK only and does not distinguish them. Get the plan-by-plan schedule from sales.",
+    "The data sheet of 2 October 2026 answers the configuration table with 'AREA STATEMENT ATTACHED' and the specifications with 'H4 SPECS SHEET ATTACHED'. Neither attachment came with the file, so areas and specifications are unchanged."
   ]
 }

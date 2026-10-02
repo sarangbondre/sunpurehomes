@@ -107,7 +107,7 @@
       "name": "Grand archway entrance"
     },
     {
-      "name": "Blacktopped internal roads"
+      "name": "Concrete  internal roads"
     },
     {
       "name": "Street lighting throughout"
@@ -120,6 +120,9 @@
     },
     {
       "name": "24-hour security"
+    },
+    {
+      "name": "Sewage treatment plant"
     }
   ],
   "specifications": [],

@@ -66,7 +66,9 @@ describe("corpus", () => {
 
   it("drops the villa size that contradicts Happiness II's own table", () => {
     assert.doesNotMatch(text("happiness-2"), /2,543/);
-    assert.match(text("happiness-2"), /Villas 22–27; 2,167–2,371 sq ft built-up/);
+    // The group carrying these areas was renamed when the client regrouped
+    // the villas on 2 October; the figures it is pinned to did not move.
+    assert.match(text("happiness-2"), /Villas 31–33; 2,167–2,371 sq ft built-up/);
   });
 
   it("drops Happiness II's unverified hospital distances", () => {

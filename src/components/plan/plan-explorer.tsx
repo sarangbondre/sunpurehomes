@@ -152,7 +152,10 @@ export function PlanExplorer({
           indicative-layout one sits at the foot of the explorer since
           2 October, at the client's instruction: it is a standing caveat
           about the whole drawing rather than something to read before using
-          it. Both disappear on their own once the underlying files carry
+          it. The client asked the same day for it to stop announcing itself,
+          so it is set as fine print rather than in a red-bordered box — still
+          said, because a generated drawing has to say it is generated, but
+          said quietly. Both disappear on their own once the underlying files carry
           real data; nothing here needs editing. */}
       {availability?.provenance === "placeholder" && (
         <p className="rounded-sm border border-line bg-paper-2 px-5 py-4 text-sm leading-relaxed text-ink-soft">
@@ -365,8 +368,8 @@ export function PlanExplorer({
       </div>
 
       {scene.provenance === "generated" && (
-        <p className="rounded-sm border border-laterite/40 bg-laterite/8 px-5 py-4 text-sm leading-relaxed text-ink">
-          <strong className="font-semibold">Indicative layout.</strong>{" "}
+        <p className="text-xs leading-relaxed text-muted">
+          <span className="u-mono">Indicative layout.</span>{" "}
           {unitNounSingular} positions, sizes and orientations on this plan are
           generated to match the published totals — {scene.units.length}{" "}
           {unitNoun}

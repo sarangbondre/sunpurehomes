@@ -81,11 +81,16 @@
       ]
     },
     {
-      "group": "Doors & windows",
+      "group": "Doors",
       "items": [
         "Main door in teak wood frame and shutter",
         "Internal doors in solid wood frame with PU finish",
-        "Waterproof flush doors to bathrooms",
+        "Waterproof flush doors to bathrooms"
+      ]
+    },
+    {
+      "group": "Windows",
+      "items": [
         "Solid wood window frames and shutters"
       ]
     },
@@ -97,18 +102,15 @@
       ]
     },
     {
-      "group": "Plumbing & water",
+      "group": "Plumbing fixtures",
       "items": [
-        "RO plant",
-        "Stormwater drainage system",
-        "Rainwater harvesting system"
+        "Jaquar"
       ]
     },
     {
-      "group": "Other",
+      "group": "Switches",
       "items": [
-        "EV charging provision",
-        "CCTV"
+        "Great white/Lisha"
       ]
     }
   ],
@@ -149,6 +151,7 @@
     "Address incomplete. The live site's address block merges the project address into the M.K. Infra Holding corporate address at Srirangapatna (571438), so the project's own postcode is not recoverable. Only the verified lines are carried here.",
     "Connectivity omitted. The live site shows one identical connectivity list on seven different projects in different neighbourhoods; the figures cannot all be true. Needs real per-project distances.",
     "Live-site location copy for this project describes 'V4 homes' — another project's text. Not carried over.",
-    "The Happiness II brochure states Happiness reached occupancy of 26 units, which matches the 26 published here."
+    "The Happiness II brochure states Happiness reached occupancy of 26 units, which matches the 26 published here.",
+    "The data sheet of 2 October 2026 gives this villa '1800' in the carpet-area column and '2650-2700sft' in the how-many column, which cannot both be read as written — 1800 is likely the plot and 2650–2700 sq ft the built-up area. No area is published until the client confirms which is which."
   ]
 }

@@ -159,12 +159,6 @@
       "name": "Walking and jogging pathways"
     },
     {
-      "name": "Outdoor fitness zone"
-    },
-    {
-      "name": "Amphitheatre"
-    },
-    {
       "name": "Open green zones"
     },
     {
@@ -189,9 +183,6 @@
       "name": "CCTV and 24-hour security"
     },
     {
-      "name": "Football court"
-    },
-    {
       "name": "Indoor games area"
     },
     {
@@ -203,33 +194,37 @@
       "group": "Structure",
       "items": [
         "RCC framed structure",
-        "AAC block walls",
-        "Gypsum plaster internally",
-        "Waterproof cement plaster externally"
+        "Solid Concrete Blocks",
+        "Cement Plastering - Internal",
+        "Cement plastering- External"
       ]
     },
     {
       "group": "Flooring",
       "items": [
-        "1200 × 1200 mm premium vitrified tiles to living and common areas",
-        "Anti-skid vitrified tiles to toilets",
-        "Glazed tiles to bathroom walls, full height"
+        "1200 × 1800 mm premium vitrified tiles for internal areas -Somany",
+        "Anti-skid vitrified tiles to toilets -Somany",
+        "Glazed tiles to bathroom walls- Upto False Ceiling Level"
       ]
     },
     {
-      "group": "Doors & windows",
+      "group": "Doors",
       "items": [
         "Main door in teak wood frame with veneer finish",
-        "Internal doors in wood frame with laminate finish",
-        "WPC frames and shutters to toilets",
-        "UPVC windows"
+        "Internal doors in wood frame with laminate finish"
+      ]
+    },
+    {
+      "group": "Windows",
+      "items": [
+        "UPVC windows-Saint Gobain"
       ]
     },
     {
       "group": "Electrical",
       "items": [
         "Fire-resistant copper wiring",
-        "Modular switches",
+        "Modular switches-Schneider",
         "Power backup to common areas and lift",
         "1 kVA backup to each apartment"
       ]

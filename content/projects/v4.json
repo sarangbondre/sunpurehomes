@@ -56,10 +56,7 @@
       "name": "Gym"
     },
     {
-      "name": "Indoor kids play area"
-    },
-    {
-      "name": "Senior citizen recreational area"
+      "name": "Outdoor kids play area"
     },
     {
       "name": "CCTV surveillance"
@@ -73,24 +70,48 @@
   ],
   "specifications": [
     {
+      "group": "Structure",
+      "items": [
+        "RCC framed structure",
+        "Solid Concrete Blocks",
+        "Cement Plastering - Internal",
+        "Cement plastering- External"
+      ]
+    },
+    {
+      "group": "Flooring",
+      "items": [
+        "800 × 1200 mm premium vitrified tiles for internal areas -Italica",
+        "Anti-skid vitrified tiles to toilets -Italica",
+        "Glazed tiles to bathroom walls- Upto False Ceiling Level"
+      ]
+    },
+    {
+      "group": "Doors",
+      "items": [
+        "Tectonics-Main door in teak wood frame with veneer finish",
+        "Tectonics-Internal doors in wood frame with laminate finish"
+      ]
+    },
+    {
+      "group": "Windows",
+      "items": [
+        "UPVC windows-Saint Gobain"
+      ]
+    },
+    {
       "group": "Electrical",
       "items": [
-        "Underground electrical system",
-        "100% power backup"
+        "Fire-resistant copper wiring",
+        "Modular switches-Schneider",
+        "Power backup to common areas and lift",
+        "1 kVA backup to each apartment"
       ]
     },
     {
-      "group": "Plumbing & water",
+      "group": "Lift",
       "items": [
-        "RO plant",
-        "Stormwater drainage system"
-      ]
-    },
-    {
-      "group": "Other",
-      "items": [
-        "EV charging provision",
-        "CCTV"
+        "Fujitec"
       ]
     }
   ],

@@ -24,11 +24,11 @@
   "scale": {
     "acres": 4,
     "unitCount": 34,
-    "unitNoun": "homes"
+    "unitNoun": "villas"
   },
   "configurations": [
     {
-      "label": "Villas 1 & 8 · corner",
+      "label": "Villas 2 & 9 · corner",
       "areaSqft": [
         2877.75,
         3171.1
@@ -38,11 +38,11 @@
         2389.83,
         2659.39
       ],
-      "facing": "East, east entrance",
-      "count": 2
+      "count": 2,
+      "facing": "South, east entrance"
     },
     {
-      "label": "Villas 2–7",
+      "label": "Villas 3–8",
       "areaSqft": [
         2380.16,
         2658.4
@@ -52,11 +52,11 @@
         1909.76,
         2161.68
       ],
-      "facing": "East, north entrance",
-      "count": 6
+      "count": 6,
+      "facing": "South, east entrance"
     },
     {
-      "label": "Villas 9–15, 29–31",
+      "label": "Villas 11–16, 24–29",
       "areaSqft": [
         2321.25,
         2494.78
@@ -66,11 +66,11 @@
         1898.18,
         2055.19
       ],
-      "facing": "South, east entrance",
-      "count": 10
+      "count": 12,
+      "facing": "11–16 east; 24–29 west, north entrance"
     },
     {
-      "label": "Villa 16 · corner",
+      "label": "Villas 10 & 17 · corner",
       "areaSqft": [
         2376.81,
         2714.72
@@ -80,11 +80,11 @@
         1954.8,
         2265.15
       ],
-      "facing": "South, east entrance",
-      "count": 1
+      "count": 2,
+      "facing": "East, north entrance"
     },
     {
-      "label": "Villas 17–20",
+      "label": "Villas 18–20",
       "areaSqft": [
         2380.16,
         2658.4
@@ -94,11 +94,11 @@
         1909.76,
         2161.68
       ],
-      "facing": "North, east entrance",
-      "count": 4
+      "count": 3,
+      "facing": "South, east entrance"
     },
     {
-      "label": "Villas 21 & 28 · corner",
+      "label": "Villas 23 & 30 · corner",
       "areaSqft": [
         2584.34,
         2838.64
@@ -108,11 +108,11 @@
         2242.99,
         2475.11
       ],
-      "facing": "West, north entrance",
-      "count": 2
+      "count": 2,
+      "facing": "West, north entrance"
     },
     {
-      "label": "Villas 22–27",
+      "label": "Villas 31–33",
       "areaSqft": [
         2167.44,
         2370.9
@@ -122,11 +122,11 @@
         1838.68,
         2021.4
       ],
-      "facing": "West, north entrance",
-      "count": 6
+      "count": 3,
+      "facing": "North, east entrance"
     },
     {
-      "label": "Villa 32 · corner",
+      "label": "Villas 21 & 34 · corner",
       "areaSqft": [
         3086.05,
         3520.08
@@ -136,8 +136,8 @@
         2540.67,
         2940.31
       ],
-      "facing": "East, east entrance",
-      "count": 1
+      "count": 2,
+      "facing": "21 east, east entrance; 34 north, east entrance"
     }
   ],
   "compliance": {
@@ -184,7 +184,7 @@
         "RCC framed structure, Seismic Zone II compliant",
         "Anti-termite treated",
         "Solid blocks for walls",
-        "Internal walls plastered to a superior finish",
+        "Internal walls  Cement plastered to a superior finish",
         "Cement plaster to external walls"
       ]
     },
@@ -193,8 +193,8 @@
       "items": [
         "Vitrified tiles to living, dining, foyer, family and internal common areas",
         "Anti-slip vitrified tiles to bathroom floors",
-        "Glazed tiles to bathroom walls, seven feet high",
-        "Glazed tiles to kitchen walls, two feet high"
+        "Mat Finish tiles to bathroom walls, Upto Ceiling Height",
+        "Mat Finish tiles to kitchen walls, two feet high"
       ]
     },
     {
@@ -202,9 +202,9 @@
       "items": [
         "Teak wood frame with teak wood panel shutter to the main entrance",
         "Engineered wood flush doors with natural wood laminate finish internally",
-        "WPC frame and shutter to bathrooms",
+        "Flush Doors, HDF External grade to bathrooms",
         "Stainless steel door hardware",
-        "2 and 3 track UPVC sliding windows"
+        "2 and 3 track UPVC sliding windows with Mosquito Mesh"
       ]
     },
     {
@@ -215,7 +215,6 @@
         "Modular switches, Anchor Roma or equivalent",
         "Provision for points only; fixtures are not included",
         "Underground electrical system",
-        "100% power backup",
         "Provision for a UPS point"
       ]
     },
@@ -235,10 +234,10 @@
     {
       "group": "Other",
       "items": [
-        "External emulsion paint outside, internal emulsion paint inside",
+        "External Ultima ust Proof-emulsion paint outside, internal -Premium emulsion paint inside",
         "Enamel paint to metal and iron surfaces",
-        "Stainless steel staircase railing",
-        "Stainless steel balcony railing with toughened glass",
+        "Wooden/ Stainless Steel staircase railing",
+        "Aluminium Profile/Stainless steel balcony railing with toughened glass",
         "Provision for split air conditioning in the living room and master bedroom",
         "Daylight and cross-ventilation planned into each villa",
         "Columns and beams sized to carry full second-floor construction",
@@ -426,6 +425,8 @@
     "Areas are the brochure's floor-by-floor built-up and carpet figures added together: ground + first + second. The second floor is offered with and without its multipurpose area, which is why every type is a range. Per-floor figures are in the brochure if a breakdown is wanted on the page.",
     "The brochure's connectivity page is headed with a paragraph about Blessed, not Happiness II, and the location map shows Happiness. Both are in Vijayanagar 4th Stage. The distances are carried here as Happiness II's — confirm, and fix the brochure.",
     "The two hospital columns on the brochure's QUICK CONNECT panel are a grid the PDF flattens into one stream, so the pairing of distance to hospital name is inferred from reading order. Verify the five health figures against the printed page.",
-    "The brochure names the developer as MK Infra Holding, MB Road, Srirangapatna 571438. The site records the group's legal name as M.K. Agrotech Pvt. Ltd., which is the oil business. Confirm which entity is the promoter on RERA."
+    "The brochure names the developer as MK Infra Holding, MB Road, Srirangapatna 571438. The site records the group's legal name as M.K. Agrotech Pvt. Ltd., which is the oil business. Confirm which entity is the promoter on RERA.",
+    "Villa numbering, counts and entrances are the client's data sheet of 2 October 2026, which regrouped them: the eight groups there replace the eight on the site, and the counts still total 32. The sheet writes one range as '29–24'; it is set here as 24–29, the only reading that gives the twelve it states.",
+    "The same sheet marks the built-up areas 'BUA to be cross checked with sales Team'. They are published unchanged from the earlier figures until that check comes back."
   ]
 }

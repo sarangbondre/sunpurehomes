@@ -31,7 +31,8 @@
       "label": "9.0 × 12.0 m",
       "areaSqft": 1163,
       "count": 12,
-      "areaBasis": "plot"
+      "areaBasis": "plot",
+      "facing": "Mostly north and east facing"
     },
     {
       "label": "9.0 × 13.0 m",

@@ -11,6 +11,10 @@ import Image from "next/image";
  * Larger exports of the same render sit beside it on the Drive; one of those
  * at this path would sharpen the page on very large screens.
  *
+ * Shorter since 2 October: it stood 768px deep at 1440 with the type
+ * floating in the middle, and the client asked for the white back. The
+ * picture is unchanged — only the frame around it closed up.
+ *
  * Two arrangements of the same parts. On a phone the picture fills the
  * frame and the type sits on it, under a paper haze that falls from the top
  * (client, 30 September). From lg the picture is a column on the right —
@@ -53,7 +57,7 @@ export function ProjectsHero() {
         />
       </div>
 
-      <div className="relative mx-auto flex min-h-[40rem] max-w-[86rem] flex-col px-6 pb-16 pt-36 sm:min-h-[42rem] sm:px-10 sm:pt-40 lg:h-[clamp(34rem,54vw,48rem)] lg:min-h-0 lg:justify-center lg:px-16 lg:pt-32">
+      <div className="relative mx-auto flex min-h-[30rem] max-w-[86rem] flex-col px-6 pb-12 pt-32 sm:min-h-[32rem] sm:px-10 sm:pt-36 lg:h-[clamp(26rem,40vw,34rem)] lg:min-h-0 lg:justify-center lg:px-16 lg:pt-28">
         {/*
           The frame is taller than the type on a phone, so the picture still
           reads below the haze rather than being hidden by it.

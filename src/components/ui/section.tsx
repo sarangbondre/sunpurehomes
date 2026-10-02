@@ -33,7 +33,7 @@ export function Section({
         scroll-mt clears the sticky header, which would otherwise cover the
         eyebrow of whichever section was jumped to.
       */
-      className={`scroll-mt-24 border-t border-line py-14 sm:py-20 lg:grid lg:grid-cols-[13rem_minmax(0,1fr)] lg:gap-x-16 ${className}`}
+      className={`scroll-mt-24 border-t border-line py-10 sm:py-14 lg:grid lg:grid-cols-[13rem_minmax(0,1fr)] lg:gap-x-16 ${className}`}
     >
       {title === undefined ? (
         <h2 className="u-mono text-[1.05rem] leading-snug tracking-[0.14em] text-laterite sm:text-[1.2rem]">
