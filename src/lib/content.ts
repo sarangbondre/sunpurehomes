@@ -154,9 +154,18 @@ export const SORT_LABELS: Record<Sort, string> = {
 
 /*
   "Featured" means what a buyer can act on first: projects under way, then
-  upcoming, then completed, and anything fully sold last. Within each group,
-  by name — the order the content is already in.
+  upcoming, then completed, and anything fully sold last.
+
+  Within a group the client's three lead, in this order, and the rest follow
+  by name (2 October 2026). All three are under way, so they are the top of
+  the listing as it opens — but the rule is written as "first within their
+  group" rather than "first on the page", so that a project finishing does
+  not jump the completed section above the ongoing one.
+
+  A slug here that no longer exists is simply never matched, which the test
+  in content.test.ts checks so the list cannot rot quietly.
 */
+const FEATURED_FIRST: readonly string[] = ["curve", "h4", "rare-earth"];
 const STATUS_RANK: Record<ProjectStatus, number> = {
   ongoing: 0,
   upcoming: 1,
@@ -177,7 +186,13 @@ export function sortProjects(
     return sorted.sort((a, b) => TYPE_RANK[a.type] - TYPE_RANK[b.type] || byName(a, b));
   }
   const rank = (p: Project) => (isSoldOut(p.slug) ? 3 : STATUS_RANK[p.status]);
-  return sorted.sort((a, b) => rank(a) - rank(b) || byName(a, b));
+  const pick = (p: Project) => {
+    const i = FEATURED_FIRST.indexOf(p.slug);
+    return i === -1 ? FEATURED_FIRST.length : i;
+  };
+  return sorted.sort(
+    (a, b) => rank(a) - rank(b) || pick(a) - pick(b) || byName(a, b),
+  );
 }
 
 /**

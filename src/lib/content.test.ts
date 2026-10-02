@@ -14,6 +14,16 @@ describe("sortProjects", () => {
     assert.equal(sorted.at(-1)?.slug, "v4");
   });
 
+  it("leads with the three the client asked for, then falls back to name", () => {
+    const ongoing = sortProjects(all, "featured", () => false)
+      .filter((p) => p.status === "ongoing")
+      .map((p) => p.slug);
+    assert.deepEqual(ongoing.slice(0, 3), ["curve", "h4", "rare-earth"]);
+    // The rest keep the old rule, so the change is only to the head.
+    const rest = ongoing.slice(3);
+    assert.deepEqual(rest, [...rest].sort((a, b) => a.localeCompare(b, "en")));
+  });
+
   it("sorts by name", () => {
     const sorted = names(sortProjects(all, "name", () => false));
     assert.deepEqual(sorted, [...sorted].sort((a, b) => a.localeCompare(b, "en")));
