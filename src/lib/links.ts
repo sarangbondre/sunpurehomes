@@ -35,17 +35,24 @@ const query = (place: Place) =>
  * Pinned by coordinate rather than searched. The client's data sheet of the
  * same day gave a point for all nine projects, and Earth is much worse than
  * Maps at finding an Indian address from text — a search there can land a
- * district away, where a coordinate cannot. The camera is set 600m out and
- * tilted 45°, which is the view that shows a site and its surroundings
- * together; a project with no point falls back to a search.
+ * district away, where a coordinate cannot. A project with no point falls
+ * back to a search.
  *
- * The numbers after the coordinate are Earth's camera: altitude, distance,
- * field of view, heading, tilt, roll.
+ * CAMERA is the view Earth opens at, and the numbers after the coordinate
+ * are its altitude, distance, field of view, heading, tilt and roll.
+ *
+ * 2,200m out, where it was 600m: at 600 the frame held the plot and little
+ * else, so someone who had just left the site had nothing to recognise and
+ * could not tell the link had taken them anywhere (client, 2 October). At
+ * this distance the roads around it, and in Mysuru's case the city itself,
+ * are in frame. The tilt is gentle rather than the 45° it was, because a
+ * steep angle at this range hides as much as it shows.
  */
+const CAMERA = "0a,2200d,35y,0h,20t,0r";
 export function earthHref(place: Place): string {
   const c = place.coordinates;
   return c
-    ? `https://earth.google.com/web/@${c.lat},${c.lng},0a,600d,35y,0h,45t,0r`
+    ? `https://earth.google.com/web/@${c.lat},${c.lng},${CAMERA}`
     : `https://earth.google.com/web/search/${query(place)}`;
 }
 
