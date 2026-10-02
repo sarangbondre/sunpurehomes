@@ -92,6 +92,9 @@ export function PlanExplorer({
     scene.units.find((u) => u.id === initialUnitId)?.floor ?? homeFloors[0] ?? 0;
   const [floor, setFloor] = useState<number>(initialFloor);
   const visibleFloor = stacked ? floor : null;
+  /* Said in words under the plan, because the floor buttons no longer carry
+     it as a figure — see the note on those buttons. */
+  const floorCount = scene.units.filter((u) => u.floor === visibleFloor).length;
 
   const byId = useMemo(
     () => new Map(scene.units.map((u) => [u.id, u])),
@@ -145,20 +148,12 @@ export function PlanExplorer({
 
   return (
     <div className="space-y-6">
-      {/* Provenance notices. Both disappear on their own once the underlying
-          files carry real data — nothing here needs editing. */}
-      {scene.provenance === "generated" && (
-        <p className="rounded-sm border border-laterite/40 bg-laterite/8 px-5 py-4 text-sm leading-relaxed text-ink">
-          <strong className="font-semibold">Indicative layout.</strong>{" "}
-          {unitNounSingular} positions, sizes and orientations on this plan are
-          generated to match the published totals — {scene.units.length}{" "}
-          {unitNoun}
-          {publishedAcres ? ` on ${publishedAcres} acres` : ""}
-          {stacked ? ` across ${homeFloors.length} floors` : ""} — and are not a
-          surveyed drawing. Confirm any {unitNounSingular.toLowerCase()} with
-          the sales team before relying on it.
-        </p>
-      )}
+      {/* The availability notice stays by the controls it qualifies. The
+          indicative-layout one sits at the foot of the explorer since
+          2 October, at the client's instruction: it is a standing caveat
+          about the whole drawing rather than something to read before using
+          it. Both disappear on their own once the underlying files carry
+          real data; nothing here needs editing. */}
       {availability?.provenance === "placeholder" && (
         <p className="rounded-sm border border-line bg-paper-2 px-5 py-4 text-sm leading-relaxed text-ink-soft">
           Availability shown is placeholder data for demonstration. Live status
@@ -193,12 +188,21 @@ export function PlanExplorer({
           {homeFloors.map((f) => {
             const active = floor === f;
             const count = scene.units.filter((u) => u.floor === f).length;
+            const name = f === 0 ? "Ground" : `Floor ${f}`;
             return (
               <button
                 key={f}
                 type="button"
                 onClick={() => setFloor(f)}
                 aria-pressed={active}
+                /*
+                  The count used to sit on the button as a bare figure, which
+                  read as part of the name — "Floor 2 8" (client, 2 October).
+                  It is said in words under the plan instead, where there is
+                  room for the noun, and kept here for a screen reader, which
+                  gets the label rather than the two numbers in a row.
+                */
+                aria-label={`${name}, ${count} ${count === 1 ? unitNounSingular.toLowerCase() : unitNoun}`}
                 className={[
                   "u-mono inline-flex items-center gap-2 rounded-full border px-4 py-2",
                   "transition-colors duration-hover ease-hover",
@@ -207,10 +211,7 @@ export function PlanExplorer({
                     : "border-line bg-paper text-ink hover:border-ink",
                 ].join(" ")}
               >
-                {f === 0 ? "Ground" : `Floor ${f}`}
-                <span className={active ? "text-paper/60" : "text-muted"}>
-                  {count}
-                </span>
+                {name}
               </button>
             );
           })}
@@ -303,7 +304,7 @@ export function PlanExplorer({
           <details className="mt-4 rounded-sm border border-line">
             <summary className="u-mono cursor-pointer px-5 py-4 text-ink">
               {stacked
-                ? `${unitNounSingular}s on this floor as a list`
+                ? `${floorCount} ${floorCount === 1 ? unitNounSingular.toLowerCase() : unitNoun} on this floor, as a list`
                 : `All ${scene.units.length} ${unitNoun} as a list`}
             </summary>
             <ul className="max-h-96 overflow-y-auto border-t border-line p-3">
@@ -362,6 +363,19 @@ export function PlanExplorer({
           />
         </div>
       </div>
+
+      {scene.provenance === "generated" && (
+        <p className="rounded-sm border border-laterite/40 bg-laterite/8 px-5 py-4 text-sm leading-relaxed text-ink">
+          <strong className="font-semibold">Indicative layout.</strong>{" "}
+          {unitNounSingular} positions, sizes and orientations on this plan are
+          generated to match the published totals — {scene.units.length}{" "}
+          {unitNoun}
+          {publishedAcres ? ` on ${publishedAcres} acres` : ""}
+          {stacked ? ` across ${homeFloors.length} floors` : ""} — and are not a
+          surveyed drawing. Confirm any {unitNounSingular.toLowerCase()} with
+          the sales team before relying on it.
+        </p>
+      )}
 
       {/* Announces the selected unit for assistive technology. */}
       <p aria-live="polite" className="sr-only">
