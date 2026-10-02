@@ -5,34 +5,28 @@ export type HeroImage = { src: string; alt: string };
 
 /**
  * The landing page: the picture edge to edge and the full height of the
- * screen, with the brand line over it on a paper field that is not quite
- * opaque, so the photograph shows faintly through the words.
+ * screen, with the brand line over it on paper that dissolves into the
+ * photograph.
  *
  * Asked for on 2 October, after the half-and-half split of the same morning:
- * more picture, the picture behind everything, and "a little opaque where
- * there is a text".
+ * the picture behind everything and covering more than the type.
  *
- * HOW OPAQUE THAT FIELD IS WAS MEASURED, NOT CHOSEN. The constraint is
- * "Deeply Lived.", which is --laterite and the weakest thing on the page:
- * 4.86:1 on solid paper, and less than that over a picture. It is also large
- * text at every width this site renders — 86px at lg, 47px on a 375px phone,
- * both well past the 24px that WCAG 1.4.3 counts as large — so the bar it
- * has to clear is 3:1, not the 4.5:1 the mono type beside it needs.
+ * The ground under the type is opaque, and reaches the picture through a
+ * ramp long enough that there is no edge to find — the client's words on
+ * 2 October were that no one should be able to feel the line between the
+ * transparent part and the opaque part.
  *
- * 86% is the measured answer. The darkest pixel this picture puts behind
- * those words is all but black — the palm fronds, which fall right across
- * the line at lg — and over black, 86% paper leaves the red at 3.5:1. Over
- * the sky alone far more of the picture could show; the fronds set it.
+ * That replaces a translucent field, and takes a contrast problem with it.
+ * "Deeply Lived." is the weakest thing on the page — laterite, 4.86:1 even
+ * on solid paper — and over a picture it was measuring 3.5:1, which clears
+ * WCAG only because the brand line is large text. On paper it is 4.86:1
+ * again, the figure it carries everywhere else on this site.
  *
- * So if the picture changes, or a crop moves dark foliage up behind the
- * type, re-measure before trusting it: composite the picture under the
- * headline's box at this alpha, take the darkest pixel, and check it against
- * #d40000. Nothing here will tell you when it has stopped being legible.
- *
- * The field is blurred rather than faded with a gradient: a gradient is
- * clipped by its own box, so the fade stops dead and the line sits in a
- * visible rectangle. Blurring puts the fade outside the box, where there is
- * room for it.
+ * Two things make the ramp invisible. It has eighteen stops, because three
+ * of them draw a straight line and the eye reads a straight line as an edge.
+ * And it is laid on the section, full bleed, not on a box around the type: a
+ * gradient is clipped by its own element, so a small box ends its ramp in
+ * mid-air and leaves exactly the line this is meant to avoid.
  *
  * One picture, not a rotation: a plain server component with no client
  * JavaScript, and nothing that moves, so WCAG 2.2.2 does not apply.
@@ -56,6 +50,26 @@ export function Hero({ image }: { image: HeroImage }) {
       />
 
       {/*
+        The ground the type stands on: paper where the words are, nothing at
+        all over the rest of the picture, and a ramp between them long enough
+        that there is no edge to find. Across the frame at lg, down it on a
+        phone, where the type sits at the top instead.
+
+        It is laid on the section rather than on a box around the type. A
+        gradient is clipped by its own element, so a small box ends its ramp
+        in mid-air and leaves exactly the line this is meant to avoid; given
+        the whole frame, the ramp finishes on its own terms.
+
+        Opaque under the words, so the contrast questions that dogged the
+        translucent version are gone: the brand line is back to 4.86:1, the
+        figure it carries on paper anywhere else on the site.
+      */}
+      <div
+        aria-hidden
+        className="absolute inset-0 -z-10 bg-[linear-gradient(to_bottom,rgba(244,240,231,1)_0%,rgba(244,240,231,1)_44%,rgba(244,240,231,0.975)_48%,rgba(244,240,231,0.94)_52%,rgba(244,240,231,0.89)_56%,rgba(244,240,231,0.82)_60%,rgba(244,240,231,0.73)_63%,rgba(244,240,231,0.65)_66%,rgba(244,240,231,0.56)_69%,rgba(244,240,231,0.47)_72%,rgba(244,240,231,0.38)_75%,rgba(244,240,231,0.29)_78%,rgba(244,240,231,0.21)_81%,rgba(244,240,231,0.14)_84%,rgba(244,240,231,0.08)_87%,rgba(244,240,231,0.04)_90%,rgba(244,240,231,0.01)_93%,transparent_96%)] lg:bg-[radial-gradient(ellipse_57%_53%_at_24%_47%,rgba(244,240,231,1)_0%,rgba(244,240,231,1)_38%,rgba(244,240,231,0.975)_43%,rgba(244,240,231,0.94)_47%,rgba(244,240,231,0.89)_51%,rgba(244,240,231,0.82)_55%,rgba(244,240,231,0.73)_59%,rgba(244,240,231,0.65)_62%,rgba(244,240,231,0.56)_65%,rgba(244,240,231,0.47)_68%,rgba(244,240,231,0.38)_71%,rgba(244,240,231,0.29)_74%,rgba(244,240,231,0.21)_77%,rgba(244,240,231,0.14)_80%,rgba(244,240,231,0.08)_84%,rgba(244,240,231,0.04)_88%,rgba(244,240,231,0.01)_92%,transparent_96%)]"
+      />
+
+      {/*
         The header's links sit over the top of the picture with no bar of
         their own, and the sky there is bright but not white.
       */}
@@ -65,13 +79,7 @@ export function Hero({ image }: { image: HeroImage }) {
       />
 
       <div className="flex min-h-svh flex-col px-6 pb-16 pt-28 sm:px-10 sm:pt-32 lg:max-w-[52%] lg:justify-center lg:pb-28 lg:pl-16 lg:pr-10 lg:pt-28 lg:[@media(max-height:700px)]:pb-16">
-        {/* The field belongs to the brand line. The button carries its own. */}
         <div className="relative">
-          <div
-            aria-hidden
-            className="pointer-events-none absolute -inset-x-10 -inset-y-12 -z-10 rounded-[30%] bg-paper/86 blur-2xl"
-          />
-
           {/*
             "Thoughtfully Built," never wraps and measures 6.21 times the font
             size, so the vw factor is the largest that still fits at 320px on
@@ -90,10 +98,12 @@ export function Hero({ image }: { image: HeroImage }) {
             blur to lift the type and a light top edge where the glass catches
             the sky.
 
-            The tint is what makes it legible, and it is measured like the
-            field above: ink on 55% paper over the darkest foliage in this
-            frame is 5.6:1. Ink has room to spare where the red of the brand
-            line has none, which is why this can be glass and that cannot.
+            It sits inside the ground, though, so what it has to refract
+            is mostly paper — glass needs something behind it, and the same
+            instruction that put the type on opaque ground took the picture
+            out from under this. It reads as a tinted pill with a lit top
+            edge. Moving it clear of the ground would mean a ramp steep
+            enough to see, which is the thing being avoided.
 
             On hover it fills with laterite and stops being glass — a solid
             fill is the only way paper type on red holds its 4.86:1.
