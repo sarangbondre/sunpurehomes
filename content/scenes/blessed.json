@@ -667,36 +667,6 @@
    "depthM": 11.4,
    "facing": "East",
    "floor": 6
-  },
-  {
-   "id": "703",
-   "ring": [
-    [
-     26,
-     42.4
-    ],
-    [
-     38.2,
-     42.4
-    ],
-    [
-     38.2,
-     53.8
-    ],
-    [
-     26,
-     53.8
-    ]
-   ],
-   "centroid": [
-    32.1,
-    48.1
-   ],
-   "areaSqft": 1497,
-   "widthM": 12.2,
-   "depthM": 11.4,
-   "facing": "South",
-   "floor": 6
   }
  ],
  "amenityPoints": [

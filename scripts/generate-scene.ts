@@ -631,7 +631,8 @@ const curve = apartmentBlock({
 /* -------------------------------------------------------------- Blessed */
 const blessed = apartmentBlock({
   slug: "blessed",
-  count: 21,
+  // Twenty, confirmed by the client on 2 October 2026 — the page said 21.
+  count: 20,
   perFloor: 3,
   unit: { widthM: 12.2, depthM: 11.4 },
   levelHeightM: 3.1,
