@@ -8,7 +8,7 @@ import {
 } from "@/components/brand/icons";
 import {
   directionsHref,
-  earthHref,
+  satelliteHref,
   mailtoHref,
   projectEnquiryMessage,
   telHref,
@@ -94,7 +94,7 @@ export function Visit({
                   {/* The address opens Earth; the link below it still does directions. */}
                   <address className="not-italic">
                     <a
-                      href={earthHref(project.location)}
+                      href={satelliteHref(project.location)}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="block transition-colors duration-hover ease-hover hover:text-laterite"

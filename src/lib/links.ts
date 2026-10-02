@@ -29,31 +29,31 @@ const query = (place: Place) =>
   );
 
 /**
- * Google Earth, at the client's instruction of 2 October 2026, where every
- * place on the site used to open Google Maps.
+ * The place itself, seen from above: Google Maps in satellite view, centred
+ * on the project and pulled back far enough to show the roads around it.
+ *
+ * It was Google Earth for an hour on 2 October, at the client's instruction,
+ * and came back because Earth would not take the link. Neither the camera
+ * form nor the search form landed in a browser with WebGL available — both
+ * reset to the globe at 0,0 and showed Earth's overview page. This form was
+ * watched doing the opposite: it resolves to the exact coordinate at 3,580m
+ * with satellite imagery, in one hop, and on a phone it opens the Maps app
+ * rather than needing a browser that can run a 3D globe.
  *
  * Pinned by coordinate rather than searched. The client's data sheet of the
- * same day gave a point for all nine projects, and Earth is much worse than
- * Maps at finding an Indian address from text — a search there can land a
- * district away, where a coordinate cannot. A project with no point falls
- * back to a search.
+ * same day gave a point for all nine projects, and a text search for an
+ * Indian address can land a district away where a coordinate cannot. A
+ * project with no point falls back to a search.
  *
- * CAMERA is the view Earth opens at, and the numbers after the coordinate
- * are its altitude, distance, field of view, heading, tilt and roll.
- *
- * 2,200m out, where it was 600m: at 600 the frame held the plot and little
- * else, so someone who had just left the site had nothing to recognise and
- * could not tell the link had taken them anywhere (client, 2 October). At
- * this distance the roads around it, and in Mysuru's case the city itself,
- * are in frame. The tilt is gentle rather than the 45° it was, because a
- * steep angle at this range hides as much as it shows.
+ * ZOOM 15 is about 3.5km across: the plot, the roads that reach it and, in
+ * Mysuru, enough of the city to recognise. It was 600m under Earth and the
+ * client could not tell the link had gone anywhere.
  */
-const CAMERA = "0a,2200d,35y,0h,20t,0r";
-export function earthHref(place: Place): string {
+export function satelliteHref(place: Place): string {
   const c = place.coordinates;
   return c
-    ? `https://earth.google.com/web/@${c.lat},${c.lng},${CAMERA}`
-    : `https://earth.google.com/web/search/${query(place)}`;
+    ? `https://www.google.com/maps/@?api=1&map_action=map&center=${c.lat},${c.lng}&zoom=15&basemap=satellite`
+    : `https://www.google.com/maps/search/?api=1&query=${query(place)}&basemap=satellite`;
 }
 
 /**
