@@ -25,6 +25,7 @@ const BRAND_DIR = "images/brands";
 export const BRAND_MARKS: Readonly<Record<string, "svg" | "png">> = {
   acc: "svg",
   "asian-paints": "svg",
+  ashirvad: "png",
   "astral-pipes": "png",
   fujitec: "svg",
   jaquar: "png",
