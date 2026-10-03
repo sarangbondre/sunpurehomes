@@ -121,7 +121,7 @@ export function UnitDrawer({
           )}
           target="_blank"
           rel="noopener noreferrer"
-          className="u-mono rounded-full bg-ink px-5 py-3 text-center text-paper transition-colors duration-hover ease-hover hover:bg-canopy"
+          className="u-mono u-glass justify-center px-5 py-3 text-center transition-colors duration-hover ease-hover hover:bg-canopy"
         >
           Ask about {unitNounSingular.toLowerCase()} {unit.id}
         </a>

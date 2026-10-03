@@ -157,7 +157,7 @@ function WhatsAppPill({ className = "" }: { className?: string }) {
         control is never anonymous to a screen reader.
       */
       aria-label={`Message ${site.name} on WhatsApp`}
-      className={`shrink-0 items-center gap-2 rounded-full border border-paper/60 bg-paper/35 px-2.5 py-2 text-[0.8125rem] text-ink shadow-[0_1px_0_rgba(255,255,255,0.5)_inset,0_8px_24px_rgba(28,26,24,0.12)] backdrop-blur-md transition-colors duration-hover ease-hover hover:border-laterite hover:bg-laterite hover:text-paper min-[400px]:px-3 min-[400px]:text-[0.875rem] sm:px-5 sm:py-2.5 sm:text-[0.95rem] ${className}`}
+      className={`u-glass shrink-0 gap-2 px-2.5 py-2 text-[0.8125rem] min-[400px]:px-3 min-[400px]:text-[0.875rem] sm:px-5 sm:py-2.5 sm:text-[0.95rem] ${className}`}
     >
       <WhatsAppIcon className="size-4" />
       <span className="hidden sm:inline">WhatsApp</span>

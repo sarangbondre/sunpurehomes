@@ -115,7 +115,7 @@ export function Hero({ image }: { image: HeroImage }) {
           */}
           <Link
             href="/projects"
-            className="u-mono inline-flex items-center gap-4 rounded-full border border-paper/60 bg-paper/35 px-7 py-5 text-ink shadow-[0_1px_0_rgba(255,255,255,0.5)_inset,0_8px_24px_rgba(28,26,24,0.12)] backdrop-blur-md transition-colors duration-hover ease-hover hover:border-laterite hover:bg-laterite hover:text-paper"
+            className="u-mono u-glass gap-4 px-7 py-5"
           >
             Discover our projects
             <svg

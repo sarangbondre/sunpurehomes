@@ -99,7 +99,7 @@ export function Configurations({ project }: { project: Project }) {
           )}
           target="_blank"
           rel="noopener noreferrer"
-          className="u-mono inline-flex shrink-0 items-center justify-center gap-3 self-start rounded-full bg-ink px-7 py-4 text-paper transition-colors duration-hover ease-hover hover:bg-laterite sm:self-auto"
+          className="u-mono u-glass shrink-0 justify-center gap-3 self-start px-7 py-4 sm:self-auto"
         >
           Request the price list
           <ArrowRightIcon className="size-4" />

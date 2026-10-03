@@ -48,7 +48,7 @@ export const site = {
     "Saint-Gobain",
     "Somany",
     "Jaquar",
-    "Koala",
+    "Kohler",
     "Astral Pipes",
     "V-Guard",
     "Schneider Electric",
@@ -56,7 +56,7 @@ export const site = {
   ],
 
   contact: {
-    email: "sales@sunpurehomes.com",
+    email: "help@sunpurehomes.com",
     /** Also the WhatsApp number. E.164 for tel: and wa.me links. */
     phoneE164: "+919916900511",
     phoneDisplay: "+91 99169 00511",
@@ -88,5 +88,5 @@ export const openQuestions: readonly string[] = [
   "Every project page shows bathrooms equal to bedrooms (a 3 BHK shows 3 bathrooms), at the client's instruction of 17 September 2026. No project file records bathroom counts. Send them per configuration and they will replace the rule.",
   "Meraki's areas were labelled super built-up in its brochure and are now shown as built-up, at the client's instruction of 17 September 2026. Confirm the figures are built-up against the approved plans.",
   "Curve's data sheet gives a total super built-up area of 55,000 sq ft, marked 'to confirm with Shahab'. It is not published until confirmed.",
-  "Brand marks were taken from Wikipedia and Wikimedia Commons on 17 September 2026. None was found for Koala, Astral Pipes, Ashirvad, Qcon RKB, SK Super Steel or Techtonics, which show as names. Send their logo files, and confirm the marks used are the current ones.",
+  "Brand marks were taken from Wikipedia and Wikimedia Commons on 17 September 2026; Astral Pipes came from the client on 3 October. None is on file for Ashirvad, Qcon RKB, SK Super Steel or Techtonics, which show as names. Send their logo files, and confirm the marks used are the current ones.",
 ];

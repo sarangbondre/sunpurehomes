@@ -82,7 +82,7 @@ export function ShortlistTray({
           href={whatsappHref(shareMessage)}
           target="_blank"
           rel="noopener noreferrer"
-          className="u-mono mt-5 block rounded-full bg-ink px-5 py-3 text-center text-paper transition-colors duration-hover ease-hover hover:bg-canopy"
+          className="u-mono u-glass mt-5 justify-center px-5 py-3 text-center transition-colors duration-hover ease-hover hover:bg-canopy"
         >
           Send shortlist on WhatsApp
         </a>

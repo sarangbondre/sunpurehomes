@@ -25,6 +25,7 @@ const BRAND_DIR = "images/brands";
 export const BRAND_MARKS: Readonly<Record<string, "svg" | "png">> = {
   acc: "svg",
   "asian-paints": "svg",
+  "astral-pipes": "png",
   fujitec: "svg",
   jaquar: "png",
   kohler: "svg",
@@ -54,8 +55,7 @@ export function brandLogo(name: string): string | undefined {
 }
 
 /**
- * What each site-wide partner is known for, shown under its mark. Koala has
- * no line: nothing on file says what it supplies.
+ * What each site-wide partner is known for, shown under its mark.
  */
 const SITE_USES: Readonly<Record<string, string>> = {
   "Asian Paints": "Paints & coatings",
@@ -63,6 +63,7 @@ const SITE_USES: Readonly<Record<string, string>> = {
   Somany: "Tiles & surfaces",
   Jaquar: "Bathroom fittings",
   "Astral Pipes": "Pipes & plumbing",
+  Kohler: "Bathroom fittings",
   "V-Guard": "Electricals",
   "Schneider Electric": "Switchgear",
   Fujitec: "Lifts",
@@ -79,7 +80,7 @@ export type MaterialGroup = { use?: string; brands: readonly ProjectMaterial[] }
  *
  * The project's own list is used where the client gave one, otherwise the
  * site-wide partners. Groups keep the order the uses first appear in, and a
- * brand with no use recorded (Koala) falls into a final, unlabelled group
+ * brand with no use recorded falls into a final, unlabelled group
  * rather than being given a category it might not belong to.
  */
 export function getMaterialGroups(

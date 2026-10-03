@@ -37,7 +37,7 @@ export function Visit({
     ? project.location.label
     : `${project.location.label}, ${site.city}`;
   const pill =
-    "inline-flex w-full max-w-[26rem] items-center gap-4 rounded-full border px-6 py-4 transition-colors duration-hover ease-hover";
+    "w-full max-w-[26rem] items-center gap-4 px-6 py-4";
 
   return (
     <section className="relative isolate overflow-hidden border-t border-line">
@@ -58,7 +58,7 @@ export function Visit({
               href={whatsappHref(projectEnquiryMessage(project.name))}
               target="_blank"
               rel="noopener noreferrer"
-              className={`${pill} u-mono justify-between border-ink bg-ink text-[0.8rem] tracking-[0.2em] text-paper hover:border-laterite hover:bg-laterite`}
+              className={`${pill} u-mono u-glass justify-between text-[0.8rem] tracking-[0.2em]`}
             >
               <span className="flex items-center gap-4">
                 <WhatsAppIcon className="size-6" />
@@ -68,14 +68,14 @@ export function Visit({
             </a>
             <a
               href={telHref}
-              className={`${pill} u-mono border-line text-[0.85rem] tracking-[0.16em] text-ink hover:border-ink`}
+              className={`${pill} u-mono u-glass text-[0.85rem] tracking-[0.16em]`}
             >
               <PhoneIcon className="size-5" />
               {site.contact.phoneDisplay}
             </a>
             <a
               href={mailtoHref}
-              className={`${pill} u-mono whitespace-nowrap border-line text-[clamp(0.7rem,3.2vw,0.85rem)] tracking-[0.1em] text-ink hover:border-ink`}
+              className={`${pill} u-mono u-glass whitespace-nowrap text-[clamp(0.7rem,3.2vw,0.85rem)] tracking-[0.1em]`}
             >
               <MailIcon className="size-5" />
               {site.contact.email}
