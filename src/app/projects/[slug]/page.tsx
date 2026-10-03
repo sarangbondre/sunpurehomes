@@ -21,7 +21,6 @@ import { Visit } from "@/components/projects/detail/visit";
 import { TYPE_LABELS_ONE, getProject, getProjectSlugs } from "@/lib/content";
 import { singularNoun } from "@/lib/nouns";
 import { getAvailability, getScene, isFullySold } from "@/lib/scenes";
-import { site } from "@/lib/site";
 
 export function generateStaticParams() {
   return getProjectSlugs().map((slug) => ({ slug }));
@@ -204,7 +203,15 @@ export default async function ProjectPage({
               {project.connectivity.map((c) => (
                 <li
                   key={c.name}
-                  className="flex items-baseline justify-between gap-4 border-b border-line py-4"
+                  /*
+                    The rule belongs between rows, not under the last one: on
+                    a phone the list is a single column, and a trailing rule
+                    above the section's own border read as an empty row with
+                    nothing in it (client, 3 October). From sm the list is two
+                    columns, so the row that ends the first column keeps its
+                    rule and only the very last loses it.
+                  */
+                  className="flex items-baseline justify-between gap-4 border-b border-line py-4 last:border-b-0 sm:last:border-b"
                 >
                   <span className="text-lg">
                     {c.name}
@@ -269,16 +276,23 @@ export default async function ProjectPage({
       <Visit project={project} shot={visitShot} />
 
       <div className="mx-auto max-w-[86rem] px-6 sm:px-10 lg:px-16">
-        {/* A disclaimer that describes what is actually on this page (§11).
-            No floor plans are shown here, so none are mentioned. */}
-        <p className="max-w-[80ch] border-t border-line py-10 text-sm leading-relaxed text-ink-soft">
-          Information about {project.name} on this page is representational and
-          informative, and is subject to variation during execution.{" "}
-          {project.gallery.length > 0 &&
-            "Images are indicative of the intended character of the development and do not form part of the offering or specification. "}
-          {site.name} reserves the right to make additions, deletions,
-          alterations or amendments as it deems fit, without prior notice.
-        </p>
+        {/*
+          Only what the footer does not already say. This paragraph used to
+          open and close with the footer's own disclaimer word for word —
+          representational and informative, subject to variation, the right to
+          alter without notice — and on a phone the two landed within a screen
+          of each other, which is the block the client circled on 3 October.
+          What is left is the sentence the footer has no reason to carry: that
+          the pictures on a project page are not part of the offer. Nothing
+          was dropped; the rest is still on the page, in the footer.
+        */}
+        {project.gallery.length > 0 && (
+          <p className="max-w-[80ch] border-t border-line py-8 text-sm leading-relaxed text-ink-soft">
+            Images of {project.name} are indicative of the intended character
+            of the development and do not form part of the offering or
+            specification.
+          </p>
+        )}
       </div>
     </main>
   );
