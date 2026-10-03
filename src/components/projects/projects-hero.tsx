@@ -55,7 +55,15 @@ export function ProjectsHero() {
           hugged the type and read as a pale slab laid over the picture
           (client, 2 October).
 
-          The phone's stops are measured, not guessed: at 375x812 the heading
+          On a phone the paper peaks at 80% rather than reaching it, so the
+        picture is behind the words at the top as well as below them (client,
+        3 October). 80% is this picture's floor: the caption is 11px mono and
+        owes 4.5:1, and it reads 5.26:1 at 80% against 4.04 at 70%, where it
+        fails. The landing page can afford 70% because its sky is brighter
+        behind the type than this dawn render is — the number belongs to the
+        picture, not to a house style.
+
+        The stops are measured, not guessed: at 375x812 the heading
         runs 17.6% to 33.3% of the frame and the caption 42.3% to 50.8%, so
         the paper holds to 53% and is gone by 80%, which gives the picture the
         lower half instead of a strip at the bottom (client, 3 October). The
@@ -77,7 +85,7 @@ export function ProjectsHero() {
         */}
         <div
           aria-hidden
-          className="absolute inset-0 max-lg:bg-[linear-gradient(to_bottom,rgba(244,240,231,0.34)_0%,rgba(244,240,231,0.5)_4%,rgba(244,240,231,0.68)_8%,rgba(244,240,231,0.84)_12%,rgba(244,240,231,0.94)_16%,rgba(244,240,231,0.99)_20%,rgba(244,240,231,1)_24%,rgba(244,240,231,1)_53%,rgba(244,240,231,0.95)_56%,rgba(244,240,231,0.86)_59%,rgba(244,240,231,0.73)_62%,rgba(244,240,231,0.57)_65%,rgba(244,240,231,0.41)_68%,rgba(244,240,231,0.26)_71%,rgba(244,240,231,0.14)_74%,rgba(244,240,231,0.05)_77%,transparent_80%,transparent_90%,rgba(244,240,231,0.25)_93%,rgba(244,240,231,0.55)_96%,rgba(244,240,231,0.8)_98%,rgba(244,240,231,0.94)_100%)] sm:max-lg:bg-[linear-gradient(to_bottom,rgba(244,240,231,0.34)_0%,rgba(244,240,231,0.5)_4%,rgba(244,240,231,0.68)_8%,rgba(244,240,231,0.84)_12%,rgba(244,240,231,0.94)_16%,rgba(244,240,231,0.99)_20%,rgba(244,240,231,1)_24%,rgba(244,240,231,1)_57%,rgba(244,240,231,0.96)_60%,rgba(244,240,231,0.88)_63%,rgba(244,240,231,0.76)_66%,rgba(244,240,231,0.6)_69%,rgba(244,240,231,0.44)_72%,rgba(244,240,231,0.28)_75%,rgba(244,240,231,0.15)_78%,rgba(244,240,231,0.06)_81%,transparent_84%,transparent_92%,rgba(244,240,231,0.25)_95%,rgba(244,240,231,0.55)_97%,rgba(244,240,231,0.82)_99%,rgba(244,240,231,0.93)_100%)] lg:inset-y-0 lg:left-0 lg:right-auto lg:w-2/5 lg:bg-gradient-to-r lg:from-paper lg:via-paper/60 lg:via-35% lg:to-transparent"
+          className="absolute inset-0 max-lg:bg-[linear-gradient(to_bottom,rgba(244,240,231,0.272)_0%,rgba(244,240,231,0.4)_4%,rgba(244,240,231,0.544)_8%,rgba(244,240,231,0.672)_12%,rgba(244,240,231,0.752)_16%,rgba(244,240,231,0.792)_20%,rgba(244,240,231,0.8)_24%,rgba(244,240,231,0.8)_53%,rgba(244,240,231,0.76)_56%,rgba(244,240,231,0.688)_59%,rgba(244,240,231,0.584)_62%,rgba(244,240,231,0.456)_65%,rgba(244,240,231,0.328)_68%,rgba(244,240,231,0.208)_71%,rgba(244,240,231,0.112)_74%,rgba(244,240,231,0.04)_77%,transparent_80%,transparent_90%,rgba(244,240,231,0.25)_93%,rgba(244,240,231,0.55)_96%,rgba(244,240,231,0.8)_98%,rgba(244,240,231,0.94)_100%)] sm:max-lg:bg-[linear-gradient(to_bottom,rgba(244,240,231,0.34)_0%,rgba(244,240,231,0.5)_4%,rgba(244,240,231,0.68)_8%,rgba(244,240,231,0.84)_12%,rgba(244,240,231,0.94)_16%,rgba(244,240,231,0.99)_20%,rgba(244,240,231,1)_24%,rgba(244,240,231,1)_57%,rgba(244,240,231,0.96)_60%,rgba(244,240,231,0.88)_63%,rgba(244,240,231,0.76)_66%,rgba(244,240,231,0.6)_69%,rgba(244,240,231,0.44)_72%,rgba(244,240,231,0.28)_75%,rgba(244,240,231,0.15)_78%,rgba(244,240,231,0.06)_81%,transparent_84%,transparent_92%,rgba(244,240,231,0.25)_95%,rgba(244,240,231,0.55)_97%,rgba(244,240,231,0.82)_99%,rgba(244,240,231,0.93)_100%)] lg:inset-y-0 lg:left-0 lg:right-auto lg:w-2/5 lg:bg-gradient-to-r lg:from-paper lg:via-paper/60 lg:via-35% lg:to-transparent"
         />
         {/*
           The header's links sit over the top of the picture; the sky there is
