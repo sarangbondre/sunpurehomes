@@ -286,3 +286,16 @@
     scroll-behavior: auto !important;
   }
 }
+
+/* The scroll cue's travel: a short fall, a pause, repeat. */
+@keyframes scroll-cue {
+  0%,
+  100% {
+    transform: translateY(0);
+    opacity: 0.55;
+  }
+  45% {
+    transform: translateY(0.4rem);
+    opacity: 1;
+  }
+}
