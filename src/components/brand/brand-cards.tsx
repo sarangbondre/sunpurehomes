@@ -22,7 +22,6 @@ export function BrandCards({ groups }: { groups: readonly MaterialGroup[] }) {
   return (
     <ul className="grid gap-4 sm:grid-cols-2">
       {groups.map((group, i) => {
-        const marked = group.brands.filter((brand) => brand.logoSrc);
         return (
           <li
             key={group.use ?? `other-${i}`}
@@ -32,31 +31,26 @@ export function BrandCards({ groups }: { groups: readonly MaterialGroup[] }) {
               {group.use ?? "Also"}
             </p>
             <div className="mt-5 flex min-h-[3.5rem] flex-wrap items-center justify-center gap-x-8 gap-y-4">
-              {marked.length > 0
-                ? marked.map((brand) => (
-                    <Image
-                      key={brand.name}
-                      src={brand.logoSrc as string}
-                      alt={brand.name}
-                      width={180}
-                      height={56}
-                      className="h-9 w-auto max-w-[9rem] object-contain"
-                    />
-                  ))
-                : group.brands.map((brand) => (
-                    <span
-                      key={brand.name}
-                      className="font-display text-xl leading-tight text-ink"
-                    >
-                      {brand.name}
-                    </span>
-                  ))}
+              {group.brands.map((brand) =>
+                brand.logoSrc ? (
+                  <Image
+                    key={brand.name}
+                    src={brand.logoSrc}
+                    alt={brand.name}
+                    width={180}
+                    height={56}
+                    className="h-9 w-auto max-w-[9rem] object-contain"
+                  />
+                ) : (
+                  <span
+                    key={brand.name}
+                    className="font-display text-xl leading-tight text-ink"
+                  >
+                    {brand.name}
+                  </span>
+                ),
+              )}
             </div>
-            {marked.length > 0 && (
-              <p className="mt-4 text-center text-sm leading-snug text-muted">
-                {group.brands.map((brand) => brand.name).join(" / ")}
-              </p>
-            )}
           </li>
         );
       })}
