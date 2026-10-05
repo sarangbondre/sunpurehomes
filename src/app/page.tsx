@@ -1,4 +1,5 @@
 import { Hero } from "@/components/home/hero";
+import { Testimonials } from "@/components/home/testimonials";
 import { getAllProjects, getCoverImage } from "@/lib/content";
 import { getHeroImage } from "@/lib/home-showcase";
 
@@ -23,5 +24,10 @@ const fallback = (() => {
 export default function HomePage() {
   const image = supplied ?? fallback;
 
-  return <main>{image && <Hero image={image} />}</main>;
+  return (
+    <main>
+      {image && <Hero image={image} />}
+      <Testimonials />
+    </main>
+  );
 }

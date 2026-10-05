@@ -5,6 +5,7 @@ import { describe, it } from "node:test";
 import { readdirSync } from "node:fs";
 import { getHeroImage } from "@/lib/home-showcase";
 import { BRAND_MARKS } from "@/lib/partners";
+import { getTestimonials, portraitSrc } from "@/lib/testimonials";
 
 /**
  * Two things the site used to check for at runtime with node:fs, which
@@ -23,6 +24,24 @@ describe("files the site names", () => {
       const src = `/images/brands/${slug}.${extension}`;
       assert.ok(inPublic(src), `missing ${src}`);
     }
+  });
+
+  it("has a portrait for every testimonial", () => {
+    for (const testimonial of getTestimonials()) {
+      assert.ok(inPublic(portraitSrc(testimonial)), portraitSrc(testimonial));
+    }
+  });
+
+  it("names every portrait that is in public/images/testimonials", () => {
+    const onDisk = readdirSync(
+      join(process.cwd(), "public", "images", "testimonials"),
+    )
+      .filter((f) => f.endsWith(".avif"))
+      .sort();
+    const named = getTestimonials()
+      .map((testimonial) => testimonial.portrait)
+      .sort();
+    assert.deepEqual(named, onDisk);
   });
 
   it("lists every brand mark that is in public/images/brands", () => {
