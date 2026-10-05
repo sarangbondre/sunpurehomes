@@ -34,6 +34,26 @@ export function ScrollCue({ className = "" }: { className?: string }) {
         aria-hidden
         className="absolute inset-x-0 bottom-0 -z-10 h-28 bg-gradient-to-t from-paper via-paper/60 to-transparent"
       />
+      {/*
+        And a halo under the two marks themselves, because the band alone is
+        only as good as the picture beneath it. On /projects from 5 October
+        that picture is V4 at dusk, and where the band has faded to about 45%
+        the words were standing on the dark plinth at 1.79:1. The halo is
+        nearly solid paper at its centre and radial, so it has no edge to
+        find, and it is sized to the marks rather than to the frame — the
+        same device as the corner caption on the landing page. closest-side,
+        not the default farthest-corner: with the origin at the centre that
+        is the only size whose last stop lands on the box edge rather than
+        past it, and a ramp that ends past the edge ends in mid-air and draws
+        the rectangle this is meant to avoid. It did, the first time.
+
+        It costs the landing page nothing: paper over a brighter picture is
+        still paper, and that cue measured well before this was added.
+      */}
+      <span
+        aria-hidden
+        className="absolute bottom-0 left-1/2 -z-10 h-28 w-72 -translate-x-1/2 bg-[radial-gradient(ellipse_closest-side_at_center,rgba(244,240,231,0.97)_0%,rgba(244,240,231,0.93)_26%,rgba(244,240,231,0.82)_40%,rgba(244,240,231,0.64)_53%,rgba(244,240,231,0.44)_65%,rgba(244,240,231,0.26)_76%,rgba(244,240,231,0.12)_86%,rgba(244,240,231,0.04)_94%,transparent_100%)]"
+      />
       <span className="u-mono text-[0.62rem] tracking-[0.3em] text-ink-soft">
         Scroll
       </span>

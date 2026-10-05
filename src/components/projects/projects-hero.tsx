@@ -5,14 +5,15 @@ import { ScrollCue } from "@/components/brand/scroll-cue";
  * The Projects page's opening, to the client's reference design: "Our
  * Projects" over a full-bleed picture, with the header over it.
  *
- * The picture is Curve at dawn — the client's own render, from the project's
- * elevation folder on their Drive ("01 (4).png", 2000px), chosen on
- * 17 September for its sunrise sky. AVIF since 2 October: as a JPEG it was
- * 491KB and the slowest thing on the site, and this hero is the one picture
- * every visitor waits for. It replaced a frame cut from the
- * reference mockup, which was soft and was not a Sunpure development.
- * Larger exports of the same render sit beside it on the Drive; one of those
- * at this path would sharpen the page on very large screens.
+ * The picture is V4 at dusk, sent by the client on 5 October and put here at
+ * their instruction the same day. It replaced Curve at dawn, which had held
+ * the page since 17 September. This hero is the one picture every visitor
+ * waits for, so it is encoded harder than a gallery tile — avifenc -q 76,
+ * 171KB — because an overcast sky is where AVIF bands first.
+ *
+ * It arrived 1672px wide, where the Curve render was 2000. At the 60% column
+ * that is enough for a 2x screen up to about 1440 and short of it above that.
+ * A larger export would sharpen the page on a big display; ask the client.
  *
  * The heading's floor is 2.9rem, not the 4.25rem it carried until
  * 2 October: below about 430px the floor won rather than the 10vw, so the
@@ -26,9 +27,14 @@ import { ScrollCue } from "@/components/brand/scroll-cue";
  *
  * Two arrangements of the same parts. On a phone the picture fills the
  * frame and the type sits on it, under a paper haze that falls from the top
- * (client, 30 September). From lg the picture is a column on the right —
- * the render is nearly square, so a wide frame would crop the building — and
+ * (client, 30 September). From lg the picture is a column on the right and
  * the type stands on the paper beside it.
+ *
+ * Every frame here is narrower than 16:9, so the picture is only ever
+ * cropped left and right and the vertical half of object-position does
+ * nothing. The horizontal half is 50%: the building sits dead centre of this
+ * render, and on a phone's column only the middle third of the frame
+ * survives, which is the building and nothing else.
  */
 export function ProjectsHero() {
   return (
@@ -40,12 +46,12 @@ export function ProjectsHero() {
       <div className="absolute inset-0 -z-10 lg:left-auto lg:w-[60%]">
         <Image
           src="/images/pages/projects-hero.avif"
-          alt="Curve at dawn: the white apartment building with its curved balconies under a pink and gold sky, reflected in the wet forecourt."
+          alt="V4 at dusk: the apartment building with its angular black balconies stacked across the elevation, a white fin rising the full height beside them, and the lit entrance reflected in the wet road."
           fill
           priority
           fetchPriority="high"
           sizes="(min-width: 1024px) 60vw, 100vw"
-          className="object-cover object-[58%_38%] lg:object-[50%_40%]"
+          className="object-cover object-center"
         />
         {/*
           Below lg this is the ground the type stands on: paper through the
@@ -86,6 +92,19 @@ export function ProjectsHero() {
         <div
           aria-hidden
           className="absolute inset-0 max-lg:bg-[linear-gradient(to_bottom,rgba(244,240,231,0.272)_0%,rgba(244,240,231,0.4)_4%,rgba(244,240,231,0.544)_8%,rgba(244,240,231,0.672)_12%,rgba(244,240,231,0.752)_16%,rgba(244,240,231,0.792)_20%,rgba(244,240,231,0.8)_24%,rgba(244,240,231,0.8)_53%,rgba(244,240,231,0.76)_56%,rgba(244,240,231,0.688)_59%,rgba(244,240,231,0.584)_62%,rgba(244,240,231,0.456)_65%,rgba(244,240,231,0.328)_68%,rgba(244,240,231,0.208)_71%,rgba(244,240,231,0.112)_74%,rgba(244,240,231,0.04)_77%,transparent_80%,transparent_90%,rgba(244,240,231,0.25)_93%,rgba(244,240,231,0.55)_96%,rgba(244,240,231,0.8)_98%,rgba(244,240,231,0.94)_100%)] sm:max-lg:bg-[linear-gradient(to_bottom,rgba(244,240,231,0.34)_0%,rgba(244,240,231,0.5)_4%,rgba(244,240,231,0.68)_8%,rgba(244,240,231,0.84)_12%,rgba(244,240,231,0.94)_16%,rgba(244,240,231,0.99)_20%,rgba(244,240,231,1)_24%,rgba(244,240,231,1)_57%,rgba(244,240,231,0.96)_60%,rgba(244,240,231,0.88)_63%,rgba(244,240,231,0.76)_66%,rgba(244,240,231,0.6)_69%,rgba(244,240,231,0.44)_72%,rgba(244,240,231,0.28)_75%,rgba(244,240,231,0.15)_78%,rgba(244,240,231,0.06)_81%,transparent_84%,transparent_92%,rgba(244,240,231,0.25)_95%,rgba(244,240,231,0.55)_97%,rgba(244,240,231,0.82)_99%,rgba(244,240,231,0.93)_100%)] lg:inset-y-0 lg:left-0 lg:right-auto lg:w-2/5 lg:bg-gradient-to-r lg:from-paper lg:via-paper/60 lg:via-35% lg:to-transparent"
+        />
+        {/*
+          At lg the picture is a column that simply stops, and from 5 October
+          what stops there is a wet road at dusk — a dark band meeting cream
+          paper on a straight line, which is the one thing the client has
+          asked for the absence of all week. Curve's dawn forecourt was pale
+          enough that the join did not read. This settles the foot of the
+          column into the page instead. Below lg the ground above already
+          does it, at 90% to 100%.
+        */}
+        <div
+          aria-hidden
+          className="absolute inset-x-0 bottom-0 hidden h-32 bg-gradient-to-t from-paper via-paper/55 via-45% to-transparent lg:block"
         />
         {/*
           The header's links sit over the top of the picture; the sky there is
