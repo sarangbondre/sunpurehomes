@@ -38,6 +38,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       .filter((slug) => hasPlan(slug) && !isFullySold(slug))
       .map((slug) => `/projects/${slug}/plan`),
     "/amenities",
+    "/films",
     "/about",
     "/testimonials",
     "/visit",

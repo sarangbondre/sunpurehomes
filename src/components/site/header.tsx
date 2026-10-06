@@ -46,6 +46,7 @@ const MENU = [
   { href: "/projects?type=apartment", label: "Apartments" },
   { href: "/projects?type=plot", label: "Plots" },
   { href: "/amenities", label: "Amenities" },
+  { href: "/films", label: "Films" },
   { href: "/about#philosophy", label: "Our philosophy" },
   { href: "/testimonials", label: "Happy customers" },
   { href: "/visit", label: "Arrange a site visit" },
