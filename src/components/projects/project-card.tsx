@@ -19,10 +19,23 @@ import { site } from "@/lib/site";
  * on a deeper one at the foot. Both are needed because the photographs are
  * not ours to choose: several have bright skies exactly where the text goes.
  *
- * The card is a link, and the place inside it is a second link to the map
- * (client, 29 September 2026). One anchor cannot sit inside another, so the
- * project link covers the card with an ::after overlay instead of wrapping
- * it, and the place is lifted above that overlay.
+ * The whole card is the link into the project, and the place inside it is a
+ * second link to the map (client, 29 September 2026). One anchor cannot sit
+ * inside another, so the project link is laid over the card as its own
+ * element rather than wrapping it, and the place is lifted above it.
+ *
+ * It used to be the heading, stretched over the card with an ::after. That
+ * did not work and the client reported it on 6 October: only the arrow and
+ * the name were clickable, and the picture — which is all the card looks
+ * like — was not. An absolutely positioned pseudo-element takes its box from
+ * the nearest POSITIONED ancestor, and that was the caption block at the
+ * foot of the card, not the card. The overlay covered the caption and
+ * nothing else, and the comment above it said otherwise for a fortnight.
+ *
+ * So the link is an element now, a direct child of the card, where inset-0
+ * can only mean the card. The heading keeps the name and the link carries it
+ * as its accessible name, so a screen reader still hears the project rather
+ * than "link".
  */
 export function ProjectCard({
   project,
@@ -71,22 +84,29 @@ export function ProjectCard({
           {status}
         </p>
 
+        {/*
+          The card's own link, over the picture and the two washes and under
+          the map link. Its name is the project and its type, because a link
+          whose text is a photograph has no name at all, and a card that says
+          "Fully sold" should say so before someone follows it.
+        */}
+        <Link
+          href={`/projects/${project.slug}`}
+          aria-label={`${project.name} — ${TYPE_LABELS[project.type]}, ${status}, ${place}`}
+          className="absolute inset-0 z-10 focus-visible:outline-offset-[-4px]"
+        />
+
         <div className="absolute inset-x-5 bottom-5 flex items-end justify-between gap-4 sm:inset-x-6 sm:bottom-6">
           <div className="min-w-0">
             <h3 className="font-display text-[clamp(1.75rem,2.6vw,2.2rem)] leading-tight text-paper">
-              <Link
-                href={`/projects/${project.slug}`}
-                className="after:absolute after:inset-0 after:content-[''] focus-visible:outline-offset-4"
-              >
-                {project.name}
-              </Link>
+              {project.name}
             </h3>
             {/* Above the card's own overlay, so the map link is clickable. */}
             <a
               href={satelliteHref(project.location)}
               target="_blank"
               rel="noopener noreferrer"
-              className="relative z-10 mt-2 inline-flex items-start gap-1.5 text-[0.9rem] leading-snug text-paper underline decoration-paper/40 underline-offset-4 transition-colors duration-hover ease-hover hover:decoration-paper"
+              className="relative z-20 mt-2 inline-flex items-start gap-1.5 text-[0.9rem] leading-snug text-paper underline decoration-paper/40 underline-offset-4 transition-colors duration-hover ease-hover hover:decoration-paper"
             >
               <PinIcon className="mt-0.5 size-4" />
               <span>{place}</span>

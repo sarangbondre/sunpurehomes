@@ -49,8 +49,17 @@ const SOCIAL: {
  * behind for the comment to describe.
  */
 export function SiteFooter() {
-  const icon =
-    "flex size-10 items-center justify-center rounded-full border border-line text-ink-soft transition-colors duration-hover ease-hover hover:border-accent-ink hover:text-accent-ink";
+  /*
+    Glass, at the client's instruction of 6 October, which finishes the job
+    started on 3 October: every other control on this site is made of it and
+    these six were the last outlined ones left. u-glass already carries the
+    shape, the blur, the lit top edge and the laterite fill on hover, so what
+    is left here is the size and centring a square icon needs.
+
+    Ink rather than the ink-soft they carried, because that is what the glass
+    is drawn for and it measures 14:1 on paper against 8.36:1.
+  */
+  const icon = "u-glass size-10 justify-center";
   const legalLink =
     "transition-colors duration-hover ease-hover hover:text-accent-ink";
 

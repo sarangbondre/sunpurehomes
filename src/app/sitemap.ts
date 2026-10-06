@@ -39,6 +39,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
       .map((slug) => `/projects/${slug}/plan`),
     "/amenities",
     "/about",
+    "/testimonials",
+    "/visit",
     "/privacy",
     "/terms",
   ];

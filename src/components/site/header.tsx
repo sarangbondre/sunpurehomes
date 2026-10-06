@@ -23,7 +23,17 @@ const NAV = [
  * Every page, behind the three-line button. The footer that used to carry
  * these was removed at the client's instruction on 17 September, so this is
  * now the one place Amenities, the About sections and the legal pages are
- * linked from — About repeats here so the menu reads as complete.
+ * linked from.
+ *
+ * About is NOT here. It was, so the menu would read as complete, and the
+ * client asked on 6 October for it to go: it is already two inches away in
+ * the nav beside this button, on every page and every width, and a menu that
+ * repeats what is beside it makes the reader check whether the two are the
+ * same thing.
+ *
+ * "Arrange a visit" became "Arrange a site visit" the same day, and now goes
+ * to a page that takes the details rather than to the contact block on
+ * About. Happy customers joined it.
  *
  * "Projects" became the three kinds of home on 2 October at the client's
  * instruction. Each is the listing filtered to that type, which the page
@@ -32,13 +42,13 @@ const NAV = [
  * About, still opens all nine.
  */
 const MENU = [
-  { href: "/about", label: "About" },
   { href: "/projects?type=villa", label: "Villas" },
   { href: "/projects?type=apartment", label: "Apartments" },
   { href: "/projects?type=plot", label: "Plots" },
   { href: "/amenities", label: "Amenities" },
   { href: "/about#philosophy", label: "Our philosophy" },
-  { href: "/about#contact", label: "Arrange a visit" },
+  { href: "/testimonials", label: "Happy customers" },
+  { href: "/visit", label: "Arrange a site visit" },
   { href: "/privacy", label: "Privacy" },
   { href: "/terms", label: "Terms" },
 ] as const;

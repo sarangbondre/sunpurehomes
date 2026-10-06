@@ -1,7 +1,11 @@
 import Image from "next/image";
 import Link from "next/link";
 import { getProject } from "@/lib/content";
-import { getTestimonials, portraitSrc } from "@/lib/testimonials";
+import {
+  getTestimonials,
+  portraitSrc,
+  type Testimonial,
+} from "@/lib/testimonials";
 
 /**
  * What the people who live in these buildings have said, under the landing
@@ -49,16 +53,39 @@ export function Testimonials() {
           In their words
         </h2>
 
-        <ul className="mt-12 sm:mt-16">
-          {testimonials.map((testimonial) => {
-            const project = getProject(testimonial.project);
+        <div className="mt-12 sm:mt-16">
+          <TestimonialList testimonials={testimonials} />
+        </div>
+      </div>
+    </section>
+  );
+}
 
-            return (
-              <li
-                key={`${testimonial.project}-${testimonial.unit}`}
-                className="border-t border-line py-10 first:border-t-0 first:pt-0 last:pb-0 sm:py-12 lg:grid lg:grid-cols-[13rem_minmax(0,1fr)] lg:gap-x-16"
-              >
-                {/*
+/**
+ * The quotes themselves, taken out of the section above on 6 October so that
+ * /testimonials — "Happy customers" in the menu, the client's own name for it
+ * — could show the same five without a second copy of anyone's words.
+ *
+ * The list owns the rows and nothing around them: the landing page gives it a
+ * section with an eyebrow, and the page gives it a heading and a line of its
+ * own. Neither owns the other.
+ */
+export function TestimonialList({
+  testimonials,
+}: {
+  testimonials: readonly Testimonial[];
+}) {
+  return (
+    <ul>
+      {testimonials.map((testimonial) => {
+        const project = getProject(testimonial.project);
+
+        return (
+          <li
+            key={`${testimonial.project}-${testimonial.unit}`}
+            className="border-t border-line py-10 first:border-t-0 first:pt-0 last:pb-0 sm:py-12 lg:grid lg:grid-cols-[13rem_minmax(0,1fr)] lg:gap-x-16"
+          >
+            {/*
                   The attribution. Beside the portrait on a phone, where a
                   column of five portraits with the names under them would be
                   five scrolls of nothing much; under it in the rail from lg,
@@ -70,46 +97,46 @@ export function Testimonials() {
                   cornered. A circular crop at this size would take somebody's
                   face off the edge of every one of them.
                 */}
-                <div className="flex items-center gap-5 lg:block">
-                  <Image
-                    src={portraitSrc(testimonial)}
-                    alt={testimonial.portraitAlt}
-                    width={480}
-                    height={480}
-                    sizes="(min-width: 1024px) 13rem, 7rem"
-                    className="size-28 shrink-0 rounded-md border border-line object-cover lg:size-auto lg:w-full"
-                  />
-                  <div className="lg:mt-5">
-                    <p className="font-display text-xl leading-tight text-ink sm:text-2xl">
-                      {testimonial.name}
-                    </p>
-                    <p className="u-mono mt-2 text-muted">
-                      {project ? (
-                        /*
+            <div className="flex items-center gap-5 lg:block">
+              <Image
+                src={portraitSrc(testimonial)}
+                alt={testimonial.portraitAlt}
+                width={480}
+                height={480}
+                sizes="(min-width: 1024px) 13rem, 7rem"
+                className="size-28 shrink-0 rounded-md border border-line object-cover lg:size-auto lg:w-full"
+              />
+              <div className="lg:mt-5">
+                <p className="font-display text-xl leading-tight text-ink sm:text-2xl">
+                  {testimonial.name}
+                </p>
+                <p className="u-mono mt-2 text-muted">
+                  {project ? (
+                    /*
                           Underlined and in the accent, as every other inline
                           link on this site is. A link that announced itself
                           only on hover would be a link nobody on a phone
                           could see, and one told apart by colour alone fails
                           WCAG 1.4.1 even on a mouse.
                         */
-                        <Link
-                          href={`/projects/${testimonial.project}`}
-                          className="text-accent-ink underline underline-offset-4 transition-colors duration-hover ease-hover hover:text-ink"
-                        >
-                          {project.name}
-                        </Link>
-                      ) : (
-                        testimonial.project
-                      )}
-                      <span aria-hidden className="mx-2 text-line">
-                        /
-                      </span>
-                      {testimonial.unit}
-                    </p>
-                  </div>
-                </div>
+                    <Link
+                      href={`/projects/${testimonial.project}`}
+                      className="text-accent-ink underline underline-offset-4 transition-colors duration-hover ease-hover hover:text-ink"
+                    >
+                      {project.name}
+                    </Link>
+                  ) : (
+                    testimonial.project
+                  )}
+                  <span aria-hidden className="mx-2 text-line">
+                    /
+                  </span>
+                  {testimonial.unit}
+                </p>
+              </div>
+            </div>
 
-                {/*
+            {/*
                   The quote itself, in the display serif at 58 characters to
                   the line. 58 rather than the 46 prose usually wants: the
                   column beside a 13rem rail is 976px at 1440, and a 46ch
@@ -123,22 +150,20 @@ export function Testimonials() {
                   the first line starts where every other line starts — the
                   thing that makes a set quotation look set rather than typed.
                 */}
-                <blockquote className="mt-8 lg:mt-0">
-                  <p className="max-w-[58ch] font-display text-[clamp(1.2rem,1.9vw,1.6rem)] leading-[1.55] text-ink lg:-indent-[0.5em]">
-                    <span aria-hidden className="text-laterite">
-                      &ldquo;
-                    </span>
-                    {testimonial.quote}
-                    <span aria-hidden className="text-laterite">
-                      &rdquo;
-                    </span>
-                  </p>
-                </blockquote>
-              </li>
-            );
-          })}
-        </ul>
-      </div>
-    </section>
+            <blockquote className="mt-8 lg:mt-0">
+              <p className="max-w-[58ch] font-display text-[clamp(1.2rem,1.9vw,1.6rem)] leading-[1.55] text-ink lg:-indent-[0.5em]">
+                <span aria-hidden className="text-laterite">
+                  &ldquo;
+                </span>
+                {testimonial.quote}
+                <span aria-hidden className="text-laterite">
+                  &rdquo;
+                </span>
+              </p>
+            </blockquote>
+          </li>
+        );
+      })}
+    </ul>
   );
 }
