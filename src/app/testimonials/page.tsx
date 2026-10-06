@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { TestimonialList } from "@/components/home/testimonials";
+import { TestimonialList } from "@/components/testimonials/testimonial-list";
 import { getTestimonials } from "@/lib/testimonials";
 import { site } from "@/lib/site";
 

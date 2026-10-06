@@ -13,6 +13,35 @@ import { site } from "@/lib/site";
 
 export type VisitProject = { slug: string; name: string; place: string };
 
+/** Only what the rule needs, so a test does not have to build a whole project. */
+type Offerable = {
+  readonly slug: string;
+  readonly status: "ongoing" | "completed" | "upcoming";
+};
+
+/**
+ * The developments a visit can be booked to: the ones still selling.
+ *
+ * A finished building or a sold-out one is left off the list entirely, at the
+ * client's instruction of 6 October. It was offered and marked "fully sold"
+ * for a day, on the reasoning that someone deciding on Curve might want to
+ * walk around Blessed first — the client's answer is that a site visit is a
+ * sales appointment and there is nothing at the far end of one for a building
+ * with nothing left in it. Their call, and it is their sales team's diary.
+ *
+ * Both conditions are needed and neither implies the other: V4 is ongoing and
+ * fully sold, Blessed is completed and was never flagged sold. Checking only
+ * the status would offer V4; checking only the flag would offer Blessed.
+ */
+export function offerableProjects<T extends Offerable>(
+  projects: readonly T[],
+  isFullySold: (slug: string) => boolean,
+): readonly T[] {
+  return projects.filter(
+    (project) => project.status !== "completed" && !isFullySold(project.slug),
+  );
+}
+
 /**
  * Enough of a number to call back. Deliberately generous, because a visitor
  * whose number is refused does not correct it, they leave: a ten-digit Indian

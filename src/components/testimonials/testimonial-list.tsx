@@ -1,32 +1,28 @@
 import Image from "next/image";
 import Link from "next/link";
 import { getProject } from "@/lib/content";
-import {
-  getTestimonials,
-  portraitSrc,
-  type Testimonial,
-} from "@/lib/testimonials";
+import { portraitSrc, type Testimonial } from "@/lib/testimonials";
 
 /**
- * What the people who live in these buildings have said, under the landing
- * hero. The client asked for it on 5 October; the words and the photographs
- * are theirs, and lib/testimonials.ts records where they came from and what
- * is still open about them.
+ * The five households whose words are on /testimonials — "Happy customers" in
+ * the menu, the client's own name for the page.
  *
- * It goes here because until today the landing page was the hero and nothing
- * else: the scroll cue at the foot of it promised more below and delivered
- * the footer. This is what it promises now, and a buyer who has just read
- * "Thoughtfully Built, Deeply Lived." is at the one moment where someone
- * else saying it is worth more than we are.
+ * lib/testimonials.ts records where the words and the photographs came from
+ * and what is still open about them.
+ *
+ * This had a second home under the landing hero for a day. The client asked
+ * on 6 October for the landing page to be the hero again, so the section that
+ * wrapped this went with it and the list moved here out of components/home,
+ * where it no longer belonged.
  *
  * The layout is the About page's: the attribution in a 13rem rail and the
  * words beside it from lg, stacked below that. Reusing that rhythm is why
- * this reads as part of the site rather than a section bought in — the same
+ * this reads as part of the site rather than a page bought in — the same
  * reason it is set in the display serif the rest of the site reserves for
  * headings. The quotes are long enough that italic would be tiring, so the
- * one italic thing on the page stays the About page's pull-quote.
+ * one italic thing on the site stays the About page's pull-quote.
  *
- * The development is a link. Three of these five are about Blessed and two
+ * The development is a link. Three of the five are about Blessed and two
  * about Happiness 1, both finished and both still worth visiting, and a
  * reader moved by a stranger's words should not then have to go and find the
  * building themselves.
@@ -35,40 +31,6 @@ import {
  * that advances every eight seconds; nothing moves here, so WCAG 2.2.2 does
  * not apply and every quote is in the HTML for a reader, a crawler and a
  * browser with JavaScript off alike.
- */
-export function Testimonials() {
-  const testimonials = getTestimonials();
-  if (testimonials.length === 0) return null;
-
-  return (
-    <section
-      aria-labelledby="testimonials"
-      className="border-t border-line bg-paper"
-    >
-      <div className="mx-auto max-w-[86rem] px-6 py-14 sm:px-10 sm:py-20 lg:px-16">
-        <h2
-          id="testimonials"
-          className="u-mono text-[1.05rem] leading-snug tracking-[0.14em] text-laterite sm:text-[1.2rem]"
-        >
-          In their words
-        </h2>
-
-        <div className="mt-12 sm:mt-16">
-          <TestimonialList testimonials={testimonials} />
-        </div>
-      </div>
-    </section>
-  );
-}
-
-/**
- * The quotes themselves, taken out of the section above on 6 October so that
- * /testimonials — "Happy customers" in the menu, the client's own name for it
- * — could show the same five without a second copy of anyone's words.
- *
- * The list owns the rows and nothing around them: the landing page gives it a
- * section with an eyebrow, and the page gives it a heading and a line of its
- * own. Neither owns the other.
  */
 export function TestimonialList({
   testimonials,

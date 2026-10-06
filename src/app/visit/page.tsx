@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { VisitForm } from "@/components/visit/visit-form";
-import type { VisitProject } from "@/lib/visit";
+import { offerableProjects, type VisitProject } from "@/lib/visit";
 import { getAllProjects, sortProjects } from "@/lib/content";
 import { isFullySold } from "@/lib/scenes";
 import { site } from "@/lib/site";
@@ -15,25 +15,20 @@ export const metadata: Metadata = {
  * 6 October. It replaced a link to the contact block on About, which gave a
  * number and an address and left the visitor to compose the message.
  *
- * Every development is offered, sold-out ones included and marked. Someone
- * who wants to walk around Blessed before buying into Curve is exactly the
- * visitor this page is for, and a list that hid the finished buildings would
- * hide the only ones that can actually be walked around.
+ * Only the developments still selling are offered — see offerableProjects in
+ * lib/visit.ts for the rule and whose decision it was.
  *
  * The form is a client component; the list of developments is read here on
  * the server from content/projects so it cannot drift from the site.
  */
 export default function VisitPage() {
-  const projects: VisitProject[] = sortProjects(
-    getAllProjects(),
-    "featured",
+  const projects: VisitProject[] = offerableProjects(
+    sortProjects(getAllProjects(), "featured", isFullySold),
     isFullySold,
   ).map((project) => ({
     slug: project.slug,
     name: project.name,
-    place: isFullySold(project.slug)
-      ? `${project.location.label} — fully sold`
-      : project.location.label,
+    place: project.location.label,
   }));
 
   return (

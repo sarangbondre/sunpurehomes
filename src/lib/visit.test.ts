@@ -1,7 +1,14 @@
 import assert from "node:assert/strict";
 import { describe, it } from "node:test";
 import { leadSchema } from "@/lib/chatbot/lead";
-import { emailLooksReal, phoneLooksReal, visitMessage } from "@/lib/visit";
+import { getAllProjects } from "@/lib/content";
+import { isFullySold } from "@/lib/scenes";
+import {
+  emailLooksReal,
+  offerableProjects,
+  phoneLooksReal,
+  visitMessage,
+} from "@/lib/visit";
 
 /**
  * The site-visit page validates in the browser and sends through the
@@ -85,6 +92,33 @@ describe("the site-visit enquiry", () => {
     assert.match(message, /Email: visitor@example\.com$/m);
     assert.match(message, /Project: Curve, Vijayanagar$/m);
     assert.match(message, /Note: Weekends suit us$/m);
+  });
+
+  it("offers only the developments still selling", () => {
+    const offered = offerableProjects(getAllProjects(), isFullySold).map(
+      (project) => project.slug,
+    );
+
+    assert.ok(offered.length > 0, "nobody could book a visit to anything");
+    for (const slug of offered) {
+      const project = getAllProjects().find((p) => p.slug === slug)!;
+      assert.notEqual(project.status, "completed", `${slug} is finished`);
+      assert.equal(isFullySold(slug), false, `${slug} is sold out`);
+    }
+  });
+
+  it("needs both conditions, because neither implies the other", () => {
+    const offered = offerableProjects(
+      [
+        { slug: "ongoing-and-selling", status: "ongoing" as const },
+        { slug: "ongoing-but-sold-out", status: "ongoing" as const },
+        { slug: "finished-and-never-flagged", status: "completed" as const },
+        { slug: "not-started-yet", status: "upcoming" as const },
+      ],
+      (slug) => slug === "ongoing-but-sold-out",
+    ).map((project) => project.slug);
+
+    assert.deepEqual(offered, ["ongoing-and-selling", "not-started-yet"]);
   });
 
   it("says so rather than going quiet when no development was chosen", () => {
