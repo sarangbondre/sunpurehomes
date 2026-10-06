@@ -2,8 +2,8 @@ import Image from "next/image";
 import type { MaterialGroup } from "@/lib/partners";
 
 /**
- * The brands, a card for each thing supplied: the use in small type at the
- * head of the card, the marks centred under it, and the names beneath them.
+ * The brands, a card for each thing supplied: the use at the head of the
+ * card, the marks centred under it, and the names beneath them.
  *
  * The client's own layout, from the Happiness IV deck they sent on 2 October.
  * It replaced a row of marks on the About page and a two-column list on the
@@ -27,7 +27,20 @@ export function BrandCards({ groups }: { groups: readonly MaterialGroup[] }) {
             key={group.use ?? `other-${i}`}
             className="rounded-md border border-line bg-paper px-6 py-5"
           >
-            <p className="u-mono text-[0.7rem] tracking-[0.22em] text-muted">
+            {/*
+              14px, not the 11.2px this carried until 6 October: the client
+              reported that buyers could not read what each card was for.
+              Uppercase mono at 0.22em is the widest-set type on the site and
+              the hardest of it to read small, and these labels are the only
+              thing saying whether a card is paints or plumbing.
+
+              The tracking comes in to 0.18em as the size goes up, so the
+              words hold together rather than spreading into letters, and the
+              colour moves from muted to ink-soft — 8.36:1 against the 4.92:1
+              it had. The complaint was legibility, and half of legibility at
+              this size is contrast.
+            */}
+            <p className="u-mono text-[0.875rem] tracking-[0.18em] text-ink-soft">
               {group.use ?? "Also"}
             </p>
             <div className="mt-5 flex min-h-[3.5rem] flex-wrap items-center justify-center gap-x-8 gap-y-4">
