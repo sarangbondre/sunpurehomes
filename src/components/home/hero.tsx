@@ -57,11 +57,19 @@ export function Hero({ image }: { image: HeroImage }) {
         fetchPriority="high"
         sizes="100vw"
         /*
-          The building is centred in this file and all but fills the frame at
-          this crop, so the anchor has little to do: at 1440x900 there are
-          160px of travel in all. Centre keeps the palms at both edges.
+          Centre on a phone, and pulled toward the left of the source from lg
+          — which moves the BUILDING to the right, off the words, at the
+          client's instruction of 7 October.
+
+          How far it moves depends on the window, and there is less room than
+          it sounds. The picture is 16:9 and the frame is whatever the browser
+          is, so cover leaves only the difference as travel: 160px at
+          1440x900, which is 80px either side of centre. 25% spends half of
+          that, 40px to the right. On a 16:9 window there is no travel at all
+          and this does nothing — not a bug, just the arithmetic of a 16:9
+          picture in a 16:9 hole.
         */
-        className="-z-10 object-cover object-center"
+        className="-z-10 object-cover object-center lg:object-[25%_50%]"
       />
 
       {/*

@@ -25,27 +25,22 @@
  */
 const HERO = {
   /*
-    Curve under flat overcast daylight — the ungraded render, chosen by the
-    client on 7 October over both the sunrise grading of the same frame and
-    their own square photograph.
+    Curve under overcast light, supplied by the client on 7 October already
+    at 2400x1350 and 171KB — the size this slot asks for and well inside the
+    300KB it allows, so it is installed as they exported it and not re-encoded.
 
-    2400x1350, the size this slot asks for, and the only file of it that
-    exists: 56KB, where the sunrise grading of the identical render is 299KB.
-    That is not a saving, it is a much lighter encode, and an overcast sky is
-    the hardest thing in the world to encode — flat, slowly-varying grey is
-    exactly where AVIF bands first. Re-encoding would not help: the
-    information is already gone, and a bigger file from this source only
-    stores the banding more faithfully. Checked at hero size on 7 October and
-    it holds up; if the client ever sees stepping in the sky, the fix is a
-    fresh export from the render, not anything in this repo.
+    A DIFFERENT ANGLE from curve-daylight.avif, which is still beside it: that
+    one is the corner, with the balconies wrapping and hills to the right;
+    this one is more frontal, the building filling the frame with palms along
+    its foot and the wet road beneath.
 
-    No sun in this one. The building sits centre-right, the sky is uniform
-    across the top, and the type stands on the left — which is the easiest
-    arrangement of the three for the grounds in hero.tsx, and the contrast
-    figures were re-measured against it rather than carried over.
+    No sun in it, and the sky is uniform across the top. The type stands on
+    the left on the opaque radial, so the desktop figures are governed by the
+    ground rather than the picture; the phone is the one that had to be
+    measured, and hero.tsx records what the ground had to be for it.
   */
-  file: "curve-daylight.avif",
-  alt: "Curve under an overcast sky: a five-storey apartment building whose white balconies curve around each corner, palms along its frontage and the whole reflected in the wet road.",
+  file: "curve-overcast.avif",
+  alt: "Curve under an overcast sky: a five-storey apartment building whose white balconies curve around each floor, palms along its frontage and the wet road in front of it.",
 } as const;
 
 const HOME_DIR = "images/home";
