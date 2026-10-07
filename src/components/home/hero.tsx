@@ -12,6 +12,20 @@ export type HeroImage = { src: string; alt: string };
  * Asked for on 2 October, after the half-and-half split of the same morning:
  * the picture behind everything and covering more than the type.
  *
+ * On a phone the ground peaks at 0.86, raised from 0.7 on 7 October when the
+ * client put the ungraded daylight render on this page. That picture has no
+ * bright sky behind the type where the others did — a phone's crop puts the
+ * building's own grey facade there — and "Deeply Lived." measured 2.25:1
+ * against the 3:1 it owes as large text. It took 0.86 to clear — 0.8 reached only
+ * 2.85:1 — and that is a lot of paper over a picture the client asked to see
+ * more of, which is the trade and it is theirs to re-make. The shape of the
+ * ramp is untouched: every stop was scaled by the same factor, so the eighteen
+ * stops still ease the same way and there is still no straight line in it.
+ *
+ * The number belongs to the picture, not to a house style. 0.7 was right for
+ * the golden sunrise and would be right again; whoever changes this image
+ * should re-measure rather than assume either figure.
+ *
  * The ground under the type is opaque, and reaches the picture through a
  * ramp long enough that there is no edge to find — the client's words on
  * 2 October were that no one should be able to feel the line between the
@@ -67,7 +81,7 @@ export function Hero({ image }: { image: HeroImage }) {
       */}
       <div
         aria-hidden
-        className="absolute inset-0 -z-10 bg-[linear-gradient(to_bottom,rgba(244,240,231,0.154)_0%,rgba(244,240,231,0.28)_4%,rgba(244,240,231,0.42)_7%,rgba(244,240,231,0.546)_10%,rgba(244,240,231,0.63)_12%,rgba(244,240,231,0.679)_14%,rgba(244,240,231,0.7)_16%,rgba(244,240,231,0.7)_41%,rgba(244,240,231,0.665)_44%,rgba(244,240,231,0.602)_47%,rgba(244,240,231,0.511)_50%,rgba(244,240,231,0.399)_53%,rgba(244,240,231,0.287)_56%,rgba(244,240,231,0.189)_59%,rgba(244,240,231,0.105)_62%,rgba(244,240,231,0.042)_65%,transparent_68%)] lg:bg-[radial-gradient(ellipse_57%_41%_at_24%_47%,rgba(244,240,231,1)_0%,rgba(244,240,231,1)_38%,rgba(244,240,231,0.975)_43%,rgba(244,240,231,0.94)_47%,rgba(244,240,231,0.89)_51%,rgba(244,240,231,0.82)_55%,rgba(244,240,231,0.73)_59%,rgba(244,240,231,0.65)_62%,rgba(244,240,231,0.56)_65%,rgba(244,240,231,0.47)_68%,rgba(244,240,231,0.38)_71%,rgba(244,240,231,0.29)_74%,rgba(244,240,231,0.21)_77%,rgba(244,240,231,0.14)_80%,rgba(244,240,231,0.08)_84%,rgba(244,240,231,0.04)_88%,rgba(244,240,231,0.01)_92%,transparent_96%)]"
+        className="absolute inset-0 -z-10 bg-[linear-gradient(to_bottom,rgba(244,240,231,0.189)_0%,rgba(244,240,231,0.344)_4%,rgba(244,240,231,0.516)_7%,rgba(244,240,231,0.671)_10%,rgba(244,240,231,0.774)_12%,rgba(244,240,231,0.834)_14%,rgba(244,240,231,0.86)_16%,rgba(244,240,231,0.86)_41%,rgba(244,240,231,0.817)_44%,rgba(244,240,231,0.74)_47%,rgba(244,240,231,0.628)_50%,rgba(244,240,231,0.49)_53%,rgba(244,240,231,0.353)_56%,rgba(244,240,231,0.232)_59%,rgba(244,240,231,0.129)_62%,rgba(244,240,231,0.052)_65%,transparent_68%)] lg:bg-[radial-gradient(ellipse_57%_41%_at_24%_47%,rgba(244,240,231,1)_0%,rgba(244,240,231,1)_38%,rgba(244,240,231,0.975)_43%,rgba(244,240,231,0.94)_47%,rgba(244,240,231,0.89)_51%,rgba(244,240,231,0.82)_55%,rgba(244,240,231,0.73)_59%,rgba(244,240,231,0.65)_62%,rgba(244,240,231,0.56)_65%,rgba(244,240,231,0.47)_68%,rgba(244,240,231,0.38)_71%,rgba(244,240,231,0.29)_74%,rgba(244,240,231,0.21)_77%,rgba(244,240,231,0.14)_80%,rgba(244,240,231,0.08)_84%,rgba(244,240,231,0.04)_88%,rgba(244,240,231,0.01)_92%,transparent_96%)]"
       />
 
       {/*

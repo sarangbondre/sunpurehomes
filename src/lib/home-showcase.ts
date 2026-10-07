@@ -10,14 +10,12 @@
  * top-right corner, left over from the video frame it was captured from;
  * that is patched out rather than left to appear at full size.
  *
- * On 15 September this image was supplied by the client and used here. On
- * 16 September they asked for the page back as it was, so the Curve render
- * returned and this one sat unused in public/images/home. On 7 October they
- * asked for it back, which is why it was kept.
- *
- * The Curve renders it replaces are all still beside it — curve-golden-
- * sunrise.avif was live until today, and curve-daylight.avif and
- * curve-sunrise.jpg before that.
+ * Which frame is on this page has changed six times. Every one of them is
+ * still in public/images/home, because it keeps changing back: the client's
+ * own hero-sunrise.jpg, supplied 15 September and asked for again on the
+ * morning of 7 October; curve-sunrise.jpg; curve-golden-sunrise.avif, live
+ * from 2 October until that morning; and curve-daylight.avif, which is what
+ * is here now. Nothing is deleted.
  *
  * IT IS STILL A RENDER, not a photograph, and Curve is not built. Regrading
  * a render's sky is ordinary practice and makes no claim a render does not
@@ -27,28 +25,27 @@
  */
 const HERO = {
   /*
-    The client's own file, supplied 15 September and asked for again on
-    7 October. Re-encoded from their JPEG to AVIF at q80 — 213KB, inside the
-    300KB the slot allows — at its native size and no larger, because
-    upscaling a render only makes a bigger soft file.
+    Curve under flat overcast daylight — the ungraded render, chosen by the
+    client on 7 October over both the sunrise grading of the same frame and
+    their own square photograph.
 
-    IT IS 1254 SQUARE, where the Curve render it replaces was 2400x1350.
-    Two things follow and the client has been told both. It is under 1x on
-    any desktop and well under on a 2x screen, so it is softer than anything
-    else on the site. And a square in a wide frame is cropped top and bottom,
-    while in a phone's tall frame it is cropped hard left and right — which
-    takes the sunrise, at 13% across, off the phone entirely. A 2400px export
-    of the same image would fix the first; nothing but a different crop fixes
-    the second.
+    2400x1350, the size this slot asks for, and the only file of it that
+    exists: 56KB, where the sunrise grading of the identical render is 299KB.
+    That is not a saving, it is a much lighter encode, and an overcast sky is
+    the hardest thing in the world to encode — flat, slowly-varying grey is
+    exactly where AVIF bands first. Re-encoding would not help: the
+    information is already gone, and a bigger file from this source only
+    stores the banding more faithfully. Checked at hero size on 7 October and
+    it holds up; if the client ever sees stepping in the sky, the fix is a
+    fresh export from the render, not anything in this repo.
 
-    The sun is low and to the LEFT here, behind the treeline, with the
-    building to the right of it — the same arrangement as the render it
-    replaces, which is why the landing page's crop and the contrast figures
-    in hero.tsx still hold. They were re-measured on 7 October against this
-    picture rather than assumed.
+    No sun in this one. The building sits centre-right, the sky is uniform
+    across the top, and the type stands on the left — which is the easiest
+    arrangement of the three for the grounds in hero.tsx, and the contrast
+    figures were re-measured against it rather than carried over.
   */
-  file: "hero-sunrise.avif",
-  alt: "An apartment building at sunrise: white balconies curving around each floor, a low gold sun breaking through the trees to its left, palms along the frontage and a lawn in front.",
+  file: "curve-daylight.avif",
+  alt: "Curve under an overcast sky: a five-storey apartment building whose white balconies curve around each corner, palms along its frontage and the whole reflected in the wet road.",
 } as const;
 
 const HOME_DIR = "images/home";
