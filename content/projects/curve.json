@@ -138,13 +138,13 @@
       "name": "Gym at the terrace"
     },
     {
-      "name": "Centralised heat pump (hot water) by Microtech"
+      "name": "Centralised heat pump (hot water)"
     },
     {
-      "name": "Centralised RO plant – Microtech Solutions"
+      "name": "Centralised RO plant"
     },
     {
-      "name": "Centralised softener – Microtech Solutions"
+      "name": "Centralised softener"
     },
     {
       "name": "Community hall (terrace)"
@@ -203,15 +203,18 @@
       "group": "Flooring",
       "items": [
         "1200 × 1800 mm premium vitrified tiles for internal areas -Somany",
-        "Anti-skid vitrified tiles to toilets -Somany",
-        "Glazed tiles to bathroom walls- Upto False Ceiling Level"
+        "Anti-skid vitrified tiles for toilets -Somany",
+        "Glazed tiles for bathroom walls- Upto False Ceiling Level"
       ]
     },
     {
       "group": "Doors",
       "items": [
-        "Main door in teak wood frame with veneer finish",
-        "Internal doors in wood frame with laminate finish"
+        "Main entrance: engineered wood frame with engineered wood flush door and natural wood laminate finish",
+        "Internal doors: engineered wood shutter with natural wood laminate finish",
+        "Bathroom doors: engineered wood flush door with laminate finish",
+        "SS hardware for doors (Ebco or equivalent)",
+        "Lock (Godrej or equivalent)"
       ]
     },
     {

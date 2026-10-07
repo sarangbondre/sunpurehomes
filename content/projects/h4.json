@@ -3,7 +3,7 @@
   "name": "Happiness IV",
   "type": "villa",
   "status": "ongoing",
-  "tagline": "Fifty-one villas. Over five thousand plants. One rare way to live.",
+  "tagline": "Fifty villas. Over five thousand plants. One rare way to live.",
   "description": "H4 is a villa development in Vijayanagar 4th Stage, currently under way. It is planned as a low-density community with more than five thousand plants, rainwater harvesting, and homes laid out for cross-ventilation and daylight.",
   "headline": "Luxury, Grown Among the Trees.",
   "homesLine": "3 BHK villas in a low-density, planted community.",
@@ -21,7 +21,7 @@
     }
   },
   "scale": {
-    "unitCount": 51,
+    "unitCount": 50,
     "unitNoun": "villas"
   },
   "configurations": [
@@ -64,25 +64,32 @@
     {
       "group": "Doors",
       "items": [
-        "Natural wood laminate finish"
+        "Main entrance: teak wood frame with teak solid core, ply or HDHMR infill and veneer overlay (Tectonics or equivalent)",
+        "Internal doors: engineered wood shutter with natural wood laminate finish (Tectonics or equivalent)",
+        "Bathroom doors: engineered wood flush door with laminate finish (Tectonics or equivalent)",
+        "SS hardware for doors (Ebco or equivalent)",
+        "Digital lock (Godrej or equivalent)"
       ]
     },
     {
       "group": "Windows",
       "items": [
-        "Saint Gobain or equivalent glazing"
+        "2 and 3 track UPVC windows (Saint-Gobain, Schon or equivalent)"
       ]
     },
     {
       "group": "Electrical",
       "items": [
-        "ISI-approved materials"
+        "Conduit pipes: PVC HMS/LMS grade, ISI approved (VIP or equivalent)",
+        "Wires: fire-resistant copper cables (V-Guard or equivalent)",
+        "Switches: modular switches (Schneider or equivalent)"
       ]
     },
     {
       "group": "Plumbing & sanitary",
       "items": [
-        "Jaquar, Kohler or equivalent fittings"
+        "Fittings: premium quality fixtures (Jaquar, Kohler or similar)",
+        "Sanitary ware: white sanitary fixtures (Jaquar, Kohler or similar)"
       ]
     },
     {
@@ -188,17 +195,12 @@
   "gallery": [
     {
       "src": "/images/projects/h4/hero.avif",
-      "alt": "An H4 villa in pale stone and glass, planting spilling from its upper terraces.",
+      "alt": "H4 Villa, built in stone, texture and glass.",
       "view": "exterior"
     },
     {
       "src": "/images/projects/h4/gallery-1.avif",
       "alt": "A corner H4 villa with deep balconies and a planted roof terrace.",
-      "view": "exterior"
-    },
-    {
-      "src": "/images/projects/h4/gallery-2.avif",
-      "alt": "An H4 villa seen through surrounding trees, greenery on every level.",
       "view": "exterior"
     },
     {
@@ -208,7 +210,7 @@
     },
     {
       "src": "/images/projects/h4/gallery-4.avif",
-      "alt": "A living room inside an H4 villa, opening to a covered terrace.",
+      "alt": "A living room inside an H4 villa, opening to green spaces.",
       "view": "interior"
     },
     {
@@ -226,6 +228,7 @@
     "The client's aerial banner labels this development HAPPINESS-IV, not H4. The site still calls it H4, which is the name used everywhere else including the brief and the live site. Confirm which name buyers should see.",
     "Specifications are the brochure's own — engineered marble or vitrified tiles, natural wood laminate, ISI-approved electricals, Jaquar/Kohler, Asian/Berger/JSW, Saint Gobain glass. The brochure states they are subject to change on upgrade or availability.",
     "The brochure shows two villa types, with lift and without. The configuration table lists 3 BHK only and does not distinguish them. Get the plan-by-plan schedule from sales.",
-    "The data sheet of 2 October 2026 answers the configuration table with 'AREA STATEMENT ATTACHED' and the specifications with 'H4 SPECS SHEET ATTACHED'. Neither attachment came with the file, so areas and specifications are unchanged."
+    "The data sheet of 2 October 2026 answers the configuration table with 'AREA STATEMENT ATTACHED' and the specifications with 'H4 SPECS SHEET ATTACHED'. Neither attachment came with the file, so areas and specifications are unchanged.",
+    "Unit count corrected from 51 to 50 on 6 October 2026 at the client's instruction. No source on file states either figure, so there is nothing here to check it against."
   ]
 }

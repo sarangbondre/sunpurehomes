@@ -44,6 +44,12 @@
   },
   "amenities": [
     {
+      "name": "24×7 hot water"
+    },
+    {
+      "name": "Centralised softener"
+    },
+    {
       "name": "Stormwater drainage system"
     },
     {
@@ -74,16 +80,16 @@
       "items": [
         "RCC framed structure",
         "Solid Concrete Blocks",
-        "Cement Plastering - Internal",
+        "Gypsum plastering - Internal",
         "Cement plastering- External"
       ]
     },
     {
       "group": "Flooring",
       "items": [
-        "800 × 1200 mm premium vitrified tiles for internal areas -Italica",
-        "Anti-skid vitrified tiles to toilets -Italica",
-        "Glazed tiles to bathroom walls- Upto False Ceiling Level"
+        "800 × 1600 mm premium vitrified tiles for internal areas -Italica",
+        "Anti-skid vitrified tiles for toilets -Italica",
+        "Glazed tiles for bathroom walls- Upto False Ceiling Level"
       ]
     },
     {
@@ -123,11 +129,6 @@
       "view": "exterior"
     },
     {
-      "src": "/images/projects/v4/gallery-1.avif",
-      "alt": "A kitchen inside a V4 apartment, with pale cabinetry and a run of wall units.",
-      "view": "interior"
-    },
-    {
       "src": "/images/projects/v4/gallery-2.avif",
       "alt": "The V4 block seen from the corner, balconies running the length of the elevation.",
       "view": "exterior"
@@ -139,7 +140,7 @@
     },
     {
       "src": "/images/projects/v4/gallery-4.avif",
-      "alt": "A bathroom inside a V4 apartment, finished in veined stone.",
+      "alt": "A foyer inside a V4 apartment: a console table against a veined stone wall, with a mirror above it and timber panelling to either side.",
       "view": "interior"
     },
     {

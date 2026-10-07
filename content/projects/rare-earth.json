@@ -211,7 +211,7 @@
   "gallery": [
     {
       "src": "/images/projects/rare-earth/hero.avif",
-      "alt": "The Rare Earth entrance gateway — a tiled canopy on timber beams, carried on stone piers hung with creepers.",
+      "alt": "The Rare Earth entrance at dusk: a long flat canopy on stone piers, the name carved into the pier at the left, climbing plants falling from the beams and a planted island in the road beneath it.",
       "view": "exterior"
     },
     {
@@ -248,6 +248,7 @@
     "The approved drawing is titled \"1st Phase (40%) Site Release\". The 279 sites are the full layout; confirm how many are released for sale today before the plan implies all of them are.",
     "Eighty-three plots are irregular (\"Odd\") on the approved drawing and have no single stated dimension. They are counted but not sized.",
     "Connectivity is the project brochure's own kilometre figures. The live site published a different set as travel times (JSS Multispecialty 15 min, Seshadripuram 10 min, Christ College 15 min, Mall of Mysore 15 min, Nexus 25 min, Apollo 25 min, GC Sports Medicine 15 min, JSS Public School 13 min). The two sets name different places and cannot be reconciled; the brochure is the newer client document and wins. Confirm before print.",
-    "The brochure master plan legend marks the entrance 'Toll Plaza' alongside 'Grand Archway'. Recorded here as the archway only — confirm what the gatehouse should be called for buyers."
+    "The brochure master plan legend marks the entrance 'Toll Plaza' alongside 'Grand Archway'. Recorded here as the archway only — confirm what the gatehouse should be called for buyers.",
+    "Entrance render replaced on 6 October 2026 at the client's instruction. The supplied file is 904px wide where the one it replaced was 1440, so this hero is softer on a large screen than every other project's. A larger export of the same render would fix it."
   ]
 }

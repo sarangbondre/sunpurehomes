@@ -23,7 +23,7 @@
   },
   "scale": {
     "acres": 4,
-    "unitCount": 34,
+    "unitCount": 32,
     "unitNoun": "villas"
   },
   "configurations": [
@@ -427,6 +427,7 @@
     "The two hospital columns on the brochure's QUICK CONNECT panel are a grid the PDF flattens into one stream, so the pairing of distance to hospital name is inferred from reading order. Verify the five health figures against the printed page.",
     "The brochure names the developer as MK Infra Holding, MB Road, Srirangapatna 571438. The site records the group's legal name as M.K. Agrotech Pvt. Ltd., which is the oil business. Confirm which entity is the promoter on RERA.",
     "Villa numbering, counts and entrances are the client's data sheet of 2 October 2026, which regrouped them: the eight groups there replace the eight on the site, and the counts still total 32. The sheet writes one range as '29–24'; it is set here as 24–29, the only reading that gives the twelve it states.",
-    "The same sheet marks the built-up areas 'BUA to be cross checked with sales Team'. They are published unchanged from the earlier figures until that check comes back."
+    "The same sheet marks the built-up areas 'BUA to be cross checked with sales Team'. They are published unchanged from the earlier figures until that check comes back.",
+    "Unit count changed from 34 to 32 on 6 October 2026 at the client's instruction. The stat block had been counting all 34 homes as villas; 32 are villas and 2 are apartments, which is what the description and the configurations have always said."
   ]
 }
