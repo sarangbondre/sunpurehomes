@@ -10,6 +10,13 @@ import type { MaterialGroup } from "@/lib/partners";
  * project pages, and it is the same component in both places so they cannot
  * drift apart.
  *
+ * 48px tall since 7 October, up from 36. Most of these are wide wordmarks
+ * that the 9rem width cap governs anyway, so for them nothing changed; what
+ * drove it is the square ones. SK Super Steel arrived as a tile carrying a
+ * mascot and two lines of type, and at 36px it was a yellow smudge. Width is
+ * still capped, so a long wordmark is still bound by its width and simply
+ * ends up shorter than 48.
+ *
  * The names are under the marks because a mark is often unreadable at this
  * size, and several of these are wordmarks in a typeface nobody knows — the
  * card has to say what it is without them.
@@ -52,7 +59,7 @@ export function BrandCards({ groups }: { groups: readonly MaterialGroup[] }) {
                     alt={brand.name}
                     width={180}
                     height={56}
-                    className="h-9 w-auto max-w-[9rem] object-contain"
+                    className="h-12 w-auto max-w-[9rem] object-contain"
                   />
                 ) : (
                   <span
