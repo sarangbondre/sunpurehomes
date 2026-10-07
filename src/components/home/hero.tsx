@@ -35,9 +35,11 @@ export type HeroImage = { src: string; alt: string };
  * column is much taller than it is wide, so the picture is cropped hard from
  * the sides: at 1440x900 the column is 1008 wide and the picture is drawn
  * 1600, which is 592px of travel. That is four times what the full-bleed
- * arrangement had, and why object-center is right here where the same
- * instruction needed object-left there — the building has its own half now
- * and no longer has to be pushed off the words.
+ * arrangement had, and why the crop is anchored at 32% from lg,
+ * which pushes the building a further 106px to the right inside its own
+ * column — the client asked for that on 7 October, on top of the half it
+ * already had. The column gives the crop 592px of travel against the
+ * full-bleed arrangement's 160, so there is room to spend.
  *
  * The wash does a second job beyond looking like one canvas: it is why the
  * header can sit over the picture with no bar of its own and stay legible.
@@ -72,7 +74,7 @@ export function Hero({ image }: { image: HeroImage }) {
           priority
           fetchPriority="high"
           sizes="(min-width: 1024px) 70vw, 100vw"
-          className="object-cover object-center"
+          className="object-cover object-center lg:object-[32%_50%]"
         />
 
         {/*
@@ -82,15 +84,18 @@ export function Hero({ image }: { image: HeroImage }) {
           top, a long eased ramp, and nothing at all over the lower half, so
           the picture is the background rather than a strip under it.
 
-          From lg it washes in from the left instead, across the part of the
-          picture column that overlaps the text column, so the photograph
-          reaches the paper without a seam. 45% of the column, which is the
-          overlap plus enough beyond it that the ramp finishes on picture and
-          not on the join.
+          From lg it washes in from the left instead, so the photograph
+          reaches the paper without a seam. The ramp runs almost the whole
+          column — solid to 10%, gone by 95% — which the client asked for on
+          7 October: a longer, flatter fall leaves the left of the picture
+          veiled rather than merely blended, and the building only comes fully
+          clear at the right of the frame. Eighteen stops, for the same reason
+          the phone ramp has eighteen: three would draw a straight line and
+          the eye reads a straight line as an edge.
         */}
         <div
           aria-hidden
-          className="absolute inset-0 max-lg:bg-[linear-gradient(to_bottom,rgba(244,240,231,0.189)_0%,rgba(244,240,231,0.344)_4%,rgba(244,240,231,0.516)_7%,rgba(244,240,231,0.671)_10%,rgba(244,240,231,0.774)_12%,rgba(244,240,231,0.834)_14%,rgba(244,240,231,0.86)_16%,rgba(244,240,231,0.86)_41%,rgba(244,240,231,0.817)_44%,rgba(244,240,231,0.74)_47%,rgba(244,240,231,0.628)_50%,rgba(244,240,231,0.49)_53%,rgba(244,240,231,0.353)_56%,rgba(244,240,231,0.232)_59%,rgba(244,240,231,0.129)_62%,rgba(244,240,231,0.052)_65%,transparent_68%)] lg:bg-[linear-gradient(to_right,rgba(244,240,231,1)_0%,rgba(244,240,231,1)_8%,rgba(244,240,231,0.97)_13%,rgba(244,240,231,0.92)_17%,rgba(244,240,231,0.85)_21%,rgba(244,240,231,0.76)_25%,rgba(244,240,231,0.66)_29%,rgba(244,240,231,0.56)_32%,rgba(244,240,231,0.46)_35%,rgba(244,240,231,0.36)_38%,rgba(244,240,231,0.27)_41%,rgba(244,240,231,0.19)_44%,rgba(244,240,231,0.12)_47%,rgba(244,240,231,0.07)_50%,rgba(244,240,231,0.03)_53%,rgba(244,240,231,0.01)_56%,transparent_60%)]"
+          className="absolute inset-0 max-lg:bg-[linear-gradient(to_bottom,rgba(244,240,231,0.189)_0%,rgba(244,240,231,0.344)_4%,rgba(244,240,231,0.516)_7%,rgba(244,240,231,0.671)_10%,rgba(244,240,231,0.774)_12%,rgba(244,240,231,0.834)_14%,rgba(244,240,231,0.86)_16%,rgba(244,240,231,0.86)_41%,rgba(244,240,231,0.817)_44%,rgba(244,240,231,0.74)_47%,rgba(244,240,231,0.628)_50%,rgba(244,240,231,0.49)_53%,rgba(244,240,231,0.353)_56%,rgba(244,240,231,0.232)_59%,rgba(244,240,231,0.129)_62%,rgba(244,240,231,0.052)_65%,transparent_68%)] lg:bg-[linear-gradient(to_right,rgba(244,240,231,1)_0%,rgba(244,240,231,1)_10%,rgba(244,240,231,0.985)_15%,rgba(244,240,231,0.955)_20%,rgba(244,240,231,0.91)_25%,rgba(244,240,231,0.85)_30%,rgba(244,240,231,0.78)_35%,rgba(244,240,231,0.70)_40%,rgba(244,240,231,0.61)_45%,rgba(244,240,231,0.52)_50%,rgba(244,240,231,0.43)_55%,rgba(244,240,231,0.34)_60%,rgba(244,240,231,0.26)_65%,rgba(244,240,231,0.18)_70%,rgba(244,240,231,0.12)_75%,rgba(244,240,231,0.07)_80%,rgba(244,240,231,0.03)_85%,rgba(244,240,231,0.01)_90%,transparent_95%)]"
         />
 
         {/*
