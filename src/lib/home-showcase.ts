@@ -10,10 +10,14 @@
  * top-right corner, left over from the video frame it was captured from;
  * that is patched out rather than left to appear at full size.
  *
- * On 15 September a different image was supplied and used here. On 16
- * September the client asked for this page back as it was, so this render
- * returns. The supplied image is still in public/images/home as
- * hero-sunrise.jpg, unused, against the client changing their mind again.
+ * On 15 September this image was supplied by the client and used here. On
+ * 16 September they asked for the page back as it was, so the Curve render
+ * returned and this one sat unused in public/images/home. On 7 October they
+ * asked for it back, which is why it was kept.
+ *
+ * The Curve renders it replaces are all still beside it — curve-golden-
+ * sunrise.avif was live until today, and curve-daylight.avif and
+ * curve-sunrise.jpg before that.
  *
  * IT IS STILL A RENDER, not a photograph, and Curve is not built. Regrading
  * a render's sky is ordinary practice and makes no claim a render does not
@@ -23,17 +27,28 @@
  */
 const HERO = {
   /*
-    The client's own export, supplied on 2 October at 2400x1350 and 292KB —
-    the size the hero slot asks for, inside the 300KB it is allowed. It
-    replaced a pale daylight grading of the same render the same day; that
-    file is still beside it, unused, as the older sunrise is.
+    The client's own file, supplied 15 September and asked for again on
+    7 October. Re-encoded from their JPEG to AVIF at q80 — 213KB, inside the
+    300KB the slot allows — at its native size and no larger, because
+    upscaling a render only makes a bigger soft file.
 
-    The sun is low and well to the LEFT here, behind the treeline, with the
-    building to the right of it. The landing page's crop and the contrast
-    figures in hero.tsx are both measured against that arrangement.
+    IT IS 1254 SQUARE, where the Curve render it replaces was 2400x1350.
+    Two things follow and the client has been told both. It is under 1x on
+    any desktop and well under on a 2x screen, so it is softer than anything
+    else on the site. And a square in a wide frame is cropped top and bottom,
+    while in a phone's tall frame it is cropped hard left and right — which
+    takes the sunrise, at 13% across, off the phone entirely. A 2400px export
+    of the same image would fix the first; nothing but a different crop fixes
+    the second.
+
+    The sun is low and to the LEFT here, behind the treeline, with the
+    building to the right of it — the same arrangement as the render it
+    replaces, which is why the landing page's crop and the contrast figures
+    in hero.tsx still hold. They were re-measured on 7 October against this
+    picture rather than assumed.
   */
-  file: "curve-golden-sunrise.avif",
-  alt: "Curve at sunrise: a five-storey apartment building whose white balconies curve around each corner, palms at its foot and a low gold sun behind the trees to its left, the whole reflected in the wet forecourt.",
+  file: "hero-sunrise.avif",
+  alt: "An apartment building at sunrise: white balconies curving around each floor, a low gold sun breaking through the trees to its left, palms along the frontage and a lawn in front.",
 } as const;
 
 const HOME_DIR = "images/home";
