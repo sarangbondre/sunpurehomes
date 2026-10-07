@@ -4,7 +4,8 @@ import { MailIcon, PhoneIcon, WhatsAppIcon } from "@/components/brand/icons";
 import { BrandCards, BrandCardsNote } from "@/components/brand/brand-cards";
 import { Section } from "@/components/ui/section";
 import { mailtoHref, telHref, whatsappHref } from "@/lib/links";
-import { getMaterialGroups } from "@/lib/partners";
+import { getAllMaterialGroups } from "@/lib/partners";
+import { getAllProjects } from "@/lib/content";
 import { site } from "@/lib/site";
 
 export const metadata: Metadata = {
@@ -28,7 +29,12 @@ export const metadata: Metadata = {
  * Send the titles and the section goes in.
  */
 export default function AboutPage() {
-  const brands = getMaterialGroups(undefined);
+  /*
+    Every brand the nine projects name between them, not the site-wide list
+    of nine this page showed until 7 October. See getAllMaterialGroups for
+    which of the two sources wins where they disagree.
+  */
+  const brands = getAllMaterialGroups(getAllProjects());
 
   return (
     <main className="mx-auto max-w-[86rem] px-6 pb-8 sm:px-10 lg:px-16">
@@ -107,8 +113,9 @@ export default function AboutPage() {
 
       <Section eyebrow="What goes in">
         <p className="max-w-[58ch] leading-relaxed text-ink-soft">
-          The same names appear across every development, which is what makes a
-          specification worth reading.
+          Every brand we build with, across all nine developments. The same
+          names appear again and again, which is what makes a specification
+          worth reading.
         </p>
         <div className="mt-8">
           <BrandCards groups={brands} />
