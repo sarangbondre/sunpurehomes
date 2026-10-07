@@ -125,6 +125,6 @@
     "Live-site location copy for this project describes 'V4 homes' — another project's text. Not carried over.",
     "The Happiness II brochure states Happiness reached occupancy of 26 units, which matches the 26 published here.",
     "The data sheet of 2 October 2026 gives this villa '1800' in the carpet-area column and '2650-2700sft' in the how-many column, which cannot both be read as written — 1800 is likely the plot and 2650–2700 sq ft the built-up area. No area is published until the client confirms which is which.",
-    "Amenities removed on 6 October 2026 at the client's instruction: this development has none. The nine listed until then came from the site-wide list used where a project gave none of its own, which is how a development with no amenities ended up appearing to have nine."
+    "Amenities removed on 6 October 2026 at the client's instruction: this development has none. The nine listed until then came from the site-wide list used where a project gave none of its own, which is how a development with no amenities ended up appearing to have nine. The four amenity markers the plan drew for the same reason — yoga space, gym, indoor kids play area, senior citizen area — are out of content/scenes/happiness-1.json too; the section and the pins were the same claim drawn two ways."
   ]
 }
