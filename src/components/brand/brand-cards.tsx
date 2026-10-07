@@ -10,12 +10,21 @@ import type { MaterialGroup } from "@/lib/partners";
  * project pages, and it is the same component in both places so they cannot
  * drift apart.
  *
- * 48px tall since 7 October, up from 36. Most of these are wide wordmarks
- * that the 9rem width cap governs anyway, so for them nothing changed; what
- * drove it is the square ones. SK Super Steel arrived as a tile carrying a
- * mascot and two lines of type, and at 36px it was a yellow smudge. Width is
- * still capped, so a long wordmark is still bound by its width and simply
- * ends up shorter than 48.
+ * The marks sit in a 12rem by 14 box and object-contain fits each one in it.
+ * That box governs them in two different ways, which is worth knowing before
+ * changing either number: a wide wordmark is bound by the WIDTH and ends up
+ * shorter than the box, while a square one is bound by the HEIGHT and ends up
+ * narrower. Both were too small on 7 October and for opposite reasons.
+ *
+ * At 9rem by 12, Asian Paints — the widest at 5.5:1 — came out 144 by 26,
+ * half the height of Jaquar beside it, while Somany, which is square, was
+ * 48 by 48. The box grew in both directions rather than one: 12rem by 14
+ * puts every mark between 34 and 56px tall, where they were 26 to 48.
+ *
+ * There is no setting that makes a 5.5:1 wordmark and a 1:1 badge look the
+ * same size, because they are not the same shape. Matching their areas would
+ * need a per-brand figure in BRAND_MARKS, and that is a lot of machinery for
+ * a row of logos; growing the box got most of the way for one number.
  *
  * The names are under the marks because a mark is often unreadable at this
  * size, and several of these are wordmarks in a typeface nobody knows — the
@@ -50,7 +59,7 @@ export function BrandCards({ groups }: { groups: readonly MaterialGroup[] }) {
             <p className="u-mono text-[0.875rem] tracking-[0.18em] text-ink-soft">
               {group.use ?? "Also"}
             </p>
-            <div className="mt-5 flex min-h-[3.5rem] flex-wrap items-center justify-center gap-x-8 gap-y-4">
+            <div className="mt-5 flex min-h-[4.5rem] flex-wrap items-center justify-center gap-x-8 gap-y-5">
               {group.brands.map((brand) =>
                 brand.logoSrc ? (
                   <Image
@@ -59,7 +68,7 @@ export function BrandCards({ groups }: { groups: readonly MaterialGroup[] }) {
                     alt={brand.name}
                     width={180}
                     height={56}
-                    className="h-12 w-auto max-w-[9rem] object-contain"
+                    className="h-14 w-auto max-w-[12rem] object-contain"
                   />
                 ) : (
                   <span
