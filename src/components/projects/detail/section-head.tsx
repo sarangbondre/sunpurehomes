@@ -113,7 +113,21 @@ export function NoteRow({
   );
 }
 
-/** A section of the project page, spaced for the reference design. */
+/**
+ * A section of the project page.
+ *
+ * py-10/14 since 7 October, down from py-16/24: two sections meeting put
+ * their padding together, so the reference design's 96px each became 192px
+ * of nothing between every pair of them, and the client asked for it closed
+ * up. It is 112px now at sm and above, 80px below that, and the rule between
+ * them still does the separating — which is what a rule is for, and why the
+ * space does not have to.
+ *
+ * The two full-bleed panels keep their own padding: Overview at the top and
+ * Visit at the foot are coloured blocks with their content inset, not
+ * sections meeting edge to edge, so the same number would mean a different
+ * thing inside them.
+ */
 export function DetailSection({
   id,
   children,
@@ -127,7 +141,7 @@ export function DetailSection({
     <section
       id={id}
       // scroll-mt clears the sticky header when a link jumps here.
-      className={`scroll-mt-28 border-t border-line py-16 sm:py-24 ${className}`}
+      className={`scroll-mt-28 border-t border-line py-10 sm:py-14 ${className}`}
     >
       {children}
     </section>
