@@ -35,35 +35,7 @@
     "reraNumber": "PRM/KA/RERA/1268/378/PR/171017/000557",
     "reraProvenance": "verified"
   },
-  "amenities": [
-    {
-      "name": "Yoga space"
-    },
-    {
-      "name": "Gym"
-    },
-    {
-      "name": "Indoor kids play area"
-    },
-    {
-      "name": "Senior citizen recreational area"
-    },
-    {
-      "name": "CCTV surveillance"
-    },
-    {
-      "name": "RO treatment plant"
-    },
-    {
-      "name": "100% power backup"
-    },
-    {
-      "name": "Stormwater drainage system"
-    },
-    {
-      "name": "EV charging provision, on demand"
-    }
-  ],
+  "amenities": [],
   "specifications": [
     {
       "group": "Structure",
@@ -152,6 +124,7 @@
     "Connectivity omitted. The live site shows one identical connectivity list on seven different projects in different neighbourhoods; the figures cannot all be true. Needs real per-project distances.",
     "Live-site location copy for this project describes 'V4 homes' — another project's text. Not carried over.",
     "The Happiness II brochure states Happiness reached occupancy of 26 units, which matches the 26 published here.",
-    "The data sheet of 2 October 2026 gives this villa '1800' in the carpet-area column and '2650-2700sft' in the how-many column, which cannot both be read as written — 1800 is likely the plot and 2650–2700 sq ft the built-up area. No area is published until the client confirms which is which."
+    "The data sheet of 2 October 2026 gives this villa '1800' in the carpet-area column and '2650-2700sft' in the how-many column, which cannot both be read as written — 1800 is likely the plot and 2650–2700 sq ft the built-up area. No area is published until the client confirms which is which.",
+    "Amenities removed on 6 October 2026 at the client's instruction: this development has none. The nine listed until then came from the site-wide list used where a project gave none of its own, which is how a development with no amenities ended up appearing to have nine."
   ]
 }

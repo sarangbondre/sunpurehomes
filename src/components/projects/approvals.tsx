@@ -115,7 +115,18 @@ export function Approvals({ project }: { project: Project }) {
         </div>
       </div>
 
-      <BuiltWith materials={project.materials} />
+      {/*
+        Not on a plotted development, at the client's instruction of
+        6 October. Rare Earth and Fadal sell land; the buyer builds their own
+        house on it, so a panel naming the cement, the doors and the bathroom
+        fittings is describing a building that is nobody's to specify. It was
+        showing on both because a project with no materials of its own falls
+        back to the site-wide list, and neither has any.
+
+        Keyed on the type rather than on the two slugs, so a tenth project
+        that happens to be plots is right without anyone remembering this.
+      */}
+      {project.type !== "plot" && <BuiltWith materials={project.materials} />}
 
       <ClosingLine lines={CLOSING.approvals}>
         <div className="sm:min-w-[26rem]">
