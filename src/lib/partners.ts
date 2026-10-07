@@ -21,24 +21,74 @@ import { site } from "@/lib/site";
 
 const BRAND_DIR = "images/brands";
 
-/** The marks on disk, by slug, with the extension each one is saved as. */
-export const BRAND_MARKS: Readonly<Record<string, "svg" | "png">> = {
-  acc: "svg",
-  "asian-paints": "svg",
-  ashirvad: "png",
-  "astral-pipes": "png",
-  fujitec: "svg",
-  jaquar: "png",
-  kohler: "svg",
-  "qcon-rkb": "png",
-  "saint-gobain": "svg",
-  "schneider-electric": "svg",
-  "sk-super-steel": "png",
-  somany: "png",
-  supreme: "svg",
-  ultratech: "svg",
-  "v-guard": "svg",
+/**
+ * The marks on disk: the extension each is saved as, and its aspect ratio.
+ *
+ * The aspect is here because a logo row cannot size itself without it. CSS
+ * can cap a mark's height or its width but cannot see its shape, and these
+ * range from 5.5:1 to 1:1 — so one box made Asian Paints 34px tall and
+ * Somany 56, and the square ones looked like stamps beside the wordmarks.
+ * See markHeight.
+ *
+ * The figures are not maintained by hand: assets.test.ts reads every file and
+ * fails if one here disagrees with the image on disk, so a replaced logo of a
+ * different shape is caught rather than quietly mis-sized.
+ */
+export const BRAND_MARKS: Readonly<
+  Record<string, { readonly ext: "svg" | "png"; readonly aspect: number }>
+> = {
+  acc: { ext: "svg", aspect: 2.916 },
+  ashirvad: { ext: "png", aspect: 2.6 },
+  "asian-paints": { ext: "svg", aspect: 5.513 },
+  "astral-pipes": { ext: "png", aspect: 3.333 },
+  fujitec: { ext: "svg", aspect: 4 },
+  jaquar: { ext: "png", aspect: 3.015 },
+  kohler: { ext: "svg", aspect: 4.604 },
+  "qcon-rkb": { ext: "png", aspect: 1.712 },
+  "saint-gobain": { ext: "svg", aspect: 2.356 },
+  "schneider-electric": { ext: "svg", aspect: 3.311 },
+  "sk-super-steel": { ext: "png", aspect: 1.031 },
+  somany: { ext: "png", aspect: 1 },
+  supreme: { ext: "svg", aspect: 3.097 },
+  tectonics: { ext: "png", aspect: 1.019 },
+  ultratech: { ext: "svg", aspect: 1.777 },
+  "v-guard": { ext: "svg", aspect: 2.754 },
 };
+
+/**
+ * How tall a mark is drawn, so that every one covers roughly the same area of
+ * the card whatever its shape — which is what "the same size" means to a
+ * reader looking at a row of logos, and what capping one dimension cannot do.
+ *
+ * A mark of aspect r drawn at height h covers r·h², so h = sqrt(AREA/r)
+ * equalises them. AREA is set so a typical 3:1 wordmark lands near 52px,
+ * where the row sat before. The clamps keep it sane at the extremes: the
+ * widest mark here would otherwise want to be 212px across, and the squarest
+ * would tower over its card.
+ *
+ * The client asked twice for the small ones to grow, naming blocks, steel and
+ * tiles — all three square. They go 48 to 84px tall; the wide wordmarks they
+ * are meant to match barely move.
+ *
+ * The square ones still fall short of AREA — 84 squared is 7,056 against
+ * 8,100 — because the height cap bites before the area is met. That is the
+ * cap earning its keep rather than failing: a mark tall enough to equalise a
+ * 1:1 badge against a 5.5:1 wordmark would be 90px and would set the height
+ * of every card on the page.
+ */
+const MARK_AREA = 8100;
+const MARK_MIN_HEIGHT = 32;
+const MARK_MAX_HEIGHT = 84;
+const MARK_MAX_WIDTH = 192;
+
+export function markSize(name: string): { width: number; height: number } {
+  const mark = BRAND_MARKS[brandSlug(name)];
+  if (!mark) return { width: 144, height: 48 };
+  const ideal = Math.sqrt(MARK_AREA / mark.aspect);
+  const capped = Math.min(MARK_MAX_HEIGHT, Math.max(MARK_MIN_HEIGHT, ideal));
+  const height = Math.min(capped, MARK_MAX_WIDTH / mark.aspect);
+  return { width: Math.round(height * mark.aspect), height: Math.round(height) };
+}
 
 export type MaterialPartner = { name: string; logoSrc?: string };
 
@@ -53,8 +103,8 @@ export function brandSlug(name: string): string {
 /** The brand's mark in public/images/brands, if one is there. */
 export function brandLogo(name: string): string | undefined {
   const slug = brandSlug(name);
-  const extension = BRAND_MARKS[slug];
-  return extension ? `/${BRAND_DIR}/${slug}.${extension}` : undefined;
+  const mark = BRAND_MARKS[slug];
+  return mark ? `/${BRAND_DIR}/${slug}.${mark.ext}` : undefined;
 }
 
 /**

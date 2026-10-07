@@ -85,17 +85,22 @@ export function Hero({ image }: { image: HeroImage }) {
           the picture is the background rather than a strip under it.
 
           From lg it washes in from the left instead, so the photograph
-          reaches the paper without a seam. The ramp runs almost the whole
-          column — solid to 10%, gone by 95% — which the client asked for on
-          7 October: a longer, flatter fall leaves the left of the picture
-          veiled rather than merely blended, and the building only comes fully
-          clear at the right of the frame. Eighteen stops, for the same reason
+          reaches the paper without a seam. The ramp runs the whole column and
+          is deliberately late: solid paper to 22%, still at 0.85 halfway
+          across, and only gone at the far edge.
+
+          The client asked twice on 7 October for more of it, the second time
+          as "more transparent after Thoughtfully Built" — which is the stretch
+          of picture immediately right of the headline, where the ramp used to
+          have fallen to 0.6 by the time it got there and the building was
+          already competing with the words. It holds above 0.9 across that
+          stretch now and the picture resolves in the last third of the frame. Eighteen stops, for the same reason
           the phone ramp has eighteen: three would draw a straight line and
           the eye reads a straight line as an edge.
         */}
         <div
           aria-hidden
-          className="absolute inset-0 max-lg:bg-[linear-gradient(to_bottom,rgba(244,240,231,0.189)_0%,rgba(244,240,231,0.344)_4%,rgba(244,240,231,0.516)_7%,rgba(244,240,231,0.671)_10%,rgba(244,240,231,0.774)_12%,rgba(244,240,231,0.834)_14%,rgba(244,240,231,0.86)_16%,rgba(244,240,231,0.86)_41%,rgba(244,240,231,0.817)_44%,rgba(244,240,231,0.74)_47%,rgba(244,240,231,0.628)_50%,rgba(244,240,231,0.49)_53%,rgba(244,240,231,0.353)_56%,rgba(244,240,231,0.232)_59%,rgba(244,240,231,0.129)_62%,rgba(244,240,231,0.052)_65%,transparent_68%)] lg:bg-[linear-gradient(to_right,rgba(244,240,231,1)_0%,rgba(244,240,231,1)_10%,rgba(244,240,231,0.985)_15%,rgba(244,240,231,0.955)_20%,rgba(244,240,231,0.91)_25%,rgba(244,240,231,0.85)_30%,rgba(244,240,231,0.78)_35%,rgba(244,240,231,0.70)_40%,rgba(244,240,231,0.61)_45%,rgba(244,240,231,0.52)_50%,rgba(244,240,231,0.43)_55%,rgba(244,240,231,0.34)_60%,rgba(244,240,231,0.26)_65%,rgba(244,240,231,0.18)_70%,rgba(244,240,231,0.12)_75%,rgba(244,240,231,0.07)_80%,rgba(244,240,231,0.03)_85%,rgba(244,240,231,0.01)_90%,transparent_95%)]"
+          className="absolute inset-0 max-lg:bg-[linear-gradient(to_bottom,rgba(244,240,231,0.189)_0%,rgba(244,240,231,0.344)_4%,rgba(244,240,231,0.516)_7%,rgba(244,240,231,0.671)_10%,rgba(244,240,231,0.774)_12%,rgba(244,240,231,0.834)_14%,rgba(244,240,231,0.86)_16%,rgba(244,240,231,0.86)_41%,rgba(244,240,231,0.817)_44%,rgba(244,240,231,0.74)_47%,rgba(244,240,231,0.628)_50%,rgba(244,240,231,0.49)_53%,rgba(244,240,231,0.353)_56%,rgba(244,240,231,0.232)_59%,rgba(244,240,231,0.129)_62%,rgba(244,240,231,0.052)_65%,transparent_68%)] lg:bg-[linear-gradient(to_right,rgba(244,240,231,1)_0%,rgba(244,240,231,1)_22%,rgba(244,240,231,0.99)_27%,rgba(244,240,231,0.97)_32%,rgba(244,240,231,0.94)_37%,rgba(244,240,231,0.90)_42%,rgba(244,240,231,0.85)_47%,rgba(244,240,231,0.79)_52%,rgba(244,240,231,0.72)_57%,rgba(244,240,231,0.64)_62%,rgba(244,240,231,0.55)_67%,rgba(244,240,231,0.46)_72%,rgba(244,240,231,0.37)_77%,rgba(244,240,231,0.28)_82%,rgba(244,240,231,0.20)_87%,rgba(244,240,231,0.13)_91%,rgba(244,240,231,0.07)_95%,rgba(244,240,231,0.03)_98%,transparent_100%)]"
         />
 
         {/*

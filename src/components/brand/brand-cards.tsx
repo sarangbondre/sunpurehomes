@@ -1,5 +1,5 @@
 import Image from "next/image";
-import type { MaterialGroup } from "@/lib/partners";
+import { markSize, type MaterialGroup } from "@/lib/partners";
 
 /**
  * The brands, a card for each thing supplied: the use at the head of the
@@ -10,21 +10,16 @@ import type { MaterialGroup } from "@/lib/partners";
  * project pages, and it is the same component in both places so they cannot
  * drift apart.
  *
- * The marks sit in a 12rem by 14 box and object-contain fits each one in it.
- * That box governs them in two different ways, which is worth knowing before
- * changing either number: a wide wordmark is bound by the WIDTH and ends up
- * shorter than the box, while a square one is bound by the HEIGHT and ends up
- * narrower. Both were too small on 7 October and for opposite reasons.
+ * Each mark is drawn at its own height, from markHeight, so they all cover
+ * roughly the same AREA of the card. A single box cannot do that: cap the
+ * height and a 5.5:1 wordmark is six times the area of a square badge; cap
+ * the width and the square one is the bigger of the two. These range from
+ * 5.5:1 to 1:1, so there is no one box that suits both ends.
  *
- * At 9rem by 12, Asian Paints — the widest at 5.5:1 — came out 144 by 26,
- * half the height of Jaquar beside it, while Somany, which is square, was
- * 48 by 48. The box grew in both directions rather than one: 12rem by 14
- * puts every mark between 34 and 56px tall, where they were 26 to 48.
- *
- * There is no setting that makes a 5.5:1 wordmark and a 1:1 badge look the
- * same size, because they are not the same shape. Matching their areas would
- * need a per-brand figure in BRAND_MARKS, and that is a lot of machinery for
- * a row of logos; growing the box got most of the way for one number.
+ * The client asked twice for the small ones to grow, naming blocks, steel and
+ * tiles on the second time — Qcon, SK Super Steel and Somany, all square.
+ * They are 72px tall now against 48, while the wide wordmarks they were
+ * asked to match barely moved.
  *
  * The names are under the marks because a mark is often unreadable at this
  * size, and several of these are wordmarks in a typeface nobody knows — the
@@ -59,16 +54,24 @@ export function BrandCards({ groups }: { groups: readonly MaterialGroup[] }) {
             <p className="u-mono text-[0.875rem] tracking-[0.18em] text-ink-soft">
               {group.use ?? "Also"}
             </p>
-            <div className="mt-5 flex min-h-[4.5rem] flex-wrap items-center justify-center gap-x-8 gap-y-5">
+            <div className="mt-5 flex min-h-[5.25rem] flex-wrap items-center justify-center gap-x-8 gap-y-5">
               {group.brands.map((brand) =>
                 brand.logoSrc ? (
+                  /*
+                    The computed size is the element's size, not a box it is
+                    fitted inside: width and height both come from markSize,
+                    so the box is the mark. Giving next/image a fixed 180x56
+                    and letting width:auto work it out used ITS ratio rather
+                    than the file's, which left a square mark sitting in a
+                    192px-wide element with invisible space either side — and
+                    flex rows wrapped against space nobody could see.
+                  */
                   <Image
                     key={brand.name}
                     src={brand.logoSrc}
                     alt={brand.name}
-                    width={180}
-                    height={56}
-                    className="h-14 w-auto max-w-[12rem] object-contain"
+                    {...markSize(brand.name)}
+                    className="object-contain"
                   />
                 ) : (
                   <span
