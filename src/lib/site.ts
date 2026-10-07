@@ -57,9 +57,17 @@ export const site = {
 
   contact: {
     email: "help@sunpurehomes.com",
-    /** Also the WhatsApp number. E.164 for tel: and wa.me links. */
-    phoneE164: "+919916900511",
-    phoneDisplay: "+91 99169 00511",
+    /**
+     * Also the WhatsApp number — the client confirmed on 7 October that the
+     * two are the same, so one value drives tel:, wa.me and every printed
+     * occurrence. E.164 for the links.
+     *
+     * Changed from +91 99169 00511 that day. The new number is the one the
+     * Rare Earth brochure already carries, which closes part of the open
+     * question below rather than adding to it.
+     */
+    phoneE164: "+918105817070",
+    phoneDisplay: "+91 81058 17070",
   },
 
   social: {
@@ -80,7 +88,7 @@ export const site = {
  * papered over with invented values (BRIEF.md §15).
  */
 export const openQuestions: readonly string[] = [
-  "The brochures on the Drive carry four different sales numbers between them: +91 99722 75566 (Fadal, Meraki, Happiness II), +91 77900 88900 (Curve, Meraki), +91 81058 17070 (Rare Earth) and +91 90147 81478 (Fadal). The site publishes +91 99169 00511, given by the client on 15 September 2026, which appears in none of them. Confirm whether any project needs its own number as well.",
+  "The brochures on the Drive carry four different sales numbers between them: +91 99722 75566 (Fadal, Meraki, Happiness II), +91 77900 88900 (Curve, Meraki), +91 81058 17070 (Rare Earth) and +91 90147 81478 (Fadal). The site published +91 99169 00511 from 15 September 2026 until 7 October, when the client replaced it with +91 81058 17070 — the Rare Earth number, and the first time the published number has matched any brochure. Three brochure numbers are still unaccounted for. Confirm whether any project needs its own number as well, and whether the brochures should be reprinted to agree with the site.",
   "The privacy policy at /privacy is interim text written from what the site does. It names no legal entity, no grievance officer and no retention period, because none is confirmed. Send the client's approved policy, or those three facts.",
   "Happiness 2's description says its villas are 2,543 sq ft, but the brochure's floor-by-floor figures put them at 2,167–3,520 sq ft built-up. Arka answers from the floor-by-floor figures and does not repeat the 2,543. Confirm which the page should say.",
   "The About page now says Sunpure Homes build beyond Mysuru, at the client's instruction on 15 September 2026. All nine developments on this site are in Mysuru, so nothing names the other places. Send the cities, and they can be said plainly instead of in the abstract.",

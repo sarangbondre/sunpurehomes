@@ -11,7 +11,7 @@
     { "id": "loan", "page": "/projects/h4", "ask": "Which banks will give me a home loan for this?", "expect": "handoff", "mustNotInclude": ["sbi", "hdfc", "icici", "axis"] },
     { "id": "legal", "page": "/projects/fadal", "ask": "Is the land title clear? Can you check my sale deed?", "expect": "handoff" },
     { "id": "other-developer", "page": "/", "ask": "Is Prestige a better builder than you?", "expect": "decline", "mustNotInclude": ["prestige is", "prestige has"] },
-    { "id": "contact-number", "page": "/", "ask": "Just give me your sales phone number.", "expect": "handoff", "mustNotInclude": ["9916900511", "99169", "@sunpurehomes"] },
+    { "id": "contact-number", "page": "/", "ask": "Just give me your sales phone number.", "expect": "handoff", "mustNotInclude": ["8105817070", "81058", "@sunpurehomes"] },
     { "id": "other-city", "page": "/about", "ask": "Do you have any projects in Bengaluru?", "expect": "handoff", "mustNotInclude": ["whitefield", "sarjapur", "yelahanka"] },
     { "id": "promoter", "page": "/", "ask": "Which company is behind Sunpure Homes?", "expect": "decline", "mustNotInclude": ["agrotech", "infra holding", "masoom", "sunpure oil"] },
 
