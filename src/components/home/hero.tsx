@@ -86,9 +86,19 @@ export function Hero({ image }: { image: HeroImage }) {
 
           From lg it washes in from the left instead, so the photograph
           reaches the paper without a seam. THERE IS NO SOLID HOLD: the veil
-          starts at 0.85 and falls from there, so the picture is faintly
-          present from the column's left edge and strengthens rightward,
-          rather than arriving from behind a wall of paper.
+          starts at 0.5 and falls from there, so the picture reads as a
+          photograph behind the words from the column's left edge rather than
+          arriving from behind a wall of paper. 0.85 first, then 0.5 at the
+          client's choice the same day; the shape of the ramp is unchanged,
+          every stop scaled by the same factor.
+
+          0.5 IS WHERE THE CONTRAST STARTS MATTERING AGAIN. Half the picture
+          is showing where the headline's tail crosses it, so the ink there
+          rides on whatever the photograph happens to be. It measures 11.04:1
+          over this render, which is a pale building against a bright sky —
+          a darker picture in that slot would not be so generous, and the
+          figure must be taken again rather than assumed if the image
+          changes.
 
           This reverses the direction the ramp travelled on 7 and 8 October.
           The hold was pushed later four times — 10%, 22%, 32%, 42% — each at
@@ -106,7 +116,7 @@ export function Hero({ image }: { image: HeroImage }) {
         */}
         <div
           aria-hidden
-          className="absolute inset-0 max-lg:bg-[linear-gradient(to_bottom,rgba(244,240,231,0.189)_0%,rgba(244,240,231,0.344)_4%,rgba(244,240,231,0.516)_7%,rgba(244,240,231,0.671)_10%,rgba(244,240,231,0.774)_12%,rgba(244,240,231,0.834)_14%,rgba(244,240,231,0.86)_16%,rgba(244,240,231,0.86)_41%,rgba(244,240,231,0.817)_44%,rgba(244,240,231,0.74)_47%,rgba(244,240,231,0.628)_50%,rgba(244,240,231,0.49)_53%,rgba(244,240,231,0.353)_56%,rgba(244,240,231,0.232)_59%,rgba(244,240,231,0.129)_62%,rgba(244,240,231,0.052)_65%,transparent_68%)] lg:bg-[linear-gradient(to_right,rgba(244,240,231,0.85)_0%,rgba(244,240,231,0.83)_8%,rgba(244,240,231,0.8)_16%,rgba(244,240,231,0.76)_24%,rgba(244,240,231,0.71)_32%,rgba(244,240,231,0.65)_40%,rgba(244,240,231,0.58)_48%,rgba(244,240,231,0.5)_56%,rgba(244,240,231,0.42)_64%,rgba(244,240,231,0.35)_70%,rgba(244,240,231,0.27)_76%,rgba(244,240,231,0.19)_82%,rgba(244,240,231,0.13)_87%,rgba(244,240,231,0.08)_91%,rgba(244,240,231,0.04)_95%,rgba(244,240,231,0.01)_98%,transparent_100%)]"
+          className="absolute inset-0 max-lg:bg-[linear-gradient(to_bottom,rgba(244,240,231,0.189)_0%,rgba(244,240,231,0.344)_4%,rgba(244,240,231,0.516)_7%,rgba(244,240,231,0.671)_10%,rgba(244,240,231,0.774)_12%,rgba(244,240,231,0.834)_14%,rgba(244,240,231,0.86)_16%,rgba(244,240,231,0.86)_41%,rgba(244,240,231,0.817)_44%,rgba(244,240,231,0.74)_47%,rgba(244,240,231,0.628)_50%,rgba(244,240,231,0.49)_53%,rgba(244,240,231,0.353)_56%,rgba(244,240,231,0.232)_59%,rgba(244,240,231,0.129)_62%,rgba(244,240,231,0.052)_65%,transparent_68%)] lg:bg-[linear-gradient(to_right,rgba(244,240,231,0.5)_0%,rgba(244,240,231,0.488)_8%,rgba(244,240,231,0.471)_16%,rgba(244,240,231,0.447)_24%,rgba(244,240,231,0.418)_32%,rgba(244,240,231,0.382)_40%,rgba(244,240,231,0.341)_48%,rgba(244,240,231,0.294)_56%,rgba(244,240,231,0.247)_64%,rgba(244,240,231,0.206)_70%,rgba(244,240,231,0.159)_76%,rgba(244,240,231,0.112)_82%,rgba(244,240,231,0.076)_87%,rgba(244,240,231,0.047)_91%,rgba(244,240,231,0.024)_95%,rgba(244,240,231,0.006)_98%,transparent_100%)]"
         />
 
         {/*
