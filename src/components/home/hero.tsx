@@ -86,22 +86,28 @@ export function Hero({ image }: { image: HeroImage }) {
 
           From lg it washes in from the left instead, so the photograph
           reaches the paper without a seam. The ramp runs the whole column and
-          is deliberately late: solid paper across the first THIRD of it,
-          still at 0.85 past halfway, and gone only at the far edge.
+          is very late: solid paper across the first 42% of it, 0.85 at 62%,
+          and gone only at the far edge. In screen terms the photograph does
+          not begin to show until 59% across and carries the right third of
+          the frame alone.
 
-          The hold has been pushed later three times — 10%, then 22%, then
-          32% — each time at the client asking for the left to be "more
-          transparent". In their use that means MORE VEILED: more paper over
-          the picture, not more picture showing through. The one change that
-          read it the other way, a 0.9 ceiling so the photograph ghosted
-          through behind the words, was asked for and reverted the same day
-          (7be1c23). Worth knowing before reading the word again. Eighteen stops, for the same reason
+          The hold has been pushed later FOUR times — 10%, 22%, 32%, 42% —
+          each at the client asking for the left to be "more transparent". In
+          their use that means MORE VEILED: more paper over the picture, not
+          more picture showing through. The one change that read it the other
+          way, a 0.9 ceiling so the photograph ghosted through behind the
+          words, was asked for and reverted the same day (7be1c23).
+
+          There is not much further this can go. Past about 50% the picture
+          is a sliver at the right edge and the hero is a page of paper with a
+          photograph in the corner; at that point the thing to change is the
+          column width or the picture, not this ramp. Eighteen stops, for the same reason
           the phone ramp has eighteen: three would draw a straight line and
           the eye reads a straight line as an edge.
         */}
         <div
           aria-hidden
-          className="absolute inset-0 max-lg:bg-[linear-gradient(to_bottom,rgba(244,240,231,0.189)_0%,rgba(244,240,231,0.344)_4%,rgba(244,240,231,0.516)_7%,rgba(244,240,231,0.671)_10%,rgba(244,240,231,0.774)_12%,rgba(244,240,231,0.834)_14%,rgba(244,240,231,0.86)_16%,rgba(244,240,231,0.86)_41%,rgba(244,240,231,0.817)_44%,rgba(244,240,231,0.74)_47%,rgba(244,240,231,0.628)_50%,rgba(244,240,231,0.49)_53%,rgba(244,240,231,0.353)_56%,rgba(244,240,231,0.232)_59%,rgba(244,240,231,0.129)_62%,rgba(244,240,231,0.052)_65%,transparent_68%)] lg:bg-[linear-gradient(to_right,rgba(244,240,231,1)_0%,rgba(244,240,231,1)_32%,rgba(244,240,231,0.99)_36%,rgba(244,240,231,0.97)_40%,rgba(244,240,231,0.94)_44%,rgba(244,240,231,0.9)_48%,rgba(244,240,231,0.85)_52%,rgba(244,240,231,0.79)_56%,rgba(244,240,231,0.72)_60%,rgba(244,240,231,0.64)_64%,rgba(244,240,231,0.55)_68%,rgba(244,240,231,0.46)_72%,rgba(244,240,231,0.37)_76%,rgba(244,240,231,0.29)_80%,rgba(244,240,231,0.21)_84%,rgba(244,240,231,0.14)_88%,rgba(244,240,231,0.08)_92%,rgba(244,240,231,0.03)_96%,transparent_100%)]"
+          className="absolute inset-0 max-lg:bg-[linear-gradient(to_bottom,rgba(244,240,231,0.189)_0%,rgba(244,240,231,0.344)_4%,rgba(244,240,231,0.516)_7%,rgba(244,240,231,0.671)_10%,rgba(244,240,231,0.774)_12%,rgba(244,240,231,0.834)_14%,rgba(244,240,231,0.86)_16%,rgba(244,240,231,0.86)_41%,rgba(244,240,231,0.817)_44%,rgba(244,240,231,0.74)_47%,rgba(244,240,231,0.628)_50%,rgba(244,240,231,0.49)_53%,rgba(244,240,231,0.353)_56%,rgba(244,240,231,0.232)_59%,rgba(244,240,231,0.129)_62%,rgba(244,240,231,0.052)_65%,transparent_68%)] lg:bg-[linear-gradient(to_right,rgba(244,240,231,1)_0%,rgba(244,240,231,1)_42%,rgba(244,240,231,0.99)_46%,rgba(244,240,231,0.97)_50%,rgba(244,240,231,0.94)_54%,rgba(244,240,231,0.9)_58%,rgba(244,240,231,0.85)_62%,rgba(244,240,231,0.78)_66%,rgba(244,240,231,0.7)_70%,rgba(244,240,231,0.61)_74%,rgba(244,240,231,0.51)_78%,rgba(244,240,231,0.41)_82%,rgba(244,240,231,0.31)_86%,rgba(244,240,231,0.22)_90%,rgba(244,240,231,0.15)_93%,rgba(244,240,231,0.09)_96%,rgba(244,240,231,0.04)_98%,transparent_100%)]"
         />
 
         {/*
