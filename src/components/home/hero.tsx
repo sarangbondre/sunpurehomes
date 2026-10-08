@@ -66,7 +66,7 @@ export function Hero({ image }: { image: HeroImage }) {
         washes live inside it so they travel with it and cannot be left
         covering paper when the column narrows.
       */}
-      <div className="absolute inset-0 -z-10 lg:left-auto lg:w-[70%]">
+      <div className="absolute inset-0 -z-10 lg:left-auto lg:w-[70%] lg:[mask-image:linear-gradient(to_right,rgba(0,0,0,0)_0%,rgba(0,0,0,0.08)_2%,rgba(0,0,0,0.17)_4%,rgba(0,0,0,0.26)_6%,rgba(0,0,0,0.34)_8%,rgba(0,0,0,0.42)_10%,rgba(0,0,0,0.49)_12%,rgba(0,0,0,0.55)_16%,rgba(0,0,0,0.6)_20%,rgba(0,0,0,0.66)_26%,rgba(0,0,0,0.72)_32%,rgba(0,0,0,0.78)_40%,rgba(0,0,0,0.85)_50%,rgba(0,0,0,0.91)_60%,rgba(0,0,0,0.96)_72%,rgba(0,0,0,0.99)_85%,rgba(0,0,0,1)_100%)] lg:[-webkit-mask-image:linear-gradient(to_right,rgba(0,0,0,0)_0%,rgba(0,0,0,0.08)_2%,rgba(0,0,0,0.17)_4%,rgba(0,0,0,0.26)_6%,rgba(0,0,0,0.34)_8%,rgba(0,0,0,0.42)_10%,rgba(0,0,0,0.49)_12%,rgba(0,0,0,0.55)_16%,rgba(0,0,0,0.6)_20%,rgba(0,0,0,0.66)_26%,rgba(0,0,0,0.72)_32%,rgba(0,0,0,0.78)_40%,rgba(0,0,0,0.85)_50%,rgba(0,0,0,0.91)_60%,rgba(0,0,0,0.96)_72%,rgba(0,0,0,0.99)_85%,rgba(0,0,0,1)_100%)]">
         <Image
           src={image.src}
           alt={image.alt}
@@ -84,39 +84,34 @@ export function Hero({ image }: { image: HeroImage }) {
           top, a long eased ramp, and nothing at all over the lower half, so
           the picture is the background rather than a strip under it.
 
-          From lg it washes in from the left instead, so the photograph
-          reaches the paper without a seam. THERE IS NO SOLID HOLD: the veil
-          starts at 0.5 and falls from there, so the picture reads as a
-          photograph behind the words from the column's left edge rather than
-          arriving from behind a wall of paper. 0.85 first, then 0.5 at the
-          client's choice the same day; the shape of the ramp is unchanged,
-          every stop scaled by the same factor.
+          From lg the picture FADES OUT ALONG ITS OWN LEFT EDGE, with a
+          mask on the element rather than paper laid over it.
 
-          0.5 IS WHERE THE CONTRAST STARTS MATTERING AGAIN. Half the picture
-          is showing where the headline's tail crosses it, so the ink there
-          rides on whatever the photograph happens to be. It measures 11.04:1
-          over this render, which is a pale building against a bright sky —
-          a darker picture in that slot would not be so generous, and the
-          figure must be taken again rather than assumed if the image
-          changes.
+          That distinction is the whole of this. A wash painted inside the
+          column can only soften what is already inside it; it cannot touch
+          the column's own boundary. While the wash started at full paper the
+          boundary was hidden underneath it and nobody saw the problem. The
+          moment the client took the veil down to 0.5 the edge appeared as a
+          hard vertical line at 30% of the screen — exactly the straight line
+          every other ramp in this file exists to avoid — and no adjustment
+          of the wash could have removed it, because the wash was on the
+          wrong side of the edge.
 
-          This reverses the direction the ramp travelled on 7 and 8 October.
-          The hold was pushed later four times — 10%, 22%, 32%, 42% — each at
-          the client asking for the picture to be "more transparent", which
-          was read as more paper over it. On 8 October they said they wanted
-          the exact opposite: the IMAGE see-through, not hidden. So the hold
-          is gone and the ceiling is below 1 everywhere.
+          The mask ramps the image's own alpha instead: nothing at the left
+          edge, about half by 12% of the column, the full photograph by the
+          right. Seventeen stops, for the usual reason. -webkit- as well,
+          because Safari still wants the prefix.
 
-          Which way the word pointed had been inferred from the only
-          correction available — a 0.9 ceiling asked for and reverted the same
-          morning — and the inference was wrong. Recorded rather than quietly
-          fixed, because the next person will read the word too. Eighteen stops, for the same reason
+          There is no paper gradient at lg any more. The mask does both jobs,
+          and two overlapping fades would be two curves to keep in step.
+
+          Eighteen stops, for the same reason
           the phone ramp has eighteen: three would draw a straight line and
           the eye reads a straight line as an edge.
         */}
         <div
           aria-hidden
-          className="absolute inset-0 max-lg:bg-[linear-gradient(to_bottom,rgba(244,240,231,0.189)_0%,rgba(244,240,231,0.344)_4%,rgba(244,240,231,0.516)_7%,rgba(244,240,231,0.671)_10%,rgba(244,240,231,0.774)_12%,rgba(244,240,231,0.834)_14%,rgba(244,240,231,0.86)_16%,rgba(244,240,231,0.86)_41%,rgba(244,240,231,0.817)_44%,rgba(244,240,231,0.74)_47%,rgba(244,240,231,0.628)_50%,rgba(244,240,231,0.49)_53%,rgba(244,240,231,0.353)_56%,rgba(244,240,231,0.232)_59%,rgba(244,240,231,0.129)_62%,rgba(244,240,231,0.052)_65%,transparent_68%)] lg:bg-[linear-gradient(to_right,rgba(244,240,231,0.5)_0%,rgba(244,240,231,0.488)_8%,rgba(244,240,231,0.471)_16%,rgba(244,240,231,0.447)_24%,rgba(244,240,231,0.418)_32%,rgba(244,240,231,0.382)_40%,rgba(244,240,231,0.341)_48%,rgba(244,240,231,0.294)_56%,rgba(244,240,231,0.247)_64%,rgba(244,240,231,0.206)_70%,rgba(244,240,231,0.159)_76%,rgba(244,240,231,0.112)_82%,rgba(244,240,231,0.076)_87%,rgba(244,240,231,0.047)_91%,rgba(244,240,231,0.024)_95%,rgba(244,240,231,0.006)_98%,transparent_100%)]"
+          className="absolute inset-0 max-lg:bg-[linear-gradient(to_bottom,rgba(244,240,231,0.189)_0%,rgba(244,240,231,0.344)_4%,rgba(244,240,231,0.516)_7%,rgba(244,240,231,0.671)_10%,rgba(244,240,231,0.774)_12%,rgba(244,240,231,0.834)_14%,rgba(244,240,231,0.86)_16%,rgba(244,240,231,0.86)_41%,rgba(244,240,231,0.817)_44%,rgba(244,240,231,0.74)_47%,rgba(244,240,231,0.628)_50%,rgba(244,240,231,0.49)_53%,rgba(244,240,231,0.353)_56%,rgba(244,240,231,0.232)_59%,rgba(244,240,231,0.129)_62%,rgba(244,240,231,0.052)_65%,transparent_68%)]"
         />
 
         {/*
