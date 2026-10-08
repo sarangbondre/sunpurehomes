@@ -85,29 +85,28 @@ export function Hero({ image }: { image: HeroImage }) {
           the picture is the background rather than a strip under it.
 
           From lg it washes in from the left instead, so the photograph
-          reaches the paper without a seam. The ramp runs the whole column and
-          is very late: solid paper across the first 42% of it, 0.85 at 62%,
-          and gone only at the far edge. In screen terms the photograph does
-          not begin to show until 59% across and carries the right third of
-          the frame alone.
+          reaches the paper without a seam. THERE IS NO SOLID HOLD: the veil
+          starts at 0.85 and falls from there, so the picture is faintly
+          present from the column's left edge and strengthens rightward,
+          rather than arriving from behind a wall of paper.
 
-          The hold has been pushed later FOUR times — 10%, 22%, 32%, 42% —
-          each at the client asking for the left to be "more transparent". In
-          their use that means MORE VEILED: more paper over the picture, not
-          more picture showing through. The one change that read it the other
-          way, a 0.9 ceiling so the photograph ghosted through behind the
-          words, was asked for and reverted the same day (7be1c23).
+          This reverses the direction the ramp travelled on 7 and 8 October.
+          The hold was pushed later four times — 10%, 22%, 32%, 42% — each at
+          the client asking for the picture to be "more transparent", which
+          was read as more paper over it. On 8 October they said they wanted
+          the exact opposite: the IMAGE see-through, not hidden. So the hold
+          is gone and the ceiling is below 1 everywhere.
 
-          There is not much further this can go. Past about 50% the picture
-          is a sliver at the right edge and the hero is a page of paper with a
-          photograph in the corner; at that point the thing to change is the
-          column width or the picture, not this ramp. Eighteen stops, for the same reason
+          Which way the word pointed had been inferred from the only
+          correction available — a 0.9 ceiling asked for and reverted the same
+          morning — and the inference was wrong. Recorded rather than quietly
+          fixed, because the next person will read the word too. Eighteen stops, for the same reason
           the phone ramp has eighteen: three would draw a straight line and
           the eye reads a straight line as an edge.
         */}
         <div
           aria-hidden
-          className="absolute inset-0 max-lg:bg-[linear-gradient(to_bottom,rgba(244,240,231,0.189)_0%,rgba(244,240,231,0.344)_4%,rgba(244,240,231,0.516)_7%,rgba(244,240,231,0.671)_10%,rgba(244,240,231,0.774)_12%,rgba(244,240,231,0.834)_14%,rgba(244,240,231,0.86)_16%,rgba(244,240,231,0.86)_41%,rgba(244,240,231,0.817)_44%,rgba(244,240,231,0.74)_47%,rgba(244,240,231,0.628)_50%,rgba(244,240,231,0.49)_53%,rgba(244,240,231,0.353)_56%,rgba(244,240,231,0.232)_59%,rgba(244,240,231,0.129)_62%,rgba(244,240,231,0.052)_65%,transparent_68%)] lg:bg-[linear-gradient(to_right,rgba(244,240,231,1)_0%,rgba(244,240,231,1)_42%,rgba(244,240,231,0.99)_46%,rgba(244,240,231,0.97)_50%,rgba(244,240,231,0.94)_54%,rgba(244,240,231,0.9)_58%,rgba(244,240,231,0.85)_62%,rgba(244,240,231,0.78)_66%,rgba(244,240,231,0.7)_70%,rgba(244,240,231,0.61)_74%,rgba(244,240,231,0.51)_78%,rgba(244,240,231,0.41)_82%,rgba(244,240,231,0.31)_86%,rgba(244,240,231,0.22)_90%,rgba(244,240,231,0.15)_93%,rgba(244,240,231,0.09)_96%,rgba(244,240,231,0.04)_98%,transparent_100%)]"
+          className="absolute inset-0 max-lg:bg-[linear-gradient(to_bottom,rgba(244,240,231,0.189)_0%,rgba(244,240,231,0.344)_4%,rgba(244,240,231,0.516)_7%,rgba(244,240,231,0.671)_10%,rgba(244,240,231,0.774)_12%,rgba(244,240,231,0.834)_14%,rgba(244,240,231,0.86)_16%,rgba(244,240,231,0.86)_41%,rgba(244,240,231,0.817)_44%,rgba(244,240,231,0.74)_47%,rgba(244,240,231,0.628)_50%,rgba(244,240,231,0.49)_53%,rgba(244,240,231,0.353)_56%,rgba(244,240,231,0.232)_59%,rgba(244,240,231,0.129)_62%,rgba(244,240,231,0.052)_65%,transparent_68%)] lg:bg-[linear-gradient(to_right,rgba(244,240,231,0.85)_0%,rgba(244,240,231,0.83)_8%,rgba(244,240,231,0.8)_16%,rgba(244,240,231,0.76)_24%,rgba(244,240,231,0.71)_32%,rgba(244,240,231,0.65)_40%,rgba(244,240,231,0.58)_48%,rgba(244,240,231,0.5)_56%,rgba(244,240,231,0.42)_64%,rgba(244,240,231,0.35)_70%,rgba(244,240,231,0.27)_76%,rgba(244,240,231,0.19)_82%,rgba(244,240,231,0.13)_87%,rgba(244,240,231,0.08)_91%,rgba(244,240,231,0.04)_95%,rgba(244,240,231,0.01)_98%,transparent_100%)]"
         />
 
         {/*
