@@ -111,7 +111,7 @@ export function Hero({ image }: { image: HeroImage }) {
         */}
         <div
           aria-hidden
-          className="absolute inset-0 max-lg:bg-[linear-gradient(to_bottom,rgba(244,240,231,0.189)_0%,rgba(244,240,231,0.344)_4%,rgba(244,240,231,0.516)_7%,rgba(244,240,231,0.671)_10%,rgba(244,240,231,0.774)_12%,rgba(244,240,231,0.834)_14%,rgba(244,240,231,0.86)_16%,rgba(244,240,231,0.86)_41%,rgba(244,240,231,0.817)_44%,rgba(244,240,231,0.74)_47%,rgba(244,240,231,0.628)_50%,rgba(244,240,231,0.49)_53%,rgba(244,240,231,0.353)_56%,rgba(244,240,231,0.232)_59%,rgba(244,240,231,0.129)_62%,rgba(244,240,231,0.052)_65%,transparent_68%)]"
+          className="absolute inset-0 max-lg:bg-[linear-gradient(to_bottom,rgba(244,240,231,0.11)_0%,rgba(244,240,231,0.2)_4%,rgba(244,240,231,0.3)_7%,rgba(244,240,231,0.39)_10%,rgba(244,240,231,0.45)_12%,rgba(244,240,231,0.48)_14%,rgba(244,240,231,0.5)_16%,rgba(244,240,231,0.5)_41%,rgba(244,240,231,0.475)_44%,rgba(244,240,231,0.43)_47%,rgba(244,240,231,0.365)_50%,rgba(244,240,231,0.285)_53%,rgba(244,240,231,0.205)_56%,rgba(244,240,231,0.135)_59%,rgba(244,240,231,0.075)_62%,rgba(244,240,231,0.03)_65%,transparent_68%)]"
         />
 
         {/*
@@ -139,6 +139,31 @@ export function Hero({ image }: { image: HeroImage }) {
         The text column. 46% from lg, against the picture's 70%: they overlap
         by 16% of the screen, and that overlap is where the wash lives.
       */}
+      {/*
+        A ground behind the headline, phones only.
+
+        The base veil is 0.5 there now, to match what the picture does on a
+        wide screen, and 0.5 is not survivable for "Deeply Lived." on its own:
+        the darkest pixel of this render under those words is (8,0,0) — a
+        window reveal — and laterite over it at 0.5 measures 1.27:1 against
+        the 3:1 it owes. So the words carry their own ground and the rest of
+        the frame does not have to.
+
+        It is sized to the whole text block, not to its centre. A first
+        attempt centred a smaller ellipse on the headline and reached only
+        2.32:1, because the worst pixel is at the END of the line where a
+        radial has already fallen away. This one holds above 0.55 across the
+        full 291 by 115 of the type and fades to nothing past it.
+
+        Its left and right edges sit outside the viewport on purpose, so the
+        only edges that can be seen are the top and bottom, and closest-side
+        puts those exactly where the ramp reaches zero. Nothing to find.
+      */}
+      <div
+        aria-hidden
+        className="pointer-events-none absolute -left-[80px] top-[64px] -z-10 h-[200px] w-[500px] bg-[radial-gradient(ellipse_closest-side_at_center,rgba(244,240,231,0.86)_0%,rgba(244,240,231,0.84)_30%,rgba(244,240,231,0.79)_45%,rgba(244,240,231,0.72)_55%,rgba(244,240,231,0.62)_65%,rgba(244,240,231,0.47)_75%,rgba(244,240,231,0.3)_85%,rgba(244,240,231,0.14)_93%,transparent_100%)] lg:hidden"
+      />
+
       <div className="flex min-h-svh flex-col px-6 pb-16 pt-28 sm:px-10 sm:pt-32 lg:max-w-[46%] lg:justify-center lg:pb-28 lg:pl-16 lg:pr-10 lg:pt-28 lg:[@media(max-height:700px)]:pb-16">
         <div className="relative">
           {/*
