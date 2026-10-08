@@ -70,16 +70,35 @@ export const site = {
     phoneDisplay: "+91 81058 17070",
   },
 
+  /*
+    All four re-sent by the client on 8 October and set exactly as given.
+    Instagram and YouTube were already identical; Facebook gained the
+    trailing slash it was sent with.
+  */
   social: {
     instagram: "https://www.instagram.com/sunpurehomes/",
-    facebook: "https://www.facebook.com/sunpurehomesmysore",
+    facebook: "https://www.facebook.com/sunpurehomesmysore/",
     youtube: "https://www.youtube.com/@sunpurehomesmysore",
     /**
-     * Canonical, confirmed by the client 2026-08-29. The live site shows a
-     * second URL (/company/sunpure-homes-mysore/) in one of its two footers
-     * (BRIEF.md §2, defect 8) — that one is retired. Use this everywhere.
+     * THIS IS A MEMBER PROFILE, NOT A COMPANY PAGE. /in/ is a person on
+     * LinkedIn; /company/ is an organisation. It replaces
+     * /company/sunpure-homes, which this file had carried as canonical since
+     * the client confirmed it on 2026-08-29, and which in turn replaced
+     * /company/sunpure-homes-mysore/ from the old site's footer. That is
+     * three LinkedIn URLs for one business, and the client has now picked the
+     * one that is not a company page.
+     *
+     * It is set as instructed — they know which account they post from — but
+     * it is worth their knowing what the difference costs: a visitor can
+     * follow a company page, and the footer's other three marks all lead to
+     * accounts a business posts from. A profile asks for a connection
+     * instead. See openQuestions.
+     *
+     * Both URLs were opened from a signed-out browser on 8 October and both
+     * were bounced to LinkedIn's sign-up wall, so nothing could be told apart
+     * that way; the difference above is structural, not observed.
      */
-    linkedin: "https://www.linkedin.com/company/sunpure-homes",
+    linkedin: "https://www.linkedin.com/in/sunpure-homes-a87a4a431",
   },
 } as const;
 
@@ -89,6 +108,7 @@ export const site = {
  */
 export const openQuestions: readonly string[] = [
   "The brochures on the Drive carry four different sales numbers between them: +91 99722 75566 (Fadal, Meraki, Happiness II), +91 77900 88900 (Curve, Meraki), +91 81058 17070 (Rare Earth) and +91 90147 81478 (Fadal). The site published +91 99169 00511 from 15 September 2026 until 7 October, when the client replaced it with +91 81058 17070 — the Rare Earth number, and the first time the published number has matched any brochure. Three brochure numbers are still unaccounted for. Confirm whether any project needs its own number as well, and whether the brochures should be reprinted to agree with the site.",
+  "LinkedIn is now a member profile (/in/sunpure-homes-a87a4a431), set at the client's instruction on 8 October. It replaced /company/sunpure-homes, which replaced /company/sunpure-homes-mysore/ from the old site — three URLs for one business. A profile cannot be followed the way a company page can, and the footer's other three marks all point at accounts a business posts from. Confirm this is the account they want the site to send people to, and retire the other two.",
   "The privacy policy at /privacy is interim text written from what the site does. It names no legal entity, no grievance officer and no retention period, because none is confirmed. Send the client's approved policy, or those three facts.",
   "Happiness 2's description says its villas are 2,543 sq ft, but the brochure's floor-by-floor figures put them at 2,167–3,520 sq ft built-up. Arka answers from the floor-by-floor figures and does not repeat the 2,543. Confirm which the page should say.",
   "The About page now says Sunpure Homes build beyond Mysuru, at the client's instruction on 15 September 2026. All nine developments on this site are in Mysuru, so nothing names the other places. Send the cities, and they can be said plainly instead of in the abstract.",
