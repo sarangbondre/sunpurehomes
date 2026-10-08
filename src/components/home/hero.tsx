@@ -86,21 +86,22 @@ export function Hero({ image }: { image: HeroImage }) {
 
           From lg it washes in from the left instead, so the photograph
           reaches the paper without a seam. The ramp runs the whole column and
-          is deliberately late: solid paper to 22%, still at 0.85 halfway
-          across, and only gone at the far edge.
+          is deliberately late: solid paper across the first THIRD of it,
+          still at 0.85 past halfway, and gone only at the far edge.
 
-          The client asked twice on 7 October for more of it, the second time
-          as "more transparent after Thoughtfully Built" — which is the stretch
-          of picture immediately right of the headline, where the ramp used to
-          have fallen to 0.6 by the time it got there and the building was
-          already competing with the words. It holds above 0.9 across that
-          stretch now and the picture resolves in the last third of the frame. Eighteen stops, for the same reason
+          The hold has been pushed later three times — 10%, then 22%, then
+          32% — each time at the client asking for the left to be "more
+          transparent". In their use that means MORE VEILED: more paper over
+          the picture, not more picture showing through. The one change that
+          read it the other way, a 0.9 ceiling so the photograph ghosted
+          through behind the words, was asked for and reverted the same day
+          (7be1c23). Worth knowing before reading the word again. Eighteen stops, for the same reason
           the phone ramp has eighteen: three would draw a straight line and
           the eye reads a straight line as an edge.
         */}
         <div
           aria-hidden
-          className="absolute inset-0 max-lg:bg-[linear-gradient(to_bottom,rgba(244,240,231,0.189)_0%,rgba(244,240,231,0.344)_4%,rgba(244,240,231,0.516)_7%,rgba(244,240,231,0.671)_10%,rgba(244,240,231,0.774)_12%,rgba(244,240,231,0.834)_14%,rgba(244,240,231,0.86)_16%,rgba(244,240,231,0.86)_41%,rgba(244,240,231,0.817)_44%,rgba(244,240,231,0.74)_47%,rgba(244,240,231,0.628)_50%,rgba(244,240,231,0.49)_53%,rgba(244,240,231,0.353)_56%,rgba(244,240,231,0.232)_59%,rgba(244,240,231,0.129)_62%,rgba(244,240,231,0.052)_65%,transparent_68%)] lg:bg-[linear-gradient(to_right,rgba(244,240,231,1)_0%,rgba(244,240,231,1)_22%,rgba(244,240,231,0.99)_27%,rgba(244,240,231,0.97)_32%,rgba(244,240,231,0.94)_37%,rgba(244,240,231,0.90)_42%,rgba(244,240,231,0.85)_47%,rgba(244,240,231,0.79)_52%,rgba(244,240,231,0.72)_57%,rgba(244,240,231,0.64)_62%,rgba(244,240,231,0.55)_67%,rgba(244,240,231,0.46)_72%,rgba(244,240,231,0.37)_77%,rgba(244,240,231,0.28)_82%,rgba(244,240,231,0.20)_87%,rgba(244,240,231,0.13)_91%,rgba(244,240,231,0.07)_95%,rgba(244,240,231,0.03)_98%,transparent_100%)]"
+          className="absolute inset-0 max-lg:bg-[linear-gradient(to_bottom,rgba(244,240,231,0.189)_0%,rgba(244,240,231,0.344)_4%,rgba(244,240,231,0.516)_7%,rgba(244,240,231,0.671)_10%,rgba(244,240,231,0.774)_12%,rgba(244,240,231,0.834)_14%,rgba(244,240,231,0.86)_16%,rgba(244,240,231,0.86)_41%,rgba(244,240,231,0.817)_44%,rgba(244,240,231,0.74)_47%,rgba(244,240,231,0.628)_50%,rgba(244,240,231,0.49)_53%,rgba(244,240,231,0.353)_56%,rgba(244,240,231,0.232)_59%,rgba(244,240,231,0.129)_62%,rgba(244,240,231,0.052)_65%,transparent_68%)] lg:bg-[linear-gradient(to_right,rgba(244,240,231,1)_0%,rgba(244,240,231,1)_32%,rgba(244,240,231,0.99)_36%,rgba(244,240,231,0.97)_40%,rgba(244,240,231,0.94)_44%,rgba(244,240,231,0.9)_48%,rgba(244,240,231,0.85)_52%,rgba(244,240,231,0.79)_56%,rgba(244,240,231,0.72)_60%,rgba(244,240,231,0.64)_64%,rgba(244,240,231,0.55)_68%,rgba(244,240,231,0.46)_72%,rgba(244,240,231,0.37)_76%,rgba(244,240,231,0.29)_80%,rgba(244,240,231,0.21)_84%,rgba(244,240,231,0.14)_88%,rgba(244,240,231,0.08)_92%,rgba(244,240,231,0.03)_96%,transparent_100%)]"
         />
 
         {/*
