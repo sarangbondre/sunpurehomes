@@ -85,18 +85,9 @@ export function Hero({ image }: { image: HeroImage }) {
           the picture is the background rather than a strip under it.
 
           From lg it washes in from the left instead, so the photograph
-          reaches the paper without a seam. The ramp runs the whole column, is
-          deliberately late — still at 0.76 halfway across, gone only at the
-          far edge — and it NEVER REACHES 1. It peaks at 0.9, at the client's
-          instruction of 8 October: they asked for the picture to stay faintly
-          there behind the words rather than be hidden outright, so a tenth of
-          it shows through everywhere the wash covers.
-
-          That tenth is what the contrast figures now ride on. The text column
-          is the left 46% and the picture starts at 30%, so only the right end
-          of "Thoughtfully Built," overlaps it at all — but it does overlap,
-          and the measurement below is taken with that in mind rather than
-          assumed from the layout.
+          reaches the paper without a seam. The ramp runs the whole column and
+          is deliberately late: solid paper to 22%, still at 0.85 halfway
+          across, and only gone at the far edge.
 
           The client asked twice on 7 October for more of it, the second time
           as "more transparent after Thoughtfully Built" — which is the stretch
@@ -109,7 +100,7 @@ export function Hero({ image }: { image: HeroImage }) {
         */}
         <div
           aria-hidden
-          className="absolute inset-0 max-lg:bg-[linear-gradient(to_bottom,rgba(244,240,231,0.189)_0%,rgba(244,240,231,0.344)_4%,rgba(244,240,231,0.516)_7%,rgba(244,240,231,0.671)_10%,rgba(244,240,231,0.774)_12%,rgba(244,240,231,0.834)_14%,rgba(244,240,231,0.86)_16%,rgba(244,240,231,0.86)_41%,rgba(244,240,231,0.817)_44%,rgba(244,240,231,0.74)_47%,rgba(244,240,231,0.628)_50%,rgba(244,240,231,0.49)_53%,rgba(244,240,231,0.353)_56%,rgba(244,240,231,0.232)_59%,rgba(244,240,231,0.129)_62%,rgba(244,240,231,0.052)_65%,transparent_68%)] lg:bg-[linear-gradient(to_right,rgba(244,240,231,0.9)_0%,rgba(244,240,231,0.9)_22%,rgba(244,240,231,0.891)_27%,rgba(244,240,231,0.873)_32%,rgba(244,240,231,0.846)_37%,rgba(244,240,231,0.81)_42%,rgba(244,240,231,0.765)_47%,rgba(244,240,231,0.711)_52%,rgba(244,240,231,0.648)_57%,rgba(244,240,231,0.576)_62%,rgba(244,240,231,0.495)_67%,rgba(244,240,231,0.414)_72%,rgba(244,240,231,0.333)_77%,rgba(244,240,231,0.252)_82%,rgba(244,240,231,0.18)_87%,rgba(244,240,231,0.117)_91%,rgba(244,240,231,0.063)_95%,rgba(244,240,231,0.027)_98%,transparent_100%)]"
+          className="absolute inset-0 max-lg:bg-[linear-gradient(to_bottom,rgba(244,240,231,0.189)_0%,rgba(244,240,231,0.344)_4%,rgba(244,240,231,0.516)_7%,rgba(244,240,231,0.671)_10%,rgba(244,240,231,0.774)_12%,rgba(244,240,231,0.834)_14%,rgba(244,240,231,0.86)_16%,rgba(244,240,231,0.86)_41%,rgba(244,240,231,0.817)_44%,rgba(244,240,231,0.74)_47%,rgba(244,240,231,0.628)_50%,rgba(244,240,231,0.49)_53%,rgba(244,240,231,0.353)_56%,rgba(244,240,231,0.232)_59%,rgba(244,240,231,0.129)_62%,rgba(244,240,231,0.052)_65%,transparent_68%)] lg:bg-[linear-gradient(to_right,rgba(244,240,231,1)_0%,rgba(244,240,231,1)_22%,rgba(244,240,231,0.99)_27%,rgba(244,240,231,0.97)_32%,rgba(244,240,231,0.94)_37%,rgba(244,240,231,0.90)_42%,rgba(244,240,231,0.85)_47%,rgba(244,240,231,0.79)_52%,rgba(244,240,231,0.72)_57%,rgba(244,240,231,0.64)_62%,rgba(244,240,231,0.55)_67%,rgba(244,240,231,0.46)_72%,rgba(244,240,231,0.37)_77%,rgba(244,240,231,0.28)_82%,rgba(244,240,231,0.20)_87%,rgba(244,240,231,0.13)_91%,rgba(244,240,231,0.07)_95%,rgba(244,240,231,0.03)_98%,transparent_100%)]"
         />
 
         {/*
