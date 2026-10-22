@@ -137,13 +137,18 @@ export function SiteHeader() {
  * call to action, and the label still hides below sm so the row fits a
  * phone.
  *
- * THE LABEL IS INK NOW, WHERE IT WAS THE BRAND RED, AND THAT IS WHAT MAKES
- * THE GLASS POSSIBLE. #d40000 is 4.86:1 on solid paper — a margin of 0.36
- * over the 4.5:1 this size owes — so over a picture it could never be more
- * than a tenth transparent, and it spent the day being re-measured every
- * time a hero changed. Ink is 16:1 on paper and has contrast to spend, which
- * is why the landing button could always be glass and this one could not.
- * Put the red back and the tint has to go back to roughly 90% with it.
+ * THE LABEL IS INK, WHERE IT WAS THE BRAND ACCENT, AND THAT IS WHAT MAKES
+ * THE GLASS POSSIBLE. The red it was measured against, #d40000, is 4.86:1 on
+ * solid paper — a margin of 0.36 over the 4.5:1 this size owes — so over a
+ * picture it could never be more than a tenth transparent, and it spent a
+ * day being re-measured every time a hero changed. Ink is 16:1 on paper and
+ * has contrast to spend, which is why the landing button could always be
+ * glass and this one could not.
+ *
+ * On theme/indigo-test the accent is #353b75 at 9.08:1, which would have
+ * had room to stay. The label is left as ink even so: this branch is a
+ * colour test, and changing what the control is made of would make it a
+ * test of two things at once.
  *
  * The red has not left the control: it is what the pill fills with on hover,
  * where a solid fill makes paper-on-red a known 4.86:1 again.

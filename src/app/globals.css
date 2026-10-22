@@ -44,16 +44,26 @@
   /* Meaning-bearing */
   --color-canopy: #6f7b5a;
   /*
-    Ferrari red — Rosso Corsa — the primary accent since 16 September 2026,
-    at the client's instruction. It replaced the previous site's brand orange
-    (#f15b22). The token keeps its old name because it still carries the §8
-    meaning of laterite — villas, and "held" — so cards, chips, pins and the
-    3D scenes all follow.
+    INDIGO — A TEST, ON THE BRANCH theme/indigo-test ONLY. main still carries
+    the red. The client sent a magazine cover on 22 October 2026 and asked to
+    see the site in that colour.
 
-    On --paper it measures 4.86:1, which clears AA even for small text; the
-    orange managed only 2.95:1.
+    #353b75 is the pigment on that cover, measured rather than matched by
+    eye: the photograph was taken in poor light, so it was white-balanced
+    against the page's own paper first — the page read (218,213,207), and
+    correcting that to white turns the heap from a muddy (45,49,95) into this.
+
+    It replaces Ferrari red — Rosso Corsa — which had been the accent since
+    16 September at the client's instruction, and which replaced the old
+    site's brand orange (#f15b22) before that. The token keeps its name
+    because it still carries the §8 meaning of laterite — villas, and "held"
+    — so cards, chips, pins and the 3D scenes all follow it.
+
+    It is a long way clear on contrast: 9.08:1 on --paper and 8.09:1 on
+    --paper-2, where the red carried 4.86 and 4.33. Nothing on the site gets
+    harder to read by this change; several things get easier.
   */
-  --color-laterite: #d40000;
+  --color-laterite: #353b75;
   /*
     WhatsApp's green, a step deeper than the brand's #25d366 so the white
     mark on it clears 3:1 (3.1:1) — at #25d366 it was 2.0:1. Used only for the
@@ -79,12 +89,12 @@
   --color-amenity-plum: #6a4462;
   --color-amenity-plum-tint: #efe3ed;
   /*
-    The accent for text and controls. The same red, because Rosso Corsa
-    already passes on --paper — the orange needed a deepened stand-in
-    (#c0450f). Kept as its own token so it can be deepened again if red text
-    ever has to sit on a darker ground: on --paper-2 this red is 4.33:1.
+    The accent for text and controls. The same indigo, because it passes
+    everywhere with room to spare — on --paper-2 it is 8.09:1 where the red
+    was 4.33:1. Kept as its own token so it can be deepened independently if
+    accent text ever has to sit on a darker ground.
   */
-  --color-accent-ink: #d40000;
+  --color-accent-ink: #353b75;
   --color-stone: #c4bcac;
   --color-mist: #ded6c6;
 
