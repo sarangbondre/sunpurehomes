@@ -44,16 +44,18 @@ export type HeroImage = { src: string; alt: string };
  * The wash does a second job beyond looking like one canvas: it is why the
  * header can sit over the picture with no bar of its own and stay legible.
  *
- * On a phone the ground peaks at 0.86, raised from 0.7 on 7 October when the
- * client put an ungraded daylight render on this page. That picture has no
- * bright sky behind the type where the others did, and "Deeply Lived."
- * measured 2.25:1 against the 3:1 it owes as large text; 0.8 reached only
- * 2.85:1. The eighteen stops still ease the same way — every one was scaled
- * by the same factor — because three stops draw a straight line and the eye
+ * On a phone the ground peaks at 0.5, to match what the picture does on a
+ * wide screen — the client asked for 0.5 and it applies to both. That on its
+ * own is not survivable for "Deeply Lived.": the darkest pixel of this render
+ * under those words is (8,0,0), a window reveal, and laterite over it at 0.5
+ * measures 1.27:1 against the 3:1 it owes as large text. So the headline
+ * carries its own radial ground at 0.86 and the rest of the frame stays at
+ * 0.5, rather than lifting the whole veil to clear one line of type.
+ * Seventeen stops either way, because three draw a straight line and the eye
  * reads a straight line as an edge.
  *
- * The number belongs to the picture, not to a house style. Whoever changes
- * the image should re-measure rather than assume it.
+ * Both numbers belong to the picture, not to a house style. Whoever changes
+ * the image should re-measure rather than assume them.
  *
  * One picture, not a rotation: a plain server component with no client
  * JavaScript, and nothing that moves, so WCAG 2.2.2 does not apply.
@@ -104,10 +106,6 @@ export function Hero({ image }: { image: HeroImage }) {
 
           There is no paper gradient at lg any more. The mask does both jobs,
           and two overlapping fades would be two curves to keep in step.
-
-          Eighteen stops, for the same reason
-          the phone ramp has eighteen: three would draw a straight line and
-          the eye reads a straight line as an edge.
         */}
         <div
           aria-hidden
