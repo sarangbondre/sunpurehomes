@@ -1,11 +1,8 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { MailIcon, PhoneIcon, WhatsAppIcon } from "@/components/brand/icons";
-import { BrandCards, BrandCardsNote } from "@/components/brand/brand-cards";
 import { Section } from "@/components/ui/section";
 import { mailtoHref, telHref, whatsappHref } from "@/lib/links";
-import { getAllMaterialGroups } from "@/lib/partners";
-import { getAllProjects } from "@/lib/content";
 import { site } from "@/lib/site";
 
 export const metadata: Metadata = {
@@ -29,13 +26,6 @@ export const metadata: Metadata = {
  * Send the titles and the section goes in.
  */
 export default function AboutPage() {
-  /*
-    Every brand the nine projects name between them, not the site-wide list
-    of nine this page showed until 7 October. See getAllMaterialGroups for
-    which of the two sources wins where they disagree.
-  */
-  const brands = getAllMaterialGroups(getAllProjects());
-
   return (
     <main className="mx-auto max-w-[86rem] px-6 pb-8 sm:px-10 lg:px-16">
       <header className="pb-4 pt-12 sm:pt-16 lg:grid lg:grid-cols-[13rem_minmax(0,1fr)] lg:gap-x-16">
@@ -111,17 +101,19 @@ export default function AboutPage() {
         </dl>
       </Section>
 
-      <Section eyebrow="What goes in">
-        <p className="max-w-[58ch] leading-relaxed text-ink-soft">
-          Every brand we build with, across all nine developments. The same
-          names appear again and again, which is what makes a specification
-          worth reading.
-        </p>
-        <div className="mt-8">
-          <BrandCards groups={brands} />
-          <BrandCardsNote />
-        </div>
-      </Section>
+      {/*
+        "What goes in" — the consolidated brand list — is hidden at the
+        client's instruction of 1 November 2026. Nothing it drew has been
+        deleted: getAllMaterialGroups still assembles the list and
+        lib/partners.test.ts still holds it to its rules, and BrandCards and
+        BrandCardsNote still run on every project page through
+        components/projects/approvals.tsx, which is where a visitor now sees
+        the brands for the development they are actually reading about.
+
+        To put it back, restore this section with the three imports it needs
+        and `const brands = getAllMaterialGroups(getAllProjects())`. Git has
+        the exact block at 808190c.
+      */}
 
       <Section id="contact" eyebrow="Talk to us">
         {/*

@@ -44,6 +44,23 @@ export type HeroImage = { src: string; alt: string };
  * The wash does a second job beyond looking like one canvas: it is why the
  * header can sit over the picture with no bar of its own and stay legible.
  *
+ * THE PHONE CROP IS 43%, not centre, at the client's instruction of
+ * 1 November 2026 to place the building as the desktop does. It is the one
+ * number that can be matched: at 375x812 the picture covers the frame on
+ * height alone — the overflow is horizontal only — so the phone shows 26% of
+ * the picture's width where the lg column shows 63%, and no object-position
+ * closes that. What it can do is centre the same part of the render. The lg
+ * crop spans original x 284-1795 of 2400, centred on 1040, which is 43.3% of
+ * the width; 43% puts the phone's 764-1387 on the same middle. The curved
+ * corner sits right of centre in both as a result, which is what the desktop
+ * frame leads with.
+ *
+ * Showing MORE of the building on a phone needs the picture to stop filling
+ * the height — at 60% of the viewport it would show 43% of the width — and
+ * that is a layout change to the full-bleed arrangement the client asked for
+ * on 3 October, not a crop. Not done without them choosing it.
+ *
+ *
  * On a phone the ground peaks at 0.5, to match what the picture does on a
  * wide screen — the client asked for 0.5 and it applies to both. That on its
  * own is not survivable for "Deeply Lived.": the darkest pixel of this render
@@ -76,7 +93,7 @@ export function Hero({ image }: { image: HeroImage }) {
           priority
           fetchPriority="high"
           sizes="(min-width: 1024px) 70vw, 100vw"
-          className="object-cover object-center lg:object-[32%_50%]"
+          className="object-cover object-[43%_50%] lg:object-[32%_50%]"
         />
 
         {/*
@@ -156,6 +173,20 @@ export function Hero({ image }: { image: HeroImage }) {
         Its left and right edges sit outside the viewport on purpose, so the
         only edges that can be seen are the top and bottom, and closest-side
         puts those exactly where the ramp reaches zero. Nothing to find.
+
+        RE-MEASURED 1 November 2026, when the phone crop moved to 43%. A crop
+        change moves different pixels under the type, so the figures above are
+        about the old centre crop and are kept for the reasoning, not the
+        numbers. At 375x812, masked to the glyph strokes themselves rather
+        than to the line box: "Thoughtfully Built," 12.27:1 and "Deeply
+        Lived." 3.96:1, both against the 3:1 large text owes. The ground did
+        not have to change.
+
+        Mask to the glyphs, not the box. The same measurement taken over the
+        whole line box reports 1.02:1, because the box reaches below the
+        baseline into a balcony shadow no letter touches. That number is an
+        artefact; it is written down here so it is not rediscovered and acted
+        on.
       */}
       <div
         aria-hidden

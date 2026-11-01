@@ -1,3 +1,4 @@
+import { Fragment } from "react";
 import { LineIcon } from "@/components/brand/amenity-icons";
 import { ArrowRightIcon } from "@/components/brand/icons";
 import { formatArea } from "@/lib/content";
@@ -57,14 +58,27 @@ export function Configurations({ project }: { project: Project }) {
       </div>
 
       {project.facings?.length ? (
-        <div className="mt-6 flex flex-wrap items-center gap-x-8 gap-y-3 rounded-lg border border-line px-6 py-5 sm:px-10">
-          <span className="u-mono tracking-[0.2em] text-muted">Facing, by flat</span>
-          {project.facings.map((f) => (
-            <span key={f.flats} className="text-ink">
-              <span className="font-display text-xl">Flats {f.flats}</span>
-              <span className="ml-2 text-ink-soft">{f.facing}</span>
-            </span>
-          ))}
+        /*
+          A list down the page, not a row across it, at the client's
+          instruction of 1 November 2026. The four pairings used to sit on one
+          line after the label, which read as a sentence and buried the fact
+          that each floor has two flats to a side; stacked, with the compass
+          point in its own column, it reads as the table it is.
+
+          A real <dl>: the flats are the terms and the facing is what is said
+          about them. Two grid columns rather than a width on the term, so a
+          development that labels its flats differently still aligns.
+        */
+        <div className="mt-6 rounded-lg border border-line px-6 py-5 sm:px-10">
+          <p className="u-mono tracking-[0.2em] text-muted">Facing, by flat</p>
+          <dl className="mt-5 grid max-w-xs grid-cols-[auto_1fr] gap-x-10 gap-y-3">
+            {project.facings.map((f) => (
+              <Fragment key={f.flats}>
+                <dt className="font-display text-xl text-ink">Flats {f.flats}</dt>
+                <dd className="self-center text-ink-soft">{f.facing}</dd>
+              </Fragment>
+            ))}
+          </dl>
         </div>
       ) : null}
 
