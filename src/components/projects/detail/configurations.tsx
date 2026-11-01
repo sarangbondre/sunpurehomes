@@ -1,10 +1,9 @@
-import { Fragment } from "react";
 import { LineIcon } from "@/components/brand/amenity-icons";
 import { ArrowRightIcon } from "@/components/brand/icons";
 import { formatArea } from "@/lib/content";
 import { whatsappHref } from "@/lib/links";
 import type { Project } from "@/lib/schema";
-import { CLOSING, LEDES, TRUST_ROW } from "./copy";
+import { CLOSING, facingSentence, LEDES, TRUST_ROW } from "./copy";
 import { ClosingLine, DetailSection, IconTile, NoteRow, SectionHead } from "./section-head";
 
 /**
@@ -42,6 +41,9 @@ function rooms(label: string): number | undefined {
 export function Configurations({ project }: { project: Project }) {
   const list = project.configurations;
   const asCards = project.type !== "plot" && list.length <= 3;
+  const facingLine = project.facings?.length
+    ? facingSentence(project.facings)
+    : undefined;
 
   return (
     <DetailSection>
@@ -57,28 +59,20 @@ export function Configurations({ project }: { project: Project }) {
         )}
       </div>
 
-      {project.facings?.length ? (
+      {facingLine ? (
         /*
-          A list down the page, not a row across it, at the client's
-          instruction of 1 November 2026. The four pairings used to sit on one
-          line after the label, which read as a sentence and buried the fact
-          that each floor has two flats to a side; stacked, with the compass
-          point in its own column, it reads as the table it is.
-
-          A real <dl>: the flats are the terms and the facing is what is said
-          about them. Two grid columns rather than a width on the term, so a
-          development that labels its flats differently still aligns.
+          Said as a count per direction, at the client's instruction of
+          1 November 2026 — see facingSentence in ./copy.ts for the wording
+          and why it is composed rather than stored. This went from a row of
+          four pairings, to a flat-by-flat list, to this, in a day; the flat
+          numbers are still in the content file and still drive the plan
+          explorer, so nothing was lost on the way.
         */
         <div className="mt-6 rounded-lg border border-line px-6 py-5 sm:px-10">
-          <p className="u-mono tracking-[0.2em] text-muted">Facing, by flat</p>
-          <dl className="mt-5 grid max-w-xs grid-cols-[auto_1fr] gap-x-10 gap-y-3">
-            {project.facings.map((f) => (
-              <Fragment key={f.flats}>
-                <dt className="font-display text-xl text-ink">Flats {f.flats}</dt>
-                <dd className="self-center text-ink-soft">{f.facing}</dd>
-              </Fragment>
-            ))}
-          </dl>
+          <p className="u-mono tracking-[0.2em] text-muted">Facing</p>
+          <p className="mt-4 max-w-[52ch] text-balance font-display text-xl leading-snug text-ink sm:text-2xl">
+            {facingLine}
+          </p>
         </div>
       ) : null}
 

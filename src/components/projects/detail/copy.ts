@@ -122,6 +122,64 @@ const CAPTIONS = {
   ],
 } as const;
 
+const COUNT_WORDS = [
+  "",
+  "one",
+  "two",
+  "three",
+  "four",
+  "five",
+  "six",
+  "seven",
+  "eight",
+] as const;
+
+/**
+ * "On every floor, two homes face south, two west, two north and two east."
+ *
+ * The client asked on 1 November 2026 for the aspect to be said as a count
+ * per direction rather than listed flat by flat, because what a buyer wants
+ * to know is that each side of the building is served, not which numbers sit
+ * where. The flat numbers are still in the content file and still drive the
+ * plan explorer, where picking a specific home is the point.
+ *
+ * Composed from the facings rather than written out and stored, so the
+ * sentence cannot come to disagree with the data it describes. The count is
+ * how many flat numbers an entry names — "1 & 2" is two homes — which is
+ * what the field means: flats are numbered per floor, so the pattern repeats
+ * up the building, and that is why the sentence can say "on every floor".
+ *
+ * An entry naming no number is dropped rather than guessed at. If that
+ * leaves nothing there is no sentence, and the caller shows nothing at all
+ * rather than an empty frame.
+ */
+export function facingSentence(
+  facings: readonly { flats: string; facing: string }[],
+): string | undefined {
+  const parts = facings
+    .map((f) => ({
+      count: (f.flats.match(/\d+/g) ?? []).length,
+      facing: f.facing.toLowerCase(),
+    }))
+    .filter((part) => part.count > 0);
+
+  if (parts.length === 0) return undefined;
+
+  const say = ({ count, facing }: { count: number; facing: string }, lead: boolean) => {
+    const word = COUNT_WORDS[count] ?? String(count);
+    if (!lead) return `${word} ${facing}`;
+    return `${word} ${count === 1 ? "home faces" : "homes face"} ${facing}`;
+  };
+
+  const clauses = parts.map((part, i) => say(part, i === 0));
+  const joined =
+    clauses.length === 1
+      ? clauses[0]
+      : `${clauses.slice(0, -1).join(", ")} and ${clauses[clauses.length - 1]}`;
+
+  return `On every floor, ${joined}.`;
+}
+
 /** A caption for the nth picture of a kind, so no two neighbours repeat. */
 export function galleryCaption(view: "exterior" | "interior", nth: number): string {
   const list = CAPTIONS[view];
