@@ -1,16 +1,19 @@
-import { dirname } from "path";
-import { fileURLToPath } from "url";
-import { FlatCompat } from "@eslint/eslintrc";
+import nextCoreWebVitals from "eslint-config-next/core-web-vitals";
+import nextTypescript from "eslint-config-next/typescript";
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = dirname(__filename);
+/*
+  Flat config, taken straight from the package.
 
-const compat = new FlatCompat({
-  baseDirectory: __dirname,
-});
-
+  Until Next 16 these two were pulled in through FlatCompat, the bridge that
+  reads an old-style `extends` list. eslint-config-next 16 ships flat config
+  itself, and putting flat config through that bridge throws before any file
+  is linted ("Converting circular structure to JSON"). Both entry points are
+  plain arrays now, so they are spread in directly and @eslint/eslintrc is
+  gone from the tree.
+*/
 const eslintConfig = [
-  ...compat.extends("next/core-web-vitals", "next/typescript"),
+  ...nextCoreWebVitals,
+  ...nextTypescript,
   {
     ignores: [
       "node_modules/**",
