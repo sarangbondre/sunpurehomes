@@ -31,48 +31,75 @@ export type HeroImage = { src: string; alt: string };
  * reverted by inference from an old screenshot.
  *
  * The picture is a 70% column against a 46% text column, so the two overlap
- * and the picture dissolves into the paper instead of butting against it. The
- * column is much taller than it is wide, so the picture is cropped hard from
- * the sides: at 1440x900 the column is 1008 wide and the picture is drawn
- * 1600, which is 592px of travel. That is four times what the full-bleed
- * arrangement had, and why the crop is anchored at 32% from lg,
- * which pushes the building a further 106px to the right inside its own
- * column — the client asked for that on 7 October, on top of the half it
- * already had. The column gives the crop 592px of travel against the
- * full-bleed arrangement's 160, so there is room to spend.
+ * and the picture dissolves into the paper instead of butting against it.
+ *
+ * THERE IS NO CROP TO SPEAK OF ON A WIDE SCREEN any more, because the
+ * picture changed shape on 3 November. The corner view is 1080x960, which is
+ * 1.125:1, and at 1440x900 the column is 1008x900, which is 1.12:1 — the two
+ * agree to within half a percent. The picture is drawn 1013 wide into 1008,
+ * so there are FIVE pixels of travel where the old 2400x1350 frame had 592,
+ * and object-position has nothing left to move. The column shows 99.6% of
+ * the width.
+ *
+ * That retires the 7 October instruction to push the building further right:
+ * it was carried out by spending crop travel, and this frame has none to
+ * spend. Moving the building within the column now means changing the
+ * column, not the crop. If they ask for it again, say so rather than
+ * nudging a number that cannot do anything.
  *
  * The wash does a second job beyond looking like one canvas: it is why the
  * header can sit over the picture with no bar of its own and stay legible.
  *
- * THE PHONE CROP IS 43%, not centre, at the client's instruction of
- * 1 November 2026 to place the building as the desktop does. It is the one
- * number that can be matched: at 375x812 the picture covers the frame on
- * height alone — the overflow is horizontal only — so the phone shows 26% of
- * the picture's width where the lg column shows 63%, and no object-position
- * closes that. What it can do is centre the same part of the render. The lg
- * crop spans original x 284-1795 of 2400, centred on 1040, which is 43.3% of
- * the width; 43% puts the phone's 764-1387 on the same middle. The curved
- * corner sits right of centre in both as a result, which is what the desktop
- * frame leads with.
+ * BOTH CROPS ARE CENTRE, re-measured for the corner view on 3 November and
+ * not inherited: the previous 43% phone / 32% desktop pair belonged to the
+ * 2400x1350 frame and means something else on this one.
  *
- * Showing MORE of the building on a phone needs the picture to stop filling
- * the height — at 60% of the viewport it would show 43% of the width — and
- * that is a layout change to the full-bleed arrangement the client asked for
- * on 3 October, not a crop. Not done without them choosing it.
+ * Centre is not a default here, it is the answer. The client's instruction
+ * of 1 November was to place the building on a phone as the desktop does,
+ * and on this frame the two land on the same point exactly: the lg column
+ * shows original x 2-1078 of 1080, centred on 540; the phone shows x
+ * 318-762, centred on 540 as well. The old frame could only approximate
+ * that — 43.3% desktop against 44.8% phone — because its crop centres
+ * genuinely differed.
+ *
+ * The phone also sees more of the building than it did: 41% of the width
+ * against 26%, because a 1.125:1 picture overflows a 375x812 frame far less
+ * than a 1.78:1 one. That is the client's 1 November request answered by the
+ * shape of the picture rather than by a number.
+ *
+ * Showing more still needs the picture to stop filling the height, which is
+ * a layout change to the full-bleed arrangement the client asked for on
+ * 3 October, not a crop. Not done without them choosing it.
  *
  *
  * On a phone the ground peaks at 0.5, to match what the picture does on a
- * wide screen — the client asked for 0.5 and it applies to both. That on its
- * own is not survivable for "Deeply Lived.": the darkest pixel of this render
- * under those words is (8,0,0), a window reveal, and laterite over it at 0.5
- * measures 1.27:1 against the 3:1 it owes as large text. So the headline
- * carries its own radial ground at 0.86 and the rest of the frame stays at
- * 0.5, rather than lifting the whole veil to clear one line of type.
+ * wide screen — the client asked for 0.5 and it applies to both. The
+ * headline then carries its own radial ground at 0.86 on top of that.
  * Seventeen stops either way, because three draw a straight line and the eye
  * reads a straight line as an edge.
  *
+ * RE-MEASURED 3 November for the corner view, and the reason for the 0.86
+ * has changed. Under the old frame the darkest pixel beneath "Deeply Lived."
+ * was (8,0,0), a window reveal, which left laterite at 1.27:1 against the
+ * 3:1 it owes as large text — the radial was the only thing making that line
+ * legible. On this frame those words fall over sky and pale facade, the
+ * darkest pixel is (169,153,138), and laterite clears 3:1 on the 0.5 veil
+ * alone at 3.23:1. With the radial it is 4.36:1, and "Thoughtfully Built,"
+ * in ink is 14.05:1.
+ *
+ * So the radial is now insurance rather than necessity, and it stays: 3.23:1
+ * is 7% of headroom over the floor, this picture has been replaced seven
+ * times, and the next frame may put a dark window back under that line. The
+ * cost of keeping it is a little less picture showing through two words.
+ * Dropping it is a visual decision for the client, not a cleanup.
+ *
  * Both numbers belong to the picture, not to a house style. Whoever changes
- * the image should re-measure rather than assume them.
+ * the image should re-measure rather than assume them — the method is to
+ * draw the img to a canvas with the same object-cover geometry, take the
+ * darkest pixel under each line's box, composite it under the veil, and
+ * check the ratio. Measuring the rendered line box instead reports a false
+ * failure, because the empty space below the baseline catches whatever the
+ * picture has there.
  *
  * One picture, not a rotation: a plain server component with no client
  * JavaScript, and nothing that moves, so WCAG 2.2.2 does not apply.
@@ -93,7 +120,7 @@ export function Hero({ image }: { image: HeroImage }) {
           priority
           fetchPriority="high"
           sizes="(min-width: 1024px) 70vw, 100vw"
-          className="object-cover object-[43%_50%] lg:object-[32%_50%]"
+          className="object-cover object-center"
         />
 
         {/*
