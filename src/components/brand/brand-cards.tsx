@@ -1,5 +1,9 @@
 import Image from "next/image";
-import { markSize, type MaterialGroup } from "@/lib/partners";
+import {
+  markSize,
+  type MaterialGroup,
+  type ProjectMaterial,
+} from "@/lib/partners";
 
 /**
  * The brands, a card for each thing supplied: the use at the head of the
@@ -101,5 +105,56 @@ export function BrandCardsNote() {
       Specifications may change with upgrades and availability, while ensuring
       equivalent quality and standards.
     </p>
+  );
+}
+
+/**
+ * The same marks with no categories: one card, every brand in it, nothing
+ * saying what any of them supplies.
+ *
+ * This is the About page's "What goes in" as the client asked for it on
+ * 6 November 2026 — the list back, the trade labels not. On a project page a
+ * category earns its place, because a buyer reading about one development
+ * wants to know which brand is the plumbing and which is the lift. On About
+ * the same labels answer a question nobody asked: the page is making the
+ * point that these names recur across all nine developments, and splitting
+ * sixteen marks into twelve labelled boxes buries it.
+ *
+ * It renders from the same ProjectMaterial and the same markSize as
+ * BrandCards, so the two cannot drift: a mark that grows there grows here.
+ * What it does NOT do is take MaterialGroup — a caller has to flatten, which
+ * is the point at which someone decides the categories are going.
+ */
+export function BrandMarks({ brands }: { brands: readonly ProjectMaterial[] }) {
+  return (
+    <div className="rounded-md border border-line bg-paper px-6 py-8 sm:px-10">
+      {/*
+        A list, not a row of images: these are sixteen separate names and a
+        screen reader should be told how many. The marks carry their brand in
+        alt text, so the names are not repeated visibly — the same bargain
+        BrandCards strikes.
+
+        Centred rather than left-aligned because the last row is always short
+        and a ragged left edge under three full rows reads as a mistake.
+      */}
+      <ul className="flex flex-wrap items-center justify-center gap-x-10 gap-y-8">
+        {brands.map((brand) => (
+          <li key={brand.name} className="flex items-center justify-center">
+            {brand.logoSrc ? (
+              <Image
+                src={brand.logoSrc}
+                alt={brand.name}
+                {...markSize(brand.name)}
+                className="object-contain"
+              />
+            ) : (
+              <span className="font-display text-xl leading-tight text-ink">
+                {brand.name}
+              </span>
+            )}
+          </li>
+        ))}
+      </ul>
+    </div>
   );
 }

@@ -1,8 +1,11 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { MailIcon, PhoneIcon, WhatsAppIcon } from "@/components/brand/icons";
+import { BrandCardsNote, BrandMarks } from "@/components/brand/brand-cards";
 import { Section } from "@/components/ui/section";
 import { mailtoHref, telHref, whatsappHref } from "@/lib/links";
+import { getAllMaterialGroups } from "@/lib/partners";
+import { getAllProjects } from "@/lib/content";
 import { site } from "@/lib/site";
 
 export const metadata: Metadata = {
@@ -26,6 +29,21 @@ export const metadata: Metadata = {
  * Send the titles and the section goes in.
  */
 export default function AboutPage() {
+  /*
+    Every brand the nine projects name between them, not the site-wide list
+    of nine this page showed until 7 October. See getAllMaterialGroups for
+    which of the two sources wins where they disagree.
+
+    Flattened here rather than in partners.ts, because the grouping is still
+    the truth — the project pages draw it — and it is only this page that is
+    choosing not to show it. getAllMaterialGroups puts each brand in exactly
+    one group (lib/partners.test.ts holds it to that), so the flat list has
+    no duplicates to remove and keeps the order the trades first appear in.
+  */
+  const brands = getAllMaterialGroups(getAllProjects()).flatMap(
+    (group) => group.brands,
+  );
+
   return (
     <main className="mx-auto max-w-[86rem] px-6 pb-8 sm:px-10 lg:px-16">
       <header className="pb-4 pt-12 sm:pt-16 lg:grid lg:grid-cols-[13rem_minmax(0,1fr)] lg:gap-x-16">
@@ -102,18 +120,29 @@ export default function AboutPage() {
       </Section>
 
       {/*
-        "What goes in" — the consolidated brand list — is hidden at the
-        client's instruction of 1 November 2026. Nothing it drew has been
-        deleted: getAllMaterialGroups still assembles the list and
-        lib/partners.test.ts still holds it to its rules, and BrandCards and
-        BrandCardsNote still run on every project page through
-        components/projects/approvals.tsx, which is where a visitor now sees
-        the brands for the development they are actually reading about.
+        "What goes in" was hidden on 1 November 2026 and asked for again on
+        6 November, without the trade labels it used to carry. So the list is
+        back and the categories are not: see BrandMarks for why that split is
+        the right way round, and git has the labelled version at 808190c if
+        the client changes their mind a third time.
 
-        To put it back, restore this section with the three imports it needs
-        and `const brands = getAllMaterialGroups(getAllProjects())`. Git has
-        the exact block at 808190c.
+        Nothing underneath ever moved. getAllMaterialGroups still groups by
+        trade, lib/partners.test.ts still holds it to its rules, and the
+        grouped cards still run on every project page through
+        components/projects/approvals.tsx, which is where a visitor sees
+        which brand supplies what for the development they are reading about.
       */}
+      <Section eyebrow="What goes in">
+        <p className="max-w-[58ch] leading-relaxed text-ink-soft">
+          Every brand we build with, across all nine developments. The same
+          names appear again and again, which is what makes a specification
+          worth reading.
+        </p>
+        <div className="mt-8">
+          <BrandMarks brands={brands} />
+          <BrandCardsNote />
+        </div>
+      </Section>
 
       <Section id="contact" eyebrow="Talk to us">
         {/*
